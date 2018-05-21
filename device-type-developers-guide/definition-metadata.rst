@@ -100,7 +100,7 @@ To define a custom command for your Device Handler, call the ``command()`` metho
     // command name "myCommand" with no parameters
     command "myCommand"
 
-    // comand name myCommandWithParams that takes a string and a number parameter
+    // command name myCommandWithParams that takes a string and a number parameter
     command "myCommandWithParams", ["string", "number"]
 
     ...
@@ -195,7 +195,7 @@ Not all fields will be present for every device.
 **zwv:**
     This is the version of the Z-Wave protocol stack being used by the device.
 **lib:**
-    This indicates the type of Z-Wave protocol libary the device is based on. '01' is a static controller, '02' is a
+    This indicates the type of Z-Wave protocol library the device is based on. '01' is a static controller, '02' is a
     remote controller, '07' is a bridge controller, and other values are normal non-controller devices.
 **cc:**
     The list of Z-Wave command classes supported by the device (without security encapsulation). See the
@@ -267,7 +267,7 @@ When multiple device fingerprints match an added Z-Wave device, they are ranked 
 'ui' parameter. When fingerprints have the same rank, self-published Device Handlers take precedence over the default
 production ones.
 
-Legacy Z-Wave fingeprint format
+Legacy Z-Wave fingerprint format
 +++++++++++++++++++++++++++++++
 
 Legacy fingerprints include the device class – or ``type`` value (see above) – in the ``deviceId`` parameter and the
