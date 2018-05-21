@@ -92,7 +92,7 @@ Command invokes a command on a ZigBee device and is formatted like this:
 
 In this example (from the "ZigBee Dimmer" device type) we are sending a ZigBee Command to turn the device on.
 We use the On/Off Cluster (6) and send the command to turn on (1).
-This commands has no payload, so we exclude it from the passed in parameters.
+This command has no payload, so we exclude it from the passed in parameters.
 
 +-------------------------------+-----------------------------+
 | Component                     | Description                 |
