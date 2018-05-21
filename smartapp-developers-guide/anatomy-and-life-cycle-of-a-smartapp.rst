@@ -82,7 +82,7 @@ Pre-defined callbacks
 The following methods, if present, are automatically called at various times during the lifecycle of a SmartApp:
 
 #. ``installed()`` - Called when a SmartApp is first installed.
-#. ``updated()`` - Called when the preferences of an installed smart app are updated.
+#. ``updated()`` - Called when the preferences of an installed SmartApp is updated.
 #. ``uninstalled()`` - Called when a SmartApp is uninstalled.
 #. ``childUninstalled()`` - Called for the parent app when a child app is uninstalled (a SmartApp can have child SmartApps).
 
