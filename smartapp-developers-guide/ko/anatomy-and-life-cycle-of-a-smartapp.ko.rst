@@ -136,3 +136,16 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
 ----
 
+SmartApp 샌드박싱
+----------------
+
+SmartApp은 샌드박스 환경에서 개발됩니다. 샌드박스는 성능과 보안을 위해 개발자를 Groovy 언어의 특정 하위 집합으로 제한하는 방법입니다. SmartApp은 :ref:`documented <groovy-for-smartthings>`을 주된 방법으로 하고 있으며, 다른 개발자도 이 방법을 따라야합니다.
+
+----
+
+실행 위치
+--------
+
+이전 버젼의 SmartThings Hub를 사용하는 경우, 모든 SmartApp이 SmartThings 크라우드에서 실행됩니다. 새로운 버젼의 SmartThings Hub를 사용하는 경우, 어떤 SmartApp은 로컬로 실행될 수 있습니다. 실행 위치는 다양한 요인에 따라 다르며, SmartThings 내부 팀이 관리합니다.
+
+SmartThings 개발자는 앱의 실행 위치와 관계없이 특정 사용 경우를 충족시키도록 SmartApp을 개발해야합니다. 현재에는 실행 위치를 지정하거나 강제 적용하는 방법이 없습니다.
