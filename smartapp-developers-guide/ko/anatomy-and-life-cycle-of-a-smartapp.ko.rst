@@ -38,7 +38,7 @@ SmartApp 구조
 SmartApp은 `Groovy <http://groovy.codehaus.org/>`__ 스크립트의 형식을 가집니다. 
 일반적인 SmartApp 스크립트는 *Definition(정의)*, *Preferences(기본 설정)*, *Predefined Callbacks(미리 정의된 콜백)* 및 *Event Handlers(이벤트 처리기)*의 4개의 영역으로 구성됩니다. 또한 클라우드와 연결되는 SmartApp에 필요한 매핑 영역도 있으며, 이는 추후에 설명하겠습니다.
 
-.. image:: ../img/smartapps/demo-app.png
+.. image:: ../../img/smartapps/demo-app.png
     :class: with-border
 
 Definition(정의)
