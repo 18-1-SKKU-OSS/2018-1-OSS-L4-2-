@@ -85,4 +85,54 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
 ----
 
+디바이스 기본설정
+----------------
+
+기본설정에서 가장 일반적인 입력 값은 SmartApp에서 작동할 디바이스 종류를 명시하는 값입니다. 예를 들어, 앱이 하나의 접촉 센서가 필요함을 명시하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    input "contact1", "capability.contactSensor"
+
+위 코드는 모바일 UI에서 하나의 접촉 센서를 선택하라는 입력 요소(``capability.contactSensor``)를 생성합니다. 
+``contact1``은 SmartApp에서 디바이스에 대한 접근을 제공하는 변수의 이름입니다.
+
+디바이스 입력 값은 둘 이상일 수 있습니다. 하나 이상의 스위치를 선택하도록 하기 위해선 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    input "switch1", "capability.switch", multiple: true
+
+`여기 <preferences-and-settings.html>`__에서 SmartApp 기본설정에 관한 더 많은 정보를 얻으실 수 있습니다.
+
+----
+
+이벤트 구독
+----------
+
+구독을 통해 SmartApp에서 디바이스, 장소, 또는 모바일 UI의 SmartApp 타일로부터의 이벤트를 알 수 있습니다. 디바이스 구독은 가장 일반적이고, 다음과 같은 형식을 이용합니다.
+
+.. code-block:: groovy
+
+    subscribe(<device>, "<attribute[.value]>", handlerMethod)
+
+예를 들어, 접촉 센서로부터 모든 이벤트를 구독하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    subscribe(contact1, "contact", contactHandler)
+
+``contactHandler()`` 메소드는 접촉 센서가 열리거나 닫 때마다 호출됩니다.
+또한 특정 이벤트 값만 구독할 수 있어, 접촉 센서가 열릴 때에만 처리기를 호출하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    subscribe(contact1, "contact.open", contactOpenHandler)
+
+
+``subscribe()`` 메소드는 디바이 또는 디바이스의 목록을 허용하므로, 입력 기본설정에 ``multiple: true``를 명시하면 목록의 각 디바이스에 대해서 반복해서 명시하지 않아도 됩니다.
+
+:ref:`events_and_subscriptions`에서 디바이스 이벤트 구독에 대한 더 많은 정보를 얻으실 수 있습니다.
+
+----
 
