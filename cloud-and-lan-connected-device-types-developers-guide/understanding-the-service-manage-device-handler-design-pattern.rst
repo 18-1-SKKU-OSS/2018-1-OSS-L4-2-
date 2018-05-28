@@ -23,5 +23,5 @@ LAN-connected devices
 When using a LAN-connected device, the service manager is used to
 discover and initiate a connection between the device and your Hub,
 using the protocols SSDP or mDNS/DNS-SD.
-Then the device-handler uses UPnP/SOAP Calls or REST Calls to communicate outgoing messages between
+Then the Device Handler uses UPnP/SOAP Calls or REST Calls to communicate outgoing messages between
 the Hub and device.
