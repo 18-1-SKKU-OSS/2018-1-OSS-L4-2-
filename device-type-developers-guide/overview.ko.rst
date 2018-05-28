@@ -1,7 +1,7 @@
 :Authors:
 	Kim Kyung Min
 	(Sungkyunkwan Univ. College of Software)
-:Version: 1.0 of 2018/05/25
+:Version: 1.2 of 2018/05/28
 
 =======
 개요
@@ -19,4 +19,19 @@ SmartApp는 기기의 가상화된 표현과 상호 작용하면, 기기의 기�
 
 아래 나오는 그림은 device handler가 SmartThings 구조에서 어디에 위치하는지를 표현합니다.
 
+.. image:: ../img/device-types/smartthings-architecture.png
 
+위의 예시에서, Device Handler("스위치" 기능을 구현하는)는 기기로부터 프로토콜이 명시된 상태 메세지를 받아 파싱하고, 그 메세지들을 표준화된 "events"로 바꾸는 역할을 합니다. 또한, "on" 이나 "off" 같은 표준화된 명령들을 받아 그것들이 기기로 보내져서 원하는 행동을 할 수 있도록 프로토콜이 명시된 명령으로 바꾸기도 합니다.
+
+예를 들어,  Z-wave가 호환되는 on-off 스위치에서, 기기가 "on"이나 "off" 상태를 보고하기 위해 사용하는 수신 상태 메세지는 아래와 같습니다:
+
+========= ============================
+기기 명령 프로토콜-명시 명령 메시지
+========= ============================
+켜기       command: 2003, payload: FF
+끄기       command: 2003, payload: 00
+========= ============================
+
+반면에 해당 장치의 SmartThings 플랫폼에 보고되는 장치의 상태는 그저 "on" 이나 "off"입니다.
+
+비슷하게, 
