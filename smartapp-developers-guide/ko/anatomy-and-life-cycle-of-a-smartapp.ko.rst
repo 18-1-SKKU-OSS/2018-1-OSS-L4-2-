@@ -38,7 +38,7 @@ SmartApp 구조
 SmartApp은 `Groovy <http://groovy.codehaus.org/>`__ 스크립트의 형식을 가집니다. 
 일반적인 SmartApp 스크립트는 *Definition(정의)*, *Preferences(기본 설정)*, *Predefined Callbacks(미리 정의된 콜백)* 및 *Event Handlers(이벤트 처리기)*의 4개의 영역으로 구성됩니다. 또한 클라우드와 연결되는 SmartApp에 필요한 매핑 영역도 있으며, 이는 추후에 설명하겠습니다.
 
-.. image:: ../img/smartapps/demo-app.png
+.. image:: ../../img/smartapps/demo-app.png
     :class: with-border
 
 Definition(정의)
@@ -85,4 +85,67 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
 ----
 
+디바이스 기본설정
+----------------
 
+기본설정에서 가장 일반적인 입력 값은 SmartApp에서 작동할 디바이스 종류를 명시하는 값입니다. 예를 들어, 앱이 하나의 접촉 센서가 필요함을 명시하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    input "contact1", "capability.contactSensor"
+
+위 코드는 모바일 UI에서 하나의 접촉 센서를 선택하라는 입력 요소(``capability.contactSensor``)를 생성합니다. 
+``contact1``은 SmartApp에서 디바이스에 대한 접근을 제공하는 변수의 이름입니다.
+
+디바이스 입력 값은 둘 이상일 수 있습니다. 하나 이상의 스위치를 선택하도록 하기 위해선 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    input "switch1", "capability.switch", multiple: true
+
+`여기 <preferences-and-settings.html>`__에서 SmartApp 기본설정에 관한 더 많은 정보를 얻으실 수 있습니다.
+
+----
+
+이벤트 구독
+----------
+
+구독을 통해 SmartApp에서 디바이스, 장소, 또는 모바일 UI의 SmartApp 타일로부터의 이벤트를 알 수 있습니다. 디바이스 구독은 가장 일반적이고, 다음과 같은 형식을 이용합니다.
+
+.. code-block:: groovy
+
+    subscribe(<device>, "<attribute[.value]>", handlerMethod)
+
+예를 들어, 접촉 센서로부터 모든 이벤트를 구독하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    subscribe(contact1, "contact", contactHandler)
+
+``contactHandler()`` 메소드는 접촉 센서가 열리거나 닫 때마다 호출됩니다.
+또한 특정 이벤트 값만 구독할 수 있어, 접촉 센서가 열릴 때에만 처리기를 호출하려면 다음과 같이 작성하세요.
+
+.. code-block:: groovy
+
+    subscribe(contact1, "contact.open", contactOpenHandler)
+
+
+``subscribe()`` 메소드는 디바이 또는 디바이스의 목록을 허용하므로, 입력 기본설정에 ``multiple: true``를 명시하면 목록의 각 디바이스에 대해서 반복해서 명시하지 않아도 됩니다.
+
+:ref:`events_and_subscriptions`에서 디바이스 이벤트 구독에 대한 더 많은 정보를 얻으실 수 있습니다.
+
+----
+
+SmartApp 샌드박싱
+----------------
+
+SmartApp은 샌드박스 환경에서 개발됩니다. 샌드박스는 성능과 보안을 위해 개발자를 Groovy 언어의 특정 하위 집합으로 제한하는 방법입니다. SmartApp은 :ref:`documented <groovy-for-smartthings>`을 주된 방법으로 하고 있으며, 다른 개발자도 이 방법을 따라야합니다.
+
+----
+
+실행 위치
+--------
+
+이전 버젼의 SmartThings Hub를 사용하는 경우, 모든 SmartApp이 SmartThings 크라우드에서 실행됩니다. 새로운 버젼의 SmartThings Hub를 사용하는 경우, 어떤 SmartApp은 로컬로 실행될 수 있습니다. 실행 위치는 다양한 요인에 따라 다르며, SmartThings 내부 팀이 관리합니다.
+
+SmartThings 개발자는 앱의 실행 위치와 관계없이 특정 사용 경우를 충족시키도록 SmartApp을 개발해야합니다. 현재에는 실행 위치를 지정하거나 강제 적용하는 방법이 없습니다.
