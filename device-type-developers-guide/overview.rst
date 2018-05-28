@@ -152,7 +152,7 @@ Execution location
 
 With the original SmartThings Hub, all Device handlers execute in the SmartThings cloud.
 With the new Samsung SmartThings Hub, certain Device handlers may run locally on the Hub or in the SmartThings cloud.
-Execution location varies depending on a variety of factors, and is managed by the SmartThings internal team.
+Execution location varies depending on a variety of factors and is managed by the SmartThings internal team.
 
 As a SmartThings developer, you should write your Device Handlers to satisfy their specific use cases, regardless of where the handler executes.
 There is currently no way to specify or force a certain execution location.
