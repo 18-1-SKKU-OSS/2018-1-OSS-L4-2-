@@ -1,7 +1,7 @@
 :Authors:
 	Kim Kyung Min
 	(Sungkyunkwan Univ. College of Software)
-:Version: 1.0 of 2018/05/25
+:Version: 1.2 of 2018/05/28
 
 =======
 개요
@@ -18,5 +18,7 @@ SmartApp는 기기의 가상화된 표현과 상호 작용하면, 기기의 기�
 이러한 추상화는 SmartThings 플랫폼의 성공적인 작동과 유연성에 있어 핵심 사항입니다. 구조적으로, device handler는 일반적인 기능과 기기와 실제로 통신하기 위해 사용되는 기기 혹은 프로토콜이 특정된 인터페이스 간의 다리 역할을 해줍니다. 
 
 아래 나오는 그림은 device handler가 SmartThings 구조에서 어디에 위치하는지를 표현합니다.
+
+.. image:: ../img/device-types/smartthings-architecture.png
 
 
