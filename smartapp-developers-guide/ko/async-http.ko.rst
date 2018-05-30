@@ -278,4 +278,205 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
 
 ----
 
+요청 처리
+^^^^^^^^
+
+SmartThings가 지정한 요청을 실행하고 제3자로부터 응답을 받으면, (지정된 경우) 요청 처리기 메소드가 (SmartApp 또는 디바이스 처리기의 새로운 실행에서) 호출됩니다. 
+요청 처리기 메소드는 :ref:`AsyncResponse <async_http_response_ref>`의 인스턴스로 호출될 것이고, 이를 통해 응답에 대한 정보를 얻을 수 있습니다.
+
+
+응답 처리기 메소드는 또한 요청에서 지정된 데이터 지도를 받아야 합니다. 
+이는 요청을 만들고 응답을 받기까지 동안 데이터를 전달할 때 유용합니다. 
+요청을 할 때 (선택적인) 데이터를 지정하지 않는다면, 요청 처리기 메소드는 두번째 매개변수로 ``null``이 지정된 채 호출될 것입니다.
+이러한 선택적인 데이터 매개변수는 이 문서의 뒷부분에서 설명하겠습니다.
+
+응답 처리기 메소드의 시그니처는 다음과 같아야 합니다.
+
+.. code-block:: groovy
+
+    def someResponseHandler(response, data) {}
+
+
+
+응답 상태 코드
+^^^^^^^^^^^^^
+
+다른 가능한 응답 코드를 처리해야 하는 경우, 응답 상태 코드를 얻을 수 있습니다.
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        def status = response.status
+        switch (status) {
+            case 200:
+                log.debug "200 returned"
+                break
+            case 304:
+                log.debug "304 returned"
+                break
+            default:
+                log.warn "no handling for response with status $status"
+                break
+        }
+    }
+
+
+응답 헤더
+^^^^^^^^
+
+AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값 쌍의 지도로 포함합니다. (반환 유형은 ``Map<String, String>`` 입니다.)
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        def headers = response.headers
+        headers.each { header, value ->
+            log.debug "$header: $value"
+        }
+        // can use array notation to get specific header values
+        def etagHeader = response.headers['ETag']
+    }
+
+응답 오류
+^^^^^^^^
+
+:ref:`async_response_ref_has_error`을 이용해 응답에 오류를 있는지 확인하시길 바랍니다.
+``hasError()``는 요청 도중 예외가 발생하면 true를 반환합니다.
+
+**2XX가 아닌 응답도 오류로 간주됩니다.**
+
+:ref:`async_response_ref_get_error_message` 메소드를 이용해 오류 메세지를 받을 수 있습니다.
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        if (response.hasError()) {
+            log.debug "response received error: ${response.getErrorMessage()}"
+        }
+    }
+
+응답 오류의 경우, :ref:`async_response_ref_get_error_data`, :ref:`async_response_ref_get_error_json`, 또는 :ref:`async_response_ref_get_error_xml`을 이용해 응답 본문을 받을 수 있습니다.
+이러한 메소드들은 성공적인 응답에 호출될 시 예외를 발생시킵니다.
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        if (response.hasError()) {
+            log.debug "error response data: $response.errorData"
+            try {
+                // exception thrown if json cannot be parsed from response
+                log.debug "error response json: $response.errorJson"
+            } catch (e) {
+                log.warn "error parsing json: $e"
+            }
+            try {
+                // exception thrown if xml cannot be parsed from response
+                log.debug "error response xml: $response.errorXml"
+            } catch (e) {
+                log.warn "error parsing xml: $e"
+            }
+        }
+    }
+
+JSON 응답
+^^^^^^^^^
+
+요청에 대한 응답이 JSON인 경우, :ref:`async_response_ref_get_json`을 이용해 응답의 완전한 형식을 가진 JSONObject를 받을 수 있습니다.
+아래 예제는 SmartThingsPublic 저장소의 "httpGet"을 발생시키는 GitHub API 호출로 JSON 응답을 받는 것을 보여줍니다.
+
+.. code-block:: groovy
+
+    include 'asynchttp_v1'
+
+    def initialize() {
+        def params = [
+            uri: 'https://api.github.com',
+            path: '/search/code',
+            query: [q: "httpGet+repo:SmartThingsCommunity/SmartThingsPublic"]
+        ]
+        asynchttp_v1.get(processResponse, params)
+    }
+
+    def processResponse(response, data) {
+        if (response.hasError()) {
+            log.error "response has error: $response.errorMessage"
+        } else {
+            def results
+            try {
+                // json response already parsed into JSONElement object
+                results = response.json
+            } catch (e) {
+                log.error "error parsing json from response: $e"
+            }
+            if (results) {
+                def total = results?.total_count
+
+                log.debug "there are $total occurences of httpGet in the SmartThingsPublic repo"
+
+                // for each item found, log the name of the file
+                results?.items.each { log.debug "httpGet usage found in file $it.name" }
+            } else {
+                log.debug "did not get json results from response body: $response.data"
+            }
+        }
+    }
+
+``getJson()``은 응답 본문이 JSON으로 파싱될 수 없을 때, 요청이 응답을 얻는 데에 실패했을 때, 또는 응답 상태 코드가 2XX가 아닌 경우 예외를 발생시킵니다.
+더 자세한 정보는 :ref:`async_response_ref_get_json`을 참고하시길 바랍니다.
+
+XML 응답
+^^^^^^^^
+
+XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 사용할 수 있는 자료구조로 파싱됩니다.
+
+.. code-block:: groovy
+
+    include 'asynchttp_v1'
+
+    def initialize() {
+      def params = [
+          uri: 'https://httpbin.org',
+            path: '/xml',
+            requestContentType: 'application/xml'
+        ]
+        asynchttp_v1.get('xmlResultsHandler', params)
+    }
+
+    def xmlResultsHandler(response, data) {
+        // results look like:
+        // <slideshow title="Sample Slide Show" date="Date of publication" author="Yours Truly">
+        //     <slide type="all">
+        //         <title>Wake up to WonderWidgets!</title>
+        //     </slide>
+        // </slideshow>
+        if (!response.hasError()) {
+            def slideshow
+            try {
+                slideshow = response.xml
+            } catch (e) {
+                log.error "error parsing XML from response: $e"
+            }
+            if (slideshow) {
+                log.debug "title: ${slideshow.slide.title.text()}" // -> Wake up to WonderWidgets!
+            }
+        } else {
+            log.error "error making request: ${response.getErrorMessage()}"
+        }
+    }
+
+``getJson()``과 비슷하게, ``getXml()``은 응답 본문이 XML로 파싱될 수 없을 때 예외를 발생시킵니다.
+더 자세한 정보는 :ref:`async_response_ref_get_xml`를 참고하시길 바랍니다.
+
+원시 응답 받기
+^^^^^^^^^^^^^
+
+원시 응답 데이터를 받고 싶다면, :ref:`async_response_ref_get_data`을 사용해 받을 수 있습니다.
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        log.debug "the raw response data is: $response.data"
+    }
+
+----
 
