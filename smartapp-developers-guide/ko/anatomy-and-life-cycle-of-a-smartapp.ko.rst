@@ -86,7 +86,7 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 *Sunrise*와 *sunset*은 위치 이벤트의 다른 예입니다.
 4. **앱에서의 사용자 행동** - 사용자가 모바일 앱 UI에서 SmartApp의 아이콘 또는 바로 가기를 누릅니다.
 5. **예정된 이벤트** - runIn()과 같은 메소드를 사용해서 사용자가 특정 시간에 SmartApp에 있는 메소드를 호출합니다.
-6. **웹 서비스 호출** `웹 서비스 API <../../smartapp-web-services-developers-guide/overview.html>`__를 이용해 사용자는 SmartApp 내의 메소드를 호출하는 웹을 통해 접근할 수 있는 엔드 포인트를 만듭니다.
+6. **웹 서비스 호출** `웹 서비스 API <../../smartapp-web-services-developers-guide/overview.rst>`__를 이용해 사용자는 SmartApp 내의 메소드를 호출하는 웹을 통해 접근할 수 있는 엔드 포인트를 만듭니다.
 
 ----
 
