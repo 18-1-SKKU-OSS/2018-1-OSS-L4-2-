@@ -11,3 +11,14 @@ SmartThings-연결 카메라는 LAN 또는 클라우드로 연결됩니다. 이 
 
 사진 캡쳐 기능
 -----------
+
+metadata:
+
+.. code-block:: groovy
+
+    metadata {
+        definition(name: "My Camera Device", namespace: "MyNamespace", author: "My Name") {
+            capability "Image Capture"
+            // other definition metadata...
+        }
+    }
