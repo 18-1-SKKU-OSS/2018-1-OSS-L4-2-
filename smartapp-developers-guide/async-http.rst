@@ -503,7 +503,7 @@ Passing data to the request handler
 -----------------------------------
 
 Given that the response for an asynchronous HTTP request is processed in a separate SmartApp or Device Handler execution, we may need a way to share data between when we make the request, and when the response handler is called.
-Rather than store such data in :ref:`State <storing-data>`, we can pass a map of data to any of the asynchronous HTTP methods, and this will be be passed along to the response handler:
+Rather than store such data in :ref:`State <storing-data>`, we can pass a map of data to any of the asynchronous HTTP methods, and this will be passed along to the response handler:
 
 .. note::
 
