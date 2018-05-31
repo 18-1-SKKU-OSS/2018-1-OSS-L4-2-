@@ -608,7 +608,7 @@ For example, a child SmartApp or Device Handler can call a method on its parent 
 
 .. _async_http_when_to_use:
 
-When to use asynchronous HTTP requests
+When to use synchronous HTTP requests
 --------------------------------------
 
 Simply put, prefer asynchronous unless it is proven that synchronous is required.
