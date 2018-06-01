@@ -63,22 +63,22 @@ Capabilities란 기기가 허락하는 상호작용입니다. 그들은 SmartApp
 
 .. code-block:: groovy
         
-preferences() {
-    section("Control this switch"){
-        input "theSwitch", "capability.switch", multiple: false
-    }
-}
+        preferences() {
+            section("Control this switch"){
+                input "theSwitch", "capability.switch", multiple: false
+            }
+        }
 
-def someEventHandler(evt) {
-    if (someCondition) {
-        theSwitch.on()
-    } else {
-        theSwitch.off()
-    }
-
-    // "스위치 켜짐" 혹은 "스위치 꺼짐"을 로그에 기록합니다
-    log.debug "switch is ${theSwitch.currentSwitch}"
-}
+        def someEventHandler(evt) {
+           if (someCondition) {
+            theSwitch.on()
+         } else {
+          theSwitch.off()
+          }
+        
+         // "스위치 켜짐" 혹은 "스위치 꺼짐"을 로그에 기록합니다
+         log.debug "switch is ${theSwitch.currentSwitch}"
+        }
 
 위의 예시는 SmartApp이 "스위치" 기능을 지원하는 장치에게 어떻게 요청을 보내는지를 묘사합니다. SmartApp을 설치할때, 사용자는 "스위치"기능을 지원하는 기기 중 어떤 것이든 선택할 수 있습니다 - 뱍에붙어있는 불 전등 스위치, 연결된 전구들, 음악 플레이어, 혹은 "스위치"기능을 기원하는 어떠한 기기들. 
 
