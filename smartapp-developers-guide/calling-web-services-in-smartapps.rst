@@ -125,7 +125,7 @@ Here's an example of getting various response information:
 
 .. tip::
 
-    Any 'failed' response response will generate an exception, so you should wrap your calls in a try/catch block.
+    Any 'failed' response will generate an exception, so you should wrap your calls in a try/catch block.
 
 If the response returns JSON, ``data`` will be in a map-like structure that allows you to easily access the response data:
 
