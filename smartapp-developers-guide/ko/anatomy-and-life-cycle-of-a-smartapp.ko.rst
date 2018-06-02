@@ -9,7 +9,8 @@ SmartApp은 사용자가 디바이스의 기능을 이용하여 삶을 자동화
 SmartApp의 종류
 ---------------
 
-일반적으로, *Event-Handlers*, *Solution Modules*, 그리고 *Service Manager*라는 세 가지 종류의 SmartApp이 있습니다: . 백엔드 웹 개발이 익숙하다면 SmartApp을 충분히 개발할 수 있을 것입니다.
+일반적으로 *Event-Handlers*, *Solution Modules*, 그리고 *Service Manager*라는 세 가지 종류의 SmartApp이 있습니다.
+백엔드 웹 개발이 익숙하다면 SmartApp을 충분히 개발할 수 있을 것입니다.
 
 Event Handler SmartApps
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,7 +37,8 @@ SmartApp 구조
 -------------
 
 SmartApp은 `Groovy <http://groovy.codehaus.org/>`__ 스크립트의 형식을 가집니다. 
-일반적인 SmartApp 스크립트는 *Definition(정의)*, *Preferences(기본 설정)*, *Predefined Callbacks(미리 정의된 콜백)* 및 *Event Handlers(이벤트 처리기)*의 4개의 영역으로 구성됩니다. 또한 클라우드와 연결되는 SmartApp에 필요한 매핑 영역도 있으며, 이는 추후에 설명하겠습니다.
+일반적인 SmartApp 스크립트는 *Definition(정의)*, *Preferences(기본 설정)*, *Predefined Callbacks(미리 정의된 콜백)* 및 *Event Handlers(이벤트 처리기)*의 4개의 영역으로 구성됩니다. 
+또한 클라우드와 연결되는 SmartApp에 필요한 매핑 영역도 있으며, 이는 추후에 설명하겠습니다.
 
 .. image:: ../../img/smartapps/demo-app.png
     :class: with-border
@@ -60,9 +62,11 @@ Pre-defined callbacks(미리 정의된 콜백)
 #. ``uninstalled()`` - SmartApp이 삭제되었을 때 호출됩니다.
 #. ``childUninstalled()`` - 하위 앱이 삭제되었을 때 상위 앱에 호출됩니다. (SmartApp은 여러 개의 하위 SmartApp을 가질 수 있습니다.)
 
-``installed()``와 ``updated()`` 메소드는 일반적으로 모든 앱에 존재합니다. 앱이 업데이트 될 때 선택된 디바이스가 바뀌었을 수도 있으므로 일반적으로 이 두 메소드는 동일한 이벤트 구독을 설정합니다. 따라서 ``initialize()`` 메소드 안에서 이 메소드들을 호출하도록 하고, 설치 및 업데이트된 메소드에서 ``initialize()``를 호출하는 것이 일반적인 관행입니다.
+``installed()``와 ``updated()`` 메소드는 일반적으로 모든 앱에 존재합니다. 
+앱이 업데이트 될 때 선택된 디바이스가 바뀌었을 수도 있으므로 일반적으로 이 두 메소드는 동일한 이벤트 구독을 설정합니다. 따라서 ``initialize()`` 메소드 안에서 이 메소드들을 호출하도록 하고, 설치 및 업데이트된 메소드에서 ``initialize()``를 호출하는 것이 일반적인 관행입니다.
 
-SmartApp이 삭제되면 시스템이 자동으로 구독 및 스케쥴 정보를 삭제하기 때문에 ``uninstalled()`` 메소드는 보통 필요하지 않습니다. 하지만 다른 시스템과 통합되고 이 시스템에 대해 정리를 수행해야 하는 앱에서는 ``uninstalled()`` 메소드가 필요할 수 있습니다.
+SmartApp이 삭제되면 시스템이 자동으로 구독 및 스케쥴 정보를 삭제하기 때문에 ``uninstalled()`` 메소드는 보통 필요하지 않습니다. 
+하지만 다른 시스템과 통합되고 이 시스템에 대해 정리를 수행해야 하는 앱에서는 ``uninstalled()`` 메소드가 필요할 수 있습니다.
 
 Event Handlers(이벤트 처리기)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,10 +82,11 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
 1. **미리 정의된 콜백** - 위에서 기술된 미리 정의된 생명주기 동안의 이벤트 중 하나가 발생합니다.
 2. **디바이스 상태 변경** - 디바이스에서 속성이 변경되어 이벤트를 생성하고, 이는 SmartApp에서 처리기 메소드를 호출하는 구독을 야기합니다.
-3. **위치 상태 변경** - *Mode*와 같은 위치 속성이 변경됩니다. *Sunrise*와 *sunset*은 위치 이벤트의 다른 예입니다.
+3. **위치 상태 변경** - *Mode*와 같은 위치 속성이 변경됩니다. 
+*Sunrise*와 *sunset*은 위치 이벤트의 다른 예입니다.
 4. **앱에서의 사용자 행동** - 사용자가 모바일 앱 UI에서 SmartApp의 아이콘 또는 바로 가기를 누릅니다.
 5. **예정된 이벤트** - runIn()과 같은 메소드를 사용해서 사용자가 특정 시간에 SmartApp에 있는 메소드를 호출합니다.
-6. **웹 서비스 호출** `웹 서비스 API <../smartapp-web-services-developers-guide/overview.html>`__를 이용해 사용자는 SmartApp 내의 메소드를 호출하는 웹을 통해 접근할 수 있는 엔드 포인트를 만듭니다.
+6. **웹 서비스 호출** `웹 서비스 API <../../smartapp-web-services-developers-guide/overview.rst>`__를 이용해 사용자는 SmartApp 내의 메소드를 호출하는 웹을 통해 접근할 수 있는 엔드 포인트를 만듭니다.
 
 ----
 
