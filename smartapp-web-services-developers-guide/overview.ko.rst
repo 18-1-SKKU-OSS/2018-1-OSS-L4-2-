@@ -1,121 +1,118 @@
 .. _web_services_smartapps_overview:
 
-Web Services SmartApps Overview
+웹 서비스 SmartApps 개요
 ===============================
 
-*Integrating with SmartThings using SmartApps Web Services*
+*웹 서비스 SmartApps를 이용해 SmartThings와 통합하기*
 
-In this guide, you will learn:
+이 가이드에서 아래와 같은 것을 알 수 있습니다:
 
-- The overall design of how Web Services SmartApps work.
-- Security measures taken to ensure access is only granted to trusted clients, and specific devices as chosen by the user.
-- The end user flow for external applications integrating with Web Services SmartApps.
+- 웹 서비스 SmartApps가 어떻게 작동하는지에 대한 전체적인 디자인.
+- 액세스를 보장하기 위해 취해진 보안 조치는 신뢰할 수있는 클라이언트와 사용자가 선택한 특정 장치에만 부여됩니다.
+- 웹 서비스 SmartApp와 통합되는 외부 어플리케이션의 최종 사용자 흐름.
 
 ----
 
-Introduction
+도입
 ------------
 
-In designing a way to allow external systems API access, we wanted to give developers the flexibility they need, while ensuring that the customer understands why their account is being accessed through an external API, and has specifically authorized that access.
+외부 시스템 API 접근 허용 방법을 설계할 때, 고객이 외부 API를 통해 자신의 계정에 접근하는 이유를 이해할 수 있도록 하고 그 접근 권한을 구체적으로 부여하면서, 개발자들이 필요로하는 유연성을 제공하고자 했습니다. 
 
-As such, we've designed an architecture and user experience around external API access that meets the following goals:
+따라서 외부 API 접근에 대한 구조와 사용자 환경을 다음과 같은 목표를 충족시키도록 설계했습니다:
 
--  It uses industry best practices such as OAuth2 to authenticate and authorize basic external API access.
--  It requires the end­ user (customer) to specifically authorize the access to specific devices.
--  It delivers a user experience that is easy to understand.
--  It delivers a developer experience that is easy to understand and implement.
+-  기본 외부 API 접근을 인증하고 승인하기 위해 OAuth2와 같은 업계 모범 사례를 사용합니다.
+-  최종 사용자는 (고객은) 특정한 장치에 접근할 수 있는 권한을 특별히 부여해야 합니다.
+-  이해하기 쉬운 사용자 경험을 제공합니다.
+-  이해하고 구현하기 쉬운 개발자 경험을 제공합니다.
 
 ----
 
-Concepts
+개념
 --------
 
-There are a couple of important concepts that need to be understood with respect to how SmartApps APIs work:
+SmartApps API가 어떻게 작동하는지에 대하여 이해해야 할 중요한 몇 가지 개념이 있습니다:
 
-- All SmartApps APIs are authenticated using OAuth2.
-- When we talk about SmartApps APIs, we are referring to APIs that are exposed by SmartApps themselves.
-- SmartApps execute in a special security context, where they only have access to devices specifically authorized by the user at installation time. This is no different for SmartApps APIs.
+- 모든 SmartApps API는 OAuth2을 사용해 인증됩니다.
+- SmartApps API에 대해 이야기할 때 SmartApp 자체로부터 노출되는 API를 언급합니다.
+- SmartApps는 설치할 때 사용자가 특별히 허가한 장치에만 접근할 수 있는 특별한 보안 상황에서 실행됩니다. SmartApps API도 마찬가지입니다.
 
 ----
 
-How it works
+작동 방법
 ------------
 
-Our overall approach to API access requires the end­ user to authenticate and authorize the API access in two steps:
+API 접근을 위한 우리의 전반적인 방법을 사용하려면 최종 사용자가 다음의 두 단계로 API 접근을 인증하고 승인해야 합니다.
 
-#. The installation of a SmartThings Web Services “SmartApp” into the user’s SmartThings Account/Location, along with specific device preferences that specify the devices to which the external system is being granted access.
+#. 사용자의 SmartThings 계정/위치에 SmartThings 웹 서비스 "SmartApp" 설치, 외부 시스템에 접근 권한이 부여되는 장치를 지정하는 특정 장치 기본 설정
 
-#. The typical OAuth login flow grants the external system the OAuth access token.
+#.일반적인 OAuth 로그인 흐름은 외부 시스템에 OAuth 접근 토큰을 부여합니다.
 
-It is important to understand that it is the SmartApp itself that exposes the API endpoints that are then used by the external system to integrate with SmartThings.
+SmartThings과 통합하기 위해 외부 시스템에서 사용되는 API 끝점을 노출하는 것이 SmartApp 자체임을 이해하는 것이 중요합니다.
 
-This approach is designed to ensure that an external system must have explicit access granted to the devices, before it can control those devices.
+이 접근 방법은 외부 시스템이 장치를 제어하기 전에 해당 장치에 명시적으로 접근 권한을 부여해야 한다는 것을 보장하기 위해 고안되었습니다.
 
-OAuth-integrated app installation flow
+OAuth-통합 앱 설치 과정
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |Alt OAuth-Integrated App
 Installation|
 
-The diagram above outlines the following standard steps in
-the API Connection and Usage process:
+위의 도식은 API 연결과 사용 과정의 다음 표준 단계를 간략히 설명합니다:
 
-#. A user of the external system takes some action that initiates a "Connect to SmartThings" flow. An example of this is an `IFTTT <http://www.ifttt.com>`__ user adding the SmartThings "channel".
+#. 외부 시스템 사용자는 "SmartThings에 연결"하는 흐름을 시작하는 행동을 취합니다. 예를 들어 SmartThings "채널"을 추가하는 `IFTTT <http://www.ifttt.com>`__ 사용자가 있습니다.
 
-#. The external service will typically redirect to the SmartThings login page. The HTTP request to this page includes the required OAuth client ID (more details below), allowing our login page to recognize this as a login request using OAuth.
+#. 외부 서비스는 보통 SmartThings 로그인 페이지로 다시 전송합니다. 이 페이지에 대한 HTTP 요청은 로그인 페이지가 OAuth를 사용하는 로그인 요청으로 인식하는데 필요한 클라이언트 ID를 (자세한 내용은 아래 참조) 포함합니다.
 
-#. The login page is displayed, and if the login is successful, a subsequent page is displayed that allows the now-authenticated user to install and configure the Web Services SmartApp that is associated with the client ID. When this step is complete, an authorization code is returned to the browser.
+#. 로그인 페이지가 뜨고 로그인에 성공하면, 방금 인증된 사용자가 해당 클라이언트 ID와 연결된 웹 서비스 SmartApp을 설치 및 구성할 수 있게 하는 후속 페이지가 뜹니다. 이 단계가 완료되면 인증 코드가 브라우저에 반환됩니다.
 
-#. Typically, the authorization code is then given to the external system, and it is used (along with the OAuth client ID and client secret), to request an access token. The authorization code takes the place of the user credentials in this case, and is only valid for a single use. Once the external system has the OAuth access token, API requests can be made using this token.
+#. 보통 인증 코드는 외부 시스템에 제공되는데, 이는 접근 토큰을 요청하기 위해 (OAuth 클라이언트 ID 및 클라이언트 비밀번호와 함께) 사용됩니다. 이 경우 사용자 인증 정보 대신 이 인증 코드가 사용되며 단일 용도로만 유효합니다. 외부 시스템에 OAuth 접근 토큰이 있으면 이 토큰을 사용하여 API 요청을 할 수 있습니다.
 
-#. The first API call that the external system should make is to the endpoints service. This service exists on a standard URL, and will return the specific URL that the external system should use (for this specific OAuth access token) to make all API requests.
+#. 외부 시스템이 할 첫 번째 API 호출은 말단 서비스입니다. 이 서비스는 표준 URL에 존재하며, 외부 시스템에서 사용해야 하는 특정 URL을 반환하여 (이 특정 OAuth 접근 토큰의 경우) 모든 API 요청을 합니다.
 
-#. Finally, the external system can use the specified endpoint URL and the provided OAuth2 access token to make API calls to the SmartApp providing the web services.
+#. 마지막으로, 외부 시스템은 웹 서비스를 제공하는 SmartApp에 대한 API를 호출하기 위해 지정된 말단 URL과 제공된 OAuth2 접근 토큰을 사용할 수 있습니다.
 
 ----
 
-The end-user journey
+최종 사용자 여정
 --------------------
 
-Before discussing the specific steps to building a Web Services SmartApp, you should understand the end user experience.
+웹 서비스 SmartApp을 구축하기 위한 특정 단계를 논의하기 전에, 최종 사용자 환경을 이해해야 합니다.
 
-Initiate connection from external system
+외부 시스템에서 연결 시작
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first step is to initiate the connection with the SmartThings cloud from the external web application.
-This is different for each web application, but is just a URL.
+첫 번째 단계는 외부 웹 어플리케이션에서 SmartThings 클라우드와의 연결을 시작하는 것입니다.
+이는 각 웹 어플리케이션마다 다르지만, URL일 뿐입니다.
 
-Authentication and authorization
+인증 및 승인
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The typical OAuth journey is the OAuth2 authorization code flow, initiated from the website of the external system, whereby the user is redirected to the SmartThings website.
-This is where they enter their SmartThings credentials, as shown below:
+일반적인 OAuth 여정은 외부 시스템의 웹 사이트에서 시작된 OAuth2 인증 코드 흐름으로, 사용자는 SmartThings 웹 사이트로 다시 연결됩니다.
+다음은 SmartThings 자격 증명을 입력하는 위치입니다:
 
 .. figure:: ../img/smartapps/web-services/oauth-login.png
 
-Once authenticated with SmartThings, they will be prompted to specifically authorize access by the application.
+일단 SmartThings로 인증이 되면, 구체적으로 어플리케이션의 접근 권한을 부여하라는 메시지가 표시됩니다.
 
-Application configuration
+어플리케이션 구성
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The user is prompted to configure the Web Services SmartApp that will be automatically installed.
-The user does not have to select the specific SmartApp, because it can be automatically identified by the OAuth client ID.
+자동으로 설치될 웹 서비스 SmartApp을 구성하라는 메시지가 사용자에게 표시됩니다.
+사용자는 OAuth 클라이언트 ID에 의해 자동으로 식별될 수 있으므로, 특정 SmartApp을 선택하지 않아도 됩니다.
 
-The first step in the application configuration process is to identify the Location in which the SmartApp will be installed.
+어플리케이션 구성 과정의 첫 단계는 SmartApp이 설치될 위치를 확인하는 것입니다.
 
 .. figure:: ../img/smartapps/web-services/location.png
 
-The second step is to configure exactly which devices will be accessible
-through any external web services that are exposed by the SmartApp.
+두 번째 단계는 SmartApp에 의해 노출된 외부 웹 서비스를 통해 접근 가능한 장치를 정확하게 구성하는 것입니다.
 
-An example of the IFTTT SmartApp device selection options is shown
-below:
+다음은 IFTTT SmartApp 장치 선택 옵션입니다:
 
-.. figure:: ../img/smartapps/web-services/preferences.png
+.. figure:: ../img/smartapps/web-services/preferences.png 
 
-Finally, the user clicks on *Authorize* to complete both the authorization of the application and the installation of the SmartApp and the connection between the external system and the SmartThings Cloud is now complete.
+마지막으로, 사용자가 *승인* 을 클릭해 어플리케이션의 승인과 SmartApp 설치를 완료하면, 외부 시스템과 SmartThings 클라우드 간 연결이 완료됩니다.
 
-Once the user authorizes access, the external system is provided with the OAuth authorization code, which is in turn used to request and receive an OAuth access token.
-Once the external system has the token, it can access the web services provided by the SmartApp.
+사용자가 접근을 승인하면, 외부 시스템에 OAuth 인증 코드가 제공되며 이는 OAuth 접근 토큰을 요청하고 수신하는데 사용됩니다.
+외부 시스템에 토큰이 있으면, SmartApp에서 제공하는 웹 서비스에 접근할 수 있습니다.
 
 .. |Alt OAuth-Integrated App Installation| image:: ../img/smartapps/web-services/method-2.png
