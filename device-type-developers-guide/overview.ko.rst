@@ -1,7 +1,7 @@
 :Authors:
 	Kim Kyung Min
 	(Sungkyunkwan Univ. College of Software)
-:Version: 1.3 of 2018/05/30
+:Version: 1.4 of 2018/06/02
 
 =======
 개요
@@ -34,7 +34,7 @@ SmartApp는 기기의 가상화된 표현과 상호 작용하면, 기기의 기�
 
 반면에 해당 장치의 SmartThings 플랫폼에 보고되는 장치의 상태는 그저 "on" 이나 "off"입니다.
 
-비슷하게, SmartApp이나 모바일 앱이 스위치 기기에 "켜기" 혹은 "끄기" 명령을 보내면, Device Handler에게 보내지는 명령은 간단히 "켜기" 혹은 "끄기"일 뿐입니다. Device Handler는 반드시 이런 간단한 명령을 기기로 보내져 원하는 액션을 하게 할 수 있는 프로토콜이 명시더;ㄴ 메세지로 바뀌여야 합니다. 
+비슷하게, SmartApp이나 모바일 앱이 스위치 기기에 "켜기" 혹은 "끄기" 명령을 보내면, Device Handler에게 보내지는 명령은 간단히 "켜기" 혹은 "끄기"일 뿐입니다. Device Handler는 반드시 이런 간단한 명령을 기기로 보내져 원하는 액션을 하게 할 수 있는 프로토콜이 명시된 메세지로 바뀌여야 합니다. 
 
 아래 표는 Device Handler에 의해 Z-Wave 스위치로 보내진 실제 Z-Wave 명령입니다. 
  
@@ -57,4 +57,32 @@ Device Handler가 어떻게 작동하는지 이해하기 위해, 약간의 핵�
 ---------------------
 Capabilities란 기기가 허락하는 상호작용입니다. 그들은 SmartApps들이 지원되는 능력들을 기반으로 기기와 작동할 수 잇도록 추상화된 층을 제공하고, 특정 제조사나 모델에 국한되지 않습니다. 
 
-"스위치"의 기능을 예로 생각해 봅시다. 단순한 용어로써, 스위치란 키고 끌 수 있는 장치입니다. 스위치는 전통적인 느낌에서의 스위치일 수도 있고(예를 들어 벽에 붙어있는 불 스위치), 연결된 전구, 혹은 심지어 음악 플레이어 일 수도 있습니다. 이런 모든 독특한 기기들은 Device Handler가 있고, 그 Device Handler들은 "스위치" 능력을 지원합니다. 이것은 SmartApps이 "스위치" 능력만을 지원하는 기기를 요구하도록 해주고 따라서 "스위치"라는 모델이며 다른 제조사에서 만들어진 다양한 기기들과 작동 할 수 있게 해줍니다. SmartApp은 그 장치가 "켜기" 와 "끄기" 명령(더 많은 명령들이 아래에 있습니다)을 지원한다는 사만을 가지고, 그 장치의 세부적인 쓰임은 무시한채 상호작용 할 수 있게 해줍니다. 
+"스위치"의 기능을 예로 생각해 봅시다. 단순한 용어로써, 스위치란 키고 끌 수 있는 장치입니다. 스위치는 전통적인 느낌에서의 스위치일 수도 있고(예를 들어 벽에 붙어있는 불 스위치), 연결된 전구, 혹은 심지어 음악 플레이어 일 수도 있습니다. 이런 모든 독특한 기기들은 Device Handler가 있고, 그 Device Handler들은 "스위치" 능력을 지원합니다. 이것은 SmartApps이 "스위치" 능력만을 지원하는 기기를 요구하도록 해주고 따라서 "스위치"라는 모델이며 다른 제조사에서 만들어진 다양한 기기들과 작동 할 수 있게 해줍니다. SmartApp은 그 장치가 "켜기" 와 "끄기" 명령(더 많은 명령들이 아래에 있습니다)을 지원한다는 사실만을 가지고, 그 장치의 세부적인 쓰임은 무시한채 상호작용 할 수 있게 해줍니다.
+
+이 코드는 SmartApp이 "스위치" 기능을 지원하는 장치와 어떻게 상호작용할지를 묘사한 것입니다:
+
+.. code-block:: groovy
+        
+        preferences() {
+            section("Control this switch"){
+                input "theSwitch", "capability.switch", multiple: false
+            }
+        }
+
+        def someEventHandler(evt) {
+           if (someCondition) {
+            theSwitch.on()
+         } else {
+          theSwitch.off()
+          }
+        
+         // "스위치 켜짐" 혹은 "스위치 꺼짐"을 로그에 기록합니다
+         log.debug "switch is ${theSwitch.currentSwitch}"
+        }
+
+위의 예시는 SmartApp이 "스위치" 기능을 지원하는 장치에게 어떻게 요청을 보내는지를 묘사합니다. SmartApp을 설치할때, 사용자는 "스위치"기능을 지원하는 기기 중 어떤 것이든 선택할 수 있습니다 - 뱍에붙어있는 불 전등 스위치, 연결된 전구들, 음악 플레이어, 혹은 "스위치"기능을 기원하는 어떠한 기기들. 
+
+'capabilities_taxonomy_'에 들어가보면 지원되는 모든 기능들이 적혀 있습니다.
+
+.. _capabilities_taxonomy: https://github.com/18-1-SKKU-OSS/2018-1-OSS-L4-2-/blob/master/capabilities-reference.rst#capabilities-reference
+

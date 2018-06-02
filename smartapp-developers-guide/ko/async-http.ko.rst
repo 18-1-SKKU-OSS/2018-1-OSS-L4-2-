@@ -480,3 +480,127 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
 
 ----
 
+.. _passing_data_to_request_handler:
+
+요청 처리기에 데이터 보내기
+-------------------------
+
+비동기식 HTTP 요청에 대한 응답은 별도의 SmartApp 또는 디바이스 처리기의 실행에서 처리되므로 요청을 할 때와 응답 처리기를 호출할 때 사이에서 데이터를 공유할 방법이 필요합니다.
+:ref:`State <storing-data>`에 데이터를 저장는 대신, 비동기식 HTTP 메소드에 데이터 지도를 전달할 수 있고 이는 응답 처리기에도 전달됩니다.
+
+.. note::
+
+	모든 응답 처리기 메소드는 요청에 데이터가 지정되지 않은 경우에도 반드시 데이터 지도에 대한 두번째 매개변수를 받아야 합니다.
+	요청에 데이터가 지정되지 않은 경우, 응답 처리기에 전달되는 값은 ``null``입니다.
+
+	응답 처리기가 두번째 매개변수를 받지 않은 경우, 플랫폼이 응답 처리기를 호출하려 할 때``MethodMissingException`` 오류가 발생합니다.
+
+.. code-block:: groovy
+
+    include 'asynchttp_v1'
+
+    def initialize() {
+        def params = [uri: 'https://someapi.com']
+        def data = [key1: "value 1", key2: "value 2"]
+        asynchttp_v1.get(handler, params, data)
+    }
+
+    def handler(response, data) {
+        // logs [key1: "value 1", key2: "value 2"]
+        log.debug "data passed to response handler: $data"
+    }
+
+----
+
+.. _async_http_supported_methods:
+
+사용가능한 메소드
+----------------
+
+다음의 메소드는 ``asynchttp_v1`` 객체에서 사용할 수 있습니다.
+HTTP 요청 메소드는 ``asynchttp_v1`` 메소드의 이름과 일치해야 합니다.--각 메소드에 대해 자세한 정보는 참고 문서를 확인하시길 바랍니다.
+
+========= ======
+HTTP 동사 메소드
+========= ======
+GET       :ref:`asynchttp_v1.get(String callbackMethod, Map params, Map data = null) <async_http_ref_get>`
+PUT       :ref:`asynchttp_v1.put(String callbackMethod, Map params, Map data = null) <async_http_ref_put>`
+POST      :ref:`asynchttp_v1.post(String callbackMethod, Map params, Map data = null) <async_http_ref_post>`
+DELETE    :ref:`asynchttp_v1.delete(String callbackMethod, Map params, Map data = null) <async_http_ref_delete>`
+PATCH     :ref:`asynchttp_v1.patch(String callbackMethod, Map params, Map data = null) <async_http_ref_patch>`
+HEAD      :ref:`asynchttp_v1.head(String callbackMethod, Map params, Map data = null) <async_http_ref_head>`
+========= ======
+
+----
+
+.. _async_http_limits:
+
+호스트, 시간초과, 응답 및 데이터 크기 제한
+--------------------------------------
+
+.. _async_http_blacklisting:
+
+호스트와 IP 주소 제한
+^^^^^^^^^^^^^^^^^^^^
+
+공개적으로 접근 가능한 호스트로만 요청할 수 있습니다.
+HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (즉, SmartThings 클라우드)로부터 생성된다는 점을 기억하시길 바랍니다.
+
+로컬 또는 개인 호스트에 대한 요청은 허용되지 않으며 ``SecurityException``으로 실패합니다.
+
+요청 시간초과 제한
+^^^^^^^^^^^^^^^^
+
+요청은 40초 후에 시간초과됩니다.
+요청이 시간초과되면 응답 처리기가 호출되며, 응답에 오류가 발생합니다.
+
+.. code-block:: groovy
+
+    def responseHandler(response, data) {
+        if (response.hasError()) {
+            log.error "response has error: $response.errorMessage"
+        }
+    }
+
+응답 크기 제한
+^^^^^^^^^^^^^
+
+현재 응답 데이터의 제한은 500,000자 입니다.
+이 제한은 베타 버젼 동안 고려되고 있으며, 필요에 따라 조정될 수 있습니다.
+
+제한 글자 수를 초과하면, 응답 본문은 비어 있게 되지만 응답 상태는 실제 응답 상태를 반영합니다.
+응답 크기가 제한 글자 수를 초과했다는 경고 메세지가 :ref:`async_response_ref_get_warning_messages`에 추가됩니다.
+
+데이터 크기 제한
+^^^^^^^^^^^^^^^
+
+응답 처리기에 전달되는 데이터 지도의 크기는 JSON으로 직렬화되었을 때 1000자로 제한됩니다.
+제한 글자 수를 초과할 경우 요청을 하면 ``IllegalArugumentException``이 발생합니다.
+
+----
+
+부모-자식 관계에서 비동기식 HTTP 사용법
+------------------------------------
+
+비동기식 HTTP 요청을 할 때, 관련 응답 처리기 메소드는 요청한 SmartApp에서 호출됩니다.
+이는 당연하지만, 부모-자식 관계의 SmartApp 또는 디바이스 처리기를 개발할 경우 이 사실을 염두에 두어야합니다.
+
+예를 들어 부모에 응답 처리기가 존재하는 한, 자식 SmartApp 또는 디바이스 처리기는 부모에서 비동기식 HTTP 요청을 하는 메소드를 호출할 수있습니다. 
+
+----
+
+.. _async_http_when_to_use:
+
+동기식 HTTP 요청을 사용하는 경우
+-------------------------------
+
+간단히 말해서 동기식 HTTP 요청이 필요하다는 게 분명하지 않는 한 비동기식 HTTP 요청을 선호하시길 바랍니다.
+각 경우는 독자적으로 고려해야하지만, 동기식 HTTP 요청이 필요한 일반적인 경우가 있습니다.
+
+- 클라우드 간 디바이스 통합 설치 동안 OAuth 흐름과 같이, 응답이 UI에서 사용되는 경우
+- 응답이 다른 API로 즉시 반환되고, 해당 API를 수정할 수 없는 경우
+
+다음 절에서는 동기식 HTTP 요청을 비동기식 HTTP 요청으로 수정하는 몇 가지 방법에 대해 설명하고, 비동기성이 요구하는 설계 변경 사항 중 일부를 강조합니다.
+
+----
+
