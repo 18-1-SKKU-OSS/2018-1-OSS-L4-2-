@@ -57,8 +57,7 @@ OAuth-integrated app installation flow
 |Alt OAuth-Integrated App
 Installation|
 
-The diagram above outlines the following standard steps in
-the API Connection and Usage process:
+The diagram above outlines the following standard steps in the API Connection and Usage process:
 
 #. A user of the external system takes some action that initiates a "Connect to SmartThings" flow. An example of this is an `IFTTT <http://www.ifttt.com>`__ user adding the SmartThings "channel".
 
@@ -101,15 +100,13 @@ Application configuration
 The user is prompted to configure the Web Services SmartApp that will be automatically installed.
 The user does not have to select the specific SmartApp, because it can be automatically identified by the OAuth client ID.
 
-The first step in the application configuration process is to identify the Location in which the SmartApp will be installed.
+The first step in the application configuration process is to identify the location in which the SmartApp will be installed.
 
 .. figure:: ../img/smartapps/web-services/location.png
 
-The second step is to configure exactly which devices will be accessible
-through any external web services that are exposed by the SmartApp.
+The second step is to configure exactly which devices will be accessible through any external web services that are exposed by the SmartApp.
 
-An example of the IFTTT SmartApp device selection options is shown
-below:
+An example of the IFTTT SmartApp device selection options is shown below:
 
 .. figure:: ../img/smartapps/web-services/preferences.png
 
