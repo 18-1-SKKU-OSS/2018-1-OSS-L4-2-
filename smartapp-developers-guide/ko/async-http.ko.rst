@@ -604,3 +604,101 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
 
 ----
 
+.. _async_http_refactoring:
+
+비동기식 HTTP 요청으로 리팩토링하기
+--------------------------------
+
+가치가 높은 기회 찾기
+^^^^^^^^^^^^^^^^^^^
+
+동기식 HTTP 요청을 비동기식 HTTP 요청으로 리팩토링할지 고려 중이라면, 가치가 높은 기회를 찾아보시길 바랍니다.
+높은 가치는 HTTP 요청을 하는 실행이 빈번하고 자주 예약되는 것으로 정의될 수 있습니다.
+
+예를 들어, 5분마다 HTTP 요청을 실행하는 SmartApp은 비동기식 HTTP 요청을 사용하도록 리팩토링되면 엄청난 이익을 얻을 수 있습니다.
+반면에, 설치할 때 또는 낮은 빈도 수로 실행되는 단일 동기식 HTTP 요청은 특히 리팩토링 비용이 비싸거나 위험할 때, 비동기식 HTTP 요청을 사용하도록 리팩토링되어도 크게 도움이 되지 않습니다.
+
+예약되어 있거나 자주 실행되는 동기식 HTTP 요청이 사용되는 곳을 찾고, 그 요청부터 먼저 리팩토링하시길 바랍니다.
+
+리팩토링 방법
+^^^^^^^^^^^^
+
+동기식 HTTP 요청을 비동기식 HTTP 요청으로 리팩토링할 때, 응답을 받은 후에 실행되는 코드가 응답 콜백 처리기로 이어지는지 확인해야 합니다.
+다음 동기식 HTTP 요청의 예제를 확인해보세요.
+
+.. code-block:: groovy
+
+    def initialize() {
+        def results = getSomeData()
+        log.debug "got results $results"
+        doSomethingWithData(results)
+    }
+
+    def getSomeData() {
+        def params = [
+            uri: 'https://someapi.com',
+            path: '/some/path'
+        ]
+        def results
+        httpGet(params) { resp ->
+            ...
+            results = resp.data
+        }
+        return results
+    }
+
+    def doSomethingWithData(results) {
+        // do something with the results data
+    }
+
+위의 예제에서 ``initialize()`` 메소드(그리고 이 메소드가 호출하는 모든 메소드)는 *단일 실행*에서 실행됩니다.
+그 실행은 요청을 하고, 그 요청이 응답을 반환할 때까지 기다리고, 그 후에 응답을 파싱하고 파싱한 값을 이용해 작업을 수행합니다.
+
+위 예제에서 비동기식 HTTP 메소드를 사용하도록 바꾸려면, results를 계산하는 모든 코드를 응답 처리기로 옮겨야 합니다.
+``getSomeData()``를 호출한 다음의 ``initialize()`` 코드는 응답을 받았다 가정하기 때문에, 그저 ``getSomeData()`` 메소드가 비동기식 HTTP를 사용하도록 바꿀 수는 없습니다.
+
+아래는 비동기식 HTTP 요청을 사용하도록 바꾼 코드입니다.
+요청이 비동기식으로 처리되고 응답 처리기는 다른 실행에서 호출되기 때문에 응답을 필요로 하는 논리를 응답 처리기로 옮깁니다.
+
+.. code-block:: groovy
+
+    include 'asynchttp_v1'
+
+    def initialize() {
+        getSomeData()
+    }
+
+    // execution 1: make the request
+    def getSomeData() {
+        def params = [
+            uri: 'https://someapi.com',
+            path: '/some/path'
+        ]
+        asynchttp_v1.get('responseHandler', params)
+    }
+
+    // execution 1 + n: handle the response
+    def responseHandler(response, data) {
+        def data = response.data
+        log.debug "got data: $data"
+        doSomethingWithData(data)
+    }
+
+    def doSomethingWithData(results) {
+        // do something with the results data
+    }
+
+----
+
+예제
+----
+
+이 문서에서 설명된 API를 보여주는 전체 SmartApp 예제는 설치 설명서와 함께 `이곳 <https://gist.github.com/jimmyjames/85a1a46fbd7fc077dee78f6ae1d865c0>`__에서 확인하실 수 있습니다.
+
+관련 문서
+--------
+
+- :ref:`calling_web_services`
+- :ref:`async_http_api_ref`
+- :ref:`async_http_response_ref`
+
