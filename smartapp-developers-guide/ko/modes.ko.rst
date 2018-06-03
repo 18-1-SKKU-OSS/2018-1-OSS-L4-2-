@@ -28,7 +28,7 @@ SmartApp의 ``위치``에 있는 ``모드`` 또는 ``현재 모드`` 속성을 �
 
 .. code-block:: groovy
 
-    def currMode = location.mode // "Home", "Away", etc.
+    def currMode = location.mode // "홈", "부재 중" 등
     log.debug "current mode is $currMode"
 
     def anotherWay = location.currentMode
@@ -43,7 +43,7 @@ SmartApp이 설치된 위치에 대한 모든 모드 리스트를 가져올 수 
 
 .. code-block:: groovy
 
-    def allModes = location.modes // ex: [Home, Away, Night]
+    def allModes = location.modes // 예: [홈, 부재 중, 밤]
     log.debug "all modes for this location: $allModes"
 
 ----
