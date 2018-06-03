@@ -1,7 +1,7 @@
 :Authors:
 	Kim Kyung Min
 	(Sungkyunkwan Univ. College of Software)
-:Version: 1.4 of 2018/06/02
+:Version: 1.5 of 2018/06/03
 
 =======
 개요
@@ -85,4 +85,41 @@ Capabilities란 기기가 허락하는 상호작용입니다. 그들은 SmartApp
 'capabilities_taxonomy_'에 들어가보면 지원되는 모든 기능들이 적혀 있습니다.
 
 .. _capabilities_taxonomy: https://github.com/18-1-SKKU-OSS/2018-1-OSS-L4-2-/blob/master/capabilities-reference.rst#capabilities-reference
+
+Device Handler는 일반적으로 하나 이상의 기능을 지원합니다. Hue Bulb를 위한 Device Handler는 "스위치" 기능 뿐만 아니라 "색 조절" 기능도 지원해야 합니다. 이는 SmartApps가 매우 유연하게 작동할 수 있게 합니다. 
+
+명령들과 특성들에 대해 한번 깊게 얘기해 봅시다!
+
+명령들
+========
+
+명령어란 기기가 할 수 있는 액션들입니다. 예를 들어, 스위치는 켜고 끌 수 있으며, 잠금장치는 잠그거나 열 수 있고, 밸브는 열거나 닫을 수 있습니다. 위의 예시에서, 우리는''on()'' 이나 ''off()'' 메소드를 불러서 스위치에게 "켜기" 혹은 "끄기" 명령을 날리는 것에 대해 이야기 했었습니다. 
+
+명령은 Device Handler의 메소드로서 실행이 됩니다. 
+기기가 capability를 지원할 때, 그 기기는 지원되는 모든 명령 메소드를 실행할 수 있어야 합니다. 
+
+특성들
+======
+
+특성들은 기기의 특정 상태 값을 나타냅니다. 
+예를 들어, 스위치 기능은 "스위치"라는 특성은 "켜기"나 "끄기" 라는 값들과 함께 정의합니다. 
+
+위의 예시에서, 우리는 "스위치" 특성의 값을 "current<attributeName>" (''currentSwitch'')를 이용해서 가져옵니다. 
+
+특성 값이란 특성의 이름이 Event의 이름과 같은 이벤트들이 만들어질 때 세팅되고, 특성 값은 그 Event의 값입니다. 이것은 `Parse and Events documentation <parse.html#parse-events-and-attributes>`__ 에서 더 자세히 설명됩니다. 
+
+명령들과 같이 기기가 기능을 지원할때, 그 기기는 모든 기능들의 특성들이 실행될 수 있음을 보증해야한다. 
+
+작동 장치와 센서
+================
+
+:ref:`capabilities_taxonomy` 여기를 보면, 특성들이나 명령들을 가지고 있지않은 두개의 기능들을 발견할 것입니다 - "Actuator"와 "Sensor". 
+이러한 기능들은 "marker" 혹은 "tagging" 기능입니다 (만약 Java에 익숙하시다면, Cloneable interface에 대해 생각해보세요 - 얘는 어떠한 상태나 행동을 정의하지 않습니다).
+
+"Actuator" 기능은 기기가 명령어(commands)를 가지고 있음을 정의합니다. 
+"Sensor" 기능은 기기가 특성(attributes)을 가지고 있음을 정의합니다. 
+
+만약 Device Handler를 작성하고 있고, 만약 당신의 기기가 commands나 특성을 가지고 있다면, "Actuator"기능이나 "Sensor"기능을 지원해볼 가장 좋은 연습 기회 입니다. 
+이는 왜 대부분의 Device Handler들이 이런 기능들 중  하나 혹은 둘 모두를 지원하는 이유입니다. 
+
 
