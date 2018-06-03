@@ -98,7 +98,7 @@ include 문
     }
 
     def handler(response, data) {
-        // handle response
+        // 응답 처리
     }
 
 ``include``문은 파일 상단에 위치해야 합니다.
@@ -123,15 +123,15 @@ include 문
 모든 비동기 HTTP 요청 메소드는 첫번째 인자로 응답과 함께 호출할 메소드의 이름을 필요로 합니다. 또한 URI, 선택적으로 경로, URL 쿼리 매개변수, HTTP 헤더, 요청의 내용 유형을 지정해주어야 합니다. 매개변수 지도를 넘겨줌으로써 이를 해결할 수 있습니다. 아래의 표는 지도에서 지원하는 키 목록입니다.
 
 ================== ===========
-Key                Description
+키                 설명
 ================== ===========
-uri (required)     Either a URI or URL of the endpoint to make a request from.
-path               Request path that is merged with the URI.
-query              Map of URL query parameters.
-headers            Map of HTTP headers.
-requestContentType The value of the ``Content-Type`` request header. Defaults to ``'application/json'``.
-contentType        The value of the ``Accept`` request header. Defaults to the value of the ``requestContentType`` parameter if not specified.
-body               The request body to send. Can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON). Only valid for ``PUT``, ``POST``, ``DELETE``, and ``PATCH`` requests.
+uri (필요시)        요청을 보내는 엔드포인트의 URI 또는 URL
+path               URI와 병합될 요청 경로
+query              URL 쿼리 매개변수의 지도
+headers            HTTP 헤더의 지도
+requestContentType 요청 헤더 ``Content-Type``의 값. 기본 값은 ``'application/json'``.
+contentType        요청 헤더 ``Accept``의 값. 지정되지 않았을 경우, 기본 값은 ``requestContentType``의 매개변수 값.
+body               보낼 요청 본문. 문자열이 될 수도 있고, ``requestContentType``이 ``"application/json"``인 경우, (JSON으로 직렬화될) 지도 또는 리스트가 될 수 있습니다. ``PUT``, ``POST``, ``DELETE`` 및 ``PATCH`` 요청에만 유효합니.
 ================== ===========
 
 
@@ -142,7 +142,7 @@ URI와 경로
 
 .. code-block:: groovy
 
-    // uri and path merged to form "https://someapi.com/some/path"
+    // uri와 경로가 합쳐져 "https://someapi.com/some/path"이 됩니다
     def params = [
         uri: 'https://someapi.com',
         path: '/some/path'
@@ -187,7 +187,7 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
     include 'asynchttp_v1'
 
     def initialize() {
-        // search for occurences of httpGet in the SmartThingsPublic repo
+        // SmartThingsPublic repo에서 httpGet의 발생을 검색합니다.
         def params = [
             uri: 'https://api.github.com',
             path: '/search/code',
@@ -333,7 +333,7 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         headers.each { header, value ->
             log.debug "$header: $value"
         }
-        // can use array notation to get specific header values
+        // 특정 헤더 값을 얻는 데에 배열 표기법을 사용할 수 있습니다
         def etagHeader = response.headers['ETag']
     }
 
@@ -364,13 +364,13 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         if (response.hasError()) {
             log.debug "error response data: $response.errorData"
             try {
-                // exception thrown if json cannot be parsed from response
+                // 응답으로부터 json으로 파싱되지 않으면 예외가 발생됩니다
                 log.debug "error response json: $response.errorJson"
             } catch (e) {
                 log.warn "error parsing json: $e"
             }
             try {
-                // exception thrown if xml cannot be parsed from response
+                // 응답으로부터 xml로 파싱되지 않으면 예외가 발생됩니다
                 log.debug "error response xml: $response.errorXml"
             } catch (e) {
                 log.warn "error parsing xml: $e"
@@ -403,7 +403,7 @@ JSON 응답
         } else {
             def results
             try {
-                // json response already parsed into JSONElement object
+                // 이미 JSONElement 객체로 파싱된 json 응답
                 results = response.json
             } catch (e) {
                 log.error "error parsing json from response: $e"
@@ -413,7 +413,7 @@ JSON 응답
 
                 log.debug "there are $total occurences of httpGet in the SmartThingsPublic repo"
 
-                // for each item found, log the name of the file
+                // 발견된 각 item에 대해 파일의 이름을 기록합니다
                 results?.items.each { log.debug "httpGet usage found in file $it.name" }
             } else {
                 log.debug "did not get json results from response body: $response.data"
@@ -443,7 +443,7 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
     }
 
     def xmlResultsHandler(response, data) {
-        // results look like:
+        // 결과는 다음과 같습니다
         // <slideshow title="Sample Slide Show" date="Date of publication" author="Yours Truly">
         //     <slide type="all">
         //         <title>Wake up to WonderWidgets!</title>
@@ -648,7 +648,7 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
     }
 
     def doSomethingWithData(results) {
-        // do something with the results data
+        // results 데이터로 어떠한 작업 수행
     }
 
 위의 예제에서 ``initialize()`` 메소드(그리고 이 메소드가 호출하는 모든 메소드)는 *단일 실행*에서 실행됩니다.
@@ -668,7 +668,7 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
         getSomeData()
     }
 
-    // execution 1: make the request
+    // 실행 1: 요청 생성
     def getSomeData() {
         def params = [
             uri: 'https://someapi.com',
@@ -677,7 +677,7 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
         asynchttp_v1.get('responseHandler', params)
     }
 
-    // execution 1 + n: handle the response
+    // 실행 1 + n: 응답 처리
     def responseHandler(response, data) {
         def data = response.data
         log.debug "got data: $data"
@@ -685,7 +685,7 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
     }
 
     def doSomethingWithData(results) {
-        // do something with the results data
+        // results 데이터로 어떠한 작업 수행
     }
 
 ----
