@@ -111,8 +111,8 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
         log.debug "temperature value as a string: ${currentState.value}"
         log.debug "time this temperature record was created: ${currentState.date}"
 
-        // shortcut notation - temperature measurement capability supports
-        // a "temperature" attribute. We then append "State" to it.
+        // 짧은 표기법 - 온도 측정 기능 지원
+        // "온도" 속성에 "상태"를 덧붙입니다
         def anotherCurrentState = tempSensor.temperatureState
         log.debug "temperature value as an integer: ${anotherCurrentState.integerValue}"
     }
@@ -135,8 +135,8 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
         def latestValue = myLock.latestValue("lock")
         log.debug "the latest value of myLock is $latestValue"
 
-        // Lock capability has "lock" attribute.
-        // <deviceName>.current<uppercase attribute name>:
+        // 잠금 기능은 "잠금" 속성을 갖습니다
+        // <디바이스 이름>.current<대문자로 시작하는 속성 이름>:
         def anotherCurrentValue = myLock.currentLock
         log.debug "the current value of myLock using shortcut is: $anotherCurrentValue"
     }
@@ -158,31 +158,31 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
 
 .. code-block:: groovy
 
-    // returns the last 10 by default
+    // 기본 값으로 최신 10개의 이벤트를 반환합니다
     myDevice.events()
 
-    // use the max option to get more results
+    // 더 많은 결과 값을 얻기 위해서 max 옵션을 사용합니다
     myDevice.events(max: 30)
 
 지정한 날짜 이후로 이벤트 목록을 시간 역순으로(최신 이벤트를 먼저) 가져오려면 ``eventsSince`` 메소드를 사용하시길 바랍니다.
 
 .. code-block:: groovy
 
-    // get all events for this device since yesterday (maximum of 1000 events)
+    // 어제부터 이 디바이스의 모든 이벤트를 가져옵니다 (최대 1000개의 이벤트)
     myDevice.eventsSince(new Date() - 1)
 
-    // get the most recent 20 events since yesterday
+    // 어제부터 최근 20개 이벤트를 가져옵니다
     myDevice.eventsSince(new Date() - 1, [max: 20])
 
 두 날짜 사이의 이벤트 목록을 가져오려면 ``eventsBetween`` 메소드를 사용하시길 바랍니다.
 
 .. code-block:: groovy
 
-    // get all events between two days ago and yesterday (up to 1000 events)
-    // returned events sorted in inverse chronological order (newest first)
+    // 2일 전부터 어제까지 모든 이벤트를 가져옵니다 (최대 1000개의 이벤트)
+    // 시간 역순(최신 이벤트가 먼저)로 정렬하여 이벤트를 반환합니다 
     myDevice.eventsBetween(new Date() - 2, new Date() - 1)
 
-    // get the most recent 50 events in the last week
+    // 지난 주 최근 50개의 이벤트를 가져옵니다
     myDevice.eventsBetween(new Date() - 7, new Date(), [max: 50])
 
 디바이스의 상태 정보를 가져오는 데에도 비슷한 날짜 제약 메소드가 있습니다.
@@ -211,7 +211,7 @@ SmartApp에서 디바이스로 스위치를 켜거나 잠금 해제와 같은 �
 
 .. code-block:: groovy
 
-    // wait two seconds before sending on command
+    // 명령어를 전송하기 전 2초동안 기다립니다
     mySwitch.on([delay: 2000])
 
 
@@ -258,7 +258,7 @@ SmartApp에서 디바이스로 스위치를 켜거나 잠금 해제와 같은 �
     }
 
     def someEventHandler(evt) {
-        // returns a list of the values for all switches
+        // 모든 스위치 값의 목록을 반환합니다
         def currSwitches = switches.currentSwitch
 
         def onSwitches = currSwitches.findAll { switchVal ->
