@@ -100,22 +100,22 @@ HTTP API는 요청으로부터 응답 정보와 함께 호출 될 클로저를 �
 
     try {
         httpGet(params) { resp ->
-            // iterate all the headers
-            // each header has a name and a value
+            // 모든 헤더에 대해 반복합니다
+            // 각 헤더는 이름과 값을 가집니다
             resp.headers.each {
                log.debug "${it.name} : ${it.value}"
             }
 
-            // get an array of all headers with the specified key
+            // 지정된 키를 가지는 모든 헤더 배열을 가져옵니다
             def theHeaders = resp.getHeaders("Content-Length")
 
-            // get the contentType of the response
+            // 응답의 contentType을 가져옵니다
             log.debug "response contentType: ${resp.contentType}"
 
-            // get the status code of the response
+            // 응답의 상태 코드를 가져옵니다
             log.debug "response status code: ${resp.status}"
 
-            // get the data from the response body
+            // 응답 본문으로부터 데이터를 가져옵니다
             log.debug "response data: ${resp.data}"
         }
     } catch (e) {
