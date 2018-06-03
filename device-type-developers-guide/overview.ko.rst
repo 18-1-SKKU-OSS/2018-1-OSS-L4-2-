@@ -120,6 +120,10 @@ Device Handler는 일반적으로 하나 이상의 기능을 지원합니다. Hu
 "Sensor" 기능은 기기가 특성(attributes)을 가지고 있음을 정의합니다. 
 
 만약 Device Handler를 작성하고 있고, 만약 당신의 기기가 commands나 특성을 가지고 있다면, "Actuator"기능이나 "Sensor"기능을 지원해볼 가장 좋은 연습 기회 입니다. 
+<<<<<<< HEAD
 이는 왜 대부분의 Device Handler들이 이런 기능들 중  하나 혹은 둘 모두를 지원하는 이유입니다.
 
+=======
+이는 왜 대부분의 Device Handler들이 이런 기능들 중  하나 혹은 둘 모두를 지원하는 이유입니다. 
+>>>>>>> 1721e77266d1e5de21a7ee0466fe3feac1c49372
 
