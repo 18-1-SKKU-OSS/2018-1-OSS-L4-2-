@@ -97,4 +97,43 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 
 ``take()`` 명령의 구현에 관하여 주의해야 할 사항들이 있습니다:
 
-#.
+#. HubAction의 특정 경로, 메서드(method), 헤더는 각 장치 마다 다릅니다. 이 정보는 장치 제조 업체의 설명서를 참조하십시오.
+#. 반드시 ``hubAction.options = [outputMsgToS3: true]``를 지정하십시오. 그러면 이미지가 저장됩니다 (일시적으로). 다음은 이미지를 장기-저장 저장소로 이동합니다.
+#. 명령 메서드에서 HubAction을 반환(return)하는 것을 잊지 마십시오. 반환하지 않으면 작업이 실행되지않습니다!
+
+일단 우리가 ``take()`` 명령으로 요청을 하면 장치의 응답이 장치 핸들러의 ``parse()`` 메서드로 보내집니다.
+이 응답은 방금 찍은 사진의 key인 ``tempImageKey``를 포함할 것입니다.
+
+.. code-block:: groovy
+
+    def parse(String description) {
+
+        def map = stringToMap(description)
+
+        if (map.tempImageKey) {
+            try {
+                storeTemporaryImage(map.tempImageKey, getPictureName())
+            } catch (Exception e) {
+                log.error e
+            }
+        } else if (map.error) {
+            log.error "Error: ${map.error}"
+        }
+
+        // parse other messages too
+    }
+
+    private getPictureName() {
+        return java.util.UUID.randomUUID().toString().replaceAll('-', '')
+    }
+
+``parse()``는 다음 작업을 수행합니다:
+
+#. 응답을 확인하여 ``tempImageKey`` 가 전송되었는지 확인합니다. 만약 그렇다면 이 응답은 우리의 ``take()`` 명령에 의한 이미지 응답이라는 것을 의미합니다.
+#. ``tempImageKey``와 사진의 이름을 가지고 ``storeTemporaryImage()``를 부릅니다. 사진의 이름은 각 기기 인스턴스안에서 고유한 값이어야 하며 오직 알파벳,숫자,"-","_,"." 만이 허용됩니다. ``storeTemporaryImage()``는 사진을 임시 저장소에서 365일 동안 저장하고 지나면 삭제되는 위치로 이동합니다.
+
+또한 ``storeTemporaryImage()``은 우리의 Carousel 타일이 연관 된 속성인 "image"이벤트를 생성합니다.
+이를 통해 이미지는 타일에서 표시될 수 있습니다.
+
+클라우드 연결 카메라
+^^^^^^^^^^^^^^^
