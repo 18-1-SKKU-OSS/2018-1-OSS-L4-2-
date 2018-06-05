@@ -92,14 +92,14 @@ Location
   당신의 Hub위치여야 합니다.
 
 Hub
-  Your Hub name associated with the above Location.
+  위의 Location과 관련된 당신의 Hub 이름. 
 
 Group
-  Not selectable.
+  선택할 수 없습니다.
 
-Click *Create.*
+*Create.* 를 누르세요. 
 
-You will see *virtual-dimmer-switch* device appear instantly in your SmartThings mobile app, in the *Things* screen of the "My Home" view.
+당신의 SmartThings 어플내의 "My Home"의 *Things* 화면에서 *virtual-dimmer-switch* 가 즉시 나타나는 것을 볼 수 있습니다.
 
 .. figure:: ../img/device-types/virtual-device-ios.png
 
@@ -110,12 +110,12 @@ You will see *virtual-dimmer-switch* device appear instantly in your SmartThings
 Test your Device Handler with Virtual Device
 --------------------------------------------
 
-With the Virtual Dimmer you just created you can test your Device Handler.
-From your SmartThings mobile app, tap on the *OFF* tile of **virtual-dimmer-switch** to turn it *ON*.
+방금 만든 Virtual Dimmer를 사용하여 Device Handler를 테스트할 수 있습니다.
+SmartThings 어플에서, **virtual-dimmer-switch** 의 *OFF* 타일을 눌러 *ON* 으로 바꿉니다.
 
 .. figure:: ../img/device-types/virtual-dimmer-on.png
 
-Next, tap on the **virtual-dimmer-switch** to open the detail view and test the tiles.
+다음으로, **virtual-dimmer-switch** 을 눌러 세부 사항을 보고 타일들을 테스트 해봅니다.
 
 .. figure:: ../img/device-types/virtual-dimmer-detail.png
 
@@ -123,11 +123,10 @@ Next, tap on the **virtual-dimmer-switch** to open the detail view and test the 
 
 .. note::
 
-  While the Simulator is useful and necessary for testing how the Device Handler handles incoming messages, we recommended that you test on the mobile app with Virtual Devices wherever possible.
+ 시뮬레이터는 Device Handler 가 수신 메시지를 처리하는 방법을 테스트하는 데 유용하고 필요하지만, 가능한 경우 가상 장치를 사용하여 모바일 앱에서 테스트하는 것이 좋습니다.
 
 ----
 
-Next steps
+다음 단계 
 ----------
-
-Now that you have created and installed your first Device Handler with a Virtual Device, use the rest of this guide to learn more.
+이제 첫번째 Device Handler를 만들어 가상 디바이스와 함께 설치했으므로, 이 가이드의 나머지 부분을 사용하여 자세히 알아보십시오.
