@@ -318,13 +318,10 @@ Atomic State에 저장된 collection의 적절한 작업 방법을 보려면 :참고:`<atomic_stat
 외부 서비스로의 :참고:`HTTP 요청 <calling_web_services>`은 외부 요청에 대한 필요성, 어떤 데이터를 전송했는지, 그 데이터가 어떻게 쓰여질 지가 기록되어야합니다.
 해당하는 경우 제3자의 개인 정보 취급 방침에 대한 링크를 주석으로 달아주세요.
 
-Document any exposed endpoints
+노출된 모든 엔드 포인트 문서화 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-노출 된 모든 엔드 포인트 문서화
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If your SmartApp or Device Handler :ref:`exposes any endpoints <web_services_mapping_endpoints>`, add comments that document what the API will be used for, what data may be accessed by those APIs, and where possible, include a link to the privacy policies of any remote services that may access those APIs.
-SmartApp 또는 Device Handler : ref :`모든 엔드 포인트 <web_services_mapping_endpoints>를 공개하는 경우 API가 사용될 대상, API에서 액세스 할 수있는 데이터 및 가능한 경우 개인 정보 보호 정책에 대한 링크를 포함하는 설명을 추가하십시오 이러한 API에 액세스 할 수있는 원격 서비스
+SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_services_mapping_endpoints>`, API가 사용될 대상, API에서 액세스 하는 데이터 및 가능한 경우에 대한 주석을 작성하고 API에 접근할 수 있는 원격 서비스의 개인 정보 보호 정책에 대한 링크도 함께 적어주세요.
 
 ----
 
