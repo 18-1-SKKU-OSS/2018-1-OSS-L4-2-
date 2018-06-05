@@ -137,3 +137,66 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 
 클라우드 연결 카메라
 ^^^^^^^^^^^^^^^
+
+``take()`` 명령어는 사진을 찍고 찍 사진 바이트들을 :ref:`device_handler_ref_store_image`를 저장하기 위해 타사 서비스에 HTTP 요청을 보냅니다.
+
+다음은 간단한 예시입니다 (실제 응용 프로그램은 타사 인증과 추가 오류를 처리해야 합니다):
+
+.. code-block:: groovy
+
+    def take() {
+        def params = [
+            uri: "https://some-uri",
+            path: "/some/path"
+        ]
+
+        try {
+            httpGet(params) { response ->
+                // 우리는 이 경우에 제 3자로 부터 "image/jpeg" 내용 유형을 기대합니다.
+                if (response.status == 200 && response.headers.'Content-Type'.contains("image/jpeg")) {
+                    def imageBytes = response.data
+                    if (imageBytes) {
+                        def name = getImageName()
+                        try {
+                            storeImage(name, imageBytes)
+                        } catch (e) {
+                            log.error "Error storing image ${name}: ${e}"
+                        }
+
+                    }
+                } else {
+                    log.error "Image response not successful or not a jpeg response"
+                }
+            }
+        } catch (err) {
+            log.debug "Error making request: $err"
+        }
+
+    }
+
+    def getImageName() {
+        return java.util.UUID.randomUUID().toString().replaceAll('-','')
+    }
+
+.. warning::
+
+    Only synchronous HTTP requests are supported when using the Carousel Tile.
+
+위의 ``take()``명령어는 다음 작업을 수행합니다:
+
+#. 이미지 응답을 반환할 URI에 요청합니다. 진정한 통합은 요청에 대한 승인 정보를 제공해야 할 것입니다. 이는 일반적으로 설치 (:ref:`here <cloud_service_manager_oauth>`에 나와 있습니다) 프로세스를 통해 얻은 OAuth 토큰입니다.
+#. 만약 반응이 성공적이고 그 내용 유형(Content-Type)이 우리가 기대한 내용이라면, 그것은 ``response.data``로부터 이미지 바이트를 얻는다.
+#. ``storeImage()``로 UUID에서 생성된 이름을 사용하여 사진을 저장합니다. 사진의 이름은 각 장치 인스턴스 마다 고유해야 합니다.
+
+``storeImage()``는 "image" 이벤트를 발생시킵니다, 이를 통해 Carousel Tile이 새로운 사진으로 업데이트 됩니다.
+
+.. tip::
+
+    ``httpGet()``는 이미지에 대한 응답 데이터를 ``ByteArrayInputStream``으로 직렬화 (serialize) 것이며, 따라서 우리는 응답 본문을 ``storeImage()``로 전달할 수 있습니다.
+
+----
+
+사진 크기 제한
+-----------
+
+사진은 최대 1메가 바이트의
