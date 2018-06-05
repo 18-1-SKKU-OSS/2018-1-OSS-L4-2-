@@ -213,11 +213,11 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
 본문 요청
 ^^^^^^^^
 
-본문을 가질 수 있는 HTTP 요청 메소드는 또한 매개변수 지도에 ``body``를 지정해줄 수 있습니다. 
-``body`` 값은 문자열이 될 수 있으며, ``requestContentType``이 ``"application/json"``일 경우 JSON으로 직렬화 될 맵 또는 리스트가 될 수 있습니다.
+본문을 가질 수 있는 HTTP 요청 메소드는 또한 매개변수 지도에 ``body`` 를 지정해줄 수 있습니다. 
+``body`` 값은 문자열이 될 수 있으며, ``requestContentType`` 이 ``"application/json"`` 일 경우 JSON으로 직렬화 될 맵 또는 리스트가 될 수 있습니다.
 :ref:`async_http_ref_put`, :ref:`async_http_ref_post`, :ref:`async_http_ref_delete`, :ref:`async_http_ref_patch` 메소드는 ``body`` 옵션을 지원합니다.
 
-지도를 이용해 본문을 요청하는 ``POST``를 하는 예제입니다.
+지도를 이용해 본문을 요청하는 ``POST`` 를 하는 예제입니다.
 
 .. code-block:: groovy
 
