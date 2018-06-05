@@ -9,7 +9,7 @@ SmartApp은 사용자가 디바이스의 기능을 이용하여 삶을 자동화
 SmartApp의 종류
 ---------------
 
-일반적으로 *Event-Handlers*, *Solution Modules*, 그리고 *Service Manager*라는 세 가지 종류의 SmartApp이 있습니다.
+일반적으로 *Event-Handlers*, *Solution Modules*, 그리고 *Service Manager* 라는 세 가지 종류의 SmartApp이 있습니다.
 백엔드 웹 개발이 익숙하다면 SmartApp을 충분히 개발할 수 있을 것입니다.
 
 Event Handler SmartApps
@@ -82,8 +82,7 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
 1. **미리 정의된 콜백** - 위에서 기술된 미리 정의된 생명주기 동안의 이벤트 중 하나가 발생합니다.
 2. **디바이스 상태 변경** - 디바이스에서 속성이 변경되어 이벤트를 생성하고, 이는 SmartApp에서 처리기 메소드를 호출하는 구독을 야기합니다.
-3. **위치 상태 변경** - *Mode*와 같은 위치 속성이 변경됩니다. 
-*Sunrise*와 *sunset*은 위치 이벤트의 다른 예입니다.
+3. **위치 상태 변경** - *Mode*와 같은 위치 속성이 변경됩니다. *Sunrise*와 *sunset*은 위치 이벤트의 다른 예입니다.
 4. **앱에서의 사용자 행동** - 사용자가 모바일 앱 UI에서 SmartApp의 아이콘 또는 바로 가기를 누릅니다.
 5. **예정된 이벤트** - runIn()과 같은 메소드를 사용해서 사용자가 특정 시간에 SmartApp에 있는 메소드를 호출합니다.
 6. **웹 서비스 호출** `웹 서비스 API <../../smartapp-web-services-developers-guide/overview.rst>`__를 이용해 사용자는 SmartApp 내의 메소드를 호출하는 웹을 통해 접근할 수 있는 엔드 포인트를 만듭니다.
