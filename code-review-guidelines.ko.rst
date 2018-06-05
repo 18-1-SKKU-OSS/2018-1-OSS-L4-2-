@@ -315,10 +315,8 @@ Atomic State에 저장된 collection의 적절한 작업 방법을 보려면 :참고:`<atomic_stat
 외부 HTTP 요청 문서화
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`HTTP requests <calling_web_services>` to outside services should be documented, explaining the need to make external requests, what data is sent, and how it will be used.
-Please also include a comment with a link to the third party's privacy policy, if applicable.
-: 외부 요청에 대한 필요성, 전송되는 데이터 및 사용 방법을 설명하는 : ref :`외부 서비스에 대한 HTTP 요청 <call_web_services> '을 문서화해야합니다.
-해당하는 경우 제 3 자의 개인 정보 취급 방침에 대한 링크가 포함 된 주석도 함께 적어주십시오.
+외부 서비스로의 :참고:`HTTP 요청 <calling_web_services>`은 외부 요청에 대한 필요성, 어떤 데이터를 전송했는지, 그 데이터가 어떻게 쓰여질 지가 기록되어야합니다.
+해당하는 경우 제3자의 개인 정보 취급 방침에 대한 링크를 주석으로 달아주세요.
 
 Document any exposed endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
