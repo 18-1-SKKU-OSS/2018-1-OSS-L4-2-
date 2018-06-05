@@ -30,7 +30,7 @@ SmartApp 또는 Device Handler를 제출하기 전에 본인의 코드가 이 문서에 기재 된 지�
 
 `DRY 법칙 <https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`__ (don't repeat yourself 중복하지 말라)을 따라주세요.
 
-코드를 복사/붙여넣기 하지 마세요 ? 자주 쓰이는 코드를 공유 유틸리티 메소드로 빼주세요.
+코드를 복사/붙여넣기 하지 마세요. 자주 쓰이는 코드를 공유 유틸리티 메소드로 빼주세요.
 
 .. _review_guidelines_methods:
 
@@ -110,7 +110,7 @@ Here's an example of an in-line code comment explaining why the code is checking
 
     // 모든 자식을 받아와라
     def children = pollChildren()
-    // 모든 자식을 돌아라
+    // 모든 자식을 방문해라
     children.each {child ->
         // 각 자식을 로그로 띄워라
         log.debug "child: $child"
@@ -122,27 +122,21 @@ Here's an example of an in-line code comment explaining why the code is checking
 ``if ()``또는``switch ()``블록이 모든 예상 입력을 처리하는지 확인하십시오.
 특정 조건을 처리하는 것을 잊어버리면 예기치 못한 논리 오류가 발생할 수 있습니다.
 
-Also, every ``switch()`` statement should have a ``default:`` case statement to handle any cases where there is no match.
 또한 모든``switch ()``문은 일치하는 조건이 없는 경우를 처리하기 위해``default :`` 조건문을 가져야합니다
 
 가정을 확인하세요
 ^^^^^^^^^^^^^^^^^^
 
-If a method operates on some input, it should handle all possible input values, including any differences if the method is called from a parent or child SmartApp or Device Handler.
-메소드가 일부 입력에 대해 작동하는 경우 메소드가 상위 또는 하위 SmartApp 또는 Device Handler에서 호출되는 경우의 차이점을 포함하는 모든 입력 값을 처리할 수 있어야합니다.
+메소드가 일부 입력에 작동할 때 상위 또는 하위 SmartApp 또는 Device Handler에서 호출되는 경우를 포함하는 모든 입력 값을 처리할 수 있어야합니다.
 
 일관된 반환 값 사용
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Groovy is a dynamically typed language.
-That's great for a lot of things, but it's a sharp knife - highly effective, yet also easy to cut yourself accidentally.
-Groovy는 동적 유형 지정 언어입니다.
-그것은 많은 일을 하는 데 적합하지만 날카로운 칼입니다. 매우 효과적이면서 실수로 쉽게 자를 수 있습니다.
+Groovy는 동적 타이핑 프로그래밍 언어입니다.
+이는 많은 곳에 적합하지만, 양날의 검으로서 매우 효과적이지만 실수하기도 쉽습니다.
 
-A method should return a single type of data, regardless of if the method signature is typed or not.
-For example, don't do something like this:
-메소드 서명이 입력되었는지 여부에 관계없이 메소드는 단일 유형의 데이터를 리턴해야합니다.
-예를 들어, 다음과 같이하지 마십시오.
+메소드 시그니처의 입력 여부에 관계없이 메소드는 단일 자료형을 반환해야합니다.
+다음은 안좋은 예시입니다:
 
 .. code-block:: groovy
 
@@ -156,33 +150,23 @@ For example, don't do something like this:
         return [name: "someAttribute", value: input]
     }
 
-The example above fails to return a consistent data type.
-Calling clients of this code have to accommodate both a boolean and map return values.
-Instead, methods should always return the same data type.
-위의 예제는 일관된 데이터 형식을 반환하지 않습니다.
-이 코드를 호출하는 클라이언트는 부울 값과 맵 반환 값을 모두 수용해야합니다.
-대신 메서드는 항상 동일한 데이터 형식을 반환해야합니다.
+위의 예제는 일관된 자료형을 반환하지 않습니다.
+이 코드의 클라이언트를 호출하면 불린 값과 맵 반환 값을 모두 받아야합니다.
+이와 다르게 메서드는 항상 동일한 자료형을 반환해야합니다.
 
 .. note::
 
-    In certain cases, it *may* make sense for a method to return different types.
-    Such cases are the exception, and the different types returned, and under what circumstances, should be documented in the method's comments.
-특정의 경우, 메소드가 다른 형태를 돌려주는 것은 의미가있는 일이 있습니다.
-     이러한 경우는 예외이며 반환되는 다른 유형과 어떤 상황에서 메소드의 주석에 문서화되어야합니다.
+    특별한 경우, 메소드가 다른 자료형을 반환하는 게 *의미 있을 수도* 있습니다.
+    이러한 경우는 예외 사항이며, 반환되는 자료형들과 어떤 상황에서 그 자료형이 반환되는 지가 주석에 작성되어 있어야 합니다.
 
 
-Be careful indexing into arrays
+배열 인덱싱을 주의하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-배열에주의를 기울여 색인 작성
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When parsing data, pay attention to arrays if you use them.
-Do not index into arrays directly without making sure that the array actually has enough elements.
-데이터를 파싱 할 때 배열을 사용한다면주의를 기울이십시오.
-배열에 실제로 충분한 요소가 있는지 확인하지 않고 직접 배열을 인덱싱하지 마십시오.
+데이터를 파싱 할 때 배열을 사용한다면 조심하셔야합니다.
+배열을 인덱싱할 때 실제로 배열에 그만큼의 원소가 존재하는지 먼저 확인해야합니다.
 
-Consider the following code that splits a string on the ``":"`` character, and returns the value after the ``":"``:
-`` ":"`문자에 문자열을 분할하고`` ":"``다음에 값을 반환하는 다음 코드를 생각해보십시오.
+다음은 `` ":"`문자를 기준으로 문자열을 분할하고`` ":"`` 문자 다음에 오는 값을 반환하는 코드입니다:
 
 .. code-block:: groovy
 
@@ -196,10 +180,8 @@ Consider the following code that splits a string on the ``":"`` character, and r
     // -> ArrayIndexOutOfBounds exception!
     getSplitString("abc:")
 
-Because ``getSplitString()`` does not verify that the result of ``split()`` split has more than one element, we get an ``ArrayIndexOutOfBounds`` exception when trying to access the second item in the parsed result.
-In cases like this, make sure your code verifies the array contains the item:
 ``getSplitString ()``은``split ()`split의 결과가 하나 이상의 원소를 가지고 있는지를 검증하지 않기 때문에, 파싱 된 결과에서 두번째 항목에 접근하려 할 때``ArrayIndexOutOfBounds`` 예외가 발생합니다.
-이와 같은 경우 코드가 배열에 항목이 있는지 확인합니다.
+이와 같은 경우 배열에 항목이 있는지 확인하는 예외처리를 해줘야합니다.
 
 .. code-block:: groovy
 
@@ -212,97 +194,69 @@ In cases like this, make sure your code verifies the array contains the item:
         }
     }
 
-Use the Elvis operator correctly
+엘비스 연산자를 바르게 사용하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Elvis 연산자를 올바르게 사용하십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Groovy supports the Elvis operator, which allows us write more concise conditional expressions than otherwise possible.
-However, we need to understand :ref:`Groovy truth <review_guidelines_groovy_truth>` to use it effectively.
-Groovy는 Elvis 연산자를 지원합니다. Elvis 연산자를 사용하면 가능한 경우보다 간결한 조건식을 작성할 수 있습니다.
-그러나이를 효과적으로 사용하려면 ref :`Groovy truth <review_guidelines_groovy_truth> '를 이해해야합니다.
+그루비는 엘비스 연산자를 지원합니다. 엘비스 연산자를 사용하면 더 간결하게 조건문을 작성할 수 있습니다.
+그러나, 이를 효과적으로 사용하려면 :ref:`Groovy truth <review_guidelines_groovy_truth>` 를 이해해야합니다.
 
-Consider this example that attempts to set the variable ``bulbLevel`` to ``100`` if it is not already set:
-변수``bulbLevel``을 아직 설정하지 않은 경우``100``을 설정하려고 시도하는이 예제를 생각해보십시오 :
+변수``bulbLevel``이 설정되지 않은 경우 그 값을 ``100``으로 설정하는 예시입니다:
 
 .. code-block:: groovy
 
     def bulbLevel = settings.level ?: 100
 
-But what happens if ``settings.level`` is ``0`` in the example above? **Because Groovy considers zero as false, we've set** ``bulbLevel`` **to** ``100`` **!**
-그러나 위의 예제에서``settings.level``이``0``이라면 어떻게 될까요? ** Groovy는 0을 false로 간주하기 때문에 **``bulbLevel`` **을 **``100`` **! **으로 설정했습니다! **! **
+그러나 위의 예제에서``settings.level``이``0``이라면 어떻게 될까요? ** 그루비는 0을 false로 간주하기 때문에 **``bulbLevel`` **을 **``100`` **! **으로 설정했습니다! **! **
 
-The above expression should be rewritten as:
-위의 표현식은 다음과 같이 다시 작성되어야합니다.
+위의 코드는 다음과 같이 작성되어야합니다:
 
 .. code-block:: groovy
 
     def bulbLevel = settings.level == null ?: 100
 
 
-Handle null values
-^^^^^^^^^^^^^^^^^^
 Null 값 처리
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
-.. important::
-.. important :: 중요한
+.. 중요::
 
-    NullPointerExceptions are one of the most frequently occurring exceptions on the SmartThings platform - take care to avoid them!
-     NullPointerExceptions은 SmartThings 플랫폼에서 가장 자주 발생하는 예외 중 하나입니다.이를 피하기 위해주의하십시오!
+     NullPointerExceptions은 SmartThings 플랫폼에서 가장 자주 발생하는 예외 중 하나입니다. 주의해주세요!
 
-    This is *very* common in LAN and SSDP interactions, so always double check that code.
-   이것은 LAN과 SSDP 상호 작용에서 * 매우 * 공통적이므로 항상이 코드를 두 번 확인하십시오.
+   LAN과 SSDP 상호 작용에서 * 매우 * 자주 일어나는 일이므로 항상 코드를 한번 더 확인해주세요.
 
-A ``NullPointerException`` will terminate the SmartApp or Device Handler execution, but can be avoided easily with the `safe navigation <http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?``) operator.
-Any code that may encounter a ``null`` value should anticipate and handle this.
-``NullPointerException``은 SmartApp 또는 Device Handler의 실행을 종료 시키지만`안전한 탐색 <http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?`` ) 운영자.
-``null`` 값을 만나게 될 모든 코드는 이것을 예상하고 처리해야합니다.
+``NullPointerException``은 SmartApp 또는 Device Handler의 실행을 종료 시키지만 `세이프 네비게이션<http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?`` ) 연산자로 쉽게 처리할 수 있습니다.
+``null`` 값을 가질 수 있는 모든 코드는 미리 이를 처리해야합니다.
 
-The examples below show a few common scenarios in which ``null`` is possible, and how to deal with it using the ``?`` operator: 
-아래 예제는``null``이 가능한 몇 가지 일반적인 시나리오와``?``연산자를 사용하여 그것을 처리하는 방법을 보여줍니다 :
+아래 예제는``null``이 가능한 몇 가지 자주 발생하는 경우와 ``?`` 연산자를 사용하여 그것을 처리하는 방법을 보여줍니다 :
 
 .. code-block:: groovy
 
-    // if the LAN event does not have headers, or a "content-type" header,
-    // don't blow up with a NullPointerException!
-// LAN 이벤트에 헤더 또는 "content-type"헤더가없는 경우,
-     // NullPointerException을 날려 버리지 마라!
+    // LAN 이벤트에 헤더 또는 "content-type"헤더가 없는 경우, 
+    // NullPointerException을 날리지 마세요!
     if (lanEvent.headers?."content-type"?.contains("xml")) { ... }
 
 .. code-block:: groovy
 
-    // if a location does not have any modes, statement simply returns null
-    // but does not throw a NullPointerException
-// 위치에 모드가없는 경우 명령문은 null을 반환합니다.
-     // 그러나 NullPointerException을 throw하지 않습니다.
+    // 위치에 모드가 없는 경우 코드는 null을 반환합니다.
+    // 그러나 NullPointerException을 throw하지 않습니다. 
     if (location.modes?.find{it.name == newMode}) { ... }
 
 
 .. _review_guidelines_groovy_truth:
 
-Use Groovy truth correctly
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-그루비 진리를 올바르게 사용하십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+그루비 참 값을 올바르게 사용하세요
+^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
-Be aware of, and ensure your code is consistent with, what Groovy considers true and false.
-Groovy truth is documented `here <http://groovy-lang.org/semantics.html#Groovy-Truth>`__.
-Groovy가 true 또는 false로 간주하는 코드를 인식하고 코드가 일관성을 유지하는지 확인하십시오.
-그루비 진리는`여기 http://groovy-lang.org/semantics.html#Groovy-Truth>`__에 문서화되어있다.
+Groovy가 참 또는 거짓으로 간주하는 값을 일관적으로 유지하는지 확인하세요.
+그루비의 참 값에 대한 내용은 `여기 http://groovy-lang.org/semantics.html#Groovy-Truth>`__에 작성되어있습니다.
 
-Here are some gotchas to be aware of:
-알고 있어야 할 몇 가지 문제점이 있습니다
+알고 있어야 할 몇 가지 문제점이 입니다:
 
-- Empty strings are considered ``false``; non-empty strings are considered ``true``.
-- Empty maps and lists are considered ``false``; non-empty maps and lists are considered ``true``.
-- Zero is considered ``false``; non-zero numbers are considered ``true``.
-- 빈 문자열은``거짓``으로 간주됩니다; 비어 있지 않은 문자열은 "참"으로 간주됩니다.
-- 빈지도와 목록은 "거짓"으로 간주됩니다. 비어 있지 않은지도와 목록은 "사실"로 간주됩니다.
-- 0은 "거짓"으로 간주됩니다. 0이 아닌 숫자는 "참"으로 간주됩니다.
+- 빈 문자열은 ``거짓``으로 간주됩니다; 비어 있지 않은 문자열은 ``참``으로 간주됩니다.
+- 빈 맵과 리스트는 ``거짓``으로 간주됩니다; 비어 있지 않은 맵과 목록은 ``참``로 간주됩니다.
+- 0은 ``거짓``으로 간주됩니다. 0이 아닌 숫자는 ``참``으로 간주됩니다.
 
-Consider the following example that verifies that a number is between 0 and 100: 
-숫자가 0과 100 사이인지 확인하는 다음 예제를 고려하십시오
+숫자가 0과 100 사이에 존재하는지 확인하는 예제입니다:
 
 .. code-block:: groovy
 
@@ -314,10 +268,8 @@ Consider the following example that verifies that a number is between 0 and 100:
         }
     }
 
-If we call ``verifyLevel(0)``, the result is ``false``, because ``0`` is treated as false by Groovy.
-Instead, it should be written as:
-Groovy가``0``을 false로 처리하기 때문에``verifyLevel (0)``을 호출하면 결과는``false``입니다.
-대신 다음과 같이 작성해야합니다.
+그루비에서 ``0``은 거짓이기 때문에``verifyLevel (0)``을 호출하면 결과는``false``입니다.
+그래서 아래와 같이 작성해야합니다:
 
 .. code-block:: groovy
 
@@ -325,14 +277,13 @@ Groovy가``0``을 false로 처리하기 때문에``verifyLevel (0)``을 호출하면 결과는``fa
         return (level instanceof Number && level >= 0 && level <= 100)
     }
 
-This can be a common source of errors; make sure you understand and use Groovy truth appropriately.
-이것은 일반적인 오류의 원인이 될 수 있습니다. Groovy 진리를 이해하고 적절하게 사용하는지 확인하십시오.
+자주 일어나는 오류이기 때문에 그루비의 진리 값을 잘 이해하고 적절하게 사용해야합니다. 
 
 ----
 
 Using State
 -----------
-주 사용
+상태 함수 사용
 -----------
 
 ``state`` is not an unbounded database
@@ -629,3 +580,4 @@ When using a parent-child relationship, be it a parent SmartApp with child devic
 
 Putting the parent and child code in the same file leads to file size bloat, makes the code harder to understand, is error-prone, and difficult to debug.
 상위 및 하위 코드를 같은 파일에두면 파일 크기가 커지고 코드를 이해하기 어렵게 만들고 오류가 발생하기 쉽고 디버그하기가 어렵습니다.
+
