@@ -335,16 +335,12 @@ SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_
 
 코드가 5분에 한번 이상 실행되는 경우 그 코드가 필요한 이유를 주석에 추가해주세요.
 
-Avoid chained ``runIn()`` calls
+``runIn()`` 메서드 체이닝을 지양하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``runIn ()``호출을 피하십시오
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`Do not chain runIn() calls<scheduling_chained_run_in>`.
-: ref :`runIn ()을 chaining하지 말고 <scheduling_chained_run_in>`을 호출하십시오.
-
-If for some reason it is necessary, add a comment describing why it is necessary.
-어떤 이유로 든 필요한 이유를 설명하는 설명을 추가하십시오.
+:참고:`runIn() 메서드를 체이닝하지 마세요 <scheduling_chained_run_in>`
+ 
+꼭 필요하다면 그 이유를 설명하는 주석을 추가해주세요.
 
 ----
 
