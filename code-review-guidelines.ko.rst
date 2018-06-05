@@ -244,7 +244,7 @@ Null 값 처리
 
 .. _review_guidelines_groovy_truth:
 
-그루비 참 값을 올바르게 사용하세요
+그루비 진리 값을 올바르게 사용하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
 Groovy가 참 또는 거짓으로 간주하는 값을 일관적으로 유지하는지 확인하세요.
@@ -281,47 +281,28 @@ Groovy가 참 또는 거짓으로 간주하는 값을 일관적으로 유지하는지 확인하세요.
 
 ----
 
-Using State
------------
-상태 함수 사용
+State 함수의 사용
 -----------
 
-``state`` is not an unbounded database
+``state`` 은 무제한 데이터베이스가 아닙니다
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``state``는 무한대의 데이터베이스가 아닙니다.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``state`` (SmartApps and Device Handlers) and ``atomicState`` (SmartApps only) are provided to persist small amounts of data across executions.
-Do not think of state as a virtually unlimited database for your app.
-``state`` (SmartApps and Device Handlers)와``atomicState`` (SmartApps 만)는 실행을 통해 소량의 데이터를 유지하기 위해 제공됩니다.
-상태를 앱의 거의 무제한 데이터베이스라고 생각하지 마십시오.
+state에 저장할 수 있는 데이터의 양은 :참고:`limited <state_size_limit>`입니다.
+주기적으로(이벤트나 스케쥴의 응답으로) ``state``에 원소를 추가하지만 삭제하지 않는 코드는 지양하세요. 
 
-The amount of data that can be stored in state is :ref:`limited <state_size_limit>`.
-Avoid code that adds items to ``state`` regularly (perhaps in response to Events or schedules), but does not remove items.
-상태에 저장할 수있는 데이터의 양은 ref :`limited <state_size_limit>`입니다.
-주기적으로 이벤트를 추가하거나 항목을 제거하지 않는 코드는 피하십시오.
-
-Understand how ``state`` works
+``state``의 작동방식 이해
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``국가``의 작동 방식 이해
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Remember that when using ``state``, the :ref:`results are not persisted until the app is done executing <state_how_it_works>`.
-This can have unintended consequences, such as state values being overridden by another concurrently executing instance of the SmartApp.
-``state``를 사용할 때 : ref :`결과는 앱이 <state_how_it_works>를 실행하기 전까지 지속되지 않습니다.
-동시에 실행되는 다른 SmartApp 인스턴스가 상태 값을 대체하는 경우와 같이 의도하지 않은 결과가 발생할 수 있습니다.
+``state``를 사용할 때, :참고:`결과는 앱이 <state_how_it_works>의 실행을 마칠 때까지 지속되지 않습니다`.
+동시에 실행되는 다른 SmartApp 인스턴스가 state 값을 오버라이드하는 경우처럼, 의도하지 않은 결과가 발생할 수 있습니다.
 
-Understand when to use ``atomicState`` vs. ``state``
+언제 ``atomicState`` 나 ``state``를 사용해야하는지 알아두세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``atomicState``와``state``를 사용할시기를 이해하십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^
 
-Understand the :ref:`difference <choosing_between_state_atomicState>` between ``atomicState`` and ``state``, make sure you use the correct one for your needs, and avoid using both in the same SmartApp.
-``atomicState``와``state`` 사이의 : ref :`difference <choose_between_state_atomicState>를 이해하고, 필요에 맞게 올바른 것을 사용하고 동일한 SmartApp에서 둘 다 사용하는 것을 피하십시오.
+``atomicState``와``state``의 :참고:`차이 <choose_between_state_atomicState>`를 이해하여 필요에 맞게 올바른 것을 사용하고 한 SmartApp에 두 가지 모두 사용하는 것은 지양해주세요.
 
-Take care when storing collections in ``atomicState``
+Collection을 ``atomicState``에 저장할 때 주의하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-콜렉션을``atomicState``에 저장할 때주의하십시오.
 
 Modifying collections in Atomic State does not work as it does with State.
 :ref:`Read the documentation <atomic_state_collections>` to understand how to best work with collections stored in Atomic State.
