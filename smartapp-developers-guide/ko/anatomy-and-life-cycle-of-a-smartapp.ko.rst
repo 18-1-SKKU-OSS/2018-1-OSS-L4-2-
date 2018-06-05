@@ -143,7 +143,7 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 SmartApp 샌드박싱
 ----------------
 
-SmartApp은 샌드박스 환경에서 개발됩니다. 샌드박스는 성능과 보안을 위해 개발자를 Groovy 언어의 특정 하위 집합으로 제한하는 방법입니다. SmartApp은 :ref:`documented <groovy-for-smartthings>`을 주된 방법으로 하고 있으며, 다른 개발자도 이 방법을 따라야합니다.
+SmartApp은 샌드박스 환경에서 개발됩니다. 샌드박스는 성능과 보안을 위해 개발자를 Groovy 언어의 특정 하위 집합으로 제한하는 방법입니다. SmartApp은 :ref:`documented <groovy-for-smartthings>` 을 주된 방법으로 하고 있으며, 다른 개발자도 이 방법을 따라야합니다.
 
 ----
 
