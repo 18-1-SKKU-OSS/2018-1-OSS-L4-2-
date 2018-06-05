@@ -1,7 +1,7 @@
 :Authors:
 	Kim Kyung Min
 	(Sungkyunkwan Univ. College of Software)
-:Version: 1.5 of 2018/06/03
+:Version: 1.6 of 2018/06/05
 
 =======
 개요
@@ -119,11 +119,26 @@ Device Handler는 일반적으로 하나 이상의 기능을 지원합니다. Hu
 "Actuator" 기능은 기기가 명령어(commands)를 가지고 있음을 정의합니다. 
 "Sensor" 기능은 기기가 특성(attributes)을 가지고 있음을 정의합니다. 
 
-만약 Device Handler를 작성하고 있고, 만약 당신의 기기가 commands나 특성을 가지고 있다면, "Actuator"기능이나 "Sensor"기능을 지원해볼 가장 좋은 연습 기회 입니다. 
-<<<<<<< HEAD
-이는 왜 대부분의 Device Handler들이 이런 기능들 중  하나 혹은 둘 모두를 지원하는 이유입니다.
+만약 Device Handler를 작성하고 있고, 만약 당신의 기기가 commands나 특성을 가지고 있다면, "Actuator"기능이나 "Sensor"기능을 지원해볼 가장 좋은 연습 기회 입니다.
 
-=======
-이는 왜 대부분의 Device Handler들이 이런 기능들 중  하나 혹은 둘 모두를 지원하는 이유입니다. 
+그 이유는 관습과 미래에 대해 보는 능력 때문입니다 - 이는 SmartThings 플랫폼이 어떤 일을 하거나("Actuator")어떤 것을 보고할 때("Sensor"), SmartThings 플랫폼이 다양한 장치와 상호 작용할 수 있게 합니다.
+
+===============================================================================================
+
+프로토콜
+==========
+SmartThings는 현재 Z-Wave와 ZigBee 무선 프로토콜을 모두 지원하고 있습니다.
+
+Device Handler는 장치와 SmartThings플랫폼 간의 통신을 담당하므로, 일반적으로 장치가 지원하는 모든 프로토콜을 이해하고 통신해야 합니다. 본 안내서에서는 Z-Wave 프로토콜과 ZigBee 프로토콜을 모두 개괄적으로 설명합니다.
+
+=========================================================================================
+
+실행 위치
+=========
+
+기존의 SmartThings Hub를 사용하면, 모든 Device Handler가 SmartThings클라우드에서 실행됩니다. 새로운 Samsung SmartThings Hub를 사용하면 특정 Device Handler가 허브 또는 SmartThings 클라우드에서 로컬로 실행될 수 있습니다. 실행 위치는 다양한 요소에 따라 달라지며 SmartThings내부 팀이 관리합니다.
+
+SmartThings 개발자로서, Device Handler가 실행되는 위치에 관계 없이, 그들의 세부적인 사용을 충족시키기 위해 Device Handler를 작성해야 합니다. 현재 특정 실행 위치를 지정하거나 강제할 방법이 없습니다.
+
 
 
