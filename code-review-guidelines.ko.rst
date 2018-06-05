@@ -325,21 +325,15 @@ SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_
 
 ----
 
-Scheduling
-----------
 스케줄링
 ----------
 
-Avoid recurring short schedules
+되풀이되는 짧은 스케줄은 지양하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-되풀이되는 짧은 일정 피하기
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Scheduled and other periodic functions should not execute more often than every five minutes, unless there is a good reason for it, and the reviewers agree.
-예약 된 기능과 기타 주기적 기능은 좋은 이유가 있고 검토자가 동의하지 않는 한 5 분마다 실행하지 않아야합니다.
+스케줄되거나 주기적 함수는 중요한 이유가 있거나 검토자가 동의하지 않는 이상 5분에 한번 이상 실행되지 말아야 합니다.
 
-If your code executes more frequently than every five minutes, add a comment to your code explaining why this is necessary.
-코드가 5 분마다 실행되는 경우 코드가 필요한 이유를 설명하는 코드를 추가하십시오.
+코드가 5분에 한번 이상 실행되는 경우 그 코드가 필요한 이유를 주석에 추가해주세요.
 
 Avoid chained ``runIn()`` calls
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
