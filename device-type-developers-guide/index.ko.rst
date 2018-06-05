@@ -2,7 +2,7 @@
 
 Device Handlers
 ===============
-Device Handlers는 물리적 디바이스의 가상하된 표현입니다.
+Device Handlers는 물리적 디바이스의 가상화된 표현입니다.
 
 Device Handlers 작성에 익숙하지 않다면  :doc:`quick-start` 를 읽고 시작합시다.
 
