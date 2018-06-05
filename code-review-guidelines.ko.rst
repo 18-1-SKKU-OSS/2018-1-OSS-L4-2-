@@ -304,22 +304,16 @@ state에 저장할 수 있는 데이터의 양은 :참고:`limited <state_size_limit>`입니다.
 Collection을 ``atomicState``에 저장할 때 주의하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Modifying collections in Atomic State does not work as it does with State.
-:ref:`Read the documentation <atomic_state_collections>` to understand how to best work with collections stored in Atomic State.
-원자 상태에서 컬렉션 수정은 상태와 마찬가지로 작동하지 않습니다.
-: ref :`Atomic State에 저장된 콜렉션에 대한 최선의 작업 방법을 이해하려면 <atomic_state_collections> 문서를 읽으십시오.
+Atomic State에서의 Collection 수정은 State에서와 마찬가지로 되지 않습니다.
+Atomic State에 저장된 collection의 적절한 작업 방법을 보려면 :참고:`<atomic_state_collections> 문서를 읽어주세요.`.
 
 ----
 
-Web Services
-------------
 웹 서비스
 ------------
 
-Document external HTTP requests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 외부 HTTP 요청 문서화
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :ref:`HTTP requests <calling_web_services>` to outside services should be documented, explaining the need to make external requests, what data is sent, and how it will be used.
 Please also include a comment with a link to the third party's privacy policy, if applicable.
