@@ -59,39 +59,37 @@ Create a Virtual Device
 -----------------------
 그런 다음 가상 디바이스를 생성하여 위에서 만든 디바이스 핸들러와 연결합니다.
 
-From the top menu of the IDE, click on the *My Devices*.
+IDE의 상단 메뉴에서, *My Devices* 를 클릭하세요.
 
 .. figure:: ../img/device-types/ide-my-devices.png
 
-Click on *+New Device* on the top-right.
-This will take you to *Create Device* page.
+오른쪽 상단의 *+New Device* 를 누르세요.
+*Create Device* 페이지로 갈겁니다.
 
 .. figure:: ../img/device-types/create-virtual-device.png
 
-Follow below steps to fill the above *Create Device* form:
+아래 절차들을 밟아 *Create Device* 을 채우세요:
 
 Name
-  Your Virtual Device, preferably something that's indicative of the type of the device, such as "Virtual Dimmer Switch".
+  가상 장치, 가급적이면 "Virtual Dimmer Switch"와 같은 장치의 유형을 나타내는 것입니다.
 
 Label
-  Optional, but you can have something like "virtual-dimmer-switch".
+  해도 안해도 상관없지만,"virtual-dimmer-switch"같은것으로 해놓을 수 있습니다.
 
 Zigbee Id
-  Can be blank.
+  공란으로 놔도 돼요.
 
 Device Network Id
-  Should be a unique ID that identifies your Virtual Device. Make sure this ID doesn't conflict with any other device Ids. Put in "VIRTDIMMERS01".
+  가상 디바이스를 식별하는 고유 ID여야 합니다. 이 ID가 다른 장치 ID와 충돌하지 않는지 확인하십시오. "VIRTDIMMERS01"을 입력하십시오.
 
 Type
-  Pulldown menu lists available Device Handlers.
-  Note that all your custom Device Handlers are listed at the bottom of the pulldown list.
-  Scroll down the list and select the customer Device Handler that you created above.
+  풀 다운 메뉴에는 사용 가능한 Device Handlers가 나열됩니다. 당신만의 Device Handlers는 pulldown 리스트의 밑에 나타납니다. 목록을 아래로 스크롤 하여 위에서 생성한 Device Handlers를 선택합니다.
 
 Version
-  Option should be *Published*.
+  옵션은 *Published* 여야 합니다.
 
 Location
-  Must be your Hub Location.
+  당신의 Hub위치여야 합니다.
 
 Hub
   Your Hub name associated with the above Location.
