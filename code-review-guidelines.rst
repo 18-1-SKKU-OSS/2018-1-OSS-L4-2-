@@ -151,7 +151,7 @@ For example, don't do something like this:
     }
 
 The example above fails to return a consistent data type.
-Calling clients of this code have to accommodate both a boolean and map return values.
+Calling clients of this code has to accommodate both a boolean and map return values.
 Instead, methods should always return the same data type.
 
 .. note::
