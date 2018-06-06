@@ -344,23 +344,15 @@ SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_
 
 ----
 
-Security considerations
------------------------
-----
-
-보안 고려 사항
+보안 고려사항
 -----------------------
 
-Subscriptions should be clear
+구독은 명확해야합니다
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-구독은 명확해야합니다.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is possible to subscribe to Events using a string variable, so what the SmartApp is subscribing to might be somewhat opaque.
-문자열 변수를 사용하여 이벤트를 구독 할 수 있으므로 SmartApp가 구독하는 대상이 다소 불투명 할 수 있습니다.
+문자열 변수를 사용하여 이벤트를 구독할 수 있으므로 SmartApp가 구독하는 대상이 다소 불투명 할 수 있습니다.
 
-For example:
-예 :
+예:
 
 .. code-block:: groovy
 
@@ -370,15 +362,13 @@ For example:
 
     subscribe(contact1, myContactSubscription, myContactHandler)
 
-The best practice is to subscribe explicitly to the attribute:
-가장 좋은 방법은 속성에 명시 적으로 가입시키는 것입니다.
+가장 좋은 방법은 속성에 명시적으로 구독하는 것입니다:
 
 .. code-block:: groovy
 
     subscribe(contact1, "contact.open", myContactHandler)
 
-However, if the SmartApp must subscribe to a variable (from state, for instance), the reviewer should be able to trace how the variable is set and what the expected attribute will be.
-그러나 SmartApp가 변수 (예 : 상태)를 구독해야하는 경우 검토자는 변수가 설정되는 방식과 예상되는 특성이 무엇인지 추적 할 수 있어야합니다.
+그러나 SmartApp가 변수(예를 들어, state에서)를 구독해야하는 경우, 검토자는 변수가 설정되는 방식과 예상되는 특성이 무엇인지 추적할 수 있어야합니다.
 
 Subscriptions should be specific
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
