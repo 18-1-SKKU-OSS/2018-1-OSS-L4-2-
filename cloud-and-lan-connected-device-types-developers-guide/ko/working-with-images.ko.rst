@@ -199,4 +199,20 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 사진 크기 제한
 -----------
 
-사진은 최대 1메가 바이트의
+사진의 크기는 최대 1메가 바이트까지 가능합니다.
+
+``storeImage()`` will throw an ``InvalidParameterException`` if this limit is exceeded.
+
+Attempting to capture an image exceeding this maximum using ``HubAction`` will result in the message sent to ``parse()`` containing an ``error`` response:
+
+.. code-block:: groovy
+
+    def parse(String description) {
+        def map = stringToMap(description)
+
+        if (map.error) {
+            log.error "error: ${map.error}"
+        } else if (map.tempImageKey) {
+            //...
+        }
+    }
