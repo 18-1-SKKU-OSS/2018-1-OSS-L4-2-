@@ -4,7 +4,7 @@
 모드
 =====
 
-SmartThings를 사용하면 사용자는 특정 *모드*에서만 SmartApp이 실행될 수 있도록 지정할 수 있습니다.
+SmartThings를 사용하면 사용자는 특정 *모드* 에서만 SmartApp이 실행될 수 있도록 지정할 수 있습니다.
 
 ----
 
@@ -24,11 +24,11 @@ SmartThings는 "홈", "부재 중", "밤"과 같은 몇 가지 사전 구성 모
 현재 모드 가져오기
 ----------------
 
-SmartApp의 ``위치``에 있는 ``모드`` 또는 ``현재 모드`` 속성을 이용해 현재 모드를 가져올 수 있습니다.
+SmartApp의 ``위치`` 에 있는 ``모드`` 또는 ``현재 모드`` 속성을 이용해 현재 모드를 가져올 수 있습니다.
 
 .. code-block:: groovy
 
-    def currMode = location.mode // "홈", "부재 중" 등
+    def currMode = location.mode // "Home", "Away", etc.
     log.debug "current mode is $currMode"
 
     def anotherWay = location.currentMode
@@ -43,7 +43,7 @@ SmartApp이 설치된 위치에 대한 모든 모드 리스트를 가져올 수 
 
 .. code-block:: groovy
 
-    def allModes = location.modes // 예: [홈, 부재 중, 밤]
+    def allModes = location.modes // ex: [Home, Away, Night]
     log.debug "all modes for this location: $allModes"
 
 ----
@@ -51,7 +51,7 @@ SmartApp이 설치된 위치에 대한 모든 모드 리스트를 가져올 수 
 모드 설정
 --------
 
-``setLocationMode()`` 또는 ``location.setMode()``를 이용해 위치에 대한 모드를 설정할 수 있습니다.:
+``setLocationMode()`` 또는 ``location.setMode()`` 를 이용해 위치에 대한 모드를 설정할 수 있습니다.:
 
 .. code-block:: groovy
 
@@ -85,14 +85,14 @@ SmartApp의 ``기본 설정`` 창에서 ``"mode"`` 입력창을 이용해 사용
 
 개발자가 올바른 모드를 결정하는 데 필요한 작업 없이도 SmartApp은 선택된 모드에서만 실행됩니다.
 
-사용자가 모드를 선택할 수 있도록 하는 다양한 방법에 대한 자세한 정보는 `here <mode_pref>`에서 확인할 수 있습니다.
+사용자가 모드를 선택할 수 있도록 하는 다양한 방법에 대한 자세한 정보는 `here <mode_pref>` 에서 확인할 수 있습니다.
 
 ----
 
 모드 이벤트
 -----------
 
-``location`` 객체의 ``mode``를 구독함으로써 모드 변경에 대해 알림받을 수 있습니다.
+``location`` 객체의 ``mode`` 를 구독함으로써 모드 변경에 대해 알림받을 수 있습니다.
 
 .. code-block:: groovy
 
@@ -104,7 +104,7 @@ SmartApp의 ``기본 설정`` 창에서 ``"mode"`` 입력창을 이용해 사용
         log.debug "mode changed to ${evt.value}"
     }
 
-위 예제에서 ``modeChangeHandler()``는 이 SmartApp이 설치된 위치에 대한 모드가 바뀔 때마다 호출됩니다.
+위 예제에서 ``modeChangeHandler()`` 는 이 SmartApp이 설치된 위치에 대한 모드가 바뀔 때마다 호출됩니다.
 
 ----
 
