@@ -370,21 +370,15 @@ SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_
 
 그러나 SmartApp가 변수(예를 들어, state에서)를 구독해야하는 경우, 검토자는 변수가 설정되는 방식과 예상되는 특성이 무엇인지 추적할 수 있어야합니다.
 
-Subscriptions should be specific
+구독은 구체적이어야 합니다
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-구독은 구체적이어야합니다.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Do not create overly-broad subscriptions.
 지나치게 광범위한 구독을 만들지 마십시오.
 
-A SmartApp that is subscribed to every location Event will execute excessively, and is rarely necessary.
-Instead, create subscriptions specific to the Event you are interested in.
-모든 위치 이벤트에 등록 된 SmartApp는 지나치게 실행되며 거의 필요하지 않습니다.
-대신 관심있는 일정에 맞는 구독을 만드십시오.
+모든 위치의 이벤트에 구독된 SmartApp는 지나치게 많이 실행되며 이런 경우는 거의 필요하지 않습니다.
+대신 관심있는 이벤트에 구체적인 구독을 만드십시오.
 
-If you're creating a service manager for a LAN-connected device, be sure to :ref:`subscribe to the device search target <lan_device_discovery>`.
-LAN 연결 장치 용 서비스 관리자를 만드는 경우 : ref :`장치 검색 대상 <lan_device_discovery> 구독 '을 반드시 수행하십시오.
+LAN 연결 장치 용 서비스 관리자를 만드는 경우 :참고:`장치 검색 대상 <lan_device_discovery> 구독'을 꼭 해주세요.
 
 Do not use dynamic method execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
