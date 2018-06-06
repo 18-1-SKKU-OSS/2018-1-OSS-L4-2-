@@ -98,7 +98,7 @@ include 문
     }
 
     def handler(response, data) {
-        // handle response
+        // 응답 처리
     }
 
 ``include``문은 파일 상단에 위치해야 합니다.
@@ -123,15 +123,15 @@ include 문
 모든 비동기 HTTP 요청 메소드는 첫번째 인자로 응답과 함께 호출할 메소드의 이름을 필요로 합니다. 또한 URI, 선택적으로 경로, URL 쿼리 매개변수, HTTP 헤더, 요청의 내용 유형을 지정해주어야 합니다. 매개변수 지도를 넘겨줌으로써 이를 해결할 수 있습니다. 아래의 표는 지도에서 지원하는 키 목록입니다.
 
 ================== ===========
-Key                Description
+키                 설명
 ================== ===========
-uri (required)     Either a URI or URL of the endpoint to make a request from.
-path               Request path that is merged with the URI.
-query              Map of URL query parameters.
-headers            Map of HTTP headers.
-requestContentType The value of the ``Content-Type`` request header. Defaults to ``'application/json'``.
-contentType        The value of the ``Accept`` request header. Defaults to the value of the ``requestContentType`` parameter if not specified.
-body               The request body to send. Can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON). Only valid for ``PUT``, ``POST``, ``DELETE``, and ``PATCH`` requests.
+uri (필요시)        요청을 보내는 엔드포인트의 URI 또는 URL
+path               URI와 병합될 요청 경로
+query              URL 쿼리 매개변수의 지도
+headers            HTTP 헤더의 지도
+requestContentType 요청 헤더 ``Content-Type``의 값. 기본 값은 ``'application/json'``.
+contentType        요청 헤더 ``Accept``의 값. 지정되지 않았을 경우, 기본 값은 ``requestContentType``의 매개변수 값.
+body               보낼 요청 본문. 문자열이 될 수도 있고, ``requestContentType``이 ``"application/json"``인 경우, (JSON으로 직렬화될) 지도 또는 리스트가 될 수 있습니다. ``PUT``, ``POST``, ``DELETE`` 및 ``PATCH`` 요청에만 유효합니.
 ================== ===========
 
 
@@ -142,7 +142,7 @@ URI와 경로
 
 .. code-block:: groovy
 
-    // uri and path merged to form "https://someapi.com/some/path"
+    // uri와 경로가 합쳐져 "https://someapi.com/some/path"이 됩니다
     def params = [
         uri: 'https://someapi.com',
         path: '/some/path'
@@ -187,7 +187,7 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
     include 'asynchttp_v1'
 
     def initialize() {
-        // search for occurences of httpGet in the SmartThingsPublic repo
+        // SmartThingsPublic repo에서 httpGet의 발생을 검색합니다.
         def params = [
             uri: 'https://api.github.com',
             path: '/search/code',
@@ -213,11 +213,11 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
 본문 요청
 ^^^^^^^^
 
-본문을 가질 수 있는 HTTP 요청 메소드는 또한 매개변수 지도에 ``body``를 지정해줄 수 있습니다. 
-``body`` 값은 문자열이 될 수 있으며, ``requestContentType``이 ``"application/json"``일 경우 JSON으로 직렬화 될 맵 또는 리스트가 될 수 있습니다.
+본문을 가질 수 있는 HTTP 요청 메소드는 또한 매개변수 지도에 ``body`` 를 지정해줄 수 있습니다. 
+``body`` 값은 문자열이 될 수 있으며, ``requestContentType`` 이 ``"application/json"`` 일 경우 JSON으로 직렬화 될 맵 또는 리스트가 될 수 있습니다.
 :ref:`async_http_ref_put`, :ref:`async_http_ref_post`, :ref:`async_http_ref_delete`, :ref:`async_http_ref_patch` 메소드는 ``body`` 옵션을 지원합니다.
 
-지도를 이용해 본문을 요청하는 ``POST``를 하는 예제입니다.
+지도를 이용해 본문을 요청하는 ``POST`` 를 하는 예제입니다.
 
 .. code-block:: groovy
 
@@ -333,7 +333,7 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         headers.each { header, value ->
             log.debug "$header: $value"
         }
-        // can use array notation to get specific header values
+        // 특정 헤더 값을 얻는 데에 배열 표기법을 사용할 수 있습니다
         def etagHeader = response.headers['ETag']
     }
 
@@ -364,13 +364,13 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         if (response.hasError()) {
             log.debug "error response data: $response.errorData"
             try {
-                // exception thrown if json cannot be parsed from response
+                // 응답으로부터 json으로 파싱되지 않으면 예외가 발생됩니다
                 log.debug "error response json: $response.errorJson"
             } catch (e) {
                 log.warn "error parsing json: $e"
             }
             try {
-                // exception thrown if xml cannot be parsed from response
+                // 응답으로부터 xml로 파싱되지 않으면 예외가 발생됩니다
                 log.debug "error response xml: $response.errorXml"
             } catch (e) {
                 log.warn "error parsing xml: $e"
@@ -403,7 +403,7 @@ JSON 응답
         } else {
             def results
             try {
-                // json response already parsed into JSONElement object
+                // 이미 JSONElement 객체로 파싱된 json 응답
                 results = response.json
             } catch (e) {
                 log.error "error parsing json from response: $e"
@@ -413,7 +413,7 @@ JSON 응답
 
                 log.debug "there are $total occurences of httpGet in the SmartThingsPublic repo"
 
-                // for each item found, log the name of the file
+                // 발견된 각 item에 대해 파일의 이름을 기록합니다
                 results?.items.each { log.debug "httpGet usage found in file $it.name" }
             } else {
                 log.debug "did not get json results from response body: $response.data"
@@ -443,7 +443,7 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
     }
 
     def xmlResultsHandler(response, data) {
-        // results look like:
+        // 결과는 다음과 같습니다
         // <slideshow title="Sample Slide Show" date="Date of publication" author="Yours Truly">
         //     <slide type="all">
         //         <title>Wake up to WonderWidgets!</title>
@@ -603,4 +603,102 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
 다음 절에서는 동기식 HTTP 요청을 비동기식 HTTP 요청으로 수정하는 몇 가지 방법에 대해 설명하고, 비동기성이 요구하는 설계 변경 사항 중 일부를 강조합니다.
 
 ----
+
+.. _async_http_refactoring:
+
+비동기식 HTTP 요청으로 리팩토링하기
+--------------------------------
+
+가치가 높은 기회 찾기
+^^^^^^^^^^^^^^^^^^^
+
+동기식 HTTP 요청을 비동기식 HTTP 요청으로 리팩토링할지 고려 중이라면, 가치가 높은 기회를 찾아보시길 바랍니다.
+높은 가치는 HTTP 요청을 하는 실행이 빈번하고 자주 예약되는 것으로 정의될 수 있습니다.
+
+예를 들어, 5분마다 HTTP 요청을 실행하는 SmartApp은 비동기식 HTTP 요청을 사용하도록 리팩토링되면 엄청난 이익을 얻을 수 있습니다.
+반면에, 설치할 때 또는 낮은 빈도 수로 실행되는 단일 동기식 HTTP 요청은 특히 리팩토링 비용이 비싸거나 위험할 때, 비동기식 HTTP 요청을 사용하도록 리팩토링되어도 크게 도움이 되지 않습니다.
+
+예약되어 있거나 자주 실행되는 동기식 HTTP 요청이 사용되는 곳을 찾고, 그 요청부터 먼저 리팩토링하시길 바랍니다.
+
+리팩토링 방법
+^^^^^^^^^^^^
+
+동기식 HTTP 요청을 비동기식 HTTP 요청으로 리팩토링할 때, 응답을 받은 후에 실행되는 코드가 응답 콜백 처리기로 이어지는지 확인해야 합니다.
+다음 동기식 HTTP 요청의 예제를 확인해보세요.
+
+.. code-block:: groovy
+
+    def initialize() {
+        def results = getSomeData()
+        log.debug "got results $results"
+        doSomethingWithData(results)
+    }
+
+    def getSomeData() {
+        def params = [
+            uri: 'https://someapi.com',
+            path: '/some/path'
+        ]
+        def results
+        httpGet(params) { resp ->
+            ...
+            results = resp.data
+        }
+        return results
+    }
+
+    def doSomethingWithData(results) {
+        // results 데이터로 어떠한 작업 수행
+    }
+
+위의 예제에서 ``initialize()`` 메소드(그리고 이 메소드가 호출하는 모든 메소드)는 *단일 실행*에서 실행됩니다.
+그 실행은 요청을 하고, 그 요청이 응답을 반환할 때까지 기다리고, 그 후에 응답을 파싱하고 파싱한 값을 이용해 작업을 수행합니다.
+
+위 예제에서 비동기식 HTTP 메소드를 사용하도록 바꾸려면, results를 계산하는 모든 코드를 응답 처리기로 옮겨야 합니다.
+``getSomeData()``를 호출한 다음의 ``initialize()`` 코드는 응답을 받았다 가정하기 때문에, 그저 ``getSomeData()`` 메소드가 비동기식 HTTP를 사용하도록 바꿀 수는 없습니다.
+
+아래는 비동기식 HTTP 요청을 사용하도록 바꾼 코드입니다.
+요청이 비동기식으로 처리되고 응답 처리기는 다른 실행에서 호출되기 때문에 응답을 필요로 하는 논리를 응답 처리기로 옮깁니다.
+
+.. code-block:: groovy
+
+    include 'asynchttp_v1'
+
+    def initialize() {
+        getSomeData()
+    }
+
+    // 실행 1: 요청 생성
+    def getSomeData() {
+        def params = [
+            uri: 'https://someapi.com',
+            path: '/some/path'
+        ]
+        asynchttp_v1.get('responseHandler', params)
+    }
+
+    // 실행 1 + n: 응답 처리
+    def responseHandler(response, data) {
+        def data = response.data
+        log.debug "got data: $data"
+        doSomethingWithData(data)
+    }
+
+    def doSomethingWithData(results) {
+        // results 데이터로 어떠한 작업 수행
+    }
+
+----
+
+예제
+----
+
+이 문서에서 설명된 API를 보여주는 전체 SmartApp 예제는 설치 설명서와 함께 `이곳 <https://gist.github.com/jimmyjames/85a1a46fbd7fc077dee78f6ae1d865c0>`__에서 확인하실 수 있습니다.
+
+관련 문서
+--------
+
+- :ref:`calling_web_services`
+- :ref:`async_http_api_ref`
+- :ref:`async_http_response_ref`
 
