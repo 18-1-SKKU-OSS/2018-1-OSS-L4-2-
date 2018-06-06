@@ -96,3 +96,98 @@ HubAction 개체를 만들려면 다음과 같이 요청 정보를 정의하는 
 
 JSON 이나 XML 응답 포맷에 대한 더 자세한 정보는
 Groovy `JsonSlurper <http://docs.groovy-lang.org/latest/html/gapi/groovy/json/JsonSlurper.html>`__ and `XmlSlurper <http://docs.groovy-lang.org/latest/html/api/groovy/util/XmlSlurper.html>`__ 문서를 참고하세요.
+
+----
+
+주소 받아오기
+----------
+
+HubAction을 수행하려면 장치의 IP주소와 허브가 필요합니다.
+
+디바이스 IP및 포트가 저장되는 방법은 디바이스 유형에 따라 다릅니다.
+
+현재 이 정보를 쉽게 얻을 수 있는 공용 API가 없으므로, 있을 때까지 장치 유형 처리기에서 이 작업을 처리해야 합니다.
+
+다음과 같은 도우미 메서드를 사용하여 이 정보를 얻는 것이 좋습니다:
+
+.. code-block:: groovy
+
+    // gets the address of the Hub
+    private getCallBackAddress() {
+        return device.hub.getDataValue("localIP") + ":" + device.hub.getDataValue("localSrvPortTCP")
+    }
+
+    // gets the address of the device
+    private getHostAddress() {
+        def ip = getDataValue("ip")
+        def port = getDataValue("port")
+
+        if (!ip || !port) {
+            def parts = device.deviceNetworkId.split(":")
+            if (parts.length == 2) {
+                ip = parts[0]
+                port = parts[1]
+            } else {
+                log.warn "Can't figure out ip and port for device: ${device.id}"
+            }
+        }
+
+        log.debug "Using IP: $ip and port: $port for device: ${device.id}"
+        return convertHexToIP(ip) + ":" + convertHexToInt(port)
+    }
+
+    private Integer convertHexToInt(hex) {
+        return Integer.parseInt(hex,16)
+    }
+
+    private String convertHexToIP(hex) {
+        return [convertHexToInt(hex[0..1]),convertHexToInt(hex[2..3]),convertHexToInt(hex[4..5]),convertHexToInt(hex[6..7])].join(".")
+    }
+
+이 문서의 나머지 예제에서는 이러한 도우미 방법을 사용합니다.
+
+----
+
+Wake on LAN (WOL)
+-----------------
+
+``HubAction``는 `WOL <https://en.wikipedia.org/wiki/Wake-on-LAN>`__ 요청을 생성할때 이용될 수 있습니다.
+
+다음은 예시입니다:
+
+.. code-block:: groovy
+
+    def myWOLCommand() {
+        def result = new physicalgraph.device.HubAction (
+            "wake on lan <your mac address w/o ':'>",
+            physicalgraph.device.Protocol.LAN,
+            null,
+            [secureCode: "111122223333"]
+        )
+        return result
+    }
+
+
+``HubAction`` 에 대한 첫번째 인수는 HubAction 클래스에 WOL요청이 될 것이라고 알려 줍니다.
+
+인수는 "wake on lan <mac address>" 형식이어야 합니다. 여기서 MAC주소는 ':'구분 문자가 없는 주소입니다.
+
+예를 들어 NIC의 MAC주소가``01:23:45:67:89:ab``인 경우 ``HubAction``에 대한 첫번째 매개 변수는 ``"wake on lan 0123456789ab"``입니다.
+
+두번째 파라미터는 단순히 LAN요청을 지정하기만 하면 됩니다.
+
+WOL유형 요청 시에는 항상 이러한 상황이 발생합니다. 그래서 그 가치는 항상``physicalgraph.device.Protocol.LAN`` 입니다.
+
+세번째 매개 변수는 Device Network ID, 또는 dni입니다. WOL요청의 경우 이 매개 변수는 ``null``이어야 합니다.
+
+마지막 매개 변수는 요청에 대한 옵션을 나타내는 맵입니다.
+
+WOL요청의 경우 이 맵은 매개 변수 ``secureCode`` 하나로만 구성됩니다.
+
+일부 NIC는 유효한 MAC주소뿐만 아니라 유효한 암호도 입력해야 하는*SecureOn*기능을 지원합니다.
+
+이 암호는 NIC에서 구성해야 합니다.
+
+NIC가*SecureOn*을 지원하지 않거나 암호가 설정되지 않은 경우 옵션 맵을 생략하면 됩니다.
+
+----
