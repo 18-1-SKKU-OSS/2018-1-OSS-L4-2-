@@ -57,7 +57,7 @@ Bon Voyage 앱을 설정하려면 사용자로부터 다음 정보를 수집해�
 
 *When all of these people leave home* 섹션에서는 사용자가 이 앱에서 사용할 센서를 설정할 수 있습니다.
 사용자는 기본 제목이 "When all of these people leave home"인 섹션을 볼 수 있습니다.
-사용자가 원하는 센서를 선택할 수 있도록 드롭다운은 감지센서의 기능(``capability.presenceSensor``)을 가진 디바이스로 채워집니다.
+사용자가 원하는 센서를 선택할 수 있도록 드롭다운은 감지센서의 기능( ``capability.presenceSensor`` )을 가진 디바이스로 채워집니다.
 ``multiple: true`` 은 사용자가 원하는 만큼 센서를 추가할 수 있도록 합니다.
 선택된 센서는 ``people`` 이라는 변수에 저장됩니다.
 
