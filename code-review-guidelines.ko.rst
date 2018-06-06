@@ -380,23 +380,18 @@ SmartApp 또는 Device Handler가 :참고:`엔드 포인트를 하나라도 노출하는 경우 <web_
 
 LAN 연결 장치 용 서비스 관리자를 만드는 경우 :참고:`장치 검색 대상 <lan_device_discovery> 구독'을 꼭 해주세요.
 
-Do not use dynamic method execution
+동적 메서드는 실행하지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-동적 메서드 실행을 사용하지 마십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In groovy you can execute functions based on a string, like so:
-Groovy에서는 다음과 같이 문자열을 기반으로 함수를 실행할 수 있습니다.
+그루비에서는 다음과 같이 문자열을 기반으로 함수를 실행할 수 있습니다.
 
 .. code-block:: groovy
 
     object."${mystring}"()
 
-Which can be very handy, but when ``${mystring}`` comes from a HTTP request, outside the SmartThings platform, or from another SmartApp or Device Handler, we need to validate the input.
-매우 편리 할 수 있지만, "$ {mystring}"이 HTTP 요청, SmartThings 플랫폼 외부 또는 다른 SmartApp 또는 Device Handler에서 온 경우 입력을 검증해야합니다.
+매우 편리 할 수 있지만, ``$ {mystring}``이 HTTP 요청, 즉 SmartThings 플랫폼 외부 또는 다른 SmartApp 또는 Device Handler에서 온 경우 입력을 검증해야합니다.
 
-The preferred method of validation is to use a ``switch()`` statement on the input before doing anything with it:
-우선적 인 검증 방법은 무엇인가를하기 전에 입력에 대해``switch ()``문을 사용하는 것입니다 :
+좋은 검증 방법은 입력을 사용하기 전 ``switch()``문을 사용하는 것입니다:
 
 .. code-block:: groovy
 
