@@ -1,49 +1,49 @@
 .. _smartapp_as_web_service_part_1:
 
-Web Services Tutorial--SmartApp
+웹 서비스 튜토리얼--SmartApp
 ===============================
 
-This is the first part of two that will teach you how to build a Web Services SmartApp and a web application to illustrate the authorization flow.
+이것은 인증 흐름을 설명하는 웹 서비스 SmartApp과 웹 어플리케이션을 작성하는 법을 알려줄 2부 중 1부입니다.
 
 ----
 
-Overview
+개요
 --------
 
-In part 1 of this tutorial, you will learn:
+이 튜토리얼의 1부에서, 다음과 같은 것을 배우게 될 것입니다:
 
-- How to develop a Web Services SmartApp that exposes endpoints.
-- How to call the Web Services SmartApp using simple API calls.
+- 엔드포인트를 노출하는 웹 서비스 SmartApp을 개발하는 방법
+- 간단한 API 호출을 통해 웹 서비스 SmartApp을 호출하는 방법
 
-The source code for this tutorial is available `here <https://github.com/SmartThingsCommunity/Code/tree/master/smartapps/tutorials/web-services-smartapps>`__.
+이 튜토리얼의 소스 코드는 `여기 <https://github.com/SmartThingsCommunity/Code/tree/master/smartapps/tutorials/web-services-smartapps>`__.에서 볼 수 있습니다.
 
-Part 1 of this tutorial will build a simple SmartApp that exposes endpoints to get information about and control switches.
+이 튜토리얼의 1부에서는 엔트포인트를 노출하여 스위치에 대한 정보를 얻고 제어하는 간단한 SmartApp을 작성합니다.
 
 ----
 
-Create a new SmartApp
+새 SmartApp 만들기
 ---------------------
 
-Create a new SmartApp in the IDE. Fill in the required fields, and make sure to click on *Enable OAuth in SmartApp* to receive an auto-generated client ID and secret.
+IDE에서 새 SmartApp을 만드세요. 필수 입력란을 채우고, 자동 생성된 클라이언트 ID와 비밀번호를 받기 위해 *SmartApp에서 OAuth 허용* 을 클릭하세요.
 
-Make sure to specify the redirect URI as this will be used to validate the authorization code request.
-For the purposes of this tutorial, simply type in ``http://localhost:4567/oauth/callback``.
+인증 코드 요청의 유효성을 검사하는데 사용되므로 재전송 URL을 지정하세요.
+이 튜토리얼의 의도를 위해, 간단히 ``http://localhost:4567/oauth/callback`` 을 입력하세요.
 
-Note the Client ID and secret - they'll be used later (should you forget, you can get them by viewing the "App Settings" in the IDE).
+클라이언트 ID와 비밀번호는 나중에 사용되므로 기억해두세요. (잊어버리면, IDE의 "앱 설정"에서 얻을 수 있습니다.)
 
 ----
 
-Define preferences
+환경 설정 정의
 ------------------
 
-SmartApps declare preferences metadata that is used at installation and configuration time, to allow the user to control what devices the SmartApp will have access to.
+SmartApps는 설치 및 구성 시 사용되는 환경 설정 메타 데이터를 선언하여, SmartApp이 접근할 장치를 사용자가 제어할 수 있도록 합니다.
 
-This is a configuration step, but also a security step, whereby the users must explicitly select what devices the SmartApp can control.
+이는 구성 단계일 뿐 아니라, SmartApp이 제어할 수 있는 장치를 사용자가 명시적으로 선택해야하는 보안 단계이기도 합니다.
 
-Web Services SmartApps are no different, and this is part of the power of this approach.
-The end user controls exactly what devices the SmartApp will have access to, and therefore what devices the external systems that consume those web services will have access to.
+웹 서비스 SmartApps는 별다른 차이점이 없으며, 이러한 접근 방식의 힘을 발휘합니다.
+최종 사용자는 SmartApp이 접근할 장치를 정확히 제어하므로, 해당 웹 서비스를 사용하는 외부 시스템이 접근할 장치가 무엇인지도 제어합니다.
 
-The preferences definition should look like this:
+환경 설정 정의는 다음과 같아야 합니다:
 
 .. code-block:: groovy
 
@@ -53,25 +53,25 @@ The preferences definition should look like this:
     }
   }
 
-Also ensure that you have an ``installed()`` and ``updated()`` method defined (this should be created by default when creating a SmartApp).
-They can remain empty, since we are not subscribing to any device Events in this example.
+또한 ``installed()`` 와 ``updated()`` 메소드가 정의되어 있는지 확인하세요 (이것은 SmartApp을 생성할 때 기본적으로 생성되어야 합니다).
+이 예에서 어떤 장치 이벤트도 구독하지 않기 때문에, 두 메소드는 비워둘 수 있습니다.
 
-You can learn more about Web Services SmartApp preferences :ref:`here <web_services_preferences>`.
+웹 서비스 SmartApp 환경 설정에 대해 `여기 <web_services_preferences>` 에서 더 자세히 알 수 있습니다.
 
 ----
 
-Specify endpoints
+엔드 포인트 지정
 -----------------
 
-The ``mappings`` declaration allows developers to expose HTTP endpoints, and map the various supported HTTP operations to an associated handler.
+``mappings`` 선언은 개발자가 HTTP 엔드포인트를 노출하고, 지원되는 다양한 HTTP 작업을 연관된 핸들러에 매핑할 수 있도록 합니다.
 
-Our SmartApp will expose two endpoints:
+우리 SmartApp은 두 엔드포인트를 노출합니다:
 
-- The ``/switches`` endpoint will support a GET request. A GET request to this endpoint will return state information for the configured switches.
+- ``/switches`` 엔드포인트는 GET 요청을 지원합니다. 이 엔드포인트에 대한 GET 요청은 구성된 스위치에 대한 상태 정보를 반환합니다.
 
-- The ``/switches/:command`` endpoint will support a PUT request. A PUT request to this endpoint will execute the specified command (``"on"`` or ``"off"``) on the configured switches.
+- ``/switches/:command`` 엔드포인트는 PUT 요청을 지원합니다. 이 엔드포인트에 대한 PUT 요청은 구성된 스위치에서 지정된 명령을 (``"on"`` 이나 ``"off"``) 실행합니다.
 
-Here's the code for our mappings definition. This is defined at the top-level in our SmartApp (i.e., not in another method):
+다음은 매핑 정의에 대한 코드입니다. 이는 SmartApp의 최상위 수준에서 정의됩니다. (즉, 다른 메소드에서 정의되지 않습니다.):
 
 .. code-block:: groovy
 
@@ -88,10 +88,10 @@ Here's the code for our mappings definition. This is defined at the top-level in
       }
     }
 
-Note the use of variable parameters in our PUT endpoint.
-Use the ``:`` prefix to specify that the value will be variable. We'll see later how to get this value.
+PUT 엔드포인트에서 변수 파라미터를 사용합니다.
+값이 가변적이도록 지정하려면 ``:`` 접두사를 사용하세요. 이 값을 얻는 방법은 나중에 살펴보겠습니다.
 
-Go ahead and add empty methods for the various handlers. We'll fill these in in the next step:
+다양한 핸들러에 대해 빈 메소드를 추가하세요. 다음 단계에서 이를 채울 것입니다:
 
 .. code-block:: groovy
 
@@ -99,23 +99,23 @@ Go ahead and add empty methods for the various handlers. We'll fill these in in 
 
   def updateSwitches() {}
 
-See the :ref:`web_services_mapping_endpoints` documentation for more information.
+더 많은 정보를 보려면 :ref:`web_services_mapping_endpoints` 문서를 참고하세요.
 
 ----
 
-GET switch information
+GET 스위치 정보
 ----------------------
 
-Now that we've defined our endpoints, we need to handle the requests in the handler methods we stubbed in above.
+이제 엔드포인트를 정의했으므로, 위에서 정의한 핸들러 메소드에서의 요청을 처리해야 합니다.
 
-Let's start with the handler for GET requests to the ``/switches`` endpoint.
-When a GET request to the ``/switches`` endpoint is called, we want to return the display name, and the current switch value (e.g., on or off) for the configured switch.
+``/switches`` 엔드포인트에 대한 GET 요청 핸들러부터 시작해보겠습니다.
+``/switches`` 엔드포인트에 대한 GET 요청이 호출되면, 디스플레이 이름과 구성된 스위치의 현재 스위치 값을 (예로  on 또는 off) 반환하고자 합니다.
 
-Our handler method returns a list of maps, which is then serialized by the SmartThings platform into JSON:
+우리의 핸들러 메소드는 SmartThings 플랫폼에 의해 JSON으로 순차화되는 맵 목록을 반환합니다:
 
 .. code-block:: groovy
 
-  // returns a list like
+  // 다음과 같은 리스트를 반환합니다:
   // [[name: "kitchen lamp", value: "off"], [name: "bathroom", value: "on"]]
   def listSwitches() {
       def resp = []
@@ -125,26 +125,26 @@ Our handler method returns a list of maps, which is then serialized by the Smart
       return resp
   }
 
-See the :ref:`smartapp_web_services_response` documentation for more information on working with web request responses.
+웹 요청 응답에 대해 더 많은 정보를 보려면 :ref:`smartapp_web_services_response` 문서를 참고하세요.
 
 ----
 
-UPDATE the switches
+스위치 업데이트
 -------------------
 
-We also need to handle a PUT request to the ``/switches/:command`` endpoint. ``/switches/on`` will turn the switches on, and ``/switches/off`` will turn the switches off.
+``/switches/:command`` 엔드포인트에 대한 PUT 요청도 처리해야 합니다. ``/switches/on`` 는 스위치를 켜고, ``/switches/off`` 는 스위치를 끕니다.
 
-If any of the configured switches does not support the specified command, we'll return a ``501`` HTTP error.
+어느 구성된 스위치도 지정된 명령을 지원하지 않으면, ``501`` HTTP 에러를 반환할 것입니다.
 
 .. code-block:: groovy
 
     void updateSwitches() {
-        // use the built-in request object to get the command parameter
+        // 명령 파라미터를 얻기 위해 내장 요쳥 오브젝트 사용
         def command = params.command
 
-        // all switches have the command
-        // execute the command on all switches
-        // (note we can do this on the array - the command will be invoked on every element
+        // 모든 스위치는 명령을 가집니다
+        // 모든 스위치의 명령 실행
+        // (이것을 배열 상에서 할 수 있음을 기억하세요 - 명령은 모든 원소에서 호출됩니다)
         switch(command) {
             case "on":
                 switches.on()
@@ -158,92 +158,92 @@ If any of the configured switches does not support the specified command, we'll 
     }
 
 
-Our example uses the endpoint itself to get the command.
-You can learn more about working with requests :ref:`here <webservices_smartapp_request_handling>`.
+이 예에서는 명령을 얻기 위해 엔드포인트 자체를 사용합니다.
+요청에 대한 작업에 대해 더 알아볼 수 있습니다 :ref:`here <webservices_smartapp_request_handling>`.
 
 ----
 
-Self-publish the SmartApp
+SmartApp 자체 게시
 -------------------------
 
-Publish the app for yourself, by clicking on the *Publish* button and selecting *For Me*.
+*게시* 버튼을 클릭하고 *나를 위해* 를 골라 앱 자체를 위해 게시하세요.
 
 ----
 
 .. _run_api_smartapp_simulator:
 
-Run the SmartApp in the Simulator
+시뮬레이터에서 SmartApp 실행하기
 ---------------------------------
 
-Using the Simulator, we can quickly test our Web Services SmartApp.
+시뮬레이터를 사용해서, 우리 웹 서비스 SmartApp을 빠르게 시험해볼 수 있습니다.
 
-Click the *Install* button in the Simulator, select a Location to install the SmartApp into, and select a switch.
+시뮬레이터에서 *설치* 버튼을 누르고, SmartApp을 설치할 위치를 선택하고, 스위치를 선택하세요.
 
-Note that in the lower right of the Simulator there is an API token and an API endpoint URL:
+시뮬레이터의 오른쪽 아래에 API 토큰과 API 엔드포인트 URL이 있습니다:
 
 .. image:: ../img/smartapps/web-services/web-services-smartapp-simulator-install.png
 
 .. important::
 
-    The base URL for of your SmartApp's API endpoint will vary depending on the Location being installed into.
+    SmartAPp API 엔드포인트의 기본 URL은 설치될 위치에 따라 다릅니다.
 
-    **Be sure to copy the URL from the Simulator to ensure you have the correct URL!**
+    **올바른 URL을 가지기 위해 시뮬레이터에서 URL을 복사하세요!**
 
-We can use these to test making requests to our SmartApp.
+우리 SmartApp에 대한 요청을 시험하는데 이를 사용할 수 있습니다.
 
 ----
 
-Make API calls to the SmartApp
+SmartApp으로의 API 호출 만들기
 ------------------------------
 
-Using whatever tool you prefer for making web requests (this example will use curl, but `Apigee <http://apigee.com>`__ is a good UI-based tool for making requests), we will call one of our SmartApp endpoints.
+웹 요청을 하기 위해 선호하는 툴을 사용하여 (이 예에서는 컬을 사용하지만, `Apigee <http://apigee.com>`__ 은 요청을 하기에 좋은 UI 기반 툴입니다), SmartApp 엔드포인트 중 하나를 호출할 것입니다.
 
-From the Simulator, grab the API endpoint. It will look something like this::
+시뮬레이터에서, API 엔드포인트를 가져오세요. 그러면 다음과 같을 것입니다::
 
   https://<BASE-URL>/api/smartapps/installations/158ef595-3695-49ab-acc1-80e93288c0c8
 
-Your installation will have a different, unique URL.
+설치 시 다른 고유 URL이 사용됩니다.
 
 .. important::
 
-    The base URL for of your SmartApp's API endpoint will vary depending on the Location being installed into.
+    SmartAPp API 엔드포인트의 기본 URL은 설치될 위치에 따라 다릅니다.
 
-    **Be sure to copy the URL from the Simulator to ensure you have the correct URL!**
+    **올바른 URL을 가지기 위해 시뮬레이터에서 URL을 복사하세요!**
 
-To get information about the switch, we will call the /switch endpoint using a GET request.
-You'll need to substitute your unique endpoint and API key.
+스위치에 대한 정보를 얻기 위해, GET 요청을 사용해 /switch 엔드포인트를 호출할 것입니다.
+고유한 엔드포인트와 API 키를 대체해야 합니다.
 
 .. code-block:: bash
 
   curl -H "Authorization: Bearer <api token>" "<api endpoint>/switches"
 
-This should return a JSON response like the following::
+이는 아래와 같이 JSON 응답을 호출해야 합니다::
 
   [{"name":"Kitchen 2","value":"off"},{"name":"Living room window","value":"off"}]
 
-To turn the switch on or off, call the /switches endpoint using a PUT request.
-Again, you'll need to substitute your unique endpoint and API key:
+스위치를 켜거나 끄려면, PUT 요청을 사용해 /switches 엔드포인트를 호출하세요.
+다시, 고유한 엔드포인트와 API 키를 대체해야 합니다.
 
 .. code-block:: bash
 
   curl -H "Authorization: Bearer <api token>" -X PUT "<api endpoint>/switches/on"
 
-Change the command value to ``"off"`` to turn the switch off.
-Try turning the switch on and off, and then using curl to get the status, to see that it changed.
+스위치를 끄려면 명령 값을 ``"off"`` 로 바꾸세요.
+스위치를 켜고 끄고, 컬을 사용하여 상태가 변경되었는지 확인하세요.
 
 ----
 
-Uninstall the SmartApp
+SmartApp 삭제
 ----------------------
 
-Finally, uninstall the SmartApp using the *Uninstall* button in the IDE Simulator.
+마지막으로, IDE 시뮬레이터의 *삭제* 버튼을 이용해 SmartApp을 삭제하세요.
 
 ----
 
-Summary
+요약
 -------
 
-In this tutorial, you learned how to create a SmartApp that exposes endpoints to get information about, and control, a device.
-You also learned how to install the SmartApp in the Simulator, and then make API calls to the endpoint.
+이 튜토리얼에서, 엔드포인트가 정보를 얻고 제어할 수 있도록 하는 SmartApp을 만드는 법을 배웠습니다.
+시뮬레이터에 SmartApp을 설치하고 엔드포인트에 API 호출을 하는 방법도 배웠습니다.
 
-In the next part of this tutorial, we'll look at how a external application might interact with SmartThings using the OAuth2 flow (instead of simply using the Simulator and its generated access token).
+이 튜토리얼의 다음 부분에서는, (단순히 시뮬레이터와 생성된 접근 토큰을 사용하는 대신) OAuth2 흐름을 사용하여 외부 어플리케이션이 SmartThings와 상호 작용하는 방법을 살펴볼 것입니다.
