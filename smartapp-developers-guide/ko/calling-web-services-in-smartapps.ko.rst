@@ -5,7 +5,7 @@
 
 SmartApp 또는 디바이스 처리기는 외부 웹 서비스를 호출해야 할 수 있습니다. 이러한 요청을 할 수 있도록 해주는 몇 가지 사용가능한 API가 있습니다.
 
-다양한 API는 사용할 HTTP 요청 메소드에 따라 이름이 지정됩니다. 예를 들어 ``httpGet()``은 HTTP GET 요청을 합니다.
+다양한 API는 사용할 HTTP 요청 메소드에 따라 이름이 지정됩니다. 예를 들어 ``httpGet()`` 은 HTTP GET 요청을 합니다.
 
 .. note::
 
@@ -76,8 +76,8 @@ body                지정된 contentType에 따라 인코딩 될 요청 본문
 
 .. note::
 
-	``requestContentType``을 지정하면 호출하는 다양한 http API의 기본 동작을 오버라이드할 수 있습니다.
-	예를 들어, ``httpPostJson()``은 ``requestContentType``을 기본 값으로 ``"application/json"``으로 설정합니다.
+	``requestContentType`` 을 지정하면 호출하는 다양한 http API의 기본 동작을 오버라이드할 수 있습니다.
+	예를 들어, ``httpPostJson()`` 은 ``requestContentType`` 을 기본 값으로 ``"application/json"`` 으로 설정합니다.
 
 ----
 
@@ -86,7 +86,7 @@ body                지정된 contentType에 따라 인코딩 될 요청 본문
 
 HTTP API는 요청으로부터 응답 정보와 함께 호출 될 클로저를 허용합니다. 
 
-클로저는 `HttpResponseDecorator <https://github.com/jgritman/httpbuilder/blob/855e1784be8585de81cc3c99fd19285798c7bc4f/src/main/java/groovyx/net/http/HttpResponseDecorator.java>`__의 인스턴스로 전달됩니다.
+클로저는 `HttpResponseDecorator <https://github.com/jgritman/httpbuilder/blob/855e1784be8585de81cc3c99fd19285798c7bc4f/src/main/java/groovyx/net/http/HttpResponseDecorator.java>`__ 의 인스턴스로 전달됩니다.
 이 객체를 검사하여 응답에 대한 정보를 얻을 수 있습니다.
 
 다음은 다양한 응답 정보를 얻어오는 예제입니다.
@@ -127,7 +127,7 @@ HTTP API는 요청으로부터 응답 정보와 함께 호출 될 클로저를 �
 
 	'실패' 응답은 예외를 발생시키므로 호출 구문을 try/catch 블럭으로 감싸시길 바랍니다.
 
-응답이 JSON을 반환하는 경우, ``data``는 응답 데이터에 쉽게 접근할 수 있게 해주는 지도 같은 구조를 가집니다.
+응답이 JSON을 반환하는 경우, ``data`` 는 응답 데이터에 쉽게 접근할 수 있게 해주는 지도 같은 구조를 가집니다.
 
 .. code-block:: groovy
 
@@ -148,7 +148,7 @@ HTTP API는 요청으로부터 응답 정보와 함께 호출 될 클로저를 �
         }
     }
 
-위 예제의 요청으로부터 얻은 ``resp.data``는 다음과 같습니다. (가독성을 위해 들여 쓰기를 했습니다.)
+위 예제의 요청으로부터 얻은 ``resp.data`` 는 다음과 같습니다. (가독성을 위해 들여 쓰기를 했습니다.)
 
 .. code-block:: bash
 
@@ -178,7 +178,7 @@ HTTP API는 요청으로부터 응답 정보와 함께 호출 될 클로저를 �
 공개적으로 접근 가능한 호스트로만 요청할 수 있습니다.
 HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (즉, SmartThings 클라우드)로부터 생성된다는 점을 기억하시길 바랍니다.
 
-로컬 또는 개인 호스트에 대한 요청은 허용되지 않으며 ``SecurityException``으로 실패합니다.
+로컬 또는 개인 호스트에 대한 요청은 허용되지 않으며 ``SecurityException`` 으로 실패합니다.
 
 요청 시간초과 제한
 ^^^^^^^^^^^^^^^^
@@ -197,9 +197,9 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
 `httpbin.org <http://httpbin.org/>`__ 을 이용해 간단한 요청을 해볼 수 있습니다.
 위의 ``httpGet()`` 예제는 이곳을 이용합니다.
 
-POST 요청을 해볼 때에는 `PostCatcher <http://postcatcher.in/>`__를 이용할 수 있습니다.
+POST 요청을 해볼 때에는 `PostCatcher <http://postcatcher.in/>`__ 를 이용할 수 있습니다.
 대상 URL을 생성한 후 요청 내용을 검사할 수 있습니다.
-다음은 ``httpPostJson()``을 사용한 예제입니다.
+다음은 ``httpPostJson()`` 을 사용한 예제입니다.
 
 .. code-block:: groovy
 
@@ -228,6 +228,6 @@ POST 요청을 해볼 때에는 `PostCatcher <http://postcatcher.in/>`__를 이�
 참고 항목
 ---------
 
-SmartSense 온습도 센서를 사용자의 날씨 지하 개인 기상 관측소에 연결하는 ``httpGet()``를 사용한 예제는 `이곳 <https://github.com/SmartThingsCommunity/Code/blob/e8a6b6926fb32df1e8d79bfe09a1ad063682396a/smartapps/wunderground-pws-connect.groovy>`_에서 확인하실 수 있습니다.
+SmartSense 온습도 센서를 사용자의 날씨 지하 개인 기상 관측소에 연결하는 ``httpGet()`` 를 사용한 예제는 `이곳 <https://github.com/SmartThingsCommunity/Code/blob/e8a6b6926fb32df1e8d79bfe09a1ad063682396a/smartapps/wunderground-pws-connect.groovy>`_ 에서 확인하실 수 있습니다.
 
-다양한 HTTP를 사용하는 IDE 일부 템플릿을 검색할 수 있습니다. Ecobee Service Manager는 ``httpGet()``과 ``httpPost()``를 모두 사용하는 예제입니다.
+다양한 HTTP를 사용하는 IDE 일부 템플릿을 검색할 수 있습니다. Ecobee Service Manager는 ``httpGet()`` 과 ``httpPost()`` 를 모두 사용하는 예제입니다.
