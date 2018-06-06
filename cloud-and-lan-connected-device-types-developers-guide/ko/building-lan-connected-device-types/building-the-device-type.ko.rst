@@ -191,3 +191,57 @@ WOL요청의 경우 이 맵은 매개 변수 ``secureCode`` 하나로만 구성�
 NIC가*SecureOn*을 지원하지 않거나 암호가 설정되지 않은 경우 옵션 맵을 생략하면 됩니다.
 
 ----
+
+REST 요청
+--------
+
+``HubAction`` 은 `REST <http://en.wikipedia.org/wiki/Representational_state_transfer>`__ 장치와 통신하기 위한 콜을 만들때 이용됩니다.
+
+다음은 간단한 예시입니다:
+
+.. code-block:: groovy
+
+    def myCommand() {
+        def result = new physicalgraph.device.HubAction(
+            method: "GET",
+            path: "/yourpath?param1=value1&param2=value2",
+            headers: [
+                HOST: getHostAddress()
+            ]
+        )
+        return result
+    }
+
+----
+
+UPnP/SOAP 요청
+-------------
+
+
+다르게는 초기 연결 후 UPnP를 사용할 수 있습니다.
+
+UPnP 는 `SOAP <http://en.wikipedia.org/wiki/SOAP_%28protocol%29>`__
+(Simple Object Access Protocol)을 장치와 통신하기 위해 이용합니다.
+
+SmartThings 는 ``HubSoapAction``를 이러한 목적으로 제공합니다.
+
+HubAction 클래스와 유사하지만 (사실 이는 HubAction class를 extend한 것이다) 그것은 당신을 위해 soap envelope를 만드는 것을 다룰 것입니다.
+
+다은은 ``HubSoapAction``를 이용하는 간단한 예시입니다:
+
+.. code-block:: groovy
+
+    def someCommandMethod() {
+        return doAction("SetVolume", "RenderingControl", "/MediaRenderer/RenderingControl/Control", [InstanceID: 0, Channel: "Master", DesiredVolume: 3])
+    }
+
+    def doAction(action, service, path, Map body = [InstanceID:0, Speed:1]) {
+        def result = new physicalgraph.device.HubSoapAction(
+            path:    path,
+            urn:     "urn:schemas-upnp-org:service:$service:1",
+            action:  action,
+            body:    body,
+            headers: [Host:getHostAddress(), CONNECTION: "close"]
+        )
+        return result
+    }
