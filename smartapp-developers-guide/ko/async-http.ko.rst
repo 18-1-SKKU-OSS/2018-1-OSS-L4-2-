@@ -98,7 +98,7 @@ include 문
     }
 
     def handler(response, data) {
-        // handle response
+        // 응답 처리
     }
 
 ``include`` 문은 파일 상단에 위치해야 합니다.
@@ -142,7 +142,7 @@ URI와 경로
 
 .. code-block:: groovy
 
-    // uri and path merged to form "https://someapi.com/some/path"
+    // uri와 path가 "https://someapi.com/some/path"을 형성하도록 합쳐집니다
     def params = [
         uri: 'https://someapi.com',
         path: '/some/path'
@@ -187,7 +187,7 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
     include 'asynchttp_v1'
 
     def initialize() {
-        // search for occurences of httpGet in the SmartThingsPublic repo
+        // SmartThingsPublic repo에서 httpGet의 발생을 검색합니다
         def params = [
             uri: 'https://api.github.com',
             path: '/search/code',
@@ -333,7 +333,7 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         headers.each { header, value ->
             log.debug "$header: $value"
         }
-        // can use array notation to get specific header values
+        // 특정 헤더 값을 받으려면 배열 표기를 쓸 수 있습니다
         def etagHeader = response.headers['ETag']
     }
 
@@ -364,13 +364,13 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         if (response.hasError()) {
             log.debug "error response data: $response.errorData"
             try {
-                // exception thrown if json cannot be parsed from response
+                // 응답으로부터 json을 파싱해낼 수 없을 때 예외 처리
                 log.debug "error response json: $response.errorJson"
             } catch (e) {
                 log.warn "error parsing json: $e"
             }
             try {
-                // exception thrown if xml cannot be parsed from response
+                // 응답으로부터 xml을 파싱해낼 수 없을 때 예외 처리
                 log.debug "error response xml: $response.errorXml"
             } catch (e) {
                 log.warn "error parsing xml: $e"
@@ -403,7 +403,7 @@ JSON 응답
         } else {
             def results
             try {
-                // json response already parsed into JSONElement object
+                // json 응답은 이미 JSONElement 객체로 파싱되었습니다
                 results = response.json
             } catch (e) {
                 log.error "error parsing json from response: $e"
@@ -443,7 +443,7 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
     }
 
     def xmlResultsHandler(response, data) {
-        // results look like:
+        // 결과는 다음과 같습니다:
         // <slideshow title="Sample Slide Show" date="Date of publication" author="Yours Truly">
         //     <slide type="all">
         //         <title>Wake up to WonderWidgets!</title>
