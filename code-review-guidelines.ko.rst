@@ -410,34 +410,24 @@ LAN 연결 장치 용 서비스 관리자를 만드는 경우 :참고:`장치 검색 대상 <lan_device_d
     }
 
 
-Do not hard-code SMS messages
+SMS 메시지를 하드 코딩하지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-SMS 메시지를 하드 코딩하지 마십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Notifications should never be sent to a hard-coded number.
 They should always use a number provided by the user using the :ref:`contact input <contact_book>` (even though Contact Book is not enabled, the contact input type is available and contains a fall-back mechanism for non-Contact Book users. Using this future-proofs your SmartApp).
-알림은 절대로 하드 코드 번호로 전송하면 안됩니다.
-사용자는 : ref :`contact input <contact_book> '을 사용하여 사용자가 제공 한 번호를 항상 사용해야합니다 (연락처 북을 사용할 수 없거나 연락처 입력 유형을 사용할 수 있으며 연락처 사용자가 아닌 사용자의 폴백 메커니즘 포함) 이 기능을 사용하면 SmartApp가 보증됩니다.
+알림은 절대로 하드 코드된 번호로 전송하면 안됩니다.
+:참고:`연락처 입력 <contact_book>`으로 사용자가 제공 한 번호를 사용해야합니다 (Contact Book을 사용할 수 없어도, 연락처 입력형을 사용할 수 있으며 연락처 사용자가 아닌 사람들을 위한 fall-back 메커니즘을 포함합니다) 이 기능을 사용하면 SmartApp가 보증됩니다.
 
-----
-
-Performance
------------
 ----
 
 성능
 -----------
 
-Do not use busy loops
+반복문에 바쁜 대기를 걸지마세요
 ^^^^^^^^^^^^^^^^^^^^^
-사용중인 루프를 사용하지 마십시오.
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is no good reason for the code to run busy loops.
-Don't do things like this:
-코드가 통화 중 루프를 실행할 좋은 이유가 없습니다.
-이런 일은하지 마라.
+반복문으로 바쁜 대기를 걸어야 할 일말의 이유가 없습니다.
+이렇게 하지 마세요:
 
 .. code-block:: groovy
 
@@ -448,13 +438,11 @@ Don't do things like this:
         }
     }
 
-The goal of the above code is to delay execution for a number of milliseconds.
-This wastes resources and increases the likelihood that the 20 second execution limit will be exceeded.
 위 코드의 목적은 수 밀리 초 동안 실행을 지연시키는 것입니다.
-이렇게하면 리소스가 낭비되고 20 초 실행 제한을 초과 할 가능성이 높아집니다.
+이렇게 하면 리소스가 낭비되고 20초 실행 제한을 초과할 가능성이 높아집니다.
 
 Instead of trying to force a delay in execution, you should :ref:`schedule <smartapp-scheduling>` a future execution of your app.
-실행 지연을 강요하는 대신, 다음과 같이해야한다 : 앱의 향후 실행을 참조 :`schedule <smartapp-scheduling>`.
+실행 지연 대신, 앱에서 이후에 실행될 것을 :참고:`스케줄링 <smartapp-scheduling>`해야합니다.
 
 Do not use ``synchronized()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
