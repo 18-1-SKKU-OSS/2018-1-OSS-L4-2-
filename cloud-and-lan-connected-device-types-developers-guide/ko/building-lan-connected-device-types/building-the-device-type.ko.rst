@@ -31,3 +31,39 @@ REST또는 UPnP를 통해 허브를 통해 장치에 액세스 할 수 있습니
 여기에 중요한 사항 - *명령 방법을 사용할 때 HubAction 인스턴스가 리턴되지 않으면 더 이상 요청이 없습니다.* 시스템 메모리를 할당하는 개체일 뿐입니다. 별로 유용하지 않습니다.
 
 따라서 플랫폼에서 요청을 할 수 있도록 명령 방법에서 ``HubAction``인스턴스를 반환해야 합니다.
+
+----
+
+HubAction 개체 만들기
+---------------------------
+
+HubAction 개체를 만들려면 다음과 같이 요청 정보를 정의하는 생성자에게 매개 변수 맵을 전달하면 됩니다:
+
+.. code-block:: groovy
+
+    def result = new physicalgraph.device.HubAction(
+        method: "GET",
+        path: "/somepath",
+        headers: [
+            HOST: "device IP address"
+        ],
+        query: [param1: "value1", param2: "value2"]
+    )
+
+제공되어 있는 옵션에 대한 간략한 설명은 다음과 같습니다:
+
+*method*
+    요청에 사용할 HTTP 메서드.
+
+*path*
+    요청을 보낼 경로. 요청에 URL매개 변수를 직접 추가하거나 ``query``옵션을 사용할 수 있습니다.
+
+*headers*
+    HTTP헤더의 맵과 이 요청에 대한 값입니다.
+    여기서 장치의 IP주소를 호스트로 제공합니다.
+
+*query*
+    이 요청에 사용할 쿼리 매개 변수의 맵입니다.
+    이 옵션을 사용하는 대신 원하는 경우 경로에서 직접 URL매개 변수를 사용할 수 있습니다.
+
+    
