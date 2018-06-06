@@ -229,3 +229,42 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 만약 이름에 다른 문자가 포함되는 경우 ``storeTemporaryImage()`` 와 ``storeImage()``가 ``InvalidParameterException``를 throw합니다.
 
 ----
+
+사진 저장 기한
+-----------
+
+``HubAction``을 통해 저장된 이미지는 24시간 동안 저장되며, 그 후 삭제됩니다 (따라서 ``storeTemporaryImage()`` 를 사용합니다)
+
+``storeImage()`` 또는 ``storeTemporaryImage()``를 통해 저장된 이미지는 7일 동안 클라이언트가 사용할 수 있으며, SmartThings에 의해 365일 동안 저장됩니다.
+
+----
+
+지원되는 사진 포맷
+--------------
+
+``storeImage()``는 JPEG및 PNG이미지 형식을 모두 지원합니다.
+컨텐츠 유형은 ``storeImage()``를 호출할 때 지정할 수 있습니다:
+
+.. code-block:: groovy
+
+    storeImage("some-image-name", imgBytes, "image/png")
+
+기본적으로 ``"image/jpeg"``형식이 사용됩니다.
+
+``HubAction``을 통해 캡처되고 ``storeTemporaryImage()``로 저장된 이미지는 JPEG형식이어야 합니다.
+
+두 경우 모두 파일 확장명을 포함할 필요가 없습니다(예:이미지 이름에 ``".jpg"`` 또는 ``".png"``).
+
+----
+
+관련 문서
+-------
+
+- :ref:`storeTemporaryImage() reference documentation <device_handler_ref_store_temp_image>`
+- :ref:`storeImage() reference documentation <device_handler_ref_store_image>`
+- :ref:`HubAction reference documentation <hubaction_ref>`
+- :ref:`Image Capture Capability reference documentation <imageCapture>`
+- :ref:`Tiles documentation <device_handler_tiles>`
+
+
+.. _ByteArrayInputStream: https://docs.oracle.com/javase/7/docs/api/java/io/ByteArrayInputStream.html
