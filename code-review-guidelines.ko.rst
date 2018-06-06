@@ -441,18 +441,13 @@ They should always use a number provided by the user using the :ref:`contact inp
 위 코드의 목적은 수 밀리 초 동안 실행을 지연시키는 것입니다.
 이렇게 하면 리소스가 낭비되고 20초 실행 제한을 초과할 가능성이 높아집니다.
 
-Instead of trying to force a delay in execution, you should :ref:`schedule <smartapp-scheduling>` a future execution of your app.
 실행 지연 대신, 앱에서 이후에 실행될 것을 :참고:`스케줄링 <smartapp-scheduling>`해야합니다.
 
-Do not use ``synchronized()``
+``synchronized()``를 쓰지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-``synchronized ()``를 사용하지 마라.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using ``synchronized`` incurs a performance overhead, and is highly unlikely to have any effect.
-It should not be used.
-``synchronized``를 사용하면 성능 오버 헤드가 발생하고 아무런 영향을 미치지 않습니다.
-사용해서는 안됩니다.
+``synchronized``를 사용하면 성능 오버 헤드가 발생하고 아무런 도움을 주지 않습니다.
+사용하지 마세요.
 
 When a SmartApp or Device Handler executes, it is executing on one of *n* available servers assigned for that Location, where *n* is variable depending on Location, current load, and other factors.
 Concurrent executions of the SmartApp or Device Handler are not guaranteed, or even likely, to be executing on the same server.
