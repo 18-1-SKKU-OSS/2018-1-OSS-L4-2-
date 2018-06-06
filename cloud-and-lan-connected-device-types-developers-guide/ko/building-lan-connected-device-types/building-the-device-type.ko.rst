@@ -66,4 +66,33 @@ HubAction 개체를 만들려면 다음과 같이 요청 정보를 정의하는 
     이 요청에 사용할 쿼리 매개 변수의 맵입니다.
     이 옵션을 사용하는 대신 원하는 경우 경로에서 직접 URL매개 변수를 사용할 수 있습니다.
 
-    
+----
+
+응답 파싱
+--------
+
+``HubAction``을 사용하여 장치에 요청하면 다른 장치 메시지와 마찬가지로 모든 응답이 장치 취급자의 ``parse``방법으로 전달됩니다.
+
+``parseLanMessage`` 메서드를 사용하여 수신 메시지를 구문 분석할 수 있습니다.
+
+``parseLanMessage`` 예시:
+
+.. code-block:: groovy
+
+    def parse(description) {
+        ...
+        def msg = parseLanMessage(description)
+
+        def headersAsString = msg.header // => headers as a string
+        def headerMap = msg.headers      // => headers as a Map
+        def body = msg.body              // => request body as a string
+        def status = msg.status          // => http status code of the response
+        def json = msg.json              // => any JSON included in response body, as a data structure of lists and maps
+        def xml = msg.xml                // => any XML included in response body, as a document tree structure
+        def data = msg.data              // => either JSON or XML in response body (whichever is specified by content-type header in response)
+
+        ...
+    }
+
+JSON 이나 XML 응답 포맷에 대한 더 자세한 정보는
+Groovy `JsonSlurper <http://docs.groovy-lang.org/latest/html/gapi/groovy/json/JsonSlurper.html>`__ and `XmlSlurper <http://docs.groovy-lang.org/latest/html/api/groovy/util/XmlSlurper.html>`__ 문서를 참고하세요.
