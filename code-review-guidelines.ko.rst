@@ -492,14 +492,10 @@ Parent-child relationships
 부모 - 자녀 관계
 --------------------------
 
-Use separate files
+별도의 파일을 사용하세요
 ^^^^^^^^^^^^^^^^^^
-별도의 파일 사용
-^^^^^^^^^^^^^^^^^^^^
 
-When using a parent-child relationship, be it a parent SmartApp with child devices, or a parent SmartApp with child SmartApps, the parent and child should exist in separate files.
-부모 - 자식 관계를 사용하는 경우 자식 장치가있는 부모 스마트 응용 프로그램이거나 자식 스마트 응용 프로그램이있는 부모 스마트 응용 프로그램이어야합니다. 부모와 자식은 별도의 파일에 있어야합니다.
+부모 - 자식 관계를 사용하는 경우 자식 장치가 있는 부모 SmartApp 이거나 자식 SmartApp이 있는 부모 SmartApp이어야합니다. 부모와 자식은 별도의 파일에 있어야합니다.
 
-Putting the parent and child code in the same file leads to file size bloat, makes the code harder to understand, is error-prone, and difficult to debug.
-상위 및 하위 코드를 같은 파일에두면 파일 크기가 커지고 코드를 이해하기 어렵게 만들고 오류가 발생하기 쉽고 디버그하기가 어렵습니다.
+상, 하위 코드를 같은 파일에 두면 파일 크기가 커지고 코드를 이해하기 어렵게 만들고 오류가 발생하기 쉬우며 디버그하기가 어렵습니다.
 
