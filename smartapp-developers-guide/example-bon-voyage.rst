@@ -109,7 +109,7 @@ of the predefined group of presence sensors, ``people``.
 When the presence status changes of any of our people, the method ``presence``
 (the last parameter above) will be called.
 
-(Also note the ``log`` statements. We won't discuss log statements in detail,
+(Also note the ``log`` statements. We won't discuss ``log`` statements in detail,
 but providing thorough logging is a habit you will want to get into as a SmartApps
 developer. It is invaluable when trying to debug or troubleshoot your app!)
 
