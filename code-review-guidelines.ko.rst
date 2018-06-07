@@ -466,10 +466,8 @@ LAN에 연결된 장치의 서비스 관리자는 장치 검색을 위해 :참고: ` 장치 검색 대상 <la
 IP 변경 처리
 ^^^^^^^^^^^^^^^^
 
-Service managers for LAN-connected devices should :ref:`handle any IP change <lan_device_health>`.
-This can happen when the router power cycles and loses its DHCP mappings.
 LAN에 연결된 장치의 서비스 관리자는 :참고:`IP 변경 <lan_device_health>`을 처리해야합니다.
-이는 라우터 전원이 순환되고 DHCP 매핑이 손실될 때 발생할 수 있습니다.
+이는 라우터 전원이 꺼졌다 켜지거나 DHCP 매핑이 손실될 때 발생할 수 있습니다.
 
 ----
 
