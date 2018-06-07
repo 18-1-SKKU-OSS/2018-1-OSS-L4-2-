@@ -198,7 +198,7 @@ Here's an example of an in-line code comment explaining why the code is checking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 그루비는 엘비스 연산자를 지원합니다. 엘비스 연산자를 사용하면 더 간결하게 조건문을 작성할 수 있습니다.
-그러나, 이를 효과적으로 사용하려면 :ref:`Groovy truth <review_guidelines_groovy_truth>` 를 이해해야합니다.
+그러나, 이를 효과적으로 사용하려면 :참고:`그루비 진리 값 <review_guidelines_groovy_truth>` 을 이해해야합니다.
 
 변수``bulbLevel``이 설정되지 않은 경우 그 값을 ``100``으로 설정하는 예시입니다:
 
