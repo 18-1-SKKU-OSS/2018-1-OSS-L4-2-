@@ -180,7 +180,7 @@ Here's an example of an in-line code comment explaining why the code is checking
     // -> ArrayIndexOutOfBounds exception!
     getSplitString("abc:")
 
-``getSplitString ()``은``split ()`split의 결과가 하나 이상의 원소를 가지고 있는지를 검증하지 않기 때문에, 파싱 된 결과에서 두번째 항목에 접근하려 할 때``ArrayIndexOutOfBounds`` 예외가 발생합니다.
+``getSplitString ()``은 ``split ()``의 결과가 하나 이상의 원소를 가지고 있는지를 검증하지 않기 때문에, 파싱 된 결과에서 두번째 항목에 접근하려 할 때``ArrayIndexOutOfBounds`` 예외가 발생합니다.
 이와 같은 경우 배열에 항목이 있는지 확인하는 예외처리를 해줘야합니다.
 
 .. code-block:: groovy
