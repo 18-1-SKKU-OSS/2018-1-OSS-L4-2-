@@ -245,3 +245,52 @@ HubAction 클래스와 유사하지만 (사실 이는 HubAction class를 extend�
         )
         return result
     }
+
+----
+
+장치 이벤트 구독
+------------
+
+특정 Event에 대해 LAN에 연결된 장치에서 회신을 수신하고 싶은 경우 ``HubAction``을 사용하여 가입할 수 있습니다.
+
+이 이벤트가 장치에서 발생하면 ``parse``방법이 호출됩니다.
+
+다음은 UPnP 사용 사례입니다:
+
+.. code-block:: groovy
+
+    def someCommand() {
+        subscribeAction("/path/of/event")
+    }
+
+    private subscribeAction(path, callbackPath="") {
+        log.trace "subscribe($path, $callbackPath)"
+        def address = getCallBackAddress()
+        def ip = getHostAddress()
+
+        def result = new physicalgraph.device.HubAction(
+            method: "SUBSCRIBE",
+            path: path,
+            headers: [
+                HOST: ip,
+                CALLBACK: "<http://${address}/notify$callbackPath>",
+                NT: "upnp:event",
+                TIMEOUT: "Second-28800"
+            ]
+        )
+
+        log.trace "SUBSCRIBE $path"
+
+        return result
+    }
+
+----
+
+참조 및 리소스
+-----------
+
+- `UPnP <http://en.wikipedia.org/wiki/Universal_Plug_and_Play>`__
+
+- `SOAP <http://en.wikipedia.org/wiki/SOAP>`__
+
+- `REST <http://en.wikipedia.org/wiki/Representational_state_transfer>`__
