@@ -413,8 +413,6 @@ LAN 연결 장치 용 서비스 관리자를 만드는 경우 :참고:`장치 검색 대상 <lan_device_d
 SMS 메시지를 하드 코딩하지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Notifications should never be sent to a hard-coded number.
-They should always use a number provided by the user using the :ref:`contact input <contact_book>` (even though Contact Book is not enabled, the contact input type is available and contains a fall-back mechanism for non-Contact Book users. Using this future-proofs your SmartApp).
 알림은 절대로 하드 코드된 번호로 전송하면 안됩니다.
 :참고:`연락처 입력 <contact_book>`으로 사용자가 제공 한 번호를 사용해야합니다 (Contact Book을 사용할 수 없어도, 연락처 입력형을 사용할 수 있으며 연락처 사용자가 아닌 사람들을 위한 fall-back 메커니즘을 포함합니다) 이 기능을 사용하면 SmartApp가 보증됩니다.
 
