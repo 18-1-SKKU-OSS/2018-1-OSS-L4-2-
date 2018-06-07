@@ -487,9 +487,7 @@ LAN에 연결된 장치의 서비스 관리자는 : ref :`IP 변경 <lan_device_health> '을 처리
 
 .. _review_guidelines_parent_child:
 
-Parent-child relationships
---------------------------
-부모 - 자녀 관계
+부모 - 자식 관계
 --------------------------
 
 별도의 파일을 사용하세요
