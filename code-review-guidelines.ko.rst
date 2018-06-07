@@ -96,7 +96,7 @@ Here's an example of an in-line code comment explaining why the code is checking
     log.trace "stopDimmersHandler evt: ${evt.value}"
     def percentComplete = completionPercentage()
 
-// 많은 경우에 우리가 가장 먼저 하는 일은 조명을 켜거나 끄는 것입니다.
+     // 많은 경우에 우리가 가장 먼저 하는 일은 조명을 켜거나 끄는 것입니다.
      // 그러니 시작하자 마자 멈추지 않도록 해야합니다.
     if (percentComplete > 2 && percentComplete < 98) {
         ...
