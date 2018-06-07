@@ -152,4 +152,25 @@ presence 메소드를 정의해봅시다.
         (falseAlarmThreshold != null && falseAlarmThreshold != "") ? falseAlarmThreshold : 10
     }
 
+좀 더 자세히 살펴봅시다.
+
+제일 먼저 어떤 이벤트가 발생되었는지 확인해봅시다.
+이벤트 처리기에 전달된 ``evt`` 변수를 검사하여 확인합니다.
+감지 기능은 ``"present"`` 또는 ``"not present"`` 둘 중 하나일 수 있습니다.
+
+다음으로, 현재 모드가 바꾸고 싶은 모드로 이미 설정되어 있지 않은지 확인합니다. 이미 그 모드로 설정되어 있다면, 해야할 작업은 없습니다!
+
+이제 재밌어지기 시작합니다.
+
+위의 예제에서 ``everyoneIsAway()`` 와 ``findFalseAlarmThreshold()`` 의 두가지 도우미 메소드를 정의했습니다.
+
+``everyoneIsAway()`` 은 설정된 모든 센서에서 존재가 감지되지 않았을 경우 참을 반환하고, 그렇지 않으면 거짓을 반환합니다.
+``people`` 변수에 설정되고 저장된 모든 센서에 대해 반복하고, ``currentPresence`` 속성을 확인합니다.
+``currentPresence`` 가 ``"present"`` 일 경우, result를 거짓으로 설정하고 반복문을 종료합니다.
+그 후 result 변수 값을 반환합니다.
+
+``findFalseAlarmThreshold()`` 은 사용자로부터 분 단위로 설정된 시간 이내에 발생한 거짓 알림 임계값을 얻습니다.
+임계값 설정이 아직 되지 않은 경우, 기본 값으로 10분을 반환합니다.
+
+모든 사람이 떠났을 때, 내장된 :ref:`smartapp_run_in` 메소드를 호출합니다. 이 메소드는 지정된 시간 내에 ``takeAction()`` 메소드를 실행합니다. (곧 이 메소드를 정의할 것입니다.)
 
