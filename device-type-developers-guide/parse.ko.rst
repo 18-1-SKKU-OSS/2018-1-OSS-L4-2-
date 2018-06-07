@@ -8,7 +8,7 @@
 개요
 --------
 
-All messages from the device are passed to the ``parse()`` method.
+디바이스에서 나오는 모든 메세지들은 ``parse()`` 메소드로 전달됩니다.
 It is responsible for turning those messages into something the SmartThings platform can understand.
 
 Because the ``parse()`` method is responsible for handling raw device messages, their implementations vary greatly across different device types.
