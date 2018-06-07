@@ -449,12 +449,9 @@ They should always use a number provided by the user using the :ref:`contact inp
 ``synchronized``를 사용하면 성능 오버 헤드가 발생하고 아무런 도움을 주지 않습니다.
 사용하지 마세요.
 
-When a SmartApp or Device Handler executes, it is executing on one of *n* available servers assigned for that Location, where *n* is variable depending on Location, current load, and other factors.
-Concurrent executions of the SmartApp or Device Handler are not guaranteed, or even likely, to be executing on the same server.
-Because of this, trying to force synchronous behavior by using ``synchronized`` would only work in the rare occurrence that a concurrent execution happens on the same server, yet it always incurs overhead.
-SmartApp 또는 Device Handler가 실행되면 해당 위치에 할당된 * n * 개의 사용 가능한 서버 중 하나에서 실행됩니다. 여기서 * n *은 위치, 현재로드 및 기타 요소에 따라 다릅니다.
-SmartApp 또는 Device Handler의 동시 실행은 동일한 서버에서 실행되는 것이 보장되지 않거나 가능성이 있습니다.
-이 때문에``synchronized``를 사용하여 동기 동작을 강제 실행하려고 하면 동일한 서버에서 동시 실행이 발생하는 드문 경우에만 작동하지만 오버 헤드가 항상 발생합니다
+SmartApp 또는 Device Handler가 실행되면 해당 위치에 할당된 *n* 개의 사용 가능한 서버 중 하나에서 실행됩니다. 여기서 *n* 은 위치, 현재 로드 및 기타 요소에 따라 달라지는 변수입니다.
+SmartApp 또는 Device Handler의 동시 실행이나 둘이 동일한 서버에서 실행될 때는 동시성이 보장되지 않습니다.
+이 때문에``synchronized``를 사용하여 동시 동작을 강제하는 것은 동일한 서버에서 동시 실행이 발생하는 경우에만 작동하며 이마저도 오버 헤드가 항상 발생합니다
 
 ----
 
