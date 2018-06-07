@@ -5,7 +5,7 @@
 현재 인증을 위해 누구나 무료로 기기를 제출할 수 있습니다.
 장치를 인증하면 사용자에게 좋은 환경을 제공할 수 있습니다. 즉, 당신의 장치가 SmartThings플랫폼의 나머지 부분들과 과 원활하게 작동할 수 있습니다.
 
-SmartThings와 함께 작동하도록 이미 인증된 장치의 예는 `여기서<https://www.smartthings.com/works-with-smartthings/>`_ 볼 수 있습니다
+SmartThings와 함께 작동하도록 이미 인증된 장치의 예는 `여기서 <https://www.smartthings.com/works-with-smartthings/>`_ 볼 수 있습니다
 
 .. image:: ../img/device-types/device-cert-overview.png
     :align: right
