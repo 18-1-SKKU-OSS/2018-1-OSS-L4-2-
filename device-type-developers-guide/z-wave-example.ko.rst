@@ -333,32 +333,31 @@ GitHub인 `여기 <https://github.com/SmartThingsCommunity/Code/blob/master/devi
 		if (cmd.nodeId.any { it == zwaveHubNodeId }) {
 			result << createEvent(descriptionText: "$device.displayName is associated in group ${cmd.groupingIdentifier}")
 		} else if (cmd.groupingIdentifier == 1) {
-			// We're not associated properly to group 1, set association
+			// 그룹 1애 적절하게 속해있지 않기 때문에, 관계를 세팅해 주세요. 
 			result << createEvent(descriptionText: "Associating $device.displayName in group ${cmd.groupingIdentifier}")
 			result << response(zwave.associationV1.associationSet(groupingIdentifier:cmd.groupingIdentifier, nodeId:zwaveHubNodeId))
 		}
 		result
 	}
 
-	// Devices that support the Security command class can send messages in an 
-	// encrypted form; they arrive wrapped in a SecurityMessageEncapsulation 
-	// command and must be unencapsulated
+	// Security명령 클래스를 지원하는 장치는암호화된 형식의 메세지를 보낼 수 있습니다.
+	// 그들은 SecurityMessageEncapsulation 명령으로 감싸 보내지며, 반드시 암호화를 풀어야 합니다.
 	def zwaveEvent(physicalgraph.zwave.commands.securityv1.SecurityMessageEncapsulation cmd) {
 		def encapsulatedCommand = cmd.encapsulatedCommand([0x98: 1, 0x20: 1]) 
 
-		// can specify command class versions here like in zwave.parse
+		// 여기서는 zwave.parse에서 했던 것처럼, 명령 클래스의 버젼을 지정할 수 있습니다. 
 		if (encapsulatedCommand) {
 			return zwaveEvent(encapsulatedCommand)
 		}
 	}
 
-	// MultiChannelCmdEncap and MultiInstanceCmdEncap are ways that devices 
-	// can indicate that a message is coming from one of multiple subdevices 
-	// or "endpoints" that would otherwise be indistinguishable
+	// MultiChanneldEncap및 MultySnstanceCmdEncap는 
+	// 메시지가 구별할 수 없는 여러 하위 메뉴 또는"엔드 포인트"중 
+	// 하나에서 온 것임을 나타낼 수 있는 방법입니다.
 	def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap cmd) {
 		def encapsulatedCommand = cmd.encapsulatedCommand([0x30: 1, 0x31: 1]) 
 
-		// can specify command class versions here like in zwave.parse
+		// 여기서는 zwave.parse에서 했던 것처럼, 명령 클래스의 버젼을 지정할 수 있습니다. 
 		log.debug ("Command from endpoint ${cmd.sourceEndPoint}: ${encapsulatedCommand}")
 		
 		if (encapsulatedCommand) {
@@ -369,7 +368,7 @@ GitHub인 `여기 <https://github.com/SmartThingsCommunity/Code/blob/master/devi
 	def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiInstanceCmdEncap cmd) {
 		def encapsulatedCommand = cmd.encapsulatedCommand([0x30: 1, 0x31: 1]) 
 
-		// can specify command class versions here like in zwave.parse
+		// 여기서는 zwave.parse에서 했던 것처럼, 명령 클래스의 버젼을 지정할 수 있습니다. 
 		log.debug ("Command from instance ${cmd.instance}: ${encapsulatedCommand}")
 		
 		if (encapsulatedCommand) {
