@@ -1,0 +1,33 @@
+diff a/cloud-and-lan-connected-device-types-developers-guide/ko/building-lan-connected-device-types/division-of-labor.ko.rst b/cloud-and-lan-connected-device-types-developers-guide/ko/building-lan-connected-device-types/division-of-labor.ko.rst	(rejected hunks)
+@@ -1,31 +0,0 @@
+-노동 분산
+-=======
+-
+-LAN연결 장치 패러다임은 ServiceManager와 DeviceHandler로 구성됩니다.
+-
+-이 가이드의 목적은 LAN연결 장치 개발의 핵심 개념을 소개하고 시작하는 데 도움이 되는 몇가지 예를 제공하는 것입니다.
+-
+-서비스 관리자 책임
+---------------
+-
+-장치 검색은 서비스 관리자가 담당합니다.
+-
+-원하는 장치만 찾아 요청을 보내고 응답을 분석합니다.
+-
+-발견될 시 발견한 장치를 추가할 수 있습니다.
+-
+-여기에서 연결이 저장되어 나중에 장치와 상호 작용할 수 있습니다.
+-
+-장치 처리기 책임
+-------------
+-
+-장치 핸들러는 장치별 메시지를 만들어 수신하고 SmartThings 인프라 내에서 메시지가 작동하도록 하는 역할을 합니다.
+-
+-SmartApp별 명령을 수행하고 장치별 명령을 출력합니다.
+-
+-또한 장치의 응답에 가입하고 필요에 따라 다른 명령을 트리거 할 수도 있습니다.
+-
+-작동 방식
+--------
+-
+-.. image:: ../../img/architecture/lan_overview.png

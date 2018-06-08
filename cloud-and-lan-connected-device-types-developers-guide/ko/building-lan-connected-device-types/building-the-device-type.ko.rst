@@ -73,7 +73,7 @@ HubAction 개체를 만들려면 다음과 같이 요청 정보를 정의하는 
 
 ``HubAction``을 사용하여 장치에 요청하면 다른 장치 메시지와 마찬가지로 모든 응답이 장치 취급자의 ``parse``방법으로 전달됩니다.
 
-``parseLanMessage`` 메소드를 사용하여 수신 메시지를 구문 분석할 수 있습니다.
+``parseLanMessage`` 메서드를 사용하여 수신 메시지를 구문 분석할 수 있습니다.
 
 ``parseLanMessage`` 예시:
 
