@@ -40,17 +40,15 @@ Device Handler에서 정의할 시뮬레이터 선언에는 "상태"와 "응답"
 응답
 -----
 
-The "reply" declarations specify responses that the physical device will send to the Device Handler when it receives a certain message from the Hub.
-For a Z-Wave switch, for example, we specify:
+"응답"선언은 물리적 장치가 허브로부터 특정 메시지를 수신할 때 장치 핸들러에 보낼 응답을 지정합니다. 예를 들어 Z-Wave스위치의 경우 다음을 지정합니다.
 
 .. code-block:: groovy
 
     reply "2001FF,delay 100,2502": "command: 2503, payload: FF"
     reply "200100,delay 100,2502": "command: 2503, payload: 00"
 
-Just like ``status()``, ``reply()`` accepts a map as a parameter.
-The key is a comma-separate list of the raw commands sent to the device, i.e. what's returned from the Device Handler's command methods.
-For example, the Z-Wave switch commands that send the above methods are:
+``status()`` 처럼, ``reply()`` 도 인자로 map을 받습니다.
+키는 장치로 전송된 다듬어지지 않은 명령으로(즉, Device Handler 의 명령 방법에서 반환된 명령)쉼표로 구분된 목록입니다. 예를 들어 위의 방법을 전송하는 Z-Wave스위치 명령은 다음과 같습니다:
 
 .. code-block:: groovy
 
@@ -69,14 +67,11 @@ For example, the Z-Wave switch commands that send the above methods are:
         ])
     }
 
-Those methods will return the values in the first arguments of the reply declarations.
-The second argument in the reply declarations works the same way as the status declarations - they define messages sent to the parse method.
-But in this case it's in response to commands, not physical actuations.
+이러한 메서드는 응답 선언의 첫번째 인수에 있는 값을 반환합니다. 응답 선언의 두번째 인수는 상태 선언과 동일한 방식으로 작동하며, 이들 인수에서 구문 분석 방법으로 보낸 메시지를 정의합니다. 하지만 이 경우에는 물리적인 작동이 아니라 명령에 따라 움직입니다.
 
 ----
 
-Summary
+요약
 -------
-
-The purpose of these declarations is to allow a virtual device to function in the IDE Simulator, without being attached to a physical device.
-The ``status()`` method allows us to simulate physical actuation, while the ``reply()`` method allows us to simulate sending messages to the device in response to a command from the Hub.
+이 선언의 목적은 물리적 디바이스에 연결하지 않고 IDE시뮬레이터에서 가상 디바이스가 작동할 수 있도록 하는 것입니다.
+``status()`` 메서드를 사용하면 물리적 작동을 시뮬레이션할 수 있으며, ``reply()`` 메서드를 사용하면 허브의 명령에 대응하여 장치로 메시지를 보내는 것을 시뮬레이션할 수 있습니다.
