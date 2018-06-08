@@ -384,18 +384,18 @@ GitHub인 `여기 <https://github.com/SmartThingsCommunity/Code/blob/master/devi
 		delayBetween([
 			zwave.basicV1.basicSet(value: 0xFF).format(),
 			zwave.basicV1.basicGet().format()
-		], 5000)  // 5 second delay for dimmers that change gradually, can be left out for immediate switches
+		], 5000)  //점진적으로 변화하는 디머의 경우 5초 지연이 발생하지 않고 바로 전환할 수 있습니다.
 	}
 
 	def off() {
 		delayBetween([
 			zwave.basicV1.basicSet(value: 0x00).format(),
 			zwave.basicV1.basicGet().format()
-		], 5000)  // 5 second delay for dimmers that change gradually, can be left out for immediate switches
+		], 5000)  // 점진적으로 변화하는 디머의 경우 5초 지연이 발생하지 않고 바로 전환할 수 있습니다.
 	}
 
 	def refresh() {
-		// Some examples of Get commands
+		// Get 명령어의 몇가지 예시들 
 		delayBetween([
 			zwave.switchBinaryV1.switchBinaryGet().format(),
 			zwave.switchMultilevelV1.switchMultilevelGet().format(),
@@ -408,27 +408,23 @@ GitHub인 `여기 <https://github.com/SmartThingsCommunity/Code/blob/master/devi
 		], 1200)
 	}
 
-	// If you add the Polling capability to your device type, this command 
-	// will be called approximately every 5 minutes to check the device's state
+	// 장치 유형에 폴링 기능을 추가하면 이 명령이 약 5분마다 호출되어 장치 상태를 확인합니다.
+
 	def poll() {
 		zwave.basicV1.basicGet().format()
 	}
 
-	// If you add the Configuration capability to your device type, this 
-	// command will be called right after the device joins to set 
-	// device-specific configuration commands.
+	//장치 유형에 구성 기능을 추가하면 장치가 가입한 직후에 이 명령을 호출하여 장치별 구성 명령을 설정합니다.
+
 	def configure() {
 		delayBetween([
-			// Note that configurationSet.size is 1, 2, or 4 and generally 
-			// must match the size the device uses in its configurationReport
+			//configurationSet.size는 1,2또는 4이며 일반적으로 구성에서 장치가 사용하는 크기와 일치해야 합니다.
 			zwave.configurationV1.configurationSet(parameterNumber:1, size:2, scaledConfigurationValue:100).format(),
 			
-			// Can use the zwaveHubNodeId variable to add the hub to the 
-			// device's associations:
+			// zwaveHubNodeId 변수는 장치의 연결에 허브를 추가하는 데 사용할 수 있습니다.
 			zwave.associationV1.associationSet(groupingIdentifier:2, nodeId:zwaveHubNodeId).format(),
 			
-			// Make sure sleepy battery-powered sensors send their 
-			// WakeUpNotifications to the hub every 4 hours:
+			// 배터리 구동 센서가 4시간마다 WakeUpNotifications 를 허브로 전송하는지 확인하십시오.
 			zwave.wakeUpV1.wakeUpIntervalSet(seconds:4 * 3600, nodeid:zwaveHubNodeId).format(),
 		])
 	} 
