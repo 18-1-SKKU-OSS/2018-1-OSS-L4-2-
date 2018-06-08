@@ -1,67 +1,68 @@
 =========================================
-ÄÚµå °ËÅä °¡ÀÌµå ¶óÀÎ ¹× ¸ð¹ü »ç·Ê
+ì½”ë“œ ê²€í†  ê°€ì´ë“œ ë¼ì¸ ë° ëª¨ë²” ì‚¬ë¡€
 =========================================
 
-SmartApp ¶Ç´Â Device Handler¸¦ Á¦ÃâÇÏ±â Àü¿¡ º»ÀÎÀÇ ÄÚµå°¡ ÀÌ ¹®¼­¿¡ ±âÀç µÈ ÁöÄ§À» ÁØ¼öÇÏ´ÂÁö È®ÀÎÇØ¾ßÇÕ´Ï´Ù.
-ÀÌ °¡ÀÌµå ¶óÀÎÀ» ÁØ¼öÇÏÁö ¾Ê´Â ÄÚµå´Â °ÅÀýµÉ ¼ö ÀÖ½À´Ï´Ù.
+SmartApp ë˜ëŠ” Device Handlerë¥¼ ì œì¶œí•˜ê¸° ì „ì— ë³¸ì¸ì˜ ì½”ë“œê°€ ì´ ë¬¸ì„œì— ê¸°ìž¬ ëœ ì§€ì¹¨ì„ ì¤€ìˆ˜í•˜ëŠ”ì§€ í™•ì¸í•´ì•¼í•©ë‹ˆë‹¤.
+ì´ ê°€ì´ë“œ ë¼ì¸ì„ ì¤€ìˆ˜í•˜ì§€ ì•ŠëŠ” ì½”ë“œëŠ” ê±°ì ˆë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-ÀÌ ¹®¼­´Â SmartThings °³¹ßÀ» À§ÇÑ ¸ð¹ü »ç·Ê ¸ðÀ½ÁýÀÌ±âµµ ÇÕ´Ï´Ù.
+ì´ ë¬¸ì„œëŠ” SmartThings ê°œë°œì„ ìœ„í•œ ëª¨ë²” ì‚¬ë¡€ ëª¨ìŒì§‘ì´ê¸°ë„ í•©ë‹ˆë‹¤.
 
 ----
 
-ÀÏ¹ÝÀûÀÎ ±ÔÄ¢
+ì¼ë°˜ì ì¸ ê·œì¹™
 -------
 
-ÄÚµå´Â ÀÐ±â ½¬¿ö¾ßÇÕ´Ï´Ù.
+ì½”ë“œëŠ” ì½ê¸° ì‰¬ì›Œì•¼í•©ë‹ˆë‹¤.
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-ÄÚµå´Â ±â°è°¡ ½ÇÇàÇÏÁö¸¸, »ç¶÷ÀÌ ÀÐ½À´Ï´Ù.
-°¡µ¶¼ºÀº ÁÖ°üÀû ÀÏ ¼ö ÀÖÁö¸¸ µû¶ó¾ß ÇÒ ¸î °¡Áö ÀÏ¹ÝÀûÀÎ ÁöÄ§ÀÌ ÀÖ½À´Ï´Ù:
+ì½”ë“œëŠ” ê¸°ê³„ê°€ ì‹¤í–‰í•˜ì§€ë§Œ, ì‚¬ëžŒì´ ì½ìŠµë‹ˆë‹¤.
+ê°€ë…ì„±ì€ ì£¼ê´€ì  ì¼ ìˆ˜ ìžˆì§€ë§Œ ë”°ë¼ì•¼ í•  ëª‡ ê°€ì§€ ì¼ë°˜ì ì¸ ì§€ì¹¨ì´ ìžˆìŠµë‹ˆë‹¤:
 
-- ÀÇ¹Ì ÀÖ´Â º¯¼ö¸í ¹× ¸Þ¼Òµå ÀÌ¸§À» »ç¿ëÇÏ¼¼¿ä.
-- :Âü°í:`review_guidelines_dry`
-- :Âü°í:`review_guidelines_methods`
-- :Âü°í:`review_guidelines_comments`
+- ì˜ë¯¸ ìžˆëŠ” ë³€ìˆ˜ëª… ë° ë©”ì†Œë“œ ì´ë¦„ì„ ì‚¬ìš©í•˜ì„¸ìš”.
+- :ì°¸ê³ :`review_guidelines_dry`
+- :ì°¸ê³ :`review_guidelines_methods`
+- :ì°¸ê³ :`review_guidelines_comments`
 
 .. _review_guidelines_dry:
 
-Áßº¹ÇÏÁö ¸¶¼¼¿ä
+ì¤‘ë³µí•˜ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^
 
-`DRY ¹ýÄ¢ <https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`__ (don't repeat yourself Áßº¹ÇÏÁö ¸»¶ó)À» µû¶óÁÖ¼¼¿ä.
+`DRY ë²•ì¹™ <https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`__ (don't repeat yourself ì¤‘ë³µí•˜ì§€ ë§ë¼)ì„ ë”°ë¼ì£¼ì„¸ìš”.
 
-ÄÚµå¸¦ º¹»ç/ºÙ¿©³Ö±â ÇÏÁö ¸¶¼¼¿ä. ÀÚÁÖ ¾²ÀÌ´Â ÄÚµå¸¦ °øÀ¯ À¯Æ¿¸®Æ¼ ¸Þ¼Òµå·Î »©ÁÖ¼¼¿ä.
+ì½”ë“œë¥¼ ë³µì‚¬/ë¶™ì—¬ë„£ê¸° í•˜ì§€ ë§ˆì„¸ìš”. ìžì£¼ ì“°ì´ëŠ” ì½”ë“œë¥¼ ê³µìœ  ìœ í‹¸ë¦¬í‹° ë©”ì†Œë“œë¡œ ë¹¼ì£¼ì„¸ìš”.
 
 .. _review_guidelines_methods:
 
-¸Þ¼Òµå´Â ÇÑ°¡Áö ¸ñÀû¸¸ °¡Á®¾ßÇÕ´Ï´Ù
+ë©”ì†Œë“œëŠ” í•œê°€ì§€ ëª©ì ë§Œ ê°€ì ¸ì•¼í•©ë‹ˆë‹¤
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¸Þ¼Òµå´Â ÇÑ°¡Áö ¸ñÀû¸¸À» ÃæÁ·½ÃÄÑ¾ßÇÏ¸ç °£°áÇØ¾ßÇÕ´Ï´Ù.
-¸Þ¼ÒµåÀÇ Á¤ÀÇ°¡ Ç¥ÁØ ÄÄÇ»ÅÍ È­¸éÀ» ³Ñ¾î°£´Ù¸é, ³Ê¹« ±æ´Ù´Â °Ì´Ï´Ù.
+ë©”ì†Œë“œëŠ” í•œê°€ì§€ ëª©ì ë§Œì„ ì¶©ì¡±ì‹œì¼œì•¼í•˜ë©° ê°„ê²°í•´ì•¼í•©ë‹ˆë‹¤.
+ë©”ì†Œë“œì˜ ì •ì˜ê°€ í‘œì¤€ ì»´í“¨í„° í™”ë©´ì„ ë„˜ì–´ê°„ë‹¤ë©´, ë„ˆë¬´ ê¸¸ë‹¤ëŠ” ê²ë‹ˆë‹¤.
 
-ÄÚµå¸¦ À¯Æ¿¸®Æ¼ ¸Þ¼Òµå·Î ºÐ¸®ÇÒ ¼ö ÀÖ´ÂÁö ¾Ë¾Æº¸¼¼¿ä.
-¿¹¸¦ µé¾î, Å« »çÀÌÁîÀÇ HTTP ÀÀ´äÀ» Áï½Ã¸¶´Ù ºÐ¼®ÇÏ´Â ¸Þ¼Òµå´Â ±æ¾îÁú ¼ö ÀÖÀ¸´Ï, ÀÌ ÀÛ¾÷À» È£ÃâÇÒ ¼ö ÀÖ´Â ¿©·¯ ¸Þ¼Òµå·Î ºÐ¸®½ÃÅ°¼¼¿ä.
-ÀÌ·¸°Ô ÇÏ¸é, ÄÚµå¸¦ ´õ ½±°Ô ÀÌÇØÇÒ ¼ö ÀÖ°Ô µÇ¸ç ´õ ³ªÀº `°ü½É»çÀÇ ºÐ¸® <https://en.wikipedia.org/wiki/Separation_of_concerns>`__¸¦ º¸ÀåÇÕ´Ï´Ù.
+ì½”ë“œë¥¼ ìœ í‹¸ë¦¬í‹° ë©”ì†Œë“œë¡œ ë¶„ë¦¬í•  ìˆ˜ ìžˆëŠ”ì§€ ì•Œì•„ë³´ì„¸ìš”.
+ì˜ˆë¥¼ ë“¤ì–´, í° ì‚¬ì´ì¦ˆì˜ HTTP ì‘ë‹µì„ ì¦‰ì‹œë§ˆë‹¤ ë¶„ì„í•˜ëŠ” ë©”ì†Œë“œëŠ” ê¸¸ì–´ì§ˆ ìˆ˜ ìžˆìœ¼ë‹ˆ, ì´ ìž‘ì—…ì„ í˜¸ì¶œí•  ìˆ˜ ìžˆëŠ” ì—¬ëŸ¬ ë©”ì†Œë“œë¡œ ë¶„ë¦¬ì‹œí‚¤ì„¸ìš”.
+ì´ë ‡ê²Œ í•˜ë©´, ì½”ë“œë¥¼ ë” ì‰½ê²Œ ì´í•´í•  ìˆ˜ ìžˆê²Œ ë˜ë©° ë” ë‚˜ì€ `ê´€ì‹¬ì‚¬ì˜ ë¶„ë¦¬ <https://en.wikipedia.org/wiki/Separation_of_concerns>`__ ë¥¼ ë³´ìž¥í•©ë‹ˆë‹¤.
 
-»ç¿ëÇÏÁö ¾Ê´Â ÄÚµå¸¦ Á¦ÃâÇÏÁö ¸¶¼¼¿ä
+ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ì½”ë“œë¥¼ ì œì¶œí•˜ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-»ç¿ëÇÏÁö ¾Ê°Å³ª ÁÖ¼®Ã³¸® µÈ ÄÚµå´Â Á¦ÃâÇÏ±â Àü¿¡ Áö¿ö ÁÖ¼Å¾ßÇÕ´Ï´Ù.
+ì‚¬ìš©í•˜ì§€ ì•Šê±°ë‚˜ ì£¼ì„ì²˜ë¦¬ ëœ ì½”ë“œëŠ” ì œì¶œí•˜ê¸° ì „ì— ì§€ì›Œ ì£¼ì…”ì•¼í•©ë‹ˆë‹¤.
 
-¸ð¿åÀûÀÎ ¸», ¸ðµ¶ÀûÀÎ ¾ð¾î ¶Ç´Â ºñ¹æÇÏ´Â ¾ð¾î¸¦ »ç¿ëÇÏÁö ¸¶¼¼¿ä
+ëª¨ìš•ì ì¸ ë§, ëª¨ë…ì ì¸ ì–¸ì–´ ë˜ëŠ” ë¹„ë°©í•˜ëŠ” ì–¸ì–´ë¥¼ ì‚¬ìš©í•˜ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-µû·Î ¼³¸íÀÌ ÇÊ¿ä ¾ø°ÚÁö¸¸ ? ¾ð¾î´Â ±ò²ûÇÏ°í Àü¹®ÀûÀÌ¾î¾ßÇÕ´Ï´Ù.
+ë”°ë¡œ ì„¤ëª…ì´ í•„ìš” ì—†ê² ì§€ë§Œ ? ì–¸ì–´ëŠ” ê¹”ë”í•˜ê³  ì „ë¬¸ì ì´ì–´ì•¼í•©ë‹ˆë‹¤.
 
 .. _review_guidelines_comments:
 
-ÀûÀýÇÑ ÁÖ¼®À» ´Þ¾ÆÁÖ¼¼¿ä
+ì ì ˆí•œ ì£¼ì„ì„ ë‹¬ì•„ì£¼ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^
 
-ÁÖ¼®Àº ÀûÀýÇÏ°Ô »ç¿ëµÉ ¶§ ÄÚµå¿¡ ¸íÈ®¼º°ú ³»¿ëÀ» ´õÇÒ ¼ö ÀÖ½À´Ï´Ù.
-Áö³ªÄ¡°Ô ¸¹ÀÌ »ç¿ëµÇ¸é ÄÚµå°¡ º¹ÀâÇØÁö¸ç ¾µ¸ð ¾ø¾îÁý´Ï´Ù.
+ì£¼ì„ì€ ì ì ˆí•˜ê²Œ ì‚¬ìš©ë  ë•Œ ì½”ë“œì— ëª…í™•ì„±ê³¼ ë‚´ìš©ì„ ë”í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+ì§€ë‚˜ì¹˜ê²Œ ë§Žì´ ì‚¬ìš©ë˜ë©´ ì½”ë“œê°€ ë³µìž¡í•´ì§€ë©° ì“¸ëª¨ ì—†ì–´ì§‘ë‹ˆë‹¤.
 
+<<<<<<< HEAD
 µû¶ó¾ß ÇÒ ¸î °¡Áö ÁöÄ§ÀÌ ÀÖ½À´Ï´Ù:
 
 - ÀÏ¹ÝÀûÀ¸·Î ÄÚµå°¡ ÀÏ¹ÝÀûÀÎ »ý°¢°ú ´Ù¸£°Ô ½ÇÇàµÉ ¶§ ÁÖ¼®ÀÌ ÇÊ¿äÇÕ´Ï´Ù.
@@ -71,8 +72,15 @@ SmartApp ¶Ç´Â Device Handler¸¦ Á¦ÃâÇÏ±â Àü¿¡ º»ÀÎÀÇ ÄÚµå°¡ ÀÌ ¹®¼­¿¡ ±âÀç µÈ ÁöÄ
 - Áß¿äÇÑ ¸Þ¼Òµå´Â ±× ¸Þ¼Òµå°¡ ÇÏ´Â ÀÏ, ¹ÝÈ¯Çü, ¿¹¿Ü Á¶°Ç ¹× ¸Å°³ º¯¼ö¸¦ ¼³¸íÇÏ´Â ÁÖ¼®À» ÇÔ²² ÀÛ¼ºÇØ¾ßÇÕ´Ï´Ù. `JavaDoc Çü½Ä ÁÖ¼® <https://en.wikipedia.org/wiki/Javadoc#Overview_of_Javadoc>`__À» »ç¿ëÇÒ ¼ö ÀÖÁö¸¸ ¼Ò½º¿¡¼­ ¹®¼­¸¦ »ý¼º ÇÒ ¼ö ÀÖ´Â µµ±¸´Â ¾ø½À´Ï´Ù.
 
 - ÁÖ¼®Àº °¡Ä¡¸¦ ´õÇØ¾ßÇÕ´Ï´Ù - ÄÚµåÀÇ ¸ðµç Çà¿¡ ÁÖ¼®À» ´õÇÏ¸é ÄÚµå°¡ È¥¶õ½º·¯¿öÁú »Ó´õ·¯ ºÒÇÊ¿äÇÑ ÀÏÀÔ´Ï´Ù.
+=======
+ë”°ë¼ì•¼ í•  ëª‡ ê°€ì§€ ì§€ì¹¨ì´ ìžˆìŠµë‹ˆë‹¤:
+- ì¼ë°˜ì ìœ¼ë¡œ ì½”ë“œê°€ ì¼ë°˜ì ì¸ ìƒê°ê³¼ ë‹¤ë¥´ê²Œ ì‹¤í–‰ë  ë•Œ ì£¼ì„ì´ í•„ìš”í•©ë‹ˆë‹¤.
+- Device Handler ì‚¬ìš©ìž ì»¤ë§¨ë“œ ë° ì†ì„±ì—ëŠ” ìš©ë„, ë§¤ê°œ ë³€ìˆ˜ ë° ì˜ˆì™¸ ì¡°ê±´ (ì ìš© ê°€ëŠ¥í•œ ê²½ìš°)ì„ ì„¤ëª…í•˜ëŠ” ì£¼ì„ì´ ìžˆì–´ì•¼í•©ë‹ˆë‹¤.
+- ì¤‘ìš”í•œ ë©”ì†Œë“œëŠ” ê·¸ ë©”ì†Œë“œê°€ í•˜ëŠ” ì¼, ë°˜í™˜í˜•, ì˜ˆì™¸ ì¡°ê±´ ë° ë§¤ê°œ ë³€ìˆ˜ë¥¼ ì„¤ëª…í•˜ëŠ” ì£¼ì„ì„ í•¨ê»˜ ìž‘ì„±í•´ì•¼í•©ë‹ˆë‹¤. `JavaDoc í˜•ì‹ ì£¼ì„ <https://en.wikipedia.org/wiki/Javadoc#Overview_of_Javadoc>`__ ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆì§€ë§Œ ì†ŒìŠ¤ì—ì„œ ë¬¸ì„œë¥¼ ìƒì„± í•  ìˆ˜ ìžˆëŠ” ë„êµ¬ëŠ” ì—†ìŠµë‹ˆë‹¤.
+- ì£¼ì„ì€ ê°€ì¹˜ë¥¼ ë”í•´ì•¼í•©ë‹ˆë‹¤ - ì½”ë“œì˜ ëª¨ë“  í–‰ì— ì£¼ì„ì„ ë”í•˜ë©´ ì½”ë“œê°€ í˜¼ëž€ìŠ¤ëŸ¬ì›Œì§ˆ ë¿ë”ëŸ¬ ë¶ˆí•„ìš”í•œ ì¼ìž…ë‹ˆë‹¤.
+>>>>>>> 8824acbb392647356bde3d0f328323800a0ee3b5
 
-¸Þ¼Òµå¿¡ ÁÖ¼®À» ÀûÀýÈ÷ ÀÛ¼ºÇÑ ¿¹½ÃÀÔ´Ï´Ù:
+ë©”ì†Œë“œì— ì£¼ì„ì„ ì ì ˆížˆ ìž‘ì„±í•œ ì˜ˆì‹œìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -93,54 +101,54 @@ SmartApp ¶Ç´Â Device Handler¸¦ Á¦ÃâÇÏ±â Àü¿¡ º»ÀÎÀÇ ÄÚµå°¡ ÀÌ ¹®¼­¿¡ ±âÀç µÈ ÁöÄ
     }
 
 Here's an example of an in-line code comment explaining why the code is checking if a percentage value is within a certain hard-coded range:
-´ÙÀ½Àº ÆÛ¼¾Æ® °ªÀÌ ÇØ´ç¹üÀ§ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÀÌÀ¯¸¦ ¼³¸íÇÑ ÀÎ¶óÀÎ ÁÖ¼®ÀÔ´Ï´Ù:
+ë‹¤ìŒì€ í¼ì„¼íŠ¸ ê°’ì´ í•´ë‹¹ë²”ìœ„ ì•ˆì— ìžˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ì´ìœ ë¥¼ ì„¤ëª…í•œ ì¸ë¼ì¸ ì£¼ì„ìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
     log.trace "stopDimmersHandler evt: ${evt.value}"
     def percentComplete = completionPercentage()
 
-     // ¸¹Àº °æ¿ì¿¡ ¿ì¸®°¡ °¡Àå ¸ÕÀú ÇÏ´Â ÀÏÀº Á¶¸íÀ» ÄÑ°Å³ª ²ô´Â °ÍÀÔ´Ï´Ù.
-     // ±×·¯´Ï ½ÃÀÛÇÏÀÚ ¸¶ÀÚ ¸ØÃßÁö ¾Êµµ·Ï ÇØ¾ßÇÕ´Ï´Ù.
+     // ë§Žì€ ê²½ìš°ì— ìš°ë¦¬ê°€ ê°€ìž¥ ë¨¼ì € í•˜ëŠ” ì¼ì€ ì¡°ëª…ì„ ì¼œê±°ë‚˜ ë„ëŠ” ê²ƒìž…ë‹ˆë‹¤.
+     // ê·¸ëŸ¬ë‹ˆ ì‹œìž‘í•˜ìž ë§ˆìž ë©ˆì¶”ì§€ ì•Šë„ë¡ í•´ì•¼í•©ë‹ˆë‹¤.
     if (percentComplete > 2 && percentComplete < 98) {
         ...
 
     }
 
-ºÎÀûÀýÇÑ ÁÖ¼®ÀÇ ¿¹´Â ´ÙÀ½°ú °°½À´Ï´Ù.
-ÄÚµå¸¸ ÀÐ¾îµµ ºÐ¸íÇÑ ³»¿ëÀ» ÁÖ¼®ÀÌ ´Ü¼øÈ÷ ¹Ýº¹ÇÏ°í ÀÖ½À´Ï´Ù: °¡Ä¡°¡ ´õÇØÁöÁö ¾Ê°í ÀÖ½À´Ï´Ù.
+ë¶€ì ì ˆí•œ ì£¼ì„ì˜ ì˜ˆëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
+ì½”ë“œë§Œ ì½ì–´ë„ ë¶„ëª…í•œ ë‚´ìš©ì„ ì£¼ì„ì´ ë‹¨ìˆœížˆ ë°˜ë³µí•˜ê³  ìžˆìŠµë‹ˆë‹¤: ê°€ì¹˜ê°€ ë”í•´ì§€ì§€ ì•Šê³  ìžˆìŠµë‹ˆë‹¤.
 
 .. code-block:: groovy
 
-    // ¸ðµç ÀÚ½ÄÀ» ¹Þ¾Æ¿Í¶ó
+    // ëª¨ë“  ìžì‹ì„ ë°›ì•„ì™€ë¼
     def children = pollChildren()
-    // ¸ðµç ÀÚ½ÄÀ» ¹æ¹®ÇØ¶ó
+    // ëª¨ë“  ìžì‹ì„ ë°©ë¬¸í•´ë¼
     children.each {child ->
-        // °¢ ÀÚ½ÄÀ» ·Î±×·Î ¶ç¿ö¶ó
+        // ê° ìžì‹ì„ ë¡œê·¸ë¡œ ë„ì›Œë¼
         log.debug "child: $child"
     }
 
-¸ðµç ``if()``¿Í ``switch()`` ±¸¹®À» È®ÀÎÇÏ½Ê½Ã¿À
+ëª¨ë“  ``if()`` ì™€ ``switch()`` êµ¬ë¬¸ì„ í™•ì¸í•˜ì‹­ì‹œì˜¤
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``if ()``¶Ç´Â``switch ()``ºí·ÏÀÌ ¸ðµç ¿¹»ó ÀÔ·ÂÀ» Ã³¸®ÇÏ´ÂÁö È®ÀÎÇÏ½Ê½Ã¿À.
-Æ¯Á¤ Á¶°ÇÀ» Ã³¸®ÇÏ´Â °ÍÀ» ÀØ¾î¹ö¸®¸é ¿¹±âÄ¡ ¸øÇÑ ³í¸® ¿À·ù°¡ ¹ß»ýÇÒ ¼ö ÀÖ½À´Ï´Ù.
+``if ()`` ë˜ëŠ” ``switch ()`` ë¸”ë¡ì´ ëª¨ë“  ì˜ˆìƒ ìž…ë ¥ì„ ì²˜ë¦¬í•˜ëŠ”ì§€ í™•ì¸í•˜ì‹­ì‹œì˜¤.
+íŠ¹ì • ì¡°ê±´ì„ ì²˜ë¦¬í•˜ëŠ” ê²ƒì„ ìžŠì–´ë²„ë¦¬ë©´ ì˜ˆê¸°ì¹˜ ëª»í•œ ë…¼ë¦¬ ì˜¤ë¥˜ê°€ ë°œìƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-¶ÇÇÑ ¸ðµç``switch ()``¹®Àº ÀÏÄ¡ÇÏ´Â Á¶°ÇÀÌ ¾ø´Â °æ¿ì¸¦ Ã³¸®ÇÏ±â À§ÇØ``default :`` Á¶°Ç¹®À» °¡Á®¾ßÇÕ´Ï´Ù
+ë˜í•œ ëª¨ë“  ``switch ()`` ë¬¸ì€ ì¼ì¹˜í•˜ëŠ” ì¡°ê±´ì´ ì—†ëŠ” ê²½ìš°ë¥¼ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ ``default :`` ì¡°ê±´ë¬¸ì„ ê°€ì ¸ì•¼í•©ë‹ˆë‹¤
 
-°¡Á¤À» È®ÀÎÇÏ¼¼¿ä
+ê°€ì •ì„ í™•ì¸í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^
 
-¸Þ¼Òµå°¡ ÀÏºÎ ÀÔ·Â¿¡ ÀÛµ¿ÇÒ ¶§ »óÀ§ ¶Ç´Â ÇÏÀ§ SmartApp ¶Ç´Â Device Handler¿¡¼­ È£ÃâµÇ´Â °æ¿ì¸¦ Æ÷ÇÔÇÏ´Â ¸ðµç ÀÔ·Â °ªÀ» Ã³¸®ÇÒ ¼ö ÀÖ¾î¾ßÇÕ´Ï´Ù.
+ë©”ì†Œë“œê°€ ì¼ë¶€ ìž…ë ¥ì— ìž‘ë™í•  ë•Œ ìƒìœ„ ë˜ëŠ” í•˜ìœ„ SmartApp ë˜ëŠ” Device Handlerì—ì„œ í˜¸ì¶œë˜ëŠ” ê²½ìš°ë¥¼ í¬í•¨í•˜ëŠ” ëª¨ë“  ìž…ë ¥ ê°’ì„ ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ì•¼í•©ë‹ˆë‹¤.
 
-ÀÏ°üµÈ ¹ÝÈ¯ °ª »ç¿ë
+ì¼ê´€ëœ ë°˜í™˜ ê°’ ì‚¬ìš©
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-±×·çºñ´Â µ¿Àû Å¸ÀÌÇÎ ÇÁ·Î±×·¡¹Ö ¾ð¾îÀÔ´Ï´Ù.
-ÀÌ´Â ¸¹Àº °÷¿¡ ÀûÇÕÇÏÁö¸¸, ¾ç³¯ÀÇ °ËÀ¸·Î¼­ ¸Å¿ì È¿°úÀûÀÌÁö¸¸ ½Ç¼öÇÏ±âµµ ½±½À´Ï´Ù.
+ê·¸ë£¨ë¹„ëŠ” ë™ì  íƒ€ì´í•‘ í”„ë¡œê·¸ëž˜ë° ì–¸ì–´ìž…ë‹ˆë‹¤.
+ì´ëŠ” ë§Žì€ ê³³ì— ì í•©í•˜ì§€ë§Œ, ì–‘ë‚ ì˜ ê²€ìœ¼ë¡œì„œ ë§¤ìš° íš¨ê³¼ì ì´ì§€ë§Œ ì‹¤ìˆ˜í•˜ê¸°ë„ ì‰½ìŠµë‹ˆë‹¤.
 
-¸Þ¼Òµå ½Ã±×´ÏÃ³ÀÇ ÀÔ·Â ¿©ºÎ¿¡ °ü°è¾øÀÌ ¸Þ¼Òµå´Â ´ÜÀÏ ÀÚ·áÇüÀ» ¹ÝÈ¯ÇØ¾ßÇÕ´Ï´Ù.
-´ÙÀ½Àº ¾ÈÁÁÀº ¿¹½ÃÀÔ´Ï´Ù:
+ë©”ì†Œë“œ ì‹œê·¸ë‹ˆì²˜ì˜ ìž…ë ¥ ì—¬ë¶€ì— ê´€ê³„ì—†ì´ ë©”ì†Œë“œëŠ” ë‹¨ì¼ ìžë£Œí˜•ì„ ë°˜í™˜í•´ì•¼í•©ë‹ˆë‹¤.
+ë‹¤ìŒì€ ì•ˆì¢‹ì€ ì˜ˆì‹œìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -154,23 +162,23 @@ Here's an example of an in-line code comment explaining why the code is checking
         return [name: "someAttribute", value: input]
     }
 
-À§ÀÇ ¿¹Á¦´Â ÀÏ°üµÈ ÀÚ·áÇüÀ» ¹ÝÈ¯ÇÏÁö ¾Ê½À´Ï´Ù.
-ÀÌ ÄÚµåÀÇ Å¬¶óÀÌ¾ðÆ®¸¦ È£ÃâÇÏ¸é ºÒ¸° °ª°ú ¸Ê ¹ÝÈ¯ °ªÀ» ¸ðµÎ ¹Þ¾Æ¾ßÇÕ´Ï´Ù.
-ÀÌ¿Í ´Ù¸£°Ô ¸Þ¼Òµå´Â Ç×»ó µ¿ÀÏÇÑ ÀÚ·áÇüÀ» ¹ÝÈ¯ÇØ¾ßÇÕ´Ï´Ù.
+ìœ„ì˜ ì˜ˆì œëŠ” ì¼ê´€ëœ ìžë£Œí˜•ì„ ë°˜í™˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+ì´ ì½”ë“œì˜ í´ë¼ì´ì–¸íŠ¸ë¥¼ í˜¸ì¶œí•˜ë©´ ë¶ˆë¦° ê°’ê³¼ ë§µ ë°˜í™˜ ê°’ì„ ëª¨ë‘ ë°›ì•„ì•¼í•©ë‹ˆë‹¤.
+ì´ì™€ ë‹¤ë¥´ê²Œ ë©”ì†Œë“œëŠ” í•­ìƒ ë™ì¼í•œ ìžë£Œí˜•ì„ ë°˜í™˜í•´ì•¼í•©ë‹ˆë‹¤.
 
 .. note::
 
-    Æ¯º°ÇÑ °æ¿ì, ¸Þ¼Òµå°¡ ´Ù¸¥ ÀÚ·áÇüÀ» ¹ÝÈ¯ÇÏ´Â °Ô *ÀÇ¹Ì ÀÖÀ» ¼öµµ* ÀÖ½À´Ï´Ù.
-    ÀÌ·¯ÇÑ °æ¿ì´Â ¿¹¿Ü »çÇ×ÀÌ¸ç, ¹ÝÈ¯µÇ´Â ÀÚ·áÇüµé°ú ¾î¶² »óÈ²¿¡¼­ ±× ÀÚ·áÇüÀÌ ¹ÝÈ¯µÇ´Â Áö°¡ ÁÖ¼®¿¡ ÀÛ¼ºµÇ¾î ÀÖ¾î¾ß ÇÕ´Ï´Ù.
+    íŠ¹ë³„í•œ ê²½ìš°, ë©”ì†Œë“œê°€ ë‹¤ë¥¸ ìžë£Œí˜•ì„ ë°˜í™˜í•˜ëŠ” ê²Œ *ì˜ë¯¸ ìžˆì„ ìˆ˜ë„* ìžˆìŠµë‹ˆë‹¤.
+    ì´ëŸ¬í•œ ê²½ìš°ëŠ” ì˜ˆì™¸ ì‚¬í•­ì´ë©°, ë°˜í™˜ë˜ëŠ” ìžë£Œí˜•ë“¤ê³¼ ì–´ë–¤ ìƒí™©ì—ì„œ ê·¸ ìžë£Œí˜•ì´ ë°˜í™˜ë˜ëŠ” ì§€ê°€ ì£¼ì„ì— ìž‘ì„±ë˜ì–´ ìžˆì–´ì•¼ í•©ë‹ˆë‹¤.
 
 
-¹è¿­ ÀÎµ¦½ÌÀ» ÁÖÀÇÇÏ¼¼¿ä
+ë°°ì—´ ì¸ë±ì‹±ì„ ì£¼ì˜í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-µ¥ÀÌÅÍ¸¦ ÆÄ½Ì ÇÒ ¶§ ¹è¿­À» »ç¿ëÇÑ´Ù¸é Á¶½ÉÇÏ¼Å¾ßÇÕ´Ï´Ù.
-¹è¿­À» ÀÎµ¦½ÌÇÒ ¶§ ½ÇÁ¦·Î ¹è¿­¿¡ ±×¸¸Å­ÀÇ ¿ø¼Ò°¡ Á¸ÀçÇÏ´ÂÁö ¸ÕÀú È®ÀÎÇØ¾ßÇÕ´Ï´Ù.
+ë°ì´í„°ë¥¼ íŒŒì‹± í•  ë•Œ ë°°ì—´ì„ ì‚¬ìš©í•œë‹¤ë©´ ì¡°ì‹¬í•˜ì…”ì•¼í•©ë‹ˆë‹¤.
+ë°°ì—´ì„ ì¸ë±ì‹±í•  ë•Œ ì‹¤ì œë¡œ ë°°ì—´ì— ê·¸ë§Œí¼ì˜ ì›ì†Œê°€ ì¡´ìž¬í•˜ëŠ”ì§€ ë¨¼ì € í™•ì¸í•´ì•¼í•©ë‹ˆë‹¤.
 
-´ÙÀ½Àº `` ":"`¹®ÀÚ¸¦ ±âÁØÀ¸·Î ¹®ÀÚ¿­À» ºÐÇÒÇÏ°í`` ":"`` ¹®ÀÚ ´ÙÀ½¿¡ ¿À´Â °ªÀ» ¹ÝÈ¯ÇÏ´Â ÄÚµåÀÔ´Ï´Ù:
+ë‹¤ìŒì€ `` ":"`ë¬¸ìžë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë¬¸ìžì—´ì„ ë¶„í• í•˜ê³ `` ":"`` ë¬¸ìž ë‹¤ìŒì— ì˜¤ëŠ” ê°’ì„ ë°˜í™˜í•˜ëŠ” ì½”ë“œìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -184,8 +192,8 @@ Here's an example of an in-line code comment explaining why the code is checking
     // -> ArrayIndexOutOfBounds exception!
     getSplitString("abc:")
 
-``getSplitString ()``Àº ``split ()``ÀÇ °á°ú°¡ ÇÏ³ª ÀÌ»óÀÇ ¿ø¼Ò¸¦ °¡Áö°í ÀÖ´ÂÁö¸¦ °ËÁõÇÏÁö ¾Ê±â ¶§¹®¿¡, ÆÄ½Ì µÈ °á°ú¿¡¼­ µÎ¹øÂ° Ç×¸ñ¿¡ Á¢±ÙÇÏ·Á ÇÒ ¶§``ArrayIndexOutOfBounds`` ¿¹¿Ü°¡ ¹ß»ýÇÕ´Ï´Ù.
-ÀÌ¿Í °°Àº °æ¿ì ¹è¿­¿¡ Ç×¸ñÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¿¹¿ÜÃ³¸®¸¦ ÇØÁà¾ßÇÕ´Ï´Ù.
+``getSplitString ()``ì€ ``split ()``ì˜ ê²°ê³¼ê°€ í•˜ë‚˜ ì´ìƒì˜ ì›ì†Œë¥¼ ê°€ì§€ê³  ìžˆëŠ”ì§€ë¥¼ ê²€ì¦í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì—, íŒŒì‹± ëœ ê²°ê³¼ì—ì„œ ë‘ë²ˆì§¸ í•­ëª©ì— ì ‘ê·¼í•˜ë ¤ í•  ë•Œ``ArrayIndexOutOfBounds`` ì˜ˆì™¸ê°€ ë°œìƒí•©ë‹ˆë‹¤.
+ì´ì™€ ê°™ì€ ê²½ìš° ë°°ì—´ì— í•­ëª©ì´ ìžˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ì˜ˆì™¸ì²˜ë¦¬ë¥¼ í•´ì¤˜ì•¼í•©ë‹ˆë‹¤.
 
 .. code-block:: groovy
 
@@ -198,69 +206,69 @@ Here's an example of an in-line code comment explaining why the code is checking
         }
     }
 
-¿¤ºñ½º ¿¬»êÀÚ¸¦ ¹Ù¸£°Ô »ç¿ëÇÏ¼¼¿ä
+ì—˜ë¹„ìŠ¤ ì—°ì‚°ìžë¥¼ ë°”ë¥´ê²Œ ì‚¬ìš©í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-±×·çºñ´Â ¿¤ºñ½º ¿¬»êÀÚ¸¦ Áö¿øÇÕ´Ï´Ù. ¿¤ºñ½º ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¸é ´õ °£°áÇÏ°Ô Á¶°Ç¹®À» ÀÛ¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù.
-±×·¯³ª, ÀÌ¸¦ È¿°úÀûÀ¸·Î »ç¿ëÇÏ·Á¸é :Âü°í:`±×·çºñ Áø¸® °ª <review_guidelines_groovy_truth>` À» ÀÌÇØÇØ¾ßÇÕ´Ï´Ù.
+ê·¸ë£¨ë¹„ëŠ” ì—˜ë¹„ìŠ¤ ì—°ì‚°ìžë¥¼ ì§€ì›í•©ë‹ˆë‹¤. ì—˜ë¹„ìŠ¤ ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ë©´ ë” ê°„ê²°í•˜ê²Œ ì¡°ê±´ë¬¸ì„ ìž‘ì„±í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+ê·¸ëŸ¬ë‚˜, ì´ë¥¼ íš¨ê³¼ì ìœ¼ë¡œ ì‚¬ìš©í•˜ë ¤ë©´ :ì°¸ê³ :`ê·¸ë£¨ë¹„ ì§„ë¦¬ ê°’ <review_guidelines_groovy_truth>` ì„ ì´í•´í•´ì•¼í•©ë‹ˆë‹¤.
 
-º¯¼ö``bulbLevel``ÀÌ ¼³Á¤µÇÁö ¾ÊÀº °æ¿ì ±× °ªÀ» ``100``À¸·Î ¼³Á¤ÇÏ´Â ¿¹½ÃÀÔ´Ï´Ù:
+ë³€ìˆ˜``bulbLevel``ì´ ì„¤ì •ë˜ì§€ ì•Šì€ ê²½ìš° ê·¸ ê°’ì„ ``100``ìœ¼ë¡œ ì„¤ì •í•˜ëŠ” ì˜ˆì‹œìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
     def bulbLevel = settings.level ?: 100
 
-±×·¯³ª À§ÀÇ ¿¹Á¦¿¡¼­``settings.level``ÀÌ``0``ÀÌ¶ó¸é ¾î¶»°Ô µÉ±î¿ä? ** ±×·çºñ´Â 0À» false·Î °£ÁÖÇÏ±â ¶§¹®¿¡ **``bulbLevel`` **À» **``100`` **! **À¸·Î ¼³Á¤Çß½À´Ï´Ù! **! **
+ê·¸ëŸ¬ë‚˜ ìœ„ì˜ ì˜ˆì œì—ì„œ``settings.level``ì´``0``ì´ë¼ë©´ ì–´ë–»ê²Œ ë ê¹Œìš”? ** ê·¸ë£¨ë¹„ëŠ” 0ì„ falseë¡œ ê°„ì£¼í•˜ê¸° ë•Œë¬¸ì— **``bulbLevel`` **ì„ **``100`` **! **ìœ¼ë¡œ ì„¤ì •í–ˆìŠµë‹ˆë‹¤! **! **
 
-À§ÀÇ ÄÚµå´Â ´ÙÀ½°ú °°ÀÌ ÀÛ¼ºµÇ¾î¾ßÇÕ´Ï´Ù:
+ìœ„ì˜ ì½”ë“œëŠ” ë‹¤ìŒê³¼ ê°™ì´ ìž‘ì„±ë˜ì–´ì•¼í•©ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
     def bulbLevel = settings.level == null ?: 100
 
 
-Null °ª Ã³¸®
+Null ê°’ ì²˜ë¦¬
 ^^^^^^^^^^^^^^^^^^
 
-.. Áß¿ä::
+.. ì¤‘ìš”::
 
-     NullPointerExceptionsÀº SmartThings ÇÃ·§Æû¿¡¼­ °¡Àå ÀÚÁÖ ¹ß»ýÇÏ´Â ¿¹¿Ü Áß ÇÏ³ªÀÔ´Ï´Ù. ÁÖÀÇÇØÁÖ¼¼¿ä!
+     NullPointerExceptionsì€ SmartThings í”Œëž«í¼ì—ì„œ ê°€ìž¥ ìžì£¼ ë°œìƒí•˜ëŠ” ì˜ˆì™¸ ì¤‘ í•˜ë‚˜ìž…ë‹ˆë‹¤. ì£¼ì˜í•´ì£¼ì„¸ìš”!
 
-   LAN°ú SSDP »óÈ£ ÀÛ¿ë¿¡¼­ * ¸Å¿ì * ÀÚÁÖ ÀÏ¾î³ª´Â ÀÏÀÌ¹Ç·Î Ç×»ó ÄÚµå¸¦ ÇÑ¹ø ´õ È®ÀÎÇØÁÖ¼¼¿ä.
+   LANê³¼ SSDP ìƒí˜¸ ìž‘ìš©ì—ì„œ * ë§¤ìš° * ìžì£¼ ì¼ì–´ë‚˜ëŠ” ì¼ì´ë¯€ë¡œ í•­ìƒ ì½”ë“œë¥¼ í•œë²ˆ ë” í™•ì¸í•´ì£¼ì„¸ìš”.
 
-``NullPointerException``Àº SmartApp ¶Ç´Â Device HandlerÀÇ ½ÇÇàÀ» Á¾·á ½ÃÅ°Áö¸¸ `¼¼ÀÌÇÁ ³×ºñ°ÔÀÌ¼Ç<http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?`` ) ¿¬»êÀÚ·Î ½±°Ô Ã³¸®ÇÒ ¼ö ÀÖ½À´Ï´Ù.
-``null`` °ªÀ» °¡Áú ¼ö ÀÖ´Â ¸ðµç ÄÚµå´Â ¹Ì¸® ÀÌ¸¦ Ã³¸®ÇØ¾ßÇÕ´Ï´Ù.
+``NullPointerException``ì€ SmartApp ë˜ëŠ” Device Handlerì˜ ì‹¤í–‰ì„ ì¢…ë£Œ ì‹œí‚¤ì§€ë§Œ `ì„¸ì´í”„ ë„¤ë¹„ê²Œì´ì…˜<http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?`` ) ì—°ì‚°ìžë¡œ ì‰½ê²Œ ì²˜ë¦¬í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+``null`` ê°’ì„ ê°€ì§ˆ ìˆ˜ ìžˆëŠ” ëª¨ë“  ì½”ë“œëŠ” ë¯¸ë¦¬ ì´ë¥¼ ì²˜ë¦¬í•´ì•¼í•©ë‹ˆë‹¤.
 
-¾Æ·¡ ¿¹Á¦´Â``null``ÀÌ °¡´ÉÇÑ ¸î °¡Áö ÀÚÁÖ ¹ß»ýÇÏ´Â °æ¿ì¿Í ``?`` ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¿© ±×°ÍÀ» Ã³¸®ÇÏ´Â ¹æ¹ýÀ» º¸¿©ÁÝ´Ï´Ù :
+ì•„ëž˜ ì˜ˆì œëŠ”``null``ì´ ê°€ëŠ¥í•œ ëª‡ ê°€ì§€ ìžì£¼ ë°œìƒí•˜ëŠ” ê²½ìš°ì™€ ``?`` ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ì—¬ ê·¸ê²ƒì„ ì²˜ë¦¬í•˜ëŠ” ë°©ë²•ì„ ë³´ì—¬ì¤ë‹ˆë‹¤ :
 
 .. code-block:: groovy
 
-    // LAN ÀÌº¥Æ®¿¡ Çì´õ ¶Ç´Â "content-type"Çì´õ°¡ ¾ø´Â °æ¿ì, 
-    // NullPointerExceptionÀ» ³¯¸®Áö ¸¶¼¼¿ä!
+    // LAN ì´ë²¤íŠ¸ì— í—¤ë” ë˜ëŠ” "content-type"í—¤ë”ê°€ ì—†ëŠ” ê²½ìš°,
+    // NullPointerExceptionì„ ë‚ ë¦¬ì§€ ë§ˆì„¸ìš”!
     if (lanEvent.headers?."content-type"?.contains("xml")) { ... }
 
 .. code-block:: groovy
 
-    // À§Ä¡¿¡ ¸ðµå°¡ ¾ø´Â °æ¿ì ÄÚµå´Â nullÀ» ¹ÝÈ¯ÇÕ´Ï´Ù.
-    // ±×·¯³ª NullPointerExceptionÀ» throwÇÏÁö ¾Ê½À´Ï´Ù. 
+    // ìœ„ì¹˜ì— ëª¨ë“œê°€ ì—†ëŠ” ê²½ìš° ì½”ë“œëŠ” nullì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+    // ê·¸ëŸ¬ë‚˜ NullPointerExceptionì„ throwí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
     if (location.modes?.find{it.name == newMode}) { ... }
 
 
 .. _review_guidelines_groovy_truth:
 
-±×·çºñ Áø¸® °ªÀ» ¿Ã¹Ù¸£°Ô »ç¿ëÇÏ¼¼¿ä
-^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+ê·¸ë£¨ë¹„ ì§„ë¦¬ ê°’ì„ ì˜¬ë°”ë¥´ê²Œ ì‚¬ìš©í•˜ì„¸ìš”
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-±×·çºñ°¡ Âü ¶Ç´Â °ÅÁþÀ¸·Î °£ÁÖÇÏ´Â °ªÀ» ÀÏ°üÀûÀ¸·Î À¯ÁöÇÏ´ÂÁö È®ÀÎÇÏ¼¼¿ä.
-±×·çºñÀÇ Âü °ª¿¡ ´ëÇÑ ³»¿ëÀº `¿©±â http://groovy-lang.org/semantics.html#Groovy-Truth>`__¿¡ ÀÛ¼ºµÇ¾îÀÖ½À´Ï´Ù.
+ê·¸ë£¨ë¹„ê°€ ì°¸ ë˜ëŠ” ê±°ì§“ìœ¼ë¡œ ê°„ì£¼í•˜ëŠ” ê°’ì„ ì¼ê´€ì ìœ¼ë¡œ ìœ ì§€í•˜ëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”.
+ê·¸ë£¨ë¹„ì˜ ì°¸ ê°’ì— ëŒ€í•œ ë‚´ìš©ì€ `ì—¬ê¸° http://groovy-lang.org/semantics.html#Groovy-Truth>`__ì— ìž‘ì„±ë˜ì–´ìžˆìŠµë‹ˆë‹¤.
 
-¾Ë°í ÀÖ¾î¾ß ÇÒ ¸î °¡Áö ¹®Á¦Á¡ÀÌ ÀÔ´Ï´Ù:
+ì•Œê³  ìžˆì–´ì•¼ í•  ëª‡ ê°€ì§€ ë¬¸ì œì ì´ ìž…ë‹ˆë‹¤:
 
-- ºó ¹®ÀÚ¿­Àº ``°ÅÁþ``À¸·Î °£ÁÖµË´Ï´Ù; ºñ¾î ÀÖÁö ¾ÊÀº ¹®ÀÚ¿­Àº ``Âü``À¸·Î °£ÁÖµË´Ï´Ù.
-- ºó ¸Ê°ú ¸®½ºÆ®´Â ``°ÅÁþ``À¸·Î °£ÁÖµË´Ï´Ù; ºñ¾î ÀÖÁö ¾ÊÀº ¸Ê°ú ¸ñ·ÏÀº ``Âü``·Î °£ÁÖµË´Ï´Ù.
-- 0Àº ``°ÅÁþ``À¸·Î °£ÁÖµË´Ï´Ù. 0ÀÌ ¾Æ´Ñ ¼ýÀÚ´Â ``Âü``À¸·Î °£ÁÖµË´Ï´Ù.
+- ë¹ˆ ë¬¸ìžì—´ì€ ``ê±°ì§“``ìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤; ë¹„ì–´ ìžˆì§€ ì•Šì€ ë¬¸ìžì—´ì€ ``ì°¸``ìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤.
+- ë¹ˆ ë§µê³¼ ë¦¬ìŠ¤íŠ¸ëŠ” ``ê±°ì§“``ìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤; ë¹„ì–´ ìžˆì§€ ì•Šì€ ë§µê³¼ ëª©ë¡ì€ ``ì°¸``ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤.
+- 0ì€ ``ê±°ì§“``ìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤. 0ì´ ì•„ë‹Œ ìˆ«ìžëŠ” ``ì°¸``ìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤.
 
-¼ýÀÚ°¡ 0°ú 100 »çÀÌ¿¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ´Â ¿¹Á¦ÀÔ´Ï´Ù:
+ìˆ«ìžê°€ 0ê³¼ 100 ì‚¬ì´ì— ì¡´ìž¬í•˜ëŠ”ì§€ í™•ì¸í•˜ëŠ” ì˜ˆì œìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -272,8 +280,8 @@ Null °ª Ã³¸®
         }
     }
 
-±×·çºñ¿¡¼­ ``0``Àº °ÅÁþÀÌ±â ¶§¹®¿¡``verifyLevel (0)``À» È£ÃâÇÏ¸é °á°ú´Â``false``ÀÔ´Ï´Ù.
-±×·¡¼­ ¾Æ·¡¿Í °°ÀÌ ÀÛ¼ºÇØ¾ßÇÕ´Ï´Ù:
+ê·¸ë£¨ë¹„ì—ì„œ ``0``ì€ ê±°ì§“ì´ê¸° ë•Œë¬¸ì—``verifyLevel (0)``ì„ í˜¸ì¶œí•˜ë©´ ê²°ê³¼ëŠ”``false``ìž…ë‹ˆë‹¤.
+ê·¸ëž˜ì„œ ì•„ëž˜ì™€ ê°™ì´ ìž‘ì„±í•´ì•¼í•©ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -281,82 +289,82 @@ Null °ª Ã³¸®
         return (level instanceof Number && level >= 0 && level <= 100)
     }
 
-ÀÚÁÖ ÀÏ¾î³ª´Â ¿À·ùÀÌ±â ¶§¹®¿¡ ±×·çºñÀÇ Áø¸® °ªÀ» Àß ÀÌÇØÇÏ°í ÀûÀýÇÏ°Ô »ç¿ëÇØ¾ßÇÕ´Ï´Ù. 
+ìžì£¼ ì¼ì–´ë‚˜ëŠ” ì˜¤ë¥˜ì´ê¸° ë•Œë¬¸ì— ê·¸ë£¨ë¹„ì˜ ì§„ë¦¬ ê°’ì„ ìž˜ ì´í•´í•˜ê³  ì ì ˆí•˜ê²Œ ì‚¬ìš©í•´ì•¼í•©ë‹ˆë‹¤.
 
 ----
 
-State ÇÔ¼öÀÇ »ç¿ë
+State í•¨ìˆ˜ì˜ ì‚¬ìš©
 -----------
 
-``state`` Àº ¹«Á¦ÇÑ µ¥ÀÌÅÍº£ÀÌ½º°¡ ¾Æ´Õ´Ï´Ù
+``state`` ì€ ë¬´ì œí•œ ë°ì´í„°ë² ì´ìŠ¤ê°€ ì•„ë‹™ë‹ˆë‹¤
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-state¿¡ ÀúÀåÇÒ ¼ö ÀÖ´Â µ¥ÀÌÅÍÀÇ ¾çÀº :Âü°í:`limited <state_size_limit>`ÀÔ´Ï´Ù.
-ÁÖ±âÀûÀ¸·Î(ÀÌº¥Æ®³ª ½ºÄÉÁìÀÇ ÀÀ´äÀ¸·Î) ``state``¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇÏÁö¸¸ »èÁ¦ÇÏÁö ¾Ê´Â ÄÚµå´Â Áö¾çÇÏ¼¼¿ä. 
+stateì— ì €ìž¥í•  ìˆ˜ ìžˆëŠ” ë°ì´í„°ì˜ ì–‘ì€ :ì°¸ê³ :`limited <state_size_limit>`ìž…ë‹ˆë‹¤.
+ì£¼ê¸°ì ìœ¼ë¡œ(ì´ë²¤íŠ¸ë‚˜ ìŠ¤ì¼€ì¥´ì˜ ì‘ë‹µìœ¼ë¡œ) ``state``ì— ì›ì†Œë¥¼ ì¶”ê°€í•˜ì§€ë§Œ ì‚­ì œí•˜ì§€ ì•ŠëŠ” ì½”ë“œëŠ” ì§€ì–‘í•˜ì„¸ìš”.
 
-``state``ÀÇ ÀÛµ¿¹æ½Ä ÀÌÇØ
+``state``ì˜ ìž‘ë™ë°©ì‹ ì´í•´
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``state``¸¦ »ç¿ëÇÒ ¶§, :Âü°í:`°á°ú´Â ¾ÛÀÌ <state_how_it_works>ÀÇ ½ÇÇàÀ» ¸¶Ä¥ ¶§±îÁö Áö¼ÓµÇÁö ¾Ê½À´Ï´Ù`.
-µ¿½Ã¿¡ ½ÇÇàµÇ´Â ´Ù¸¥ SmartApp ÀÎ½ºÅÏ½º°¡ state °ªÀ» ¿À¹ö¶óÀÌµåÇÏ´Â °æ¿ìÃ³·³, ÀÇµµÇÏÁö ¾ÊÀº °á°ú°¡ ¹ß»ýÇÒ ¼ö ÀÖ½À´Ï´Ù.
+``state``ë¥¼ ì‚¬ìš©í•  ë•Œ, :ì°¸ê³ :`ê²°ê³¼ëŠ” ì•±ì´ <state_how_it_works>ì˜ ì‹¤í–‰ì„ ë§ˆì¹  ë•Œê¹Œì§€ ì§€ì†ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤`.
+ë™ì‹œì— ì‹¤í–‰ë˜ëŠ” ë‹¤ë¥¸ SmartApp ì¸ìŠ¤í„´ìŠ¤ê°€ state ê°’ì„ ì˜¤ë²„ë¼ì´ë“œí•˜ëŠ” ê²½ìš°ì²˜ëŸ¼, ì˜ë„í•˜ì§€ ì•Šì€ ê²°ê³¼ê°€ ë°œìƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-¾ðÁ¦ ``atomicState`` ³ª ``state``¸¦ »ç¿ëÇØ¾ßÇÏ´ÂÁö ¾Ë¾ÆµÎ¼¼¿ä
+ì–¸ì œ ``atomicState`` ë‚˜ ``state``ë¥¼ ì‚¬ìš©í•´ì•¼í•˜ëŠ”ì§€ ì•Œì•„ë‘ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``atomicState``¿Í``state``ÀÇ :Âü°í:`Â÷ÀÌ <choose_between_state_atomicState>`¸¦ ÀÌÇØÇÏ¿© ÇÊ¿ä¿¡ ¸Â°Ô ¿Ã¹Ù¸¥ °ÍÀ» »ç¿ëÇÏ°í ÇÑ SmartApp¿¡ µÎ °¡Áö ¸ðµÎ »ç¿ëÇÏ´Â °ÍÀº Áö¾çÇØÁÖ¼¼¿ä.
+``atomicState``ì™€``state``ì˜ :ì°¸ê³ :`ì°¨ì´ <choose_between_state_atomicState>`ë¥¼ ì´í•´í•˜ì—¬ í•„ìš”ì— ë§žê²Œ ì˜¬ë°”ë¥¸ ê²ƒì„ ì‚¬ìš©í•˜ê³  í•œ SmartAppì— ë‘ ê°€ì§€ ëª¨ë‘ ì‚¬ìš©í•˜ëŠ” ê²ƒì€ ì§€ì–‘í•´ì£¼ì„¸ìš”.
 
-CollectionÀ» ``atomicState``¿¡ ÀúÀåÇÒ ¶§ ÁÖÀÇÇÏ¼¼¿ä
+Collectionì„ ``atomicState``ì— ì €ìž¥í•  ë•Œ ì£¼ì˜í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Atomic State¿¡¼­ÀÇ Collection ¼öÁ¤Àº State¿¡¼­¿Í ¸¶Âù°¡Áö·Î µÇÁö ¾Ê½À´Ï´Ù.
-Atomic State¿¡ ÀúÀåµÈ collectionÀÇ ÀûÀýÇÑ ÀÛ¾÷ ¹æ¹ýÀ» º¸·Á¸é :Âü°í:`<atomic_state_collections> ¹®¼­¸¦ ÀÐ¾îÁÖ¼¼¿ä.`.
+Atomic Stateì—ì„œì˜ Collection ìˆ˜ì •ì€ Stateì—ì„œì™€ ë§ˆì°¬ê°€ì§€ë¡œ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+Atomic Stateì— ì €ìž¥ëœ collectionì˜ ì ì ˆí•œ ìž‘ì—… ë°©ë²•ì„ ë³´ë ¤ë©´ :ì°¸ê³ :`<atomic_state_collections> ë¬¸ì„œë¥¼ ì½ì–´ì£¼ì„¸ìš”.`.
 
 ----
 
-À¥ ¼­ºñ½º
+ì›¹ ì„œë¹„ìŠ¤
 ------------
 
-¿ÜºÎ HTTP ¿äÃ» ¹®¼­È­
+ì™¸ë¶€ HTTP ìš”ì²­ ë¬¸ì„œí™”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¿ÜºÎ ¼­ºñ½º·ÎÀÇ :Âü°í:`HTTP ¿äÃ» <calling_web_services>`Àº ¿ÜºÎ ¿äÃ»¿¡ ´ëÇÑ ÇÊ¿ä¼º, ¾î¶² µ¥ÀÌÅÍ¸¦ Àü¼ÛÇß´ÂÁö, ±× µ¥ÀÌÅÍ°¡ ¾î¶»°Ô ¾²¿©Áú Áö°¡ ±â·ÏµÇ¾î¾ßÇÕ´Ï´Ù.
-ÇØ´çÇÏ´Â °æ¿ì Á¦3ÀÚÀÇ °³ÀÎ Á¤º¸ Ãë±Þ ¹æÄ§¿¡ ´ëÇÑ ¸µÅ©¸¦ ÁÖ¼®À¸·Î ´Þ¾ÆÁÖ¼¼¿ä.
+ì™¸ë¶€ ì„œë¹„ìŠ¤ë¡œì˜ :ì°¸ê³ :`HTTP ìš”ì²­ <calling_web_services>`ì€ ì™¸ë¶€ ìš”ì²­ì— ëŒ€í•œ í•„ìš”ì„±, ì–´ë–¤ ë°ì´í„°ë¥¼ ì „ì†¡í–ˆëŠ”ì§€, ê·¸ ë°ì´í„°ê°€ ì–´ë–»ê²Œ ì“°ì—¬ì§ˆ ì§€ê°€ ê¸°ë¡ë˜ì–´ì•¼í•©ë‹ˆë‹¤.
+í•´ë‹¹í•˜ëŠ” ê²½ìš° ì œ3ìžì˜ ê°œì¸ ì •ë³´ ì·¨ê¸‰ ë°©ì¹¨ì— ëŒ€í•œ ë§í¬ë¥¼ ì£¼ì„ìœ¼ë¡œ ë‹¬ì•„ì£¼ì„¸ìš”.
 
-³ëÃâµÈ ¸ðµç ¿£µå Æ÷ÀÎÆ® ¹®¼­È­ 
+ë…¸ì¶œëœ ëª¨ë“  ì—”ë“œ í¬ì¸íŠ¸ ë¬¸ì„œí™”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SmartApp ¶Ç´Â Device Handler°¡ :Âü°í:`¿£µå Æ÷ÀÎÆ®¸¦ ÇÏ³ª¶óµµ ³ëÃâÇÏ´Â °æ¿ì <web_services_mapping_endpoints>`, API°¡ »ç¿ëµÉ ´ë»ó, API¿¡¼­ ¾×¼¼½º ÇÏ´Â µ¥ÀÌÅÍ ¹× °¡´ÉÇÑ °æ¿ì¿¡ ´ëÇÑ ÁÖ¼®À» ÀÛ¼ºÇÏ°í API¿¡ Á¢±ÙÇÒ ¼ö ÀÖ´Â ¿ø°Ý ¼­ºñ½ºÀÇ °³ÀÎ Á¤º¸ º¸È£ Á¤Ã¥¿¡ ´ëÇÑ ¸µÅ©µµ ÇÔ²² Àû¾îÁÖ¼¼¿ä.
+SmartApp ë˜ëŠ” Device Handlerê°€ :ì°¸ê³ :`ì—”ë“œ í¬ì¸íŠ¸ë¥¼ í•˜ë‚˜ë¼ë„ ë…¸ì¶œí•˜ëŠ” ê²½ìš° <web_services_mapping_endpoints>`, APIê°€ ì‚¬ìš©ë  ëŒ€ìƒ, APIì—ì„œ ì•¡ì„¸ìŠ¤ í•˜ëŠ” ë°ì´í„° ë° ê°€ëŠ¥í•œ ê²½ìš°ì— ëŒ€í•œ ì£¼ì„ì„ ìž‘ì„±í•˜ê³  APIì— ì ‘ê·¼í•  ìˆ˜ ìžˆëŠ” ì›ê²© ì„œë¹„ìŠ¤ì˜ ê°œì¸ ì •ë³´ ë³´í˜¸ ì •ì±…ì— ëŒ€í•œ ë§í¬ë„ í•¨ê»˜ ì ì–´ì£¼ì„¸ìš”.
 
 ----
 
-½ºÄÉÁÙ¸µ
+ìŠ¤ì¼€ì¤„ë§
 ----------
 
-µÇÇ®ÀÌµÇ´Â ÂªÀº ½ºÄÉÁÙÀº Áö¾çÇÏ¼¼¿ä
+ë˜í’€ì´ë˜ëŠ” ì§§ì€ ìŠ¤ì¼€ì¤„ì€ ì§€ì–‘í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-½ºÄÉÁÙµÇ°Å³ª ÁÖ±âÀû ÇÔ¼ö´Â Áß¿äÇÑ ÀÌÀ¯°¡ ÀÖ°Å³ª °ËÅäÀÚ°¡ µ¿ÀÇÇÏÁö ¾Ê´Â ÀÌ»ó 5ºÐ¿¡ ÇÑ¹ø ÀÌ»ó ½ÇÇàµÇÁö ¸»¾Æ¾ß ÇÕ´Ï´Ù.
+ìŠ¤ì¼€ì¤„ë˜ê±°ë‚˜ ì£¼ê¸°ì  í•¨ìˆ˜ëŠ” ì¤‘ìš”í•œ ì´ìœ ê°€ ìžˆê±°ë‚˜ ê²€í† ìžê°€ ë™ì˜í•˜ì§€ ì•ŠëŠ” ì´ìƒ 5ë¶„ì— í•œë²ˆ ì´ìƒ ì‹¤í–‰ë˜ì§€ ë§ì•„ì•¼ í•©ë‹ˆë‹¤.
 
-ÄÚµå°¡ 5ºÐ¿¡ ÇÑ¹ø ÀÌ»ó ½ÇÇàµÇ´Â °æ¿ì ±× ÄÚµå°¡ ÇÊ¿äÇÑ ÀÌÀ¯¸¦ ÁÖ¼®¿¡ Ãß°¡ÇØÁÖ¼¼¿ä.
+ì½”ë“œê°€ 5ë¶„ì— í•œë²ˆ ì´ìƒ ì‹¤í–‰ë˜ëŠ” ê²½ìš° ê·¸ ì½”ë“œê°€ í•„ìš”í•œ ì´ìœ ë¥¼ ì£¼ì„ì— ì¶”ê°€í•´ì£¼ì„¸ìš”.
 
-``runIn()`` ¸Þ¼Òµå Ã¼ÀÌ´×À» Áö¾çÇÏ¼¼¿ä
+``runIn()`` ë©”ì†Œë“œ ì²´ì´ë‹ì„ ì§€ì–‘í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:Âü°í:`runIn() ¸Þ¼Òµå¸¦ Ã¼ÀÌ´×ÇÏÁö ¸¶¼¼¿ä <scheduling_chained_run_in>`
- 
-²À ÇÊ¿äÇÏ´Ù¸é ±× ÀÌÀ¯¸¦ ¼³¸íÇÏ´Â ÁÖ¼®À» Ãß°¡ÇØÁÖ¼¼¿ä.
+:ì°¸ê³ :`runIn() ë©”ì†Œë“œë¥¼ ì²´ì´ë‹í•˜ì§€ ë§ˆì„¸ìš” <scheduling_chained_run_in>`
+
+ê¼­ í•„ìš”í•˜ë‹¤ë©´ ê·¸ ì´ìœ ë¥¼ ì„¤ëª…í•˜ëŠ” ì£¼ì„ì„ ì¶”ê°€í•´ì£¼ì„¸ìš”.
 
 ----
 
-º¸¾È °í·Á»çÇ×
+ë³´ì•ˆ ê³ ë ¤ì‚¬í•­
 -----------------------
 
-±¸µ¶Àº ¸íÈ®ÇØ¾ßÇÕ´Ï´Ù
+êµ¬ë…ì€ ëª…í™•í•´ì•¼í•©ë‹ˆë‹¤
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¹®ÀÚ¿­ º¯¼ö¸¦ »ç¿ëÇÏ¿© ÀÌº¥Æ®¸¦ ±¸µ¶ÇÒ ¼ö ÀÖÀ¸¹Ç·Î SmartApp°¡ ±¸µ¶ÇÏ´Â ´ë»óÀÌ ´Ù¼Ò ºÒÅõ¸í ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+ë¬¸ìžì—´ ë³€ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë²¤íŠ¸ë¥¼ êµ¬ë…í•  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ SmartAppê°€ êµ¬ë…í•˜ëŠ” ëŒ€ìƒì´ ë‹¤ì†Œ ë¶ˆíˆ¬ëª… í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-¿¹:
+ì˜ˆ:
 
 .. code-block:: groovy
 
@@ -366,36 +374,36 @@ SmartApp ¶Ç´Â Device Handler°¡ :Âü°í:`¿£µå Æ÷ÀÎÆ®¸¦ ÇÏ³ª¶óµµ ³ëÃâÇÏ´Â °æ¿ì <web_
 
     subscribe(contact1, myContactSubscription, myContactHandler)
 
-°¡Àå ÁÁÀº ¹æ¹ýÀº ¼Ó¼º¿¡ ¸í½ÃÀûÀ¸·Î ±¸µ¶ÇÏ´Â °ÍÀÔ´Ï´Ù:
+ê°€ìž¥ ì¢‹ì€ ë°©ë²•ì€ ì†ì„±ì— ëª…ì‹œì ìœ¼ë¡œ êµ¬ë…í•˜ëŠ” ê²ƒìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
     subscribe(contact1, "contact.open", myContactHandler)
 
-±×·¯³ª SmartApp°¡ º¯¼ö(¿¹¸¦ µé¾î, state¿¡¼­)¸¦ ±¸µ¶ÇØ¾ßÇÏ´Â °æ¿ì, °ËÅäÀÚ´Â º¯¼ö°¡ ¼³Á¤µÇ´Â ¹æ½Ä°ú ¿¹»óµÇ´Â Æ¯¼ºÀÌ ¹«¾ùÀÎÁö ÃßÀûÇÒ ¼ö ÀÖ¾î¾ßÇÕ´Ï´Ù.
+ê·¸ëŸ¬ë‚˜ SmartAppê°€ ë³€ìˆ˜(ì˜ˆë¥¼ ë“¤ì–´, stateì—ì„œ)ë¥¼ êµ¬ë…í•´ì•¼í•˜ëŠ” ê²½ìš°, ê²€í† ìžëŠ” ë³€ìˆ˜ê°€ ì„¤ì •ë˜ëŠ” ë°©ì‹ê³¼ ì˜ˆìƒë˜ëŠ” íŠ¹ì„±ì´ ë¬´ì—‡ì¸ì§€ ì¶”ì í•  ìˆ˜ ìžˆì–´ì•¼í•©ë‹ˆë‹¤.
 
-±¸µ¶Àº ±¸Ã¼ÀûÀÌ¾î¾ß ÇÕ´Ï´Ù
+êµ¬ë…ì€ êµ¬ì²´ì ì´ì–´ì•¼ í•©ë‹ˆë‹¤
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Áö³ªÄ¡°Ô ±¤¹üÀ§ÇÑ ±¸µ¶À» ¸¸µéÁö ¸¶½Ê½Ã¿À.
+ì§€ë‚˜ì¹˜ê²Œ ê´‘ë²”ìœ„í•œ êµ¬ë…ì„ ë§Œë“¤ì§€ ë§ˆì‹­ì‹œì˜¤.
 
-¸ðµç À§Ä¡ÀÇ ÀÌº¥Æ®¿¡ ±¸µ¶µÈ SmartApp´Â Áö³ªÄ¡°Ô ¸¹ÀÌ ½ÇÇàµÇ¸ç ÀÌ·± °æ¿ì´Â °ÅÀÇ ÇÊ¿äÇÏÁö ¾Ê½À´Ï´Ù.
-´ë½Å °ü½ÉÀÖ´Â ÀÌº¥Æ®¿¡ ±¸Ã¼ÀûÀÎ ±¸µ¶À» ¸¸µå½Ê½Ã¿À.
+ëª¨ë“  ìœ„ì¹˜ì˜ ì´ë²¤íŠ¸ì— êµ¬ë…ëœ SmartAppëŠ” ì§€ë‚˜ì¹˜ê²Œ ë§Žì´ ì‹¤í–‰ë˜ë©° ì´ëŸ° ê²½ìš°ëŠ” ê±°ì˜ í•„ìš”í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+ëŒ€ì‹  ê´€ì‹¬ìžˆëŠ” ì´ë²¤íŠ¸ì— êµ¬ì²´ì ì¸ êµ¬ë…ì„ ë§Œë“œì‹­ì‹œì˜¤.
 
-LAN ¿¬°á ÀåÄ¡ ¿ë ¼­ºñ½º °ü¸®ÀÚ¸¦ ¸¸µå´Â °æ¿ì :Âü°í:`ÀåÄ¡ °Ë»ö ´ë»ó <lan_device_discovery> ±¸µ¶'À» ²À ÇØÁÖ¼¼¿ä.
+LAN ì—°ê²° ìž¥ì¹˜ ìš© ì„œë¹„ìŠ¤ ê´€ë¦¬ìžë¥¼ ë§Œë“œëŠ” ê²½ìš° :ì°¸ê³ :`ìž¥ì¹˜ ê²€ìƒ‰ ëŒ€ìƒ <lan_device_discovery> êµ¬ë…'ì„ ê¼­ í•´ì£¼ì„¸ìš”.
 
-µ¿Àû ¸Þ¼Òµå´Â ½ÇÇàÇÏÁö ¸¶¼¼¿ä
+ë™ì  ë©”ì†Œë“œëŠ” ì‹¤í–‰í•˜ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-±×·çºñ¿¡¼­´Â ´ÙÀ½°ú °°ÀÌ ¹®ÀÚ¿­À» ±â¹ÝÀ¸·Î ÇÔ¼ö¸¦ ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+ê·¸ë£¨ë¹„ì—ì„œëŠ” ë‹¤ìŒê³¼ ê°™ì´ ë¬¸ìžì—´ì„ ê¸°ë°˜ìœ¼ë¡œ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
 .. code-block:: groovy
 
     object."${mystring}"()
 
-¸Å¿ì Æí¸® ÇÒ ¼ö ÀÖÁö¸¸, ``$ {mystring}``ÀÌ HTTP ¿äÃ», Áï SmartThings ÇÃ·§Æû ¿ÜºÎ ¶Ç´Â ´Ù¸¥ SmartApp ¶Ç´Â Device Handler¿¡¼­ ¿Â °æ¿ì ÀÔ·ÂÀ» °ËÁõÇØ¾ßÇÕ´Ï´Ù.
+ë§¤ìš° íŽ¸ë¦¬ í•  ìˆ˜ ìžˆì§€ë§Œ, ``$ {mystring}``ì´ HTTP ìš”ì²­, ì¦‰ SmartThings í”Œëž«í¼ ì™¸ë¶€ ë˜ëŠ” ë‹¤ë¥¸ SmartApp ë˜ëŠ” Device Handlerì—ì„œ ì˜¨ ê²½ìš° ìž…ë ¥ì„ ê²€ì¦í•´ì•¼í•©ë‹ˆë‹¤.
 
-ÁÁÀº °ËÁõ ¹æ¹ýÀº ÀÔ·ÂÀ» »ç¿ëÇÏ±â Àü ``switch()``¹®À» »ç¿ëÇÏ´Â °ÍÀÔ´Ï´Ù:
+ì¢‹ì€ ê²€ì¦ ë°©ë²•ì€ ìž…ë ¥ì„ ì‚¬ìš©í•˜ê¸° ì „ ``switch()``ë¬¸ì„ ì‚¬ìš©í•˜ëŠ” ê²ƒìž…ë‹ˆë‹¤:
 
 .. code-block:: groovy
 
@@ -414,22 +422,22 @@ LAN ¿¬°á ÀåÄ¡ ¿ë ¼­ºñ½º °ü¸®ÀÚ¸¦ ¸¸µå´Â °æ¿ì :Âü°í:`ÀåÄ¡ °Ë»ö ´ë»ó <lan_device_d
     }
 
 
-SMS ¸Þ½ÃÁö¸¦ ÇÏµå ÄÚµùÇÏÁö ¸¶¼¼¿ä
+SMS ë©”ì‹œì§€ë¥¼ í•˜ë“œ ì½”ë”©í•˜ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¾Ë¸²Àº Àý´ë·Î ÇÏµå ÄÚµåµÈ ¹øÈ£·Î Àü¼ÛÇÏ¸é ¾ÈµË´Ï´Ù.
-:Âü°í:`¿¬¶ôÃ³ ÀÔ·Â <contact_book>`À¸·Î »ç¿ëÀÚ°¡ Á¦°ø ÇÑ ¹øÈ£¸¦ »ç¿ëÇØ¾ßÇÕ´Ï´Ù (Contact BookÀ» »ç¿ëÇÒ ¼ö ¾ø¾îµµ, ¿¬¶ôÃ³ ÀÔ·ÂÇüÀ» »ç¿ëÇÒ ¼ö ÀÖÀ¸¸ç ¿¬¶ôÃ³ »ç¿ëÀÚ°¡ ¾Æ´Ñ »ç¶÷µéÀ» À§ÇÑ fall-back ¸ÞÄ¿´ÏÁòÀ» Æ÷ÇÔÇÕ´Ï´Ù) ÀÌ ±â´ÉÀ» »ç¿ëÇÏ¸é SmartApp°¡ º¸ÁõµË´Ï´Ù.
+ì•Œë¦¼ì€ ì ˆëŒ€ë¡œ í•˜ë“œ ì½”ë“œëœ ë²ˆí˜¸ë¡œ ì „ì†¡í•˜ë©´ ì•ˆë©ë‹ˆë‹¤.
+:ì°¸ê³ :`ì—°ë½ì²˜ ìž…ë ¥ <contact_book>`ìœ¼ë¡œ ì‚¬ìš©ìžê°€ ì œê³µ í•œ ë²ˆí˜¸ë¥¼ ì‚¬ìš©í•´ì•¼í•©ë‹ˆë‹¤ (Contact Bookì„ ì‚¬ìš©í•  ìˆ˜ ì—†ì–´ë„, ì—°ë½ì²˜ ìž…ë ¥í˜•ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìœ¼ë©° ì—°ë½ì²˜ ì‚¬ìš©ìžê°€ ì•„ë‹Œ ì‚¬ëžŒë“¤ì„ ìœ„í•œ fall-back ë©”ì»¤ë‹ˆì¦˜ì„ í¬í•¨í•©ë‹ˆë‹¤) ì´ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ë©´ SmartAppê°€ ë³´ì¦ë©ë‹ˆë‹¤.
 
 ----
 
-¼º´É
+ì„±ëŠ¥
 -----------
 
-¹Ýº¹¹®¿¡ ¹Ù»Û ´ë±â¸¦ °ÉÁö¸¶¼¼¿ä
+ë°˜ë³µë¬¸ì— ë°”ìœ ëŒ€ê¸°ë¥¼ ê±¸ì§€ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^
 
-¹Ýº¹¹®À¸·Î ¹Ù»Û ´ë±â¸¦ °É¾î¾ß ÇÒ ÀÏ¸»ÀÇ ÀÌÀ¯°¡ ¾ø½À´Ï´Ù.
-ÀÌ·¸°Ô ÇÏÁö ¸¶¼¼¿ä:
+ë°˜ë³µë¬¸ìœ¼ë¡œ ë°”ìœ ëŒ€ê¸°ë¥¼ ê±¸ì–´ì•¼ í•  ì¼ë§ì˜ ì´ìœ ê°€ ì—†ìŠµë‹ˆë‹¤.
+ì´ë ‡ê²Œ í•˜ì§€ ë§ˆì„¸ìš”:
 
 .. code-block:: groovy
 
@@ -440,48 +448,47 @@ SMS ¸Þ½ÃÁö¸¦ ÇÏµå ÄÚµùÇÏÁö ¸¶¼¼¿ä
         }
     }
 
-À§ ÄÚµåÀÇ ¸ñÀûÀº ¼ö ¹Ð¸® ÃÊ µ¿¾È ½ÇÇàÀ» Áö¿¬½ÃÅ°´Â °ÍÀÔ´Ï´Ù.
-ÀÌ·¸°Ô ÇÏ¸é ¸®¼Ò½º°¡ ³¶ºñµÇ°í 20ÃÊ ½ÇÇà Á¦ÇÑÀ» ÃÊ°úÇÒ °¡´É¼ºÀÌ ³ô¾ÆÁý´Ï´Ù.
+ìœ„ ì½”ë“œì˜ ëª©ì ì€ ìˆ˜ ë°€ë¦¬ ì´ˆ ë™ì•ˆ ì‹¤í–‰ì„ ì§€ì—°ì‹œí‚¤ëŠ” ê²ƒìž…ë‹ˆë‹¤.
+ì´ë ‡ê²Œ í•˜ë©´ ë¦¬ì†ŒìŠ¤ê°€ ë‚­ë¹„ë˜ê³  20ì´ˆ ì‹¤í–‰ ì œí•œì„ ì´ˆê³¼í•  ê°€ëŠ¥ì„±ì´ ë†’ì•„ì§‘ë‹ˆë‹¤.
 
-½ÇÇà Áö¿¬ ´ë½Å, ¾Û¿¡¼­ ÀÌÈÄ¿¡ ½ÇÇàµÉ °ÍÀ» :Âü°í:`½ºÄÉÁÙ¸µ <smartapp-scheduling>`ÇØ¾ßÇÕ´Ï´Ù.
+ì‹¤í–‰ ì§€ì—° ëŒ€ì‹ , ì•±ì—ì„œ ì´í›„ì— ì‹¤í–‰ë  ê²ƒì„ :ì°¸ê³ :`ìŠ¤ì¼€ì¤„ë§ <smartapp-scheduling>`í•´ì•¼í•©ë‹ˆë‹¤.
 
-``synchronized()``¸¦ ¾²Áö ¸¶¼¼¿ä
+``synchronized()``ë¥¼ ì“°ì§€ ë§ˆì„¸ìš”
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``synchronized``¸¦ »ç¿ëÇÏ¸é ¼º´É ¿À¹ö Çìµå°¡ ¹ß»ýÇÏ°í ¾Æ¹«·± µµ¿òÀ» ÁÖÁö ¾Ê½À´Ï´Ù.
-»ç¿ëÇÏÁö ¸¶¼¼¿ä.
+``synchronized``ë¥¼ ì‚¬ìš©í•˜ë©´ ì„±ëŠ¥ ì˜¤ë²„ í—¤ë“œê°€ ë°œìƒí•˜ê³  ì•„ë¬´ëŸ° ë„ì›€ì„ ì£¼ì§€ ì•ŠìŠµë‹ˆë‹¤.
+ì‚¬ìš©í•˜ì§€ ë§ˆì„¸ìš”.
 
-SmartApp ¶Ç´Â Device Handler°¡ ½ÇÇàµÇ¸é ÇØ´ç À§Ä¡¿¡ ÇÒ´çµÈ *n* °³ÀÇ »ç¿ë °¡´ÉÇÑ ¼­¹ö Áß ÇÏ³ª¿¡¼­ ½ÇÇàµË´Ï´Ù. ¿©±â¼­ *n* Àº À§Ä¡, ÇöÀç ·Îµå ¹× ±âÅ¸ ¿ä¼Ò¿¡ µû¶ó ´Þ¶óÁö´Â º¯¼öÀÔ´Ï´Ù.
-SmartApp ¶Ç´Â Device HandlerÀÇ µ¿½Ã ½ÇÇàÀÌ³ª µÑÀÌ µ¿ÀÏÇÑ ¼­¹ö¿¡¼­ ½ÇÇàµÉ ¶§´Â µ¿½Ã¼ºÀÌ º¸ÀåµÇÁö ¾Ê½À´Ï´Ù.
-ÀÌ ¶§¹®¿¡``synchronized``¸¦ »ç¿ëÇÏ¿© µ¿½Ã µ¿ÀÛÀ» °­Á¦ÇÏ´Â °ÍÀº µ¿ÀÏÇÑ ¼­¹ö¿¡¼­ µ¿½Ã ½ÇÇàÀÌ ¹ß»ýÇÏ´Â °æ¿ì¿¡¸¸ ÀÛµ¿ÇÏ¸ç ÀÌ¸¶Àúµµ ¿À¹ö Çìµå°¡ Ç×»ó ¹ß»ýÇÕ´Ï´Ù
+SmartApp ë˜ëŠ” Device Handlerê°€ ì‹¤í–‰ë˜ë©´ í•´ë‹¹ ìœ„ì¹˜ì— í• ë‹¹ëœ *n* ê°œì˜ ì‚¬ìš© ê°€ëŠ¥í•œ ì„œë²„ ì¤‘ í•˜ë‚˜ì—ì„œ ì‹¤í–‰ë©ë‹ˆë‹¤. ì—¬ê¸°ì„œ *n* ì€ ìœ„ì¹˜, í˜„ìž¬ ë¡œë“œ ë° ê¸°íƒ€ ìš”ì†Œì— ë”°ë¼ ë‹¬ë¼ì§€ëŠ” ë³€ìˆ˜ìž…ë‹ˆë‹¤.
+SmartApp ë˜ëŠ” Device Handlerì˜ ë™ì‹œ ì‹¤í–‰ì´ë‚˜ ë‘˜ì´ ë™ì¼í•œ ì„œë²„ì—ì„œ ì‹¤í–‰ë  ë•ŒëŠ” ë™ì‹œì„±ì´ ë³´ìž¥ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+ì´ ë•Œë¬¸ì—``synchronized``ë¥¼ ì‚¬ìš©í•˜ì—¬ ë™ì‹œ ë™ìž‘ì„ ê°•ì œí•˜ëŠ” ê²ƒì€ ë™ì¼í•œ ì„œë²„ì—ì„œ ë™ì‹œ ì‹¤í–‰ì´ ë°œìƒí•˜ëŠ” ê²½ìš°ì—ë§Œ ìž‘ë™í•˜ë©° ì´ë§ˆì €ë„ ì˜¤ë²„ í—¤ë“œê°€ í•­ìƒ ë°œìƒí•©ë‹ˆë‹¤
 
 ----
 
-LAN °ü·Ã
+LAN ê´€ë ¨
 ------------
 
-ÀåÄ¡ º° °Ë»ö »ç¿ë
+ìž¥ì¹˜ ë³„ ê²€ìƒ‰ ì‚¬ìš©
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LAN¿¡ ¿¬°áµÈ ÀåÄ¡ÀÇ ¼­ºñ½º °ü¸®ÀÚ´Â ÀåÄ¡ °Ë»öÀ» À§ÇØ :Âü°í: ` ÀåÄ¡ °Ë»ö ´ë»ó <lan_device_discovery>`À» ±¸µ¶ÇÏ¼¼¿ä.
+LANì— ì—°ê²°ëœ ìž¥ì¹˜ì˜ ì„œë¹„ìŠ¤ ê´€ë¦¬ìžëŠ” ìž¥ì¹˜ ê²€ìƒ‰ì„ ìœ„í•´ :ì°¸ê³ : ` ìž¥ì¹˜ ê²€ìƒ‰ ëŒ€ìƒ <lan_device_discovery>`ì„ êµ¬ë…í•˜ì„¸ìš”.
 
-IP º¯°æ Ã³¸®
+IP ë³€ê²½ ì²˜ë¦¬
 ^^^^^^^^^^^^^^^^
 
-LAN¿¡ ¿¬°áµÈ ÀåÄ¡ÀÇ ¼­ºñ½º °ü¸®ÀÚ´Â :Âü°í:`IP º¯°æ <lan_device_health>`À» Ã³¸®ÇØ¾ßÇÕ´Ï´Ù.
-ÀÌ´Â ¶ó¿ìÅÍ Àü¿øÀÌ ²¨Á³´Ù ÄÑÁö°Å³ª DHCP ¸ÅÇÎÀÌ ¼Õ½ÇµÉ ¶§ ¹ß»ýÇÒ ¼ö ÀÖ½À´Ï´Ù.
+LANì— ì—°ê²°ëœ ìž¥ì¹˜ì˜ ì„œë¹„ìŠ¤ ê´€ë¦¬ìžëŠ” :ì°¸ê³ :`IP ë³€ê²½ <lan_device_health>`ì„ ì²˜ë¦¬í•´ì•¼í•©ë‹ˆë‹¤.
+ì´ëŠ” ë¼ìš°í„° ì „ì›ì´ êº¼ì¡Œë‹¤ ì¼œì§€ê±°ë‚˜ DHCP ë§¤í•‘ì´ ì†ì‹¤ë  ë•Œ ë°œìƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
 ----
 
 .. _review_guidelines_parent_child:
 
-ºÎ¸ð - ÀÚ½Ä °ü°è
+ë¶€ëª¨ - ìžì‹ ê´€ê³„
 --------------------------
 
-º°µµÀÇ ÆÄÀÏÀ» »ç¿ëÇÏ¼¼¿ä
+ë³„ë„ì˜ íŒŒì¼ì„ ì‚¬ìš©í•˜ì„¸ìš”
 ^^^^^^^^^^^^^^^^^^
 
-ºÎ¸ð - ÀÚ½Ä °ü°è¸¦ »ç¿ëÇÏ´Â °æ¿ì ÀÚ½Ä ÀåÄ¡°¡ ÀÖ´Â ºÎ¸ð SmartApp ÀÌ°Å³ª ÀÚ½Ä SmartAppÀÌ ÀÖ´Â ºÎ¸ð SmartAppÀÌ¾î¾ßÇÕ´Ï´Ù. ºÎ¸ð¿Í ÀÚ½ÄÀº º°µµÀÇ ÆÄÀÏ¿¡ ÀÖ¾î¾ßÇÕ´Ï´Ù.
+ë¶€ëª¨ - ìžì‹ ê´€ê³„ë¥¼ ì‚¬ìš©í•˜ëŠ” ê²½ìš° ìžì‹ ìž¥ì¹˜ê°€ ìžˆëŠ” ë¶€ëª¨ SmartApp ì´ê±°ë‚˜ ìžì‹ SmartAppì´ ìžˆëŠ” ë¶€ëª¨ SmartAppì´ì–´ì•¼í•©ë‹ˆë‹¤. ë¶€ëª¨ì™€ ìžì‹ì€ ë³„ë„ì˜ íŒŒì¼ì— ìžˆì–´ì•¼í•©ë‹ˆë‹¤.
 
-»ó, ÇÏÀ§ ÄÚµå¸¦ °°Àº ÆÄÀÏ¿¡ µÎ¸é ÆÄÀÏ Å©±â°¡ Ä¿Áö°í ÄÚµå¸¦ ÀÌÇØÇÏ±â ¾î·Æ°Ô ¸¸µé°í ¿À·ù°¡ ¹ß»ýÇÏ±â ½¬¿ì¸ç µð¹ö±×ÇÏ±â°¡ ¾î·Æ½À´Ï´Ù.
-
+ìƒ, í•˜ìœ„ ì½”ë“œë¥¼ ê°™ì€ íŒŒì¼ì— ë‘ë©´ íŒŒì¼ í¬ê¸°ê°€ ì»¤ì§€ê³  ì½”ë“œë¥¼ ì´í•´í•˜ê¸° ì–´ë µê²Œ ë§Œë“¤ê³  ì˜¤ë¥˜ê°€ ë°œìƒí•˜ê¸° ì‰¬ìš°ë©° ë””ë²„ê·¸í•˜ê¸°ê°€ ì–´ë µìŠµë‹ˆë‹¤.
