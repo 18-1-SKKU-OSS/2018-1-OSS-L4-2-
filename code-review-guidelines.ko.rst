@@ -42,7 +42,7 @@ SmartApp 또는 Device Handler를 제출하기 전에 본인의 코드가 이 �
 
 코드를 유틸리티 메소드로 분리할 수 있는지 알아보세요.
 예를 들어, 큰 사이즈의 HTTP 응답을 즉시마다 분석하는 메소드는 길어질 수 있으니, 이 작업을 호출할 수 있는 여러 메소드로 분리시키세요.
-이렇게 하면, 코드를 더 쉽게 이해할 수 있게 되며 더 나은 `관심사의 분리 <https://en.wikipedia.org/wiki/Separation_of_concerns>`__를 보장합니다.
+이렇게 하면, 코드를 더 쉽게 이해할 수 있게 되며 더나은 `관심사의 분리 <https://en.wikipedia.org/wiki/Separation_of_concerns>`__ 를 보장합니다.
 
 사용하지 않는 코드를 제출하지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,7 +68,7 @@ SmartApp 또는 Device Handler를 제출하기 전에 본인의 코드가 이 �
 
 - Device Handler 사용자 커맨드 및 속성에는 용도, 매개 변수 및 예외 조건 (적용 가능한 경우)을 설명하는 주석이 있어야합니다.
 
-- 중요한 메소드는 그 메소드가 하는 일, 반환형, 예외 조건 및 매개 변수를 설명하는 주석을 함께 작성해야합니다. `JavaDoc 형식 주석 <https://en.wikipedia.org/wiki/Javadoc#Overview_of_Javadoc>`__을 사용할 수 있지만 소스에서 문서를 생성 할 수 있는 도구는 없습니다.
+- 중요한 메소드는 그 메소드가 하는 일, 반환형, 예외 조건 및 매개 변수를 설명하는 주석을 함께 작성해야합니다. `JavaDoc 형식 주석 <https://en.wikipedia.org/wiki/Javadoc#Overview_of_Javadoc>`__  사용할 수 있지만 소스에서 문서를 생성 할 수 있는 도구는 없습니다.
 
 - 주석은 가치를 더해야합니다 - 코드의 모든 행에 주석을 더하면 코드가 혼란스러워질 뿐더러 불필요한 일입니다.
 
@@ -92,7 +92,6 @@ SmartApp 또는 Device Handler를 제출하기 전에 본인의 코드가 이 �
         return map
     }
 
-Here's an example of an in-line code comment explaining why the code is checking if a percentage value is within a certain hard-coded range:
 다음은 퍼센트 값이 해당범위 안에 있는지 확인하는 이유를 설명한 인라인 주석입니다:
 
 .. code-block:: groovy
@@ -120,13 +119,13 @@ Here's an example of an in-line code comment explaining why the code is checking
         log.debug "child: $child"
     }
 
-모든 ``if()``와 ``switch()`` 구문을 확인하십시오
+모든 ``if()`` 와 ``switch()`` 구문을 확인하십시오
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``if ()``또는``switch ()``블록이 모든 예상 입력을 처리하는지 확인하십시오.
+``if()`` 또는 ``switch()`` 블록이 모든 예상 입력을 처리하는지 확인하십시오.
 특정 조건을 처리하는 것을 잊어버리면 예기치 못한 논리 오류가 발생할 수 있습니다.
 
-또한 모든``switch ()``문은 일치하는 조건이 없는 경우를 처리하기 위해``default :`` 조건문을 가져야합니다
+또한 모든 ``switch()`` 문은 일치하는 조건이 없는 경우를 처리하기 위해 ``default :`` 조건문을 가져야합니다
 
 가정을 확인하세요
 ^^^^^^^^^^^^^^^^^^
@@ -170,7 +169,7 @@ Here's an example of an in-line code comment explaining why the code is checking
 데이터를 파싱 할 때 배열을 사용한다면 조심하셔야합니다.
 배열을 인덱싱할 때 실제로 배열에 그만큼의 원소가 존재하는지 먼저 확인해야합니다.
 
-다음은 `` ":"`문자를 기준으로 문자열을 분할하고`` ":"`` 문자 다음에 오는 값을 반환하는 코드입니다:
+다음은 ``":"`` 문자를 기준으로 문자열을 분할하고 ``":"`` 문자 다음에 오는 값을 반환하는 코드입니다:
 
 .. code-block:: groovy
 
@@ -184,7 +183,7 @@ Here's an example of an in-line code comment explaining why the code is checking
     // -> ArrayIndexOutOfBounds exception!
     getSplitString("abc:")
 
-``getSplitString ()``은 ``split ()``의 결과가 하나 이상의 원소를 가지고 있는지를 검증하지 않기 때문에, 파싱 된 결과에서 두번째 항목에 접근하려 할 때``ArrayIndexOutOfBounds`` 예외가 발생합니다.
+``getSplitString()`` 은 ``split()`` 의 결과가 하나 이상의 원소를 가지고 있는지를 검증하지 않기 때문에, 파싱 된 결과에서 두번째 항목에 접근하려 할 때``ArrayIndexOutOfBounds`` 예외가 발생합니다.
 이와 같은 경우 배열에 항목이 있는지 확인하는 예외처리를 해줘야합니다.
 
 .. code-block:: groovy
@@ -228,10 +227,10 @@ Null 값 처리
 
    LAN과 SSDP 상호 작용에서 * 매우 * 자주 일어나는 일이므로 항상 코드를 한번 더 확인해주세요.
 
-``NullPointerException``은 SmartApp 또는 Device Handler의 실행을 종료 시키지만 `세이프 네비게이션<http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ (``?`` ) 연산자로 쉽게 처리할 수 있습니다.
+``NullPointerException`` 은 SmartApp 또는 Device Handler의 실행을 종료 시키지만 `세이프 네비게이션 <http://groovy-lang.org/operators.html#_safe_navigation_operator>`__ ( ``?`` ) 연산자로 쉽게 처리할 수 있습니다.
 ``null`` 값을 가질 수 있는 모든 코드는 미리 이를 처리해야합니다.
 
-아래 예제는``null``이 가능한 몇 가지 자주 발생하는 경우와 ``?`` 연산자를 사용하여 그것을 처리하는 방법을 보여줍니다 :
+아래 예제는 ``null`` 이 가능한 몇 가지 자주 발생하는 경우와 ``?`` 연산자를 사용하여 그것을 처리하는 방법을 보여줍니다 :
 
 .. code-block:: groovy
 
@@ -256,9 +255,9 @@ Null 값 처리
 
 알고 있어야 할 몇 가지 문제점이 입니다:
 
-- 빈 문자열은 ``거짓``으로 간주됩니다; 비어 있지 않은 문자열은 ``참``으로 간주됩니다.
-- 빈 맵과 리스트는 ``거짓``으로 간주됩니다; 비어 있지 않은 맵과 목록은 ``참``로 간주됩니다.
-- 0은 ``거짓``으로 간주됩니다. 0이 아닌 숫자는 ``참``으로 간주됩니다.
+- 빈 문자열은 ``거짓`` 으로 간주됩니다; 비어 있지 않은 문자열은 ``참`` 으로 간주됩니다.
+- 빈 맵과 리스트는 ``거짓`` 으로 간주됩니다; 비어 있지 않은 맵과 목록은 ``참`` 로 간주됩니다.
+- 0은 ``거짓`` 으로 간주됩니다. 0이 아닌 숫자는 ``참`` 으로 간주됩니다.
 
 숫자가 0과 100 사이에 존재하는지 확인하는 예제입니다:
 
@@ -292,20 +291,20 @@ State 함수의 사용
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 state에 저장할 수 있는 데이터의 양은 :참고:`limited <state_size_limit>`입니다.
-주기적으로(이벤트나 스케쥴의 응답으로) ``state``에 원소를 추가하지만 삭제하지 않는 코드는 지양하세요. 
+주기적으로(이벤트나 스케쥴의 응답으로) ``state`` 에 원소를 추가하지만 삭제하지 않는 코드는 지양하세요. 
 
-``state``의 작동방식 이해
+``state`` 의 작동방식 이해
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``state``를 사용할 때, :참고:`결과는 앱이 <state_how_it_works>의 실행을 마칠 때까지 지속되지 않습니다`.
+``state`` 을 사용할 때, :참고:`결과는 앱이 <state_how_it_works>의 실행을 마칠 때까지 지속되지 않습니다`.
 동시에 실행되는 다른 SmartApp 인스턴스가 state 값을 오버라이드하는 경우처럼, 의도하지 않은 결과가 발생할 수 있습니다.
 
-언제 ``atomicState`` 나 ``state``를 사용해야하는지 알아두세요
+언제 ``atomicState`` 나 ``state`` 를 사용해야하는지 알아두세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``atomicState``와``state``의 :참고:`차이 <choose_between_state_atomicState>`를 이해하여 필요에 맞게 올바른 것을 사용하고 한 SmartApp에 두 가지 모두 사용하는 것은 지양해주세요.
+``atomicState`` 와``state`` 의 :참고:`차이 <choose_between_state_atomicState>` 를 이해하여 필요에 맞게 올바른 것을 사용하고 한 SmartApp에 두 가지 모두 사용하는 것은 지양해주세요.
 
-Collection을 ``atomicState``에 저장할 때 주의하세요
+Collection을 ``atomicState`` 에 저장할 때 주의하세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Atomic State에서의 Collection 수정은 State에서와 마찬가지로 되지 않습니다.
@@ -445,15 +444,15 @@ SMS 메시지를 하드 코딩하지 마세요
 
 실행 지연 대신, 앱에서 이후에 실행될 것을 :참고:`스케줄링 <smartapp-scheduling>`해야합니다.
 
-``synchronized()``를 쓰지 마세요
+``synchronized()`` 를 쓰지 마세요
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``synchronized``를 사용하면 성능 오버 헤드가 발생하고 아무런 도움을 주지 않습니다.
+``synchronized`` 를 사용하면 성능 오버 헤드가 발생하고 아무런 도움을 주지 않습니다.
 사용하지 마세요.
 
 SmartApp 또는 Device Handler가 실행되면 해당 위치에 할당된 *n* 개의 사용 가능한 서버 중 하나에서 실행됩니다. 여기서 *n* 은 위치, 현재 로드 및 기타 요소에 따라 달라지는 변수입니다.
 SmartApp 또는 Device Handler의 동시 실행이나 둘이 동일한 서버에서 실행될 때는 동시성이 보장되지 않습니다.
-이 때문에``synchronized``를 사용하여 동시 동작을 강제하는 것은 동일한 서버에서 동시 실행이 발생하는 경우에만 작동하며 이마저도 오버 헤드가 항상 발생합니다
+이 때문에 ``synchronized`` 를 사용하여 동시 동작을 강제하는 것은 동일한 서버에서 동시 실행이 발생하는 경우에만 작동하며 이마저도 오버 헤드가 항상 발생합니다
 
 ----
 
