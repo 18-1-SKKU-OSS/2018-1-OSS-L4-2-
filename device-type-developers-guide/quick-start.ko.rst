@@ -9,7 +9,7 @@ Device Handler는 SmartThings 플랫폼의 물리적 장치를 나타냅니다. 
 .. 경고::
     
     계속하기 전에 IDE에서 올바른 위치에 있는지 확인하십시오.
-    :ref:`ide_requirements`에 설명된 사전 요구 사항을 따르세요.
+    :참조:`ide_requirements`에 설명된 사전 요구 사항을 따르세요.
 
     SmartThings 개발에 익숙하지 않은 경우에는 다음 자료부터 살펴 보십시오.:ref:`Getting Started <get-started-overview>`
 
