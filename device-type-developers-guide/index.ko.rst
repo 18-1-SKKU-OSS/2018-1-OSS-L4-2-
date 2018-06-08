@@ -13,7 +13,7 @@ Device Handlers 작성에 익숙하지 않다면  :doc:`quick-start` 를 읽고 
 
 .. note::
 이 가이드에서는 허브 연결 Device Handlers에 대해 설명합니다. LAN 및 클라우드로 연결된 Device Handlers에 대한 내용은 `this guide <../cloud-and-lan-connected-device-types-developers-guide/index.html>`__ 를 참조하십시오.
-
+ 
 목차:
 
 .. toctree::
