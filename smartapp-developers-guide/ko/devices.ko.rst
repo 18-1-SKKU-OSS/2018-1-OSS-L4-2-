@@ -41,7 +41,7 @@ SmartApp은 거의 항상 디바이스와 상호작용합니다.
 휴대전화 또는 `SmartSense presence sensor <https://shop.smartthings.com/#!/products/smartsense-presence>`__ 을 선택할 수도 있습니다.
 어떠한 디바이스든 상관 없습니다. 단지 감지 센서 기능을 지원하는 디바이스를 필요하다고 선언하면 됩니다.
 
-지원되는 모든 기능에 대한 정보는 :ref:`capabilities_taxonomy` 를 참고하시길 바랍니다.
+지원되는 모든 기능에 대한 정보는 :참고:`capabilities_taxonomy` 를 참고하시길 바랍니다.
 "기본 설정 참고" 열은 지정된 기능에 대해 기본 설정에서 사용해야 할 것을 알려줍니다.
 
 ----
@@ -70,7 +70,7 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
 
 속성은 디바이스의 상태를 나타냅니다. 예를 들어 "온도측정" 기능을 지원하는 디바이스는 "온도" 속성을 갖습니다.
 
-속성은 상태를 갖습니다. "온도" 속성은 온도에 관련된 정보(값, 측정된 날짜 등)을 갖는 :ref:`state_ref` 객체와 연관되어 있습니다.
+속성은 상태를 갖습니다. "온도" 속성은 온도에 관련된 정보(값, 측정된 날짜 등)을 갖는 :참고:`state_ref` 객체와 연관되어 있습니다.
 
 속성 데이터는 SmartThings 클라우드에 저장되고, 디바이스가 상태를 보고할 때 업데이트 됩니다.
 
@@ -94,7 +94,7 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
 
 가장 최근 보고된 디바이스 상태 속성 정보는 두가지 방법으로 검색할 수 있습니다.
 
-:ref:`device_current_state` 과 :ref:`device_attribute_state` 은 가장 최근 보고된 디바이스 상태를 캡슐화하는 :ref:`state_ref` 객체를 반환합니다.
+:참고:`device_current_state` 과 :참고:`device_attribute_state` 은 가장 최근 보고된 디바이스 상태를 캡슐화하는 :참고:`state_ref` 객체를 반환합니다.
 
 .. code-block:: groovy
 
@@ -116,7 +116,7 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
         log.debug "temperature value as an integer: ${anotherCurrentState.integerValue}"
     }
 
-:ref:`device_latest_value`, :ref:`device_current_value` 및 :ref:`currentAttributeName` 은 가장 최근 보고된 속성 값을 반환합니다.
+:참고:`device_latest_value`, :참고:`device_current_value` 및 :참고:`currentAttributeName` 은 가장 최근 보고된 속성 값을 반환합니다.
 이들은 모두 같은 일을 하기 때문에 서로 구별없이 사용될 수 있습니다.
 
 .. code-block:: groovy
@@ -186,7 +186,7 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
 
 디바이스의 상태 정보를 가져오는 데에도 비슷한 날짜 제약 메소드가 있습니다.
 
-더 많은 정보는 :ref:`device_ref` API 문서를 참고하시길 바랍니다.
+더 많은 정보는 :참고:`device_ref` API 문서를 참고하시길 바랍니다.
 
 ----
 
@@ -196,7 +196,7 @@ SmartApp이 상호작용할 디바이스를 선언한 후에, Device 객체의 �
 SmartApp에서 디바이스로 스위치를 켜거나 잠금 해제와 같은 명령어를 보내야할 때가 있습니다.
 
 사용자의 디바이스에 사용할 수 있는 명령어는 디바이스마다 다양합니다.
-주어진 기능에 사용할 수 있는 명령어를 알고 싶다면 :ref:`capabilities_taxonomy` 을 참고하실 수 있습니다.
+주어진 기능에 사용할 수 있는 명령어를 알고 싶다면 :참고:`capabilities_taxonomy` 을 참고하실 수 있습니다.
 
 명령어를 보내는 것은 디바이스에서 명령 메소드를 호출하는 것만큼 간단합니다.
 
@@ -272,12 +272,12 @@ SmartApp에서 디바이스로 스위치를 켜거나 잠금 해제와 같은 �
 추가 참고 목록
 -------------
 
- - :ref:`capabilities_taxonomy`
- - :ref:`prefs_and_settings`
- - :ref:`events_and_subscriptions`
- - :ref:`device_ref` API Documentation
- - :ref:`event_ref` API Documentation
- - :ref:`state_ref` API Documentation
+ - :참고:`capabilities_taxonomy`
+ - :참고:`prefs_and_settings`
+ - :참고:`events_and_subscriptions`
+ - :참고:`device_ref` API Documentation
+ - :참고:`event_ref` API Documentation
+ - :참고:`state_ref` API Documentation
 
 
 .. _Preferences and Settings: :doc:`preferences-and-settings`

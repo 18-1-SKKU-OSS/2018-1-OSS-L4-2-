@@ -75,7 +75,7 @@ Bon Voyage 앱을 설정하려면 사용자로부터 다음 정보를 수집해�
 마지막으로 "Notifications"라는 섹션입니다.
 이 섹션에서 사용자는 모든 사람이 사라졌을 때 어떻게 알림 받을지 설정할 수 있습니다.
 이 입력 값은 약간 다릅니다. 이 입력 값은 ``contact`` 라는 특별한 입력 유형을 사용합니다.
-SmartApp에 알림을 보내는 것에 대한 자세한 정보는 :ref:`smartapp_sending_notifications` 에서 읽으실 수 있습니다.
+SmartApp에 알림을 보내는 것에 대한 자세한 정보는 :참고:`smartapp_sending_notifications` 에서 읽으실 수 있습니다.
 
 ----
 
@@ -227,12 +227,12 @@ presence 메소드를 정의해봅시다.
 모든 사람이 사라졌을 경우, 거짓 알림 임계값을 이용해 얼마나 많은 사람이 충분히 오래 떠나있는지 알아야 합니다.
 ``awayLongEnough`` 라는 변수를 생성하고, Groovy의 `findAll() <http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html#findAll(groovy.lang.Closure)>`__ 메소드를 통해 설정합니다.
 ``findAll()`` 메소드는 전달된 클로저의 논리에 기반하여 집합 일부를 반환합니다.
-각 사람에 대해 사용할 수 있는 :ref:`device_current_state` 메소드를 이용해 이벤트가 발생된 이후 경과된 시간을 가져옵니다.
+각 사람에 대해 사용할 수 있는 :참고:`device_current_state` 메소드를 이용해 이벤트가 발생된 이후 경과된 시간을 가져옵니다.
 이벤트가 임계값을 초과한 이후 시간이 경과되었다면, 클로저에서 ``true`` 를 반환하여 ``awayLongEnough`` 집합에 추가합니다. (Groovy에선 묵시적이기 때문에 "return" 키워드를 생략할 수 있습니다)
 
 ``findAll()`` 메소드 또는 Groovy가 클로저를 사용하는 방법에 대한 더 많은 정보는 http://www.groovy-lang.org/documentation.html 에 있는 Groovy 문서를 참고하시길 바랍니다.
 
-충분히 오래 나가있는 사람의 수가 이 앱에서 설정된 사람의 총 수와 동일한 경우, 메세지(다음에 이 메소드를 살펴볼 것입니다.)를 보내고 원하는 모드로 :ref:`smartapp_set_location_mode` 메소드를 호출합니다.
+충분히 오래 나가있는 사람의 수가 이 앱에서 설정된 사람의 총 수와 동일한 경우, 메세지(다음에 이 메소드를 살펴볼 것입니다.)를 보내고 원하는 모드로 :참고:`smartapp_set_location_mode` 메소드를 호출합니다.
 이를 통해 모드를 변경합니다.
 
 ``send()`` 메소드는 ``msg`` 라는 전송할 메세지인 문자열 매개변수를 취합니다.
@@ -255,12 +255,12 @@ presence 메소드를 정의해봅시다.
 관련된 문서
 ----------
 
-- :ref:`prefs_and_settings`
-- :ref:`events_and_subscriptions`
-- :ref:`smartapp_working_with_devices`
-- :ref:`modes`
-- :ref:`smartapp-scheduling`
-- :ref:`smartapp_sending_notifications`
+- :참고:`prefs_and_settings`
+- :참고:`events_and_subscriptions`
+- :참고:`smartapp_working_with_devices`
+- :참고:`modes`
+- :참고:`smartapp-scheduling`
+- :참고:`smartapp_sending_notifications`
 
 ----
 

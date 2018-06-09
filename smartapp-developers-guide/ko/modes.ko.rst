@@ -171,6 +171,6 @@ SmartApp의 ``기본 설정`` 창에서 ``"mode"`` 입력창을 이용해 사용
 추가 참고 목록
 -------------
 
-- :ref:`Mode Input <mode_pref>`
-- :ref:`Location Object <location_ref>`
-- :ref:`Mode Object <mode_ref>`
+- :참고:`Mode Input <mode_pref>`
+- :참고:`Location Object <location_ref>`
+- :참고:`Mode Object <mode_ref>`

@@ -9,7 +9,7 @@
 개요
 ----
 
-SmartApp과 디바이스 처리기는 HTTP를 통해 타사 서비스와 통신해야 할 수 있습니다. :ref:`calling_web_services` 문서에 나온 것과 같이 ``httpGet()``, ``httpPost()``, ``httpPut()`` 등의 다양한 HTTP API를 이용해 통신할 수 있습니다. 하지만 이러한 API는 실행되고 있는 SmartApp 또는 디바이스 처리기는 타사 서비스로부터 응답을 기다려 동기화를 합니다. 이런 동기 실행은 SmartApp 또는 디바이스 처리기를 실행하는 현재 스레드를 차단하고, 실행 시간 초과로 인한 작업 중단의 가능성을 높입니다.
+SmartApp과 디바이스 처리기는 HTTP를 통해 타사 서비스와 통신해야 할 수 있습니다. :참고:`calling_web_services` 문서에 나온 것과 같이 ``httpGet()``, ``httpPost()``, ``httpPut()`` 등의 다양한 HTTP API를 이용해 통신할 수 있습니다. 하지만 이러한 API는 실행되고 있는 SmartApp 또는 디바이스 처리기는 타사 서비스로부터 응답을 기다려 동기화를 합니다. 이런 동기 실행은 SmartApp 또는 디바이스 처리기를 실행하는 현재 스레드를 차단하고, 실행 시간 초과로 인한 작업 중단의 가능성을 높입니다.
 
 이런 문제를 해결하기 위해 SmartApp과 디바이스 처리기가 *비동기적으로* HTTP를 요청할 수 있는 새로운 API를 배포하고 있습니다. 응답을 수신하면 호출할 메소드(반드시 구현해야 합니다)의 이름과 함께 요청의 세부사항을 명시합니다. SmartThings는 요청을 실행하고, 그 후 응답을 수신하면 명시된 요청 처리기 메소드를 호출합니다.
 
@@ -41,12 +41,12 @@ SmartApp과 디바이스 처리기는 HTTP를 통해 타사 서비스와 통신�
         log.debug "data map passed to handler method is: $data"
     }
 
-가장 먼저 인지할 것은 ``include`` 명령어일 것입니다. 이는 다양한 API를 기능에 따라 그룹화할 수 있도록 하는 SmartThings의 새로운 기능입니다. :ref:`below <include_statement>` 에서 자세히 다룰테니, 아직은 너무 걱정하지 마시길 바랍니다. 
+가장 먼저 인지할 것은 ``include`` 명령어일 것입니다. 이는 다양한 API를 기능에 따라 그룹화할 수 있도록 하는 SmartThings의 새로운 기능입니다. :참고:`below <include_statement>` 에서 자세히 다룰테니, 아직은 너무 걱정하지 마시길 바랍니다. 
 지금은 그저 특정 이름공간 - 이 예제에서는 ``"asynchttp_v1"`` - 에 존재하는 API 집합을 가져오는 방법으로 생각하시길 바랍니다. 
 
-비동기식 HTTP 요청을 하는 코드는 매우 간단합니다. 이 예제에서는 응답을 수신할 시 호출되길 원하는 메소드의 이름, 요청을 빌드하는 데에 사용되는 데이터 지도, 그리고 선택적으로 응답 처리기에 전달될 데이터들의 지도와 함께 ``asynchttp_v1.get()`` 을 호출합니다. 요청 빌더 매개변수에 대한 자세한 정보는 :ref:`async_http_configure_request` 에 설명되어 있습니다.
+비동기식 HTTP 요청을 하는 코드는 매우 간단합니다. 이 예제에서는 응답을 수신할 시 호출되길 원하는 메소드의 이름, 요청을 빌드하는 데에 사용되는 데이터 지도, 그리고 선택적으로 응답 처리기에 전달될 데이터들의 지도와 함께 ``asynchttp_v1.get()`` 을 호출합니다. 요청 빌더 매개변수에 대한 자세한 정보는 :참고:`async_http_configure_request` 에 설명되어 있습니다.
 
-선택적으로 응답 처리기 메소드를 정의할 수 있는데, 이 메소드는 ``get()`` 메소드로 전달하는 선택적인 데이터 지도뿐만 아니라 요청에 대한 응답도 받아들입니다. 아무것도 제공되지 않을 경우, 요청은 실행 후 즉시 응답이 삭제되는 '화재 및 도난'모드에서 이루어집니다. 응답 처리에 대한 자세한 내용은 :ref:`async_http_response_handling` 에 설명되어 있습니다.
+선택적으로 응답 처리기 메소드를 정의할 수 있는데, 이 메소드는 ``get()`` 메소드로 전달하는 선택적인 데이터 지도뿐만 아니라 요청에 대한 응답도 받아들입니다. 아무것도 제공되지 않을 경우, 요청은 실행 후 즉시 응답이 삭제되는 '화재 및 도난'모드에서 이루어집니다. 응답 처리에 대한 자세한 내용은 :참고:`async_http_response_handling` 에 설명되어 있습니다.
 
 ----
 
@@ -70,9 +70,9 @@ SmartApp과 디바이스 처리기는 HTTP를 통해 타사 서비스와 통신�
 반면 비동기식 HTTP 요청은 *개별 실행* 에서 응답을 처리합니다. SmartThings 플랫폼은 요청을 하고, 응답을 기다리고, 응답이 도착하면 지정된 응답 처리기를 호출하는 새로운 SmartApp(또는 디바이스 처리기) 실행하도록 합니다.
 
 이러한 실행이 꼭 순차적일 필요는 없다는 점에 유의하시길 바랍니다. 요청을 하고 응답을 받는 사이에 예정된 실행이나 이벤트 콜백의 결과로 다른 실행이 발생할 수 있습니다.
-동기식 HTTP 요청과 비교하여 비동기식 HTTP 요청을 사용하는 것에 대한 더 많은 정보는 :ref:`async_http_when_to_use`에서 확인해보세요.
+동기식 HTTP 요청과 비교하여 비동기식 HTTP 요청을 사용하는 것에 대한 더 많은 정보는 :참고:`async_http_when_to_use`에서 확인해보세요.
 
-비동기식 HTTP 요청은 ``GET``, ``POST``, ``PUT``, ``DELETE``, ``HEAD``, 그리고 ``PATCH`` 의 HTTP 요청 메소드를 지원합니다. 지원되는 메소드는 :ref:`below <async_http_supported_methods>` 에 요약되어 설명되어 있습니다.
+비동기식 HTTP 요청은 ``GET``, ``POST``, ``PUT``, ``DELETE``, ``HEAD``, 그리고 ``PATCH`` 의 HTTP 요청 메소드를 지원합니다. 지원되는 메소드는 :참고:`below <async_http_supported_methods>` 에 요약되어 설명되어 있습니다.
 
 ----
 
@@ -148,7 +148,7 @@ URI와 경로
         path: '/some/path'
     ]
 
-HTTP 요청을 할 때에는 공개적으로 접근할 수 있는 (즉, 로컬이 아닌) 주소로만 지정할 수 있습니다. 더 자세한 정보는 아래의 :ref:`async_http_limits` 을 보시길 바랍니다.
+HTTP 요청을 할 때에는 공개적으로 접근할 수 있는 (즉, 로컬이 아닌) 주소로만 지정할 수 있습니다. 더 자세한 정보는 아래의 :참고:`async_http_limits` 을 보시길 바랍니다.
 
 요청 헤더
 ^^^^^^^^^
@@ -215,7 +215,7 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
 
 본문을 가질 수 있는 HTTP 요청 메소드는 또한 매개변수 지도에 ``body`` 를 지정해줄 수 있습니다. 
 ``body`` 값은 문자열이 될 수 있으며, ``requestContentType`` 이 ``"application/json"`` 일 경우 JSON으로 직렬화 될 맵 또는 리스트가 될 수 있습니다.
-:ref:`async_http_ref_put`, :ref:`async_http_ref_post`, :ref:`async_http_ref_delete`, :ref:`async_http_ref_patch` 메소드는 ``body`` 옵션을 지원합니다.
+:참고:`async_http_ref_put`, :참고:`async_http_ref_post`, :참고:`async_http_ref_delete`, :참고:`async_http_ref_patch` 메소드는 ``body`` 옵션을 지원합니다.
 
 지도를 이용해 본문을 요청하는 ``POST`` 를 하는 예제입니다.
 
@@ -282,7 +282,7 @@ URL 쿼리 매개변수는 지도의 ``query`` 키 값을 지정함으로써 요
 ^^^^^^^^
 
 SmartThings가 지정한 요청을 실행하고 제3자로부터 응답을 받으면, (지정된 경우) 요청 처리기 메소드가 (SmartApp 또는 디바이스 처리기의 새로운 실행에서) 호출됩니다. 
-요청 처리기 메소드는 :ref:`AsyncResponse <async_http_response_ref>` 의 인스턴스로 호출될 것이고, 이를 통해 응답에 대한 정보를 얻을 수 있습니다.
+요청 처리기 메소드는 :참고:`AsyncResponse <async_http_response_ref>` 의 인스턴스로 호출될 것이고, 이를 통해 응답에 대한 정보를 얻을 수 있습니다.
 
 
 응답 처리기 메소드는 또한 요청에서 지정된 데이터 지도를 받아야 합니다. 
@@ -340,12 +340,12 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
 응답 오류
 ^^^^^^^^
 
-:ref:`async_response_ref_has_error` 을 이용해 응답에 오류를 있는지 확인하시길 바랍니다.
+:참고:`async_response_ref_has_error` 을 이용해 응답에 오류를 있는지 확인하시길 바랍니다.
 ``hasError()`` 는 요청 도중 예외가 발생하면 true를 반환합니다.
 
 **2XX가 아닌 응답도 오류로 간주됩니다.**
 
-:ref:`async_response_ref_get_error_message` 메소드를 이용해 오류 메세지를 받을 수 있습니다.
+:참고:`async_response_ref_get_error_message` 메소드를 이용해 오류 메세지를 받을 수 있습니다.
 
 .. code-block:: groovy
 
@@ -355,7 +355,7 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
         }
     }
 
-응답 오류의 경우, :ref:`async_response_ref_get_error_data`, :ref:`async_response_ref_get_error_json`, 또는 :ref:`async_response_ref_get_error_xml` 을 이용해 응답 본문을 받을 수 있습니다.
+응답 오류의 경우, :참고:`async_response_ref_get_error_data`, :참고:`async_response_ref_get_error_json`, 또는 :참고:`async_response_ref_get_error_xml` 을 이용해 응답 본문을 받을 수 있습니다.
 이러한 메소드들은 성공적인 응답에 호출될 시 예외를 발생시킵니다.
 
 .. code-block:: groovy
@@ -381,7 +381,7 @@ AsyncResponse 객체는 응답으로부터 전해받는 모든 헤더를 키-값
 JSON 응답
 ^^^^^^^^^
 
-요청에 대한 응답이 JSON인 경우, :ref:`async_response_ref_get_json` 을 이용해 응답의 완전한 형식을 가진 JSONObject를 받을 수 있습니다.
+요청에 대한 응답이 JSON인 경우, :참고:`async_response_ref_get_json` 을 이용해 응답의 완전한 형식을 가진 JSONObject를 받을 수 있습니다.
 아래 예제는 SmartThingsPublic 저장소의 "httpGet"을 발생시키는 GitHub API 호출로 JSON 응답을 받는 것을 보여줍니다.
 
 .. code-block:: groovy
@@ -422,7 +422,7 @@ JSON 응답
     }
 
 ``getJson()`` 은 응답 본문이 JSON으로 파싱될 수 없을 때, 요청이 응답을 얻는 데에 실패했을 때, 또는 응답 상태 코드가 2XX가 아닌 경우 예외를 발생시킵니다.
-더 자세한 정보는 :ref:`async_response_ref_get_json` 을 참고하시길 바랍니다.
+더 자세한 정보는 :참고:`async_response_ref_get_json` 을 참고하시길 바랍니다.
 
 XML 응답
 ^^^^^^^^
@@ -465,12 +465,12 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
     }
 
 ``getJson()`` 과 비슷하게, ``getXml()`` 은 응답 본문이 XML로 파싱될 수 없을 때 예외를 발생시킵니다.
-더 자세한 정보는 :ref:`async_response_ref_get_xml` 를 참고하시길 바랍니다.
+더 자세한 정보는 :참고:`async_response_ref_get_xml` 를 참고하시길 바랍니다.
 
 원시 응답 받기
 ^^^^^^^^^^^^^
 
-원시 응답 데이터를 받고 싶다면, :ref:`async_response_ref_get_data` 을 사용해 받을 수 있습니다.
+원시 응답 데이터를 받고 싶다면, :참고:`async_response_ref_get_data` 을 사용해 받을 수 있습니다.
 
 .. code-block:: groovy
 
@@ -486,7 +486,7 @@ XML 응답을 처리하는 방식은 JSON과 유사합니다. XML은 우리가 �
 -------------------------
 
 비동기식 HTTP 요청에 대한 응답은 별도의 SmartApp 또는 디바이스 처리기의 실행에서 처리되므로 요청을 할 때와 응답 처리기를 호출할 때 사이에서 데이터를 공유할 방법이 필요합니다.
-:ref:`State <storing-data>` 에 데이터를 저장하는 대신, 비동기식 HTTP 메소드에 데이터 지도를 전달할 수 있고 이는 응답 처리기에도 전달됩니다.
+:참고:`State <storing-data>` 에 데이터를 저장하는 대신, 비동기식 HTTP 메소드에 데이터 지도를 전달할 수 있고 이는 응답 처리기에도 전달됩니다.
 
 .. note::
 
@@ -523,12 +523,12 @@ HTTP 요청 메소드는 ``asynchttp_v1`` 메소드의 이름과 일치해야 �
 ========= ======
 HTTP 동사 메소드
 ========= ======
-GET       :ref:`asynchttp_v1.get(String callbackMethod, Map params, Map data = null) <async_http_ref_get>`
-PUT       :ref:`asynchttp_v1.put(String callbackMethod, Map params, Map data = null) <async_http_ref_put>`
-POST      :ref:`asynchttp_v1.post(String callbackMethod, Map params, Map data = null) <async_http_ref_post>`
-DELETE    :ref:`asynchttp_v1.delete(String callbackMethod, Map params, Map data = null) <async_http_ref_delete>`
-PATCH     :ref:`asynchttp_v1.patch(String callbackMethod, Map params, Map data = null) <async_http_ref_patch>`
-HEAD      :ref:`asynchttp_v1.head(String callbackMethod, Map params, Map data = null) <async_http_ref_head>`
+GET       :참고:`asynchttp_v1.get(String callbackMethod, Map params, Map data = null) <async_http_ref_get>`
+PUT       :참고:`asynchttp_v1.put(String callbackMethod, Map params, Map data = null) <async_http_ref_put>`
+POST      :참고:`asynchttp_v1.post(String callbackMethod, Map params, Map data = null) <async_http_ref_post>`
+DELETE    :참고:`asynchttp_v1.delete(String callbackMethod, Map params, Map data = null) <async_http_ref_delete>`
+PATCH     :참고:`asynchttp_v1.patch(String callbackMethod, Map params, Map data = null) <async_http_ref_patch>`
+HEAD      :참고:`asynchttp_v1.head(String callbackMethod, Map params, Map data = null) <async_http_ref_head>`
 ========= ======
 
 ----
@@ -569,7 +569,7 @@ HTTP 요청을 실행할 때, 요청은 허브가 아닌 SmartThings 플랫폼 (
 이 제한은 베타 버젼 동안 고려되고 있으며, 필요에 따라 조정될 수 있습니다.
 
 제한 글자 수를 초과하면, 응답 본문은 비어 있게 되지만 응답 상태는 실제 응답 상태를 반영합니다.
-응답 크기가 제한 글자 수를 초과했다는 경고 메세지가 :ref:`async_response_ref_get_warning_messages` 에 추가됩니다.
+응답 크기가 제한 글자 수를 초과했다는 경고 메세지가 :참고:`async_response_ref_get_warning_messages` 에 추가됩니다.
 
 데이터 크기 제한
 ^^^^^^^^^^^^^^^

@@ -11,7 +11,7 @@ SmartApp 또는 디바이스 처리기는 외부 웹 서비스를 호출해야 �
 
 	여기서 설명하는 API는 단일 SmartApp 또는 디바이스 처리기 실행 내에서 동기식으로 실행됩니다.
 
-	비동기식 HTTP 요청에 대한 정보는 :doc:`async-http` 문서를 확인하시길 바랍니다.
+	비동기식 HTTP 요청에 대한 정보는 :문서:`async-http` 문서를 확인하시길 바랍니다.
 
 ----
 
@@ -19,19 +19,19 @@ HTTP 메소드
 -----------
 
 다음 메소드는 HTTP 요청을 하는 데에 사용가능합니다.
-각 메소드에 대해 :ref:`smartapp_ref` API 문서에서 더 자세히 읽으실 수 있습니다.
+각 메소드에 대해 :참고:`smartapp_ref` API 문서에서 더 자세히 읽으실 수 있습니다.
 
 이 메소드는 동기식으로 실행되고, 응답을 받는 데에 10초의 제한 시간이 있습니다.
 
 ============================== ================
 메소드                          설명
 ============================== ================
-:ref:`smartapp_http_delete`    HTTP DELETE 요청 실행
-:ref:`smartapp_http_get`       HTTP GET 요청 실행
-:ref:`smartapp_http_head`      HTTP HEAD 요청 실행
-:ref:`smartapp_http_post`      HTTP POST 요청 실행
-:ref:`smartapp_http_post_json` JSON Content-Type으로 HTTP POST 요청 실행
-:ref:`smartapp_http_put_json`  JSON Content-Type으로 HTTP PUT 요청 실행
+:참고:`smartapp_http_delete`    HTTP DELETE 요청 실행
+:참고:`smartapp_http_get`       HTTP GET 요청 실행
+:참고:`smartapp_http_head`      HTTP HEAD 요청 실행
+:참고:`smartapp_http_post`      HTTP POST 요청 실행
+:참고:`smartapp_http_post_json` JSON Content-Type으로 HTTP POST 요청 실행
+:참고:`smartapp_http_put_json`  JSON Content-Type으로 HTTP PUT 요청 실행
 ============================== ================
 
 다음은 HTTP GET 요청을 하는 간단한 예제입니다.
