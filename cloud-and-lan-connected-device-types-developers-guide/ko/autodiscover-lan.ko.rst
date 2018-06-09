@@ -11,12 +11,12 @@
 이에 반해, 이 플랫폼은 ZigBee 또는 Z-Wave 장치에 대한 서비스 관리자 SmartApp 요구 사항이 없습니다.
 
 자동 신규 LAN장치 검색 기능은 일부 LAN연결 장치에 대한 서비스 관리자 SmartApp 요구 사항을 제거하여 훨씬 부드럽고 빠른 LAN연결 장치 검색을 가능하게 합니다.
-다음을 참고하십시오 :ref:`autodiscoverlan-devices-list`.
+다음을 참고하십시오 :참고:`autodiscoverlan-devices-list`.
 
 개발자에 미치는 영향
 ===============
 
-참고 자료에 대하여 :ref:`autodiscoverlan-devices-list' 서비스 관리자 SmartApp 또는 장치 핸들러에 대해 수정을 가한 경우 LAN장치 통합에 영향을 미칩니다.
+참고 자료에 대하여 :참고:`autodiscoverlan-devices-list' 서비스 관리자 SmartApp 또는 장치 핸들러에 대해 수정을 가한 경우 LAN장치 통합에 영향을 미칩니다.
 아래 표를 참조하십시오.
 
 ============ ====================== ====

@@ -54,7 +54,7 @@ Event 구독은 다음과 같습니다:
 
     subscribe(location, "ssdpTerm.urn:schemas-upnp-org:device:ZonePlayer:1", ssdpHandler)
 
-이는 언제든지 검색 타겟을 urn:schemas-upnp-org:device:ZonePlayer:1 (e.g. Sonos)로 가지는 SSDP **search response**가 현재 위치에서 Hub으로 부터 받아지면 ssdpHandler 메서드가 실행됩니다.
+이는 언제든지 검색 타겟을 urn:schemas-upnp-org:device:ZonePlayer:1 (e.g. Sonos)로 가지는 SSDP **search response**가 현재 위치에서 Hub으로 부터 받아지면 ssdpHandler 메소드가 실행됩니다.
 
 그런 다음 원하는 검색 대상에 대한 적절한 검색 명령을 전송해야 합니다:
 
