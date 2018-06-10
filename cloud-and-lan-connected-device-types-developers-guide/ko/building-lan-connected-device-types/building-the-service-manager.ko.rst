@@ -66,11 +66,11 @@ Event 구독은 다음과 같습니다:
 
 .. note:: HubAction은 SmartThings플랫폼에서 제공하는 클래스입니다.
 
-    ``physicalgraph.device.HubAction``클래스는 기기들과 통신하기 위하여 요청 정보를 encapsulate합니다.
+    ``physicalgraph.device.HubAction`` 클래스는 기기들과 통신하기 위하여 요청 정보를 encapsulate합니다.
 
-    ``HubAction``인스턴스를 만들떄, 요청방법, 헤더, 경로등의 정보를 제공 해야합니다.
+    ``HubAction`` 인스턴스를 만들떄, 요청방법, 헤더, 경로등의 정보를 제공 해야합니다.
 
-    ``HubAction``은 자기자신으로써는 요청의 wrapper에 불과합니다.
+    ``HubAction`` 은 자기자신으로써는 요청의 wrapper에 불과합니다.
     이 경우에는 탐색 정보를 감싸는 얇은 wrapper 입니다.
 
 위의 HubAction 예시에서 Hub를 통해 보내지는 메시지는 다음과 같습니다:
