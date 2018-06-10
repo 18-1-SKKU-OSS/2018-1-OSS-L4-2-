@@ -75,7 +75,4 @@ fork가 최신 정보로 환경 설정 및 동기화되면 토픽 브랜치에�
 
 ## 연락처
 
-You can reach us at &lt;mailto:docs@smartthings.com&gt; with any
-feedback or questions.
-
-&lt;mailto:docs@smartthings.com&gt; 를 통해 어떤 피드백이나 문의사항을 저희에게 전달하실 수 있습니다.
+<mailto:docs@smartthings.com> 를 통해 어떤 피드백이나 문의사항을 저희에게 전달하실 수 있습니다.
