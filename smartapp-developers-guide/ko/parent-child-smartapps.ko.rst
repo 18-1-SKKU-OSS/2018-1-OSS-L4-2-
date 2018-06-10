@@ -130,7 +130,7 @@ SmartApp의 이름으로 특정 자식 SmartApp을 찾기 위해 ``findChildAppB
 그곳에서 기존 자식 SmartApp을 설정하거나 새로운 자식 SmartApp을 추가할 수 있습니다.
 이 방법은 부모 SmartApp이 하나만 필요할 때 여러 인스턴스를 생성되는 것을 방지할 수 있습니다.
 
-----
+-----
 
 예제
 ----
@@ -421,3 +421,4 @@ SmartApp의 이름으로 특정 자식 SmartApp을 찾기 위해 ``findChildAppB
 그 후 마켓플레이스에서 "Simple Lighting"을 "내 앱"에 설치하십시오. 그러면 자식 SmartApp("Simple Automation")의 인스턴스가 될 자동화를 여러 개 추가할 수 있습니다.
 
 ----
+
