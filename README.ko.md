@@ -1,24 +1,10 @@
-﻿\# SmartThings Developer Documentation
-
-\# SmartThings 개발자 문서
-
-This is the repository for the public SmartThings developer
-documentation.
+# SmartThings 개발자 문서
 
 이 저장소는 SmartThings 개발자 공문서 용 저장소입니다.
 
-This documentation is written using
-\[reStructuredText\](http://docutils.sourceforge.net/rst.html), powered
-by \[Sphinx\](http://www.sphinx-doc.org/en/stable/), and hosted on
-\[ReadTheDocs\]([*http://readthedocs.org*](http://readthedocs.org)).
-
-이 문서는
-\[restructuredText\]([*http://docutils.sourceforge.net/rst.html*](http://docutils.sourceforge.net/rst.html))을
-이용해 작성되었으며,
-\[Sphinx\]([*http://www.sphinx-doc.org/en/stable/*](http://www.sphinx-doc.org/en/stable/))
-기술을 이용하고
-\[ReadTheDocs\]([*http://readthedocs.org*](http://readthedocs.org))에서
-호스팅 되었습니다.
+이 문서는 [restructuredText](http://docutils.sourceforge.net/rst.html)을
+이용해 작성되었으며, [Sphinx](http://www.sphinx-doc.org/en/stable/) 기술을 이용하고
+[ReadTheDocs](http://readthedocs.org) 에서 호스팅 되었습니다.
 
 \#\# Building the docs
 
