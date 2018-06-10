@@ -63,26 +63,22 @@ Z-Wave devices의 이벤트가 당신의 Device Handler 파싱 메소드로 전�
         return createEvent(descriptionText: "${device.displayName}: ${cmd}")
     }
 
-Remember that when you use ``createEvent()`` to build an Event, the resulting map must be returned from ``parse()`` for the Event to be sent.
-For information about ``createEvent``, see the `Creating Events <parse.html#creating-events>`__ section.
+``createEvent()`` 를 사용하여 이벤트를 작성할 때 이벤트를 전송하려면 ``parse()`` 에서 결과 맵을 반환해야 합니다. ``createEvent`` 에 대한 자세한 내용은 `Creating Events <parse.html#creating-events>`__ 섹션을 참조하십시오.
 
-As the `Z-Wave Command Reference <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__ shows, many Z-Wave command classes have multiple versions.
-By default, ``zwave.parse()`` will parse a command using the highest version of the command class.
-If the device is sending an earlier version of the command, some fields may be missing, or the command may fail to parse and return ``null``.
-To fix this, you can pass in a map as the second argument to ``zwave.parse()`` to tell it which version of each command class to use:
-
+`Z-Wave Command Reference <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__ 에 표시된 것처럼 많은 Z-Wave명령 클래스에는 여러 버전이 있습니다. 기본적으로 ``zwave.parse()`` 는 명령 클래스의 가장 높은 버전을 사용하여 명령을 구문 분석합니다. 장치가 이전 버전의 명령을 보내는 경우 일부 필드가 누락되었거나 명령이 구문 분석하지 못하고 ``null`` 을 반환할 수 있습니다. 이 문제를 해결하기 위해 맵을  ``zwave.parse()`` 에 두번째 인수로 전달하여 사용할 각 명령 클래스의 버전을 지정할 수 있습니다.    
+    
 .. code-block:: groovy
 
     zwave.parse(description, [0x26: 1, 0x70: 1])
 
-This example will use version 1 of SwitchMultilevel (0x26) and Configuration (0x70) instead of the highest versions.
+이 예에서는 가장 높은 버전 대신 SwitchMultilevel (0x26)및 Configuration (0x70)의 버전 1을 사용합니다.
 
 ----
 
 Sending commands
 ----------------
 
-To send a Z-Wave command to the device, you must create the command object, call ``format()`` on it to convert it to the encoded string representation, and return it from the command method.
+Z-Wave명령을 장치에 전송하려면 명령 개체를 생성하고 이 개체에 대해 ``format()``  을 호출하여 인코딩된 문자열 표현으로 변환한 후 명령 방법에서 반환해야 합니다.
 
 .. code-block:: groovy
 
@@ -90,17 +86,17 @@ To send a Z-Wave command to the device, you must create the command object, call
         return zwave.basicV1.basicSet(value: 0xFF).format()
     }
 
-There is a shorthand provided to create command objects: ``zwave.basicV1.basicSet(value: 0xFF)`` is the same as ``new physicalgraph.zwave.commands.basicv1.BasicSet(value: 0xFF)``.
-Note the different capitalization of the command name and the 'V' in the command class name.
+    명령 개체를 생성하기 위해 제공되는 속기는 다음과 같습니다. 즉, ``zwave.basicV1.basicSet(value: 0xFF)`` 은 ``new physicalgraph.zwave.commands.basicv1.BasicSet(value: 0xFF)`` 와 같습니다.
+명령 클래스 이름에 명령 이름의 대문자화와 'V'가 서로 다르다는 점을 참고하십시오.
 
-The value 0xFF passed in to the command is a hexadecimal number.
-Many Z-Wave commands use 8-bit integers to represent device state.
-Generally 0 means "off" or "inactive", 1-99 are used as percentage values for a variable level attribute, and 0xFF or 255 (the highest value) means "on" or "detected".
+명령에 전달되는 값 0xFF는 16진수 숫자입니다.
+대부분의 Z-Wave명령에서는 8비트 정수를 사용하여 디바이스 상태를 나타냅니다.
+일반적으로 0은 "off" 또는 "비활성"을 의미하고 1-99는 가변 수준 속성의 백분율 값으로 사용되며, 255(가장 높은 값)은 "on"또는"detected"를 의미합니다.
 
-If you want to send more than one Z-Wave command, you can return a list of formatted command strings.
-It is often a good idea to add a delay between commands to give the device an opportunity to finish processing each command and possibly send a response before receiving the next command.
-To add a delay between commands, include a string of the form ``"delay N"`` where N is the number of milliseconds to delay.
-There is a helper method ``delayBetween()`` that will take a list of commands and insert delay commands between them:
+Z-Wave명령을 두개 이상 전송하려면 형식이 지정된 명령 문자열 목록을 반환하면 됩니다.
+종종 명령 사이에 지연을 추가하여 장치가 각 명령을 처리할 수 있도록 하고, 가능하면 다음 명령을 수신하기 전에 응답을 보내는 것이 좋습니다.
+명령 간의 지연을 추가하려면 ``"delay N"`` 형식의 문자열을 포함합니다. 여기서 N은 지연 시간(밀리초)입니다.
+``delayBetween()`` 같은 헬퍼 메소드로 명령 목록을 작성하고 지연 명령을 삽입할 수 있습니다.
 
 .. code-block:: groovy
 
@@ -111,19 +107,14 @@ There is a helper method ``delayBetween()`` that will take a list of commands an
         ], 100)
     }
 
-This example returns the output of ``delayBetween``, and thus will send a BasicSet command, followed by a 100 ms delay (0.1 seconds), then a SwitchBinaryGet command in order to check immediately that the state of the switch was indeed changed by the *set* command.
+이 예에서는 ``delayBetween`` 의 출력을 반환하므로 BasicSet명령이 전송되고 100ms지연 (0.1초)후 SwitchBinaryGet 명령이 *set* 명령에 의해 즉시 변경됩니다.
 
 ----
 
 Sending commands in response to Events
 --------------------------------------
 
-In some situations, instead of sending a command in response to a request by the user, you want to automatically send a command to the device on receipt of a Z-Wave command.
 
-If you return a list from the parse method, each item of the list will be evaluated separately.
-Items that are maps will be processed as Events as usual and sent to subscribed SmartApps and mobile clients.
-Returned items that are HubAction items, however, will be sent via the Hub to the device, in much the same way as formatted commands returned from command methods.
-The easiest way to send a command to a device in response to an Event is the ``response()`` helper, which takes a Z-Wave command or encoded string and supplies a HubAction:
 
 .. code-block:: groovy
 
