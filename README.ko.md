@@ -6,47 +6,24 @@
 이용해 작성되었으며, [Sphinx](http://www.sphinx-doc.org/en/stable/) 기술을 이용하고
 [ReadTheDocs](http://readthedocs.org) 에서 호스팅 되었습니다.
 
-\#\# Building the docs
-
-\#\# 문서 작성하기
-
-Follow these steps to build the documentation locally:
+## 문서 작성하기
 
 문서를 로컬로 작성하려면 아래 단계를 따르세요:
 
-1\. \[Install
-virtualenv\]([*https://virtualenv.pypa.io/en/latest/installation.html*](https://virtualenv.pypa.io/en/latest/installation.html)).
+1. [virtualenv를 설치하세요](https://virtualenv.pypa.io/en/latest/installation.html).
 
-1\. \[virtualenv를 설치하세요\](
-[*https://virtualenv.pypa.io/en/latest/installation.html*](https://virtualenv.pypa.io/en/latest/installation.html)).
+2. 문서 디렉토리와 다른 곳에 독립된 환경을 만드세요: `virtualenv--no-site-packages .venv`
 
-2\. Create an isolated environment in a different location than the
-Documentation directory: \`virtualenv --no-site-packages .venv\`
+3. 환경을 활성화시키세요: `source .venv/bin/activate`
 
-2\. 문서 디렉토리와 다른 곳에 독립된 환경을 만드세요: \`virtualenv
---no-site-packages .venv\`
+4. 디펜던시를 설치하세요: `(.venv)~/Documentation$ pip install -r
+requirements.txt`
 
-3\. Activate the environment: \`source .venv/bin/activate\`
+5. HTML을 작성하십시오: `(.venv)~/Documentation$ make html`
 
-3\. 환경을 활성화시키세요: \`source .venv/bin/activate\`
+6. 웹 브라우저에서 `_build/html/index.html`을 여세요.
 
-4\. Install dependencies: \`(.venv)\~/Documentation\$ pip install -r
-requirements.txt\`
-
-4\. 디펜던시를 설치하세요: \`(.venv)\~/Documentation\$ pip install -r
-requirements.txt\`
-
-5\. Build HTML: \`(.venv)\~/Documentation\$ make html\`
-
-5\. HTML을 작성하십시오: \`(.venv)\~/Documentation\$ make html\`
-
-6\. Open \`\_build/html/index.html\` in a web browser.
-
-6\. 웹 브라우저에서 \`\_build/html/index.html\`을 여세요.
-
-To see the available make targets, simply execute \`make\`.
-
-이용 가능한 make 목적파일을 보고싶다면, \`make\`을 실행하세요.
+이용 가능한 make 목적파일을 보고싶다면, `make`을 실행하세요.
 
 \#\# Contributing
 
