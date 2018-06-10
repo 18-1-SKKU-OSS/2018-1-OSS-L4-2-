@@ -268,8 +268,7 @@ Here's the child SmartApp:
         input "lights", "capability.switch", title: "Which lights do you want to control?", multiple: true, submitOnChange: true
     }
 
-    // inputs to control what to do with the lights (turn on and set color, turn on
-    // and set level)
+    // inputs to control what to do with the lights (turn on and set color, turn on and set level)
     def actionInputs() {
         if (lights) {
             input "action", "enum", title: "What do you want to do?", options: actionOptions(), required: true, submitOnChange: true
