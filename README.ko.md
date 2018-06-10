@@ -25,23 +25,13 @@ requirements.txt`
 
 이용 가능한 make 목적파일을 보고싶다면, `make`을 실행하세요.
 
-\#\# Contributing
-
-\#\# 기여
-
-We love contributions! If you find a typo, error, or think something can
-be communicated better, fork this repository and make a pull request.
+## 기여
 
 우리는 여러분의 기여를 환영합니다! 오타, 에러나 더 발전시킬 수 있을 것
 같은 부분이 있다면 이 저장소를 fork하고 pull request를 보내주세요
 
-If you have a larger change that might involve a lot of new content or
-organization, let us know in advance by creating an issue.
-
 새로운 내용이나 조직이 많이 포함된 변화를 주고자 한다면 이슈를 만들어
 저희에게 먼저 알려주세요.
-
-\#\#\# Style guide
 
 \#\#\# 형식 안내
 
