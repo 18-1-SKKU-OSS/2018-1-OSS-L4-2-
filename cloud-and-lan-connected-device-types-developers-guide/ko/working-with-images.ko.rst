@@ -4,7 +4,7 @@
 카메라 사진 캡쳐 및 표시
 ===================
 
-SmartThings에 연결된 카메라는 Carousel타일과 함께 ref:"imageCapture" 기능을 사용하여 사진을 캡쳐하고 볼 수 있습니다.
+SmartThings에 연결된 카메라는 Carousel타일과 함께 참고:"imageCapture" 기능을 사용하여 사진을 캡쳐하고 볼 수 있습니다.
 SmartThings-연결 카메라는 LAN 또는 클라우드로 연결됩니다. 이 문서는 두 경우에서 이미지를 캡쳐하고 표시하는 단계를 설명합니다.
 
 ----
@@ -12,7 +12,7 @@ SmartThings-연결 카메라는 LAN 또는 클라우드로 연결됩니다. 이 
 사진 캡쳐 기능
 -----------
 
-:ref: `imageCapture` 기능을 지원 하기 위하여는 장치 핸들러의 메타 데이터에 추가해야 합니다.
+:참고: `imageCapture` 기능을 지원 하기 위하여는 장치 핸들러의 메타 데이터에 추가해야 합니다.
 
 .. code-block:: groovy
 
@@ -58,7 +58,7 @@ Carousel 타일을 사용하여 이미지를 표시하고 다음에 설명하는
 LAN연결 카메라
 ^^^^^^^^^^^
 
-LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하고, :ref:`device_handler_ref_store_temp_image` 를 통해서 저장하며, :ref:`tiles_carousel_tile` 를 통해 표시 가능합니다.
+LAN연결 장치들은 :참고:`hubaction_참고` 를 통해서 이미지를 캡쳐하고, :참고:`device_handler_참고_store_temp_image` 를 통해서 저장하며, :참고:`tiles_carousel_tile` 를 통해 표시 가능합니다.
 
 ``take()`` 명령은 사진 촬영을 ``HubAction`` 통해 요청합니다.
 장치의 응답은 장치 핸들러의 ``parse()`` method로 전달 되며 그곳에서 ``storeTemporaryImage()`` 를 통해 장기-저장 저장소로 이동할 수 있습니다.
@@ -138,7 +138,7 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 클라우드 연결 카메라
 ^^^^^^^^^^^^^^^
 
-``take()`` 명령어는 사진을 찍고 찍 사진 바이트들을 :ref:`device_handler_ref_store_image`를 저장하기 위해 타사 서비스에 HTTP 요청을 보냅니다.
+``take()`` 명령어는 사진을 찍고 찍 사진 바이트들을 :참고:`device_handler_참고_store_image`를 저장하기 위해 타사 서비스에 HTTP 요청을 보냅니다.
 
 다음은 간단한 예시입니다 (실제 응용 프로그램은 타사 인증과 추가 오류를 처리해야 합니다):
 
@@ -184,7 +184,7 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 
 위의 ``take()`` 명령어는 다음 작업을 수행합니다:
 
-#. 이미지 응답을 반환할 URI에 요청합니다. 진정한 통합은 요청에 대한 승인 정보를 제공해야 할 것입니다. 이는 일반적으로 설치 (:ref:`here <cloud_service_manager_oauth>`에 나와 있습니다) 프로세스를 통해 얻은 OAuth 토큰입니다.
+#. 이미지 응답을 반환할 URI에 요청합니다. 진정한 통합은 요청에 대한 승인 정보를 제공해야 할 것입니다. 이는 일반적으로 설치 (:참고:`here <cloud_service_manager_oauth>`에 나와 있습니다) 프로세스를 통해 얻은 OAuth 토큰입니다.
 #. 만약 반응이 성공적이고 그 내용 유형(Content-Type)이 우리가 기대한 내용이라면, 그것은 ``response.data`` 로부터 이미지 바이트를 얻는다.
 #. ``storeImage()`` 로 UUID에서 생성된 이름을 사용하여 사진을 저장합니다. 사진의 이름은 각 장치 인스턴스 마다 고유해야 합니다.
 
@@ -260,11 +260,11 @@ LAN연결 장치들은 :ref:`hubaction_ref` 를 통해서 이미지를 캡쳐하
 관련 문서
 -------
 
-- :ref:`storeTemporaryImage() reference documentation <device_handler_ref_store_temp_image>`
-- :ref:`storeImage() reference documentation <device_handler_ref_store_image>`
-- :ref:`HubAction reference documentation <hubaction_ref>`
-- :ref:`Image Capture Capability reference documentation <imageCapture>`
-- :ref:`Tiles documentation <device_handler_tiles>`
+- :참고:`storeTemporaryImage() 참고erence documentation <device_handler_참고_store_temp_image>`
+- :참고:`storeImage() 참고erence documentation <device_handler_참고_store_image>`
+- :참고:`HubAction 참고erence documentation <hubaction_참고>`
+- :참고:`Image Capture Capability 참고erence documentation <imageCapture>`
+- :참고:`Tiles documentation <device_handler_tiles>`
 
 
 .. _ByteArrayInputStream: https://docs.oracle.com/javase/7/docs/api/java/io/ByteArrayInputStream.html
