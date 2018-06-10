@@ -49,18 +49,18 @@ fork가 최신 정보로 환경 설정 및 동기화되면 토픽 브랜치에�
 
 1. master 브랜치를 기반으로 토픽 브랜치를 checkout 하세요. (SmartThingsCommunity/Documentation 저장소와 동기화되어야 합니다.):
 
-`$ git checkout -b topic-branch-name origin/master`
+   `$ git checkout -b topic-branch-name origin/master`
 
-여기서 "topic-branch-name"이 변경사항 내용입니다. (예: 스케쥴링과 끊어진 링크 수정)
+   여기서 "topic-branch-name"이 변경사항 내용입니다. (예: 스케쥴링과 끊어진 링크 수정)
 
 2. 변경 사항에 대해 확신이 들면 색인에 변경사항을 추가하고 커밋하세요. 변경사항의 내용을 잘 전달하는 커밋 메시지를 포함하도록 하세요. 
 각 PR에는 하나의 커밋만 있어야합니다. 브랜치에 여러 커밋이 있는 경우, PR을보내기 전, 여러 커밋 로그를 하나로 묶으세요.
 
-**참고사항:** SmartThings 직원은 JIRA 티켓 번호를 커밋 메시지의 앞에 포함해야합니다. (예: "[DOCS-234] 스케쥴러 메소드 회신에 데이터를 전달하기 위한 문서 추가")
+   **참고사항:** SmartThings 직원은 JIRA 티켓 번호를 커밋 메시지의 앞에 포함해야합니다. (예: "[DOCS-234] 스케쥴러 메소드 회신에 데이터를 전달하기 위한 문서 추가")
 
 3. fork의 원격 저장소에 토픽 브랜치를 push 하세요.
 
-`$ git push origin topic-branch-name`
+   `$ git push origin topic-branch-name`
 
 4. 웹 브라우저에서 fork의 원격저장소에 들어가세요. push된 새로운 변경사항을 알리는 노란 배너가 있을 것입니다. 이 배너로 변경사항들의 pull request를 만들 수 있습니다. 해당 링크를 클릭하세요.
 
