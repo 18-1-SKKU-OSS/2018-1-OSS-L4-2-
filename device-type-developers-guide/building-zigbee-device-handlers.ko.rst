@@ -31,7 +31,7 @@ ZigBee  기기와 SmartThings를 통합하는 데 사용할 수 있는 네가지
 
 이 예에서 장치 유형("CentraLiteSwitch"장치)
 유형)에서 "refresh" 함수를 호출하고 있습니다.
-현재 상태(유효 전력 인출)를 판독하기 위해``readAttribute()`` 메소드를 통해 ZigBee  읽기 속성 요청을 보내고 있다.
+현재 상태(유효 전력 인출)를 판독하기 위해 ``readAttribute()`` 메소드를 통해 ZigBee  읽기 속성 요청을 보내고 있다.
 여기서 살펴볼 클러스터는 Electrical Measurement (0xB04), 특히 Active Power Attribute(0x50B)입니다.    
 
 +-------------------------------+-----------------------------+
@@ -42,10 +42,10 @@ ZigBee  기기와 SmartThings를 통합하는 데 사용할 수 있는 네가지
 |0x050B                         | Attribute                   |
 +-------------------------------+-----------------------------+
 
-Write
+쓰기
 ^^^^^
 
-Write sets an attribute of a ZigBee device and is formatted like this:
+쓰기는 ZigBee 장치의 특성을 다음과 같이 세팅하고, 다음과 같이 형시이 정해져 있습니다:
 
 .. code-block:: groovy
 
@@ -53,21 +53,21 @@ Write sets an attribute of a ZigBee device and is formatted like this:
             zigbee.writeAttribute(8, 0x10, 0x21, 0x0014)
         }
 
-In this example (from the "ZigBee Dimmer" Device Handler) we are writing to an attribute to set the amount of time it takes for a light to fully dim on and off.
-Here we are using the Level Control Cluster (8) to write to the attribute that defines on and off transition time (0x10).
-The value we are using is formatted in an Unsigned 16-bit integer (0x21) with the payload being in 1/10th of a second.
-In this case the payload ({0014}) translates to 2 seconds.
-Breaking the payload down we see that the hex value of 0x0014 equals the decimal value of 20. 20 * 1/10 of a second equals 2 seconds.
+이 예에서는("ZimbeeDimmer" Device Handler에서)조명이 완전히 켜지고 꺼지는 데 걸리는 시간을 설정하기 위해 특성에 쓰고 있습니다.
+여기서는 Level Control Cluster (8)를 사용하여 전환 시간 및 해제(0x10)을 정의하는 속성에 씁니다.
+사용 중인 값은 서명되지 않은 16비트 정수(0x21)로 포맷되며 페이 로드는 1/10/초 단위입니다.
+이 경우 페이 로드({0014})는 2초로 변환됩니다.
+페이 로드를 분해하면 0x0014의 16진수 값이 10진수 값인 20이 됩니다. 20*1/10초는 2초와 같습니다.
 
-Each attribute possesses a specific data type.
-The corresponding value for this data type can be found in table 2.16 of the `ZigBee Cluster Library <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__.
+각 속성에는 특정 데이터 유형이 있습니다.
+이 데이터 유형에 해당하는 값은 `ZigBee Cluster Library <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__ 표 2.16에서 확인할 수 있다.        
 
 
 .. note::
-  The payload in the example above, {0014}, is a hex string. The length of the payload must be two times the length of the data type. For example, if the datatype is 16-bit, then the payload should be 4 hex digits.
+위 예의{0014}페이 로드는 16진수 문자열입니다. 페이 로드의 길이는 데이터 유형의 두배여야 합니다. 예를 들어, 데이터 유형이 16비트인 경우 페이 로드는 416진수여야 합니다.
 
 +-------------------------------+-----------------------------+
-| Component                     | Description                 |
+| 요소                          | 설명                        |
 +===============================+=============================+
 |8                              |Cluster                      |
 +-------------------------------+-----------------------------+
@@ -78,10 +78,10 @@ The corresponding value for this data type can be found in table 2.16 of the `Zi
 |0x0014                         |Payload                      |
 +-------------------------------+-----------------------------+
 
-Command
+명령어
 ^^^^^^^
 
-Command invokes a command on a ZigBee device and is formatted like this:
+Commands는 ZigBee 장치로 명령을 보내고, 다릉과 같은 형식을 따릅니다:
 
 .. code-block:: groovy
 
@@ -89,9 +89,9 @@ Command invokes a command on a ZigBee device and is formatted like this:
         zigbee.command(0x0006, 0x01)
     }
 
-In this example (from the "ZigBee Dimmer" device type) we are sending a ZigBee Command to turn the device on.
-We use the On/Off Cluster (6) and send the command to turn on (1).
-This command has no payload, so we exclude it from the passed in parameters.
+이 예에서는("ZipseeDimmer"장치 유형에서)장치를 켜기 위해 Zigbee명령을 보냅니다.
+On/OffCluster(6)를 사용하여(1)을 켜는 명령을 전송합니다.
+이 명령에는 페이 로드가 없으므로 전달된 매개 변수에서 제외합니다.
 
 +-------------------------------+-----------------------------+
 | Component                     | Description                 |
