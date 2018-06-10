@@ -3,7 +3,7 @@ ZigBee Device Handlers 만들기
 
 .. note::
 
-        만약 당신이 새로운 ZigBee 스위치나 전구를 SmartThings와 통합한다면, 아래의 :참조:`zigbee_device_form` 부분을 참조하여 어떻게 이러한 장치들을 코드 작성 없이 통합할 수 있는지 보세요.
+        만약 당신이 새로운 ZigBee 스위치나 전구를 SmartThings와 통합한다면, 아래의 :참고:`zigbee_device_form` 부분을 참조하여 어떻게 이러한 장치들을 코드 작성 없이 통합할 수 있는지 보세요.
 
 ----
 
@@ -14,7 +14,7 @@ SmartThings는 ZigBee 함께 일하는 것을 더 쉽게 하기 위해 라이브
 모든 Device Handler 에는 이 라이브러리에 주입된 이름이 ``zigbee`` 로 표시되어 있습니다.
 
 이 라이브러리는 아래 예에서 사용됩니다.
-자세한 내용은 :참조:`zigbee_ref` 를 참조하십시오.
+자세한 내용은 :참고:`zigbee_ref` 를 참조하십시오.
 
 ZigBee  기기와 SmartThings를 통합하는 데 사용할 수 있는 네가지 일반적인 ZigBee 명령이 있습니다.
 
