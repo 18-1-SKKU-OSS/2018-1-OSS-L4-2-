@@ -33,17 +33,11 @@ requirements.txt`
 새로운 내용이나 조직이 많이 포함된 변화를 주고자 한다면 이슈를 만들어
 저희에게 먼저 알려주세요.
 
-\#\#\# 형식 안내
+### 형식 안내
 
-For documentation formatting and syntax, please see the \[Writing the
-Docs
-Guide\]([*http://docs.smartthings.com/en/latest/contributing/style-guide.html*](http://docs.smartthings.com/en/latest/contributing/style-guide.html)).
-
-문서의 양식이나 문법은 \[Writing the Docs
-Guide\]([*http://docs.smartthings.com/en/latest/contributing/style-guide.html*](http://docs.smartthings.com/en/latest/contributing/style-guide.html))을
+문서의 양식이나 문법은 [Writing the Docs
+Guide](http://docs.smartthings.com/en/latest/contributing/style-guide.html)을
 꼭 참고해주세요.
-
-\#\#\# Pull request guidelines
 
 \#\#\# Pull request 안내
 
