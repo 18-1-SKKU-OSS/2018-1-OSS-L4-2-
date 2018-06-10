@@ -114,7 +114,12 @@ Z-Wave명령을 두개 이상 전송하려면 형식이 지정된 명령 문자�
 Sending commands in response to Events
 --------------------------------------
 
+경우에 따라 사용자의 요청에 대한 응답으로 명령을 보내는 대신 Z-Wave명령을 수신할 때 자동으로 장치로 명령을 보내려고 합니다.
 
+구문 분석 메소드에서 목록을 반환하면 목록의 각 항목이 별도로 평가됩니다.
+맵인 항목은 평상시와 같이 이벤트로 처리되어 가입된 SmartApps및 모바일 클라이언트로 전송됩니다.
+그러나  HubAction 항목이 반환되면 Hub를 통해 장치로 전송되며 이는 명령 메서드에서 반환된 형식의 명령과 매우 유사합니다.
+이벤트에 대한 응답으로 장치에 명령을 보내는 가장 쉬운 방법은 Z-wave명령이나 인코딩된 문자열을 사용하여 다음과 같은 HubAction 문자열을 제공하는 ``response()`` 헬퍼 입니다.
 
 .. code-block:: groovy
 
@@ -128,7 +133,6 @@ Sending commands in response to Events
         [event, response(cmds)] // return a list containing the event and the result of response()
     }
 
-The above example uses the ``response()`` helper to send Z-Wave commands and delay commands to the device whenever a WakeUpNotification Event is received.
-The reception of this Event that indicates that the sleepy device is temporarily listening for commands.
-In addition to creating a hidden Event, the handler will send a BatteryGet request, wait 1.2 seconds for a response, and then issue a WakeUpNoMoreInformation command to tell the device it can go back to sleep to save battery.
-
+위의 예에서는 WakeUpNotification이벤트가 수신될 때마다 Z-Wave명령과 지연 명령을 장치에 보내는 ``response()`` 헬퍼를 사용합니다.
+절전 모드에서 명령을 일시적으로 수신 중임을 나타내는 이 이벤트의 수신입니다.
+숨겨진 이벤트를 만드는 것 외에도 핸들러는 BatteryGet 요청을 전송하고 응답을 1.2초간 기다린 다음 절전 모드 정보 저장 명령을 실행하여 장치를 다시 시작할 수 있음을 알려 줍니다.
