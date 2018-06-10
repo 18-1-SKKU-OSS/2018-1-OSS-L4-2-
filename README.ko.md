@@ -54,7 +54,7 @@ fork가 최신 정보로 환경 설정 및 동기화되면 토픽 브랜치에�
    여기서 "topic-branch-name"이 변경사항 내용입니다. (예: 스케쥴링과 끊어진 링크 수정)
 
 2. 변경 사항에 대해 확신이 들면 색인에 변경사항을 추가하고 커밋하세요. 변경사항의 내용을 잘 전달하는 커밋 메시지를 포함하도록 하세요. 
-각 PR에는 하나의 커밋만 있어야합니다. 브랜치에 여러 커밋이 있는 경우, PR을보내기 전, 여러 커밋 로그를 하나로 묶으세요.
+각 PR(Pull Request)에는 하나의 커밋만 있어야합니다. 브랜치에 여러 커밋이 있는 경우, PR(Pull Request)을보내기 전, 여러 커밋 로그를 하나로 묶으세요.
 
    **참고사항:** SmartThings 직원은 JIRA 티켓 번호를 커밋 메시지의 앞에 포함해야합니다. (예: "[DOCS-234] 스케쥴러 메소드 회신에 데이터를 전달하기 위한 문서 추가")
 
@@ -66,10 +66,10 @@ fork가 최신 정보로 환경 설정 및 동기화되면 토픽 브랜치에�
 
 5. Pull Request 페이지에서 변경 내용이 올바른 지 확인하고, 필요하다면 설명을 덧붙이십시오. 그리고 pull request를 제출하세요. 저희 문서 팀은 항상 모든 pull request를 검토하겠지만 특정 팀원의 검토가 필요하다면 pull request에서 그들을 `@`를 이용해 언급하세요.
 
-6. pull request를 올린 것 중 변경 사항이 있다면 PR에 새로운 커밋을 추가하거나 기존 커밋을 수정할 수 있습니다.
+6. pull request를 올린 것 중 변경 사항이 있다면 PR(Pull Request)에 새로운 커밋을 추가하거나 기존 커밋을 수정할 수 있습니다.
 새 커밋을 추가하는 경우 [merge 전에 커밋 로그를 하나로 묶으세요.](https://github.com/ginatrapani/todo.txt-android/wiki/Squash-All-Commits-Related-to-a-Single-Issue-into-a-Single-Commit)
 
-7. PR에 +1 (엄지를 든 모양의 이모티콘)이 있다면 문서 팀이 당신의 PR을 merge 해줄 것입니다.
+7. PR(Pull Request)에 +1 (엄지를 든 모양의 이모티콘)이 있다면 문서 팀이 당신의 PR(Pull Request)을 merge 해줄 것입니다.
 
 ## 연락처
 
