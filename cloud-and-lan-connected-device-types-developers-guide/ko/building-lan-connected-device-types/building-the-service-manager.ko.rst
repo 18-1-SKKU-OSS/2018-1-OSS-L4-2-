@@ -29,13 +29,6 @@ Service Manager 구현의 주요 부분을 살펴보겠습니다.
 탐색
 ---
 
-----
-
-.. _lan_device_discovery:
-
-Discovery
----------
-
 SSDP(SimpleServiceDiscoveryProtocol)는 네트워크에서 장치를 찾는 데 사용되는 기본 프로토콜입니다.
 
 UPnP(Universal Plug and Play)의 backbone 역할을 하므로 새 네트워크 장치를 시스템에 쉽게 연결할 수 있습니다.
@@ -79,8 +72,9 @@ Event 구독은 다음과 같습니다:
 
     lan discovery urn:schemas-upnp-org:device:ZonePlayer:1
 
-This is converted by our device connectivity layer into an M-SEARCH multicast request that is sent to the LAN via the Hub, and
-should look something like the following:
+
+이것은 우리의 장치 접속 계층에 의해 허브를 통해 LAN으로 전송되는 M-SEARCH멀티 캐스트 요청으로 전환된다.
+다음과 같은 모양이어야 합니다:
 
 .. code-block:: bash
 
@@ -90,8 +84,10 @@ should look something like the following:
     MX: 4
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
 
-After the end device receives the multicast M-SEARCH, it is supposed to issue a unicast **search response**, delayed by a random number of seconds between 0 and MX (4 in this case).
-The search response sent from the device back to the Hub should look something like this:
+
+엔드 디바이스는 멀티 캐스트 M-SEARCH를 수신한 후 유니캐스트 **search response**을(이 경우 4)0과 MX사이의 임의 시간(초)으로 지연된다.
+기기에서 허브로 다시 전송된 검색 응답은 다음과 같아야 합니다:
+
 
 .. code-block:: bash
 
@@ -104,12 +100,14 @@ The search response sent from the device back to the Hub should look something l
     USN: uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1
 
 This will get routed back to the cloud where it will be converted into an Event that will fire the ssdpHandler method with the following description:
+이렇게 하면 클라우드로 다시 라우팅 되며, 다음과 같은 설명을 사용하여 SS/Handler메서드를 시작하는 이벤트로 변환됩니다:
 
 .. code-block:: bash
 
     devicetype:04, mac:000E58F0FFFF, networkAddress:0A00010E, deviceAddress:0578, stringCount:04, ssdpPath:/xml/device_description.xml, ssdpUSN:uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1, ssdpTerm:urn:schemas-upnp-org:device:ZonePlayer:1, ssdpNTS:
 
 The ssdpHandler method should record the data from the search response, in preparation for verification.
+ssdpHandler 메드는 확인을 위해 검색 응답의 데이터를 기록해야 합니다.
 
 .. code-block:: groovy
 
@@ -126,3 +124,52 @@ The ssdpHandler method should record the data from the search response, in prepa
             devices << ["${ssdpUSN}": parsedEvent]
         }
     }
+
+----
+
+확인
+----
+
+원하는 SSDP검색 대상으로 LAN에 장치가 있음을 기록한 후 다음 단계는 장치에 대한 추가 정보를 가져와 장치 가용성을 확인하는 것입니다.
+
+UPnP에서는 이를 **device description**이라고 합니다.
+
+검색 응답에는 LAN에서 장치 설명의 위치를 보여 주는 위치 헤더가 있습니다.
+
+SmartThings는 이벤트에서 이 문제를 **networkAddress**, **deviceAddress** 및 **ssdpPath** (이 시점에서는 앱 상태로 존재해야 함)로 나눕니다.
+
+이 작업은 상태를 벗어나 HubAction 한번에 수행할 수 있습니다.
+
+HubAction 에는 더 많은 작업에는 **callback** 이 있습니다. 즉, HTTP응답이 장치에서 허브로 전송되면 **deviceDescriptionHandler** 방법이 실행됩니다.
+
+    .. code-block:: groovy
+
+        void verifyDevices() {
+            def devices = getDevices().findAll { it?.value?.verified != true }
+            devices.each {
+                int port = convertHexToInt(it.value.port)
+                String ip = convertHexToIP(it.value.ip)
+                String host = "${ip}:${port}"
+                sendHubCommand(new physicalgraph.device.HubAction("""GET ${it.value.ssdpPath} HTTP/1.1\r\nHOST: $host\r\n\r\n""", physicalgraph.device.Protocol.LAN, host, [callback: deviceDescriptionHandler]))
+            }
+        }
+
+        void deviceDescriptionHandler(physicalgraph.device.HubResponse hubResponse) {
+            def body = hubResponse.xml
+            def devices = getDevices()
+            def device = devices.find { it?.key?.contains(body?.device?.UDN?.text()) }
+            if (device) {
+                device.value << [name: body?.device?.roomName?.text(), model: body?.device?.modelName?.text(), serialNumber: body?.device?.serialNum?.text(), verified: true]
+            }
+        }
+
+    .. note:: HubResponse is a class supplied by the SmartThings platform. Here are some pieces of data that are included:
+
+        * **description** - 디바이스 연결 계층에서 수신한 원시 메시지
+        * **hubId** - 응답을 받은 SmartThings Hub의 UUID
+        * **status** - 응답의 HTTP상태 코드
+        * **headers** - 응답의 HTTP헤더 맵
+        * **body** - HTTP응답 본문의 문자열
+        * **error** - 본문을 자동으로 구문 분석하는 동안 JSON또는 XML로 발생한 오류
+        * **json** - HTTP응답에 application/json의 Content-Type헤더가 있는 경우 본문은 자동으로 JSON으로 구문 분석되고 여기에 저장됩니다.
+        * **xml** - HTTP응답에 텍스트/xml의 내용 유형 헤더가 있는 경우 본문이 자동으로 XML로 구문 분석되고 여기에 저장됩니다.
