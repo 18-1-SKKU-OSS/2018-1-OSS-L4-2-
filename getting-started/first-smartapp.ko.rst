@@ -1,13 +1,16 @@
 .. _first-smartapp-tutorial:
 
 Writing Your First SmartApp
+첫 번째 SmartApp을 작성해보세요
 ===========================
 
 .. role:: strike
     :class: strike
 
 This tutorial will guide you through writing your first SmartApp.
+이 튜토리얼은 처음으로 SmartApp을 작성하는 법을 여러분에게 안내해줄겁니다.
 Once you've read through the :ref:`groovy-for-smartthings`, this should be your next stop.
+:ref:`groovy-for-smartthings` 을 읽으셨다면 다음으로 이 튜토리얼을 읽으시면 됩니다.
 
 ----
 
