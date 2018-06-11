@@ -32,7 +32,7 @@ ZigBee  기기와 SmartThings를 통합하는 데 사용할 수 있는 네가지
 이 예에서 장치 유형("CentraLiteSwitch"장치)
 유형)에서 "refresh" 함수를 호출하고 있습니다.
 현재 상태(유효 전력 인출)를 판독하기 위해 ``readAttribute()`` 메소드를 통해 ZigBee  읽기 속성 요청을 보내고 있다.
-여기서 살펴볼 클러스터는 Electrical Measurement (0xB04), 특히 Active Power Attribute(0x50B)입니다.    
+여기서 살펴볼 클러스터는 Electrical Measurement (0xB04), 특히 Active Power Attribute(0x50B)입니다.
 
 +-------------------------------+-----------------------------+
 | 요소                          | 설명                        |
@@ -60,7 +60,7 @@ ZigBee  기기와 SmartThings를 통합하는 데 사용할 수 있는 네가지
 페이 로드를 분해하면 0x0014의 16진수 값이 10진수 값인 20이 됩니다. 20*1/10초는 2초와 같습니다.
 
 각 속성에는 특정 데이터 유형이 있습니다.
-이 데이터 유형에 해당하는 값은 `ZigBee Cluster Library <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__ 표 2.16에서 확인할 수 있다.        
+이 데이터 유형에 해당하는 값은 `ZigBee Cluster Library <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__ 표 2.16에서 확인할 수 있다.
 
 
 .. note::
@@ -104,7 +104,7 @@ On/OffCluster(6)를 사용하여(1)을 켜는 명령을 전송합니다.
 Configure
 ^^^^^^^^^
 
-Configure reporting instructs a device to notify us when an attribute changes and is formatted like this:
+보고 구성은 장치가 특성이 변경될 때 이를 알리도록 지시하며 다음과 같이 형식이 지정됩니다.
 
 .. code-block:: groovy
 
@@ -112,13 +112,13 @@ Configure reporting instructs a device to notify us when an attribute changes an
         configureReporting(0x0006, 0x0000, 0x10, 0, 600, null)
     }
 
-In this example (using the "CentraLite Switch" Device Handler), the bind command is sent to the device using its Network ID which can be determined using ``0x${device.deviceNetworkId}``.
-Then using source and destination endpoints for the device and Hub (1 1), we bind to the On/Off Clusters (6) to get Events from the device.
-The last part of the message contains the Hub's ZigBee id which is set as the Location for the device to send callback messages to.
-Note that not at all devices support binding for Events.
+이 예에서("CentraLiteSwitch"DeviceHandler사용), 바인딩 명령은 네트워크 ID를 사용하여 디바이스에 전송되며, 이 ID는``0x${device.deviceNetworkId}`` 을 사용합니다.
+그런 다음 장치와 허브(1)의 소스 및 대상 끝점을 사용하여 On/Off클러스터(6)에 바인딩 하여 장치에서 이벤트를 가져옵니다.
+메시지의 마지막 부분에는 장치가 콜백 메시지를 보낼 위치로 설정되는 허브의 Zi고 바이트 ID가 포함됩니다.
+일부 디바이스는 이벤트 바인딩을 지원하지 않습니다.
 
 +-------------------------------+-----------------------------+
-| Component                     | Description                 |
+| 요소                          | 설명                         |
 +===============================+=============================+
 |0x0006                         |Cluster                      |
 +-------------------------------+-----------------------------+
@@ -135,27 +135,27 @@ Note that not at all devices support binding for Events.
 
 ----
 
-ZigBee utilities
+ZigBee 유틸리티
 ----------------
 
-In order to work with ZigBee you will need to use the ZigBee Cluster Library extensively to look up the proper values to send back and forth to your device.
-You can download this document `here <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__.
+지그비와 함께 작업하기 위해서 당신은 당신의 장치로 앞뒤로 보내기 위한 적절한 값들을 찾기 위해서 지그비 클러스터 도서관을 광범위하게 사용할 필요가 있을 것이다.
+이 문서를  `여기서 <http://www.zigbee.org/download/standards-zigbee-cluster-library/>`__ 다운로드 받을 수 있습니다.
 
-There is also a ZigBee utility class covered in the :ref:`zigbee_ref`.
+:참고:`zigbee_ref` 에 포함된 Zingee유틸리티 클래스도 있습니다.
 
 ----
 
-Best practices
+가장 좋은 연습방법
 --------------
 
-- The use of 'raw ...' commands is deprecated. Instead use the documented methods on the ZigBee library. If you need to do something that requires the use of a 'raw' command let us know and we will look at adding it to the ZigBee library.
-- Do not use ``sendEvent()`` in command methods. Sending Events should be handled in the ``parse`` method.
+-'raw...'명령은 더 이상 사용되지 않습니다. 대신에 지그비 라이브러리에서 문서화된 방법을 사용하세요. 만일 당신이 'raw' 명령의 사용을 요구하는 어떤 것을 할 필요가 있다면 우리에게 알려 주세요. 그리고 우리는 그것을 지그비 도서관에 추가하는 것을 고려할 것입니다.
+-명령어에 ``sendEvent()`` 를 사용하지 마십시오. 이벤트 전송은 ``parse`` 방법으로 처리해야 한다.
 
 ----
 
 .. _zigbee_device_form:
 
-Using the ZigBee Device Form
+지그비 장치 양식 사용
 ----------------------------
 
 To integrate a new ZigBee switch or bulb with SmartThings, you can use the *From ZigBee Device Form*.
