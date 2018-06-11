@@ -60,117 +60,88 @@ SmartApp는 모션 센서와 스마트 스위치를 활용합니다.
 
 ----
 
-Create a SmartApp
-스마트 응용 프로그램 만들기
+SmartApp 만들기
 -----------------
 
-In the IDE, navigate to the *My SmartApps* page.
-This will bring you to a page that shows all of the SmartApps that you have created.
-This is also where you can create a new SmartApp. Click on the *New SmartApp* button.
-IDE에서 * My SmartApps * 페이지로 이동하십시오.
-이렇게하면 생성 한 모든 SmartApp를 보여주는 페이지로 이동합니다.
-또한 여기에서 새 SmartApp를 만들 수 있습니다. * New SmartApp * 버튼을 클릭하십시오.
+IDE에서 *My SmartApps* 페이지로 이동하세요.
+이렇게하면 생성한 모든 SmartApp을 보여주는 페이지로 이동합니다.
+또한 여기에서 새 SmartApp을 만들 수 있습니다. *New SmartApp* 버튼을 클릭하세요.
 
 .. image:: ../img/getting-started/first-smartapp/new-smartapp.png
    :width: 70%
 
-Three options are presented for creating a new SmartApp: *From Form,* *From Code,* and *From Template.*
-새로운 SmartApp 생성을 위해 다음 세 가지 옵션이 제공됩니다. * From Form, * * From Code, * 및 * From Template. *
+새로운 SmartApp 생성을 위해 세 가지 옵션이 제공됩니다: *From Form,* *From Code,* and *From Template.*
 
 .. image:: ../img/getting-started/first-smartapp/smartapp-form.png
    :width: 70%
 
-The *From Form* option will ask for some details about your SmartApp and create a SmartApp with some boiler plate code.
-* From Form * 옵션은 SmartApp에 ??대한 세부 정보를 묻고 일부 보일러 플레이트 코드가있는 SmartApp를 만듭니다.
+*From Form* 옵션에서는 SmartApp에 대한 세부 정보를 채워넣고 상용구 코드가 있는 SmartApp을 만듭니다.
 
-The *From Code* option will create a new SmartApp out of code that you paste into the input box.
-* 코드에서 * 옵션은 입력 상자에 붙여 넣을 코드로 새로운 SmartApp을 만듭니다.
+*From Code* 옵션은 입력 상자에 입력된 코드로 새로운 SmartApp을 만듭니다.
 
-Lastly, the *From Template* option will let you select an already existing SmartApp and use its code as a starting point.
-This is useful when you want to change or enhance a SmartApp that already exists, and it also a great way to look at examples.
-마지막으로 * From Template * 옵션을 사용하면 이미 존재하는 SmartApp을 선택하고 해당 코드를 시작점으로 사용할 수 있습니다.
-이미 존재하는 SmartApp를 변경하거나 향상하려는 경우 유용하며 예제를 볼 때도 유용합니다.
+마지막으로 *From Template* 옵션을 사용하면 이미 존재하는 SmartApp을 선택하여 해당 코드를 시작점으로 사용할 수 있습니다.
+이미 존재하는 SmartApp를 변경하거나 향상하려는 경우 유용하며 예제를 보고싶을 때도 유용합니다.
 
-For our SmartApp, let's stick to the *From Form* option.
-SmartApp의 경우 * From Form * 옵션을 계속 사용하십시오.
+우리는 *From Form* 옵션으로 해보겠습니다.
 
-Fill out the form as follows:
-다음과 같이 양식을 작성하십시오.
+다음과 같이 양식을 작성하세요:
 
-Name
-    A name for your SmartApp. Call it something like "My First SmartApp".
 이름
-????SmartApp의 이름입니다. "My First SmartApp"와 같은 이름을 붙입니다.
+　　작성될 SmartApp의 이름입니다. "My First SmartApp"과 같은 이름을 붙입니다.
 
-Namespace
-    This field uniquely identifies your SmartApp in the event that someone else has written a SmartApp with the exact same name.
-    This should be your GitHub username (or if you don't have a GitHub account, some other unique identifier).
 네임 스페이스
-????이 필드는 다른 사람이 똑같은 이름으로 SmartApp을 작성한 경우 SmartApp를 고유하게 식별합니다.
-????이것은 GitHub 사용자 이름이어야합니다 (또는 GitHub 계정이없는 경우 다른 고유 식별자).
+　　이 필드는 다른 사람이 똑같은 이름으로 SmartApp을 작성한 경우에도 SmartApp을 고유하게 식별합니다.
+　　이것은 GitHub 사용자 이름이어야합니다(또는 GitHub 계정이 없는 경우 다른 고유한 식별자를 사용해도 됩니다.).
 
-Author
-    This is you. Populate this field with your handle.
 저자
-????이것은 당신입니다. 핸들과 함께이 필드를 채 웁니다.
+　　이것은 당신입니다. 해당하는 내용으로 필드를 채워주세요.
 
-Description
-    This describes the intent and functionality of your SmartApp.
-    This description appears in the SmartApp Marketplace section of SmartThings mobile application, and hence a clear and concise description is recommended.
-기술
-????이는 SmartApp의 의도와 기능을 설명합니다.
-????이 설명은 SmartThings 모바일 애플리케이션의 SmartApp 마켓 플레이스 섹션에 나타나므로 명확하고 간결한 설명을 권장합니다.
+설명
+　　SmartApp의 의도와 기능을 설명합니다.
+　　이 설명은 SmartThings 모바일 애플리케이션의 SmartApp 마켓플레이스 부분에 작성되므로 명확하고 간결한 설명을 써주세요.
 
-Category
-    SmartApps are categorized based on functionality.
-    This is used by SmartThings mobile application.
-    SmartApps can be published either for Marketplace or for your own use.
-    When publishing SmartApps for your own use (which is what we will be doing), all SmartApps will appear in *My Apps* category.
 범주
-????SmartApp는 기능에 따라 분류됩니다.
-????이것은 SmartThings 모바일 어플리케이션에서 사용됩니다.
-????SmartApp는 마켓 플레이스 용으로 또는 귀하 자신의 용도로 출판 될 수 있습니다.
-????내 용도로 SmartApp을 게시 할 때 모든 SmartApp이 * 내 Apps * 범주에 나타납니다.
+　　SmartApp는 기능에 따라 분류됩니다.
+　　이것은 SmartThings 모바일 애플리케이션에서 사용됩니다.
+　　SmartApp는 마켓플레이스 용이나 혼자 쓸 용도로 출판될 수 있습니다.
+　　혼자 쓸 용도로 SmartApp을 게시할 때(지금 저희가 할 것과 같이) 모든 SmartApp이 *My Apps* 범주에 나타납니다.
 
-Leave the rest of the fields as they are, and click the *Create* button at the bottom.
-This will create the SmartApp and populate it with some skeleton code.
-In the next section we will dive into using the editor to begin writing your first SmartApp.
-나머지 필드는 그대로두고 하단의 * 만들기 * 버튼을 클릭하십시오.
-이렇게하면 SmartApp가 만들어지고 일부 스 켈리 톤 코드가 채워집니다.
-다음 섹션에서는 편집기를 사용하여 첫 번째 SmartApp 작성을 시작합니다.
+나머지 필드는 그대로 두고 하단의 *Create* 버튼을 클릭하세요.
+이렇게 하면 SmartApp이 만들어지고 일부 스켈레톤 코드가 채워집니다.
+다음 부분에서는 편집기를 사용하여 첫 번째 SmartApp을 만들어보겠습니다.
 
 ----
 
-Editor
+편집기
 ------
 
-Once you've created your SmartApp, you'll be taken to the editor and Simulator.
-Before we look at the code, it's worth becoming familiar with some of the basic features.
+SmartApp를 만들면 편집기와 시뮬레이터로 이동합니다.
+코드를 살펴보기 전에 기본 기능에 익숙해질 필요가 있습니다.
 
-Above the code window, there are five buttons:
+코드 창 위에는 다섯 개의 버튼이 있습니다.
 
 .. image:: ../img/getting-started/first-smartapp/editor-buttons.png
 
-Save
-    This button saves your SmartApp in the SmartThings cloud.
+저장
+　　이 단추는 SmartThings 클라우드에 SmartApp을 저장합니다.
 
-Publish
-    This allows you to publish your SmartApp for yourself, so you may install it in your SmartThings mobile app, as well as to submit it to the SmartThings team for publication into the SmartThings catalog.
+게시
+　　SmartApp을 직접 게시할 수 있게 해줍니다. 그래서 SmartThings 모바일 앱에 SmartApp를 설치하고 SmartThings 팀에 제출하여 SmartThings 카탈로그에 게시할 수 있습니다.
 
-IDE Settings
-    Here you can make changes to personalize the editor to your liking.
-    You can choose from a variety of themes to control the look and feel, specify your preferred keymapping, and set the font size.
+IDE 설정
+　　여기서 원하는 대로 편집기를 개인 설정할 수 있습니다.
+　　여러 테마 중 원하는 테마를 고를 수 있고, 키 위치를 마음대로 지정하며 글꼴 크기를 설정할 수 있습니다.
 
-App Settings
-    This takes you back to the form that you created this SmartApp from, where you can view the values entered when you created the SmartApp, as well as edit certain properties about the SmartApp.
+앱 설정
+　　앱 설정에서는 SmartApp을 만들 때 입력한 값들이 있는 양식을 보여줍니다. SmartApp의 속성을 편집할 수도 있습니다.
 
-Simulator
-    This button toggles the display of the online Simulator. We'll discuss the Simulator in further detail next.
+시뮬레이터
+　　이 버튼은 온라인 시뮬레이터 화면을 토글합니다. 시뮬레이터에 대해서는 다음 부분에 더 자세히 설명하겠습니다.
 
 .. tip::
 
-    On the upper-right side of the IDE, in the *Simulator* menu, you'll see a drop-down titled *Browse SmartApp Templates*.
-    If you click this, you'll see a variety of SmartApps that you can browse to learn from, or use as the starting point of a new SmartApp.
+　IDE 오른쪽 상단의 *Simulator* 메뉴에 *Browse SmartApp Templates* 라는 드롭 다운메뉴를 볼 수 있을겁니다.
+　　클릭하면 참고할 수 있거나 SmartApp을 만들기 시작할 때 시작점으로 쓸 수 있는 다양한 SmartApp들을 볼 수 있습니다.
 
 ----
 
