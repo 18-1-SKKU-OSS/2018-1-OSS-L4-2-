@@ -29,13 +29,6 @@ Service Manager 구현의 주요 부분을 살펴보겠습니다.
 탐색
 ---
 
-----
-
-.. _lan_device_discovery:
-
-Discovery
----------
-
 SSDP(SimpleServiceDiscoveryProtocol)는 네트워크에서 장치를 찾는 데 사용되는 기본 프로토콜입니다.
 
 UPnP(Universal Plug and Play)의 backbone 역할을 하므로 새 네트워크 장치를 시스템에 쉽게 연결할 수 있습니다.
@@ -106,13 +99,15 @@ Event 구독은 다음과 같습니다:
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
     USN: uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1
 
-이렇게 하면 클라우드로 다시 라우팅 되며, 다음과 같은 설명을 사용하여 ssdpHandler 메서드를 시작하는 이벤트로 변환됩니다:
+This will get routed back to the cloud where it will be converted into an Event that will fire the ssdpHandler method with the following description:
+이렇게 하면 클라우드로 다시 라우팅 되며, 다음과 같은 설명을 사용하여 SS/Handler메서드를 시작하는 이벤트로 변환됩니다:
 
 .. code-block:: bash
 
     devicetype:04, mac:000E58F0FFFF, networkAddress:0A00010E, deviceAddress:0578, stringCount:04, ssdpPath:/xml/device_description.xml, ssdpUSN:uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1, ssdpTerm:urn:schemas-upnp-org:device:ZonePlayer:1, ssdpNTS:
 
-ssdpHandler 메소드는 확인을 위해 검색 응답의 데이터를 기록해야 합니다.
+The ssdpHandler method should record the data from the search response, in preparation for verification.
+ssdpHandler 메드는 확인을 위해 검색 응답의 데이터를 기록해야 합니다.
 
 .. code-block:: groovy
 
@@ -129,3 +124,47 @@ ssdpHandler 메소드는 확인을 위해 검색 응답의 데이터를 기록�
             devices << ["${ssdpUSN}": parsedEvent]
         }
     }
+
+----
+
+확인
+----
+
+    Once we've recorded the presence of a device on the LAN with the desired SSDP search target, the next step is to verify the
+    availability of the device by fetching some more information about it. In UPnP, this is called the **device description**.
+    In the search response, there is a LOCATION header which shows the Location of the device description on the LAN. SmartThings
+    splits this into **networkAddress**, **deviceAddress**, and **ssdpPath** in the Event, which at this point should exist in app state.
+    This can be pulled out of state and put into a HubAction. Note that the HubAction has a **callback**, which means that
+    when an HTTP response is issued from the device to the Hub, it will fire the **deviceDescriptionHandler** method.
+
+    .. code-block:: groovy
+
+        void verifyDevices() {
+            def devices = getDevices().findAll { it?.value?.verified != true }
+            devices.each {
+                int port = convertHexToInt(it.value.port)
+                String ip = convertHexToIP(it.value.ip)
+                String host = "${ip}:${port}"
+                sendHubCommand(new physicalgraph.device.HubAction("""GET ${it.value.ssdpPath} HTTP/1.1\r\nHOST: $host\r\n\r\n""", physicalgraph.device.Protocol.LAN, host, [callback: deviceDescriptionHandler]))
+            }
+        }
+
+        void deviceDescriptionHandler(physicalgraph.device.HubResponse hubResponse) {
+            def body = hubResponse.xml
+            def devices = getDevices()
+            def device = devices.find { it?.key?.contains(body?.device?.UDN?.text()) }
+            if (device) {
+                device.value << [name: body?.device?.roomName?.text(), model: body?.device?.modelName?.text(), serialNumber: body?.device?.serialNum?.text(), verified: true]
+            }
+        }
+
+    .. note:: HubResponse is a class supplied by the SmartThings platform. Here are some pieces of data that are included:
+
+        * **description** - The raw message received by the device connectivity layer
+        * **hubId** - The UUID of the SmartThings Hub that received the response
+        * **status** - HTTP status code of the response
+        * **headers** - Map of the HTTP headers of the response
+        * **body** - String of the HTTP response body
+        * **error** - Any error encountered during any automatic parsing of the body as either JSON or XML
+        * **json** - If the HTTP response has a Content-Type header of application/json, the body is automatically parsed as JSON and stored here
+        * **xml** - If the HTTP response has a Content-Type header of text/xml, the body is automatically parsed as XML and stored here
