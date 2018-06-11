@@ -91,9 +91,8 @@ Event 구독은 다음과 같습니다:
     MX: 4
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
 
-After the end device receives the multicast M-SEARCH, it is supposed to issue a unicast **search response**, delayed by a random number of seconds between 0 and MX (4 in this case).
-The search response sent from the device back to the Hub should look something like this:
-엔드 디바이스는 멀티 캐스트 M-SEARCH를 수신한 후 유니캐스트**검색 응답**을(이 경우 4)0과 MX사이의 임의 시간(초)으로 지연된다.
+
+엔드 디바이스는 멀티 캐스트 M-SEARCH를 수신한 후 유니캐스트 **search response**을(이 경우 4)0과 MX사이의 임의 시간(초)으로 지연된다.
 기기에서 허브로 다시 전송된 검색 응답은 다음과 같아야 합니다:
 
 
