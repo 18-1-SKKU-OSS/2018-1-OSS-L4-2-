@@ -15,23 +15,36 @@ Once you've read through the :ref:`groovy-for-smartthings`, this should be your 
 ----
 
 Goals
+목표
 -----
 
 At the end of this tutorial, you will know:
+튜토리얼을 다 보면 이것들을 알게 될 것입니다:
 
 - How to create a SmartApp using the web-based IDE.
+- 웹 기반 IDE를 사용하여 SmartApp를 만드는 방법
 - The key components of a SmartApp.
+- SmartApp의 주요 구성 요소
 - How to gather input from a user to configure the SmartApp.
+- 사용자로부터 입력을 수집하여 SmartApp을 구성하는 방법
 - How to subscribe to changes in a device's state.
+- 장치 상태의 변경 사항을 구독하는 방법.
 - How to control devices.
+- 장치를 제어하는 방법
 - How to schedule a SmartApp to execute in the future.
+- 향후 실행을 위해 SmartApp를 예약하는 방법
 - How to use the Simulator to test your SmartApp.
+- 시뮬레이터를 사용하여 SmartApp을 테스트하는 방법.
 - How to publish your SmartApp and install it on your mobile phone.
+- 스마트 폰을 게시하고 휴대 전화에 설치하는 방법.
 - :strike:`How to achieve world domination, without even trying.`
+- : 파업 :`시도조차하지 않고 세계 지배를 성취하는 법`
 
 The SmartApp we will create will be relatively simple, but it will teach you a few core concepts of SmartThings, and get you familiar with the development process.
+SmartApp은 비교적 간단하게 만들지 만 SmartThings의 몇 가지 핵심 개념을 알려주고 개발 프로세스에 익숙해집니다.
 
 The purpose of the SmartApp we'll write is to turn a switch on when motion is detected, and turn it off when motion stops.
+SmartApp의 목적은 동작이 감지되면 스위치를 켜고 동작이 중지되면 스위치를 끄는 것입니다
 
 ----
 
