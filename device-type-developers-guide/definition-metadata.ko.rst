@@ -58,7 +58,7 @@
 
 특성
 ----------
-장치 핸들러에 대한 사용자 지정 특성을 정의해야 하는 경우, 폐쇄에서 ``attribute()``메서드가 ``definition()`` 메서드로 전달됨을 호출합니다.
+장치 핸들러에 대한 사용자 지정 특성을 정의해야 하는 경우, 폐쇄에서 ``attribute()`` 메소드가 ``definition()`` 메소드로 전달됨을 호출합니다.
 
 **attribute(String attributeName, String attributeType, List possibleValues = null)**
 
