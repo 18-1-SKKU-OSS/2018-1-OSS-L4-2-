@@ -130,10 +130,14 @@ ssdpHandler 메드는 확인을 위해 검색 응답의 데이터를 기록해�
 확인
 ----
 
-    Once we've recorded the presence of a device on the LAN with the desired SSDP search target, the next step is to verify the
-    availability of the device by fetching some more information about it. In UPnP, this is called the **device description**.
-    In the search response, there is a LOCATION header which shows the Location of the device description on the LAN. SmartThings
-    splits this into **networkAddress**, **deviceAddress**, and **ssdpPath** in the Event, which at this point should exist in app state.
+원하는 SSDP검색 대상으로 LAN에 장치가 있음을 기록한 후 다음 단계는 장치에 대한 추가 정보를 가져와 장치 가용성을 확인하는 것입니다.
+
+UPnP에서는 이를 **device description**이라고 합니다.
+
+검색 응답에는 LAN에서 장치 설명의 위치를 보여 주는 위치 헤더가 있습니다.
+
+SmartThings는 이벤트에서 이 문제를 **networkAddress**, **deviceAddress** 및 **ssdpPath** (이 시점에서는 앱 상태로 존재해야 함)로 나눕니다.
+
     This can be pulled out of state and put into a HubAction. Note that the HubAction has a **callback**, which means that
     when an HTTP response is issued from the device to the Hub, it will fire the **deviceDescriptionHandler** method.
 
