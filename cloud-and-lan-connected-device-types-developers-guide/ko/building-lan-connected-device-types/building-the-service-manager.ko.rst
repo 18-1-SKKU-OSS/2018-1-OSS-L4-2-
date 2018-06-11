@@ -138,8 +138,9 @@ UPnP에서는 이를 **device description**이라고 합니다.
 
 SmartThings는 이벤트에서 이 문제를 **networkAddress**, **deviceAddress** 및 **ssdpPath** (이 시점에서는 앱 상태로 존재해야 함)로 나눕니다.
 
-    This can be pulled out of state and put into a HubAction. Note that the HubAction has a **callback**, which means that
-    when an HTTP response is issued from the device to the Hub, it will fire the **deviceDescriptionHandler** method.
+이 작업은 상태를 벗어나 HubAction 한번에 수행할 수 있습니다.
+
+HubAction 에는 더 많은 작업에는 **callback** 이 있습니다. 즉, HTTP응답이 장치에서 허브로 전송되면 **deviceDescriptionHandler** 방법이 실행됩니다.
 
     .. code-block:: groovy
 
