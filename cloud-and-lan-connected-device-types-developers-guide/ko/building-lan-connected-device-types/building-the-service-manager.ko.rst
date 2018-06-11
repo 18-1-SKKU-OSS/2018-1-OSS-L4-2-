@@ -106,15 +106,13 @@ Event 구독은 다음과 같습니다:
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
     USN: uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1
 
-This will get routed back to the cloud where it will be converted into an Event that will fire the ssdpHandler method with the following description:
-이렇게 하면 클라우드로 다시 라우팅 되며, 다음과 같은 설명을 사용하여 SS/Handler메서드를 시작하는 이벤트로 변환됩니다:
+이렇게 하면 클라우드로 다시 라우팅 되며, 다음과 같은 설명을 사용하여 ssdpHandler 메서드를 시작하는 이벤트로 변환됩니다:
 
 .. code-block:: bash
 
     devicetype:04, mac:000E58F0FFFF, networkAddress:0A00010E, deviceAddress:0578, stringCount:04, ssdpPath:/xml/device_description.xml, ssdpUSN:uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1, ssdpTerm:urn:schemas-upnp-org:device:ZonePlayer:1, ssdpNTS:
 
-The ssdpHandler method should record the data from the search response, in preparation for verification.
-SSL/Handler메서드는 확인을 위해 검색 응답의 데이터를 기록해야 합니다.
+ssdpHandler 메소드는 확인을 위해 검색 응답의 데이터를 기록해야 합니다.
 
 .. code-block:: groovy
 
