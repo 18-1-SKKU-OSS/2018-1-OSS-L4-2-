@@ -104,51 +104,51 @@
 
     ...
 
-    // each command specified in the definition must have a corresponding method
+    // 정의에 지정된 각 명령에는 해당 메서드가 있어야 합니다.
 
     def myCommand() {
-        // handle command
+        // 명령 쓰세요
     }
 
     // this command takes parameters as defined in the definition
     def myCommandWithParams(stringParam, numberParam) {
-        // handle command
+        // 명령 쓰세요
     }
 
 ----
 
-Fingerprinting
+Fingerprinting(번역 안하는게 더 맞는 거 같아 놔둡니다)
 --------------
 
-When a ZigBee or Z-Wave device is added to the SmartThings Hub, we need a way to determine which device type to assign it.
-This process is known as a "join" process, or "fingerprinting".
+ZigBee또는 Z-Wave장치를 SmartThingsHub에 추가할 때 할당할 장치 유형을 결정할 방법이 필요합니다.
+이 과정을 "조인"과정 또는 "fingerprinting"라고 합니다.
 
-Device Handlers define "fingerprints" to specify which devices or what kinds of devices they support.
-Then, when a device is added, its join information is compared to all fingerprints in the default handlers and your
-self-published handlers to determine which type of device it is.
+장치 취급자는 지원하는 장치 또는 장치 종류를 지정하기 위해 "fingerprints" 을 정의합니다.
+그런 다음 장치가 추가되면 연결 정보가 기본 처리기의 모든 지문과
+자체적으로 게시된 처리기를 사용하여 장치 유형을 확인합니다.
 
-The fingerprinting process differs between ZigBee and Z-Wave devices.
+fingerprinting  과정은 ZigBee 그리고 Z-Wave 장치 사이에 차이가 있다.
 
 .. _zigbee-fingerprinting-label:
 
 ZigBee fingerprinting
 ^^^^^^^^^^^^^^^^^^^^^
 
-For ZigBee devices, the main profileIds you will need to use are:
+ZigBee 기기의 경우 사용해야 할 주요 프로파일은 다음과 같습니다.
 
--  HA: Home Automation (0104)
--  SEP: Smart Energy Profile
--  ZLL: ZigBee Light Link (C05E)
+-HA: HomeAutomation(0104)
+-SEP: Smart Energy Profile
+-ZLL: ZigBee Light Link (C05E)
 
-The input and output clusters are defined specifically by your device and should be available via the device's documentation.
+입력 및 출력 클러스터는 장치에서 특별히 정의하며 장치 설명서를 통해 사용할 수 있어야 합니다.
 
-An example of a ZigBee fingerprint definition:
+ZigBee 지문 정의의 예:
 
 .. code-block:: groovy
 
         fingerprint profileId: "C05E", inClusters: "0000,0003,0004,0005,0006,0008,0300,1000", outClusters: "0019"
 
-You can also include the manufacturer and model name in the fingerprint to limit the fingerprint to a specific product:
+또한 지문에 제조 업체 및 모델 이름을 포함하여 특정 제품으로 지문을 제한할 수도 있습니다.
 
 .. code-block:: groovy
 
@@ -159,61 +159,53 @@ You can also include the manufacturer and model name in the fingerprint to limit
 Z-Wave fingerprinting
 ^^^^^^^^^^^^^^^^^^^^^
 
-Z-Wave fingerprints used to be based on the format used for ZigBee, but there is now a new format that is preferred.
-You may see the original fingerprints on older Device Handlers; see below for information on the legacy format.
+Z-Wave 지문은 ZigBee에 사용된 형태를 기반으로 했지만, 이제는 선호되는 새로운 형태가 있다.
+기존 장치 핸드 북에서 원본 지문을 볼 수 있습니다. 레거시 형식에 대한 자세한 내용은 아래를 참조하십시오.
 
-The best place to start is to add your device to SmartThings and look for the *Raw Description* in its details view
-in the SmartThings developer tools.
+가장 좋은 시작 위치는 스마트 링크에 장치를 추가하고 세부 정보 보기에서 *원형의 설명* 을 찾는 것입니다.
+SmartThings개발자 도구에 포함되어 있습니다.
 
 Z-Wave raw description
 ++++++++++++++++++++++
 
-Z-Wave devices added since the introduction of the new format will have raw description strings with multiple key-value
-fields, such as::
+새로운 형식이 도입된 이후 추가된 Z-Wave디바이스에는 여러 키 값을 가진 원시 설명 문자열이 있습니다.
+필드(예:다음) ::
 
     zw:Ss type:2101 mfr:0086 prod:0102 model:0064 ver:1.04 zwv:4.05 lib:03 cc:5E,86,72,98,84 ccOut:5A sec:59,85,73,71,80,30,31,70,7A role:06 ff:8C07 ui:8C07
 
-Not all fields will be present for every device.
+일부 장치에는 일부 필드가 없습니다.
 
 **zw:**
-    This field will start with 'L' for listening devices, 'S' for sleepy devices, and 'F' for beamable devices. See the
-    :ref:`Z-Wave Primer <zwave-primer>` for the meaning of those terms. That capital letter will be followed by a
-    lowercase 's' if the device is securely included into the network via the Z-Wave Security Layer.
-**type:**
-    This field is the Z-Wave Device Class as a 16-bit hexadecimal number that combines the Generic and Specific Device
-    Class codes. [1]_
+    이 필드는 듣기 장치의 경우'L', 잠 자기 장치의 경우'S', 빔 가능 장치의 경우'F'로 시작합니다. 이러한 용어의 의미는 '참고:'Z-wavePrimer<.ave-primer>를 참조하십시오. 기기가 Z-Wave보안 계층을 통해 네트워크에 안전하게 포함되는 경우 대문자 뒤에 소문자가 붙습니다.
+**유형:**
+    이 필드는 일반 장치와 특정 장치를 결합하는 16비트 16진수 숫자의 Z-Wave장치 클래스입니다.
+    클래스 코드. [1]_
 **mfr:**
-    This 16-bit hexadecimal number identifies the device manufacturer. [1]_ The three values of ``mfr``, ``prod`` and
-    ``model`` uniquely identify a certified Z-Wave product.
+    이 16비트 16진수 숫자는 장치 제조 업체를 나타냅니다. [1]__``mfr`` , ``prod`` 그리고 ``model`` 의 세가지 가치는 인증된 Z-Wave제품을 독특하게 식별한다.
 **prod:**
-    This 16-bit hexadecimal number is the Product Type ID reported by the device.
-**model:**
-    This 16-bit hexadecimal number is the Product ID reported by the device.
+    이 16비트 16진수 숫자는 장치에서 보고하는 제품 유형 ID입니다.
+**모델:**
+    이 16비트 16진수 숫자는 장치에서 보고하는 제품 ID입니다.
 **ver:**
-    This is the application firmware version reported by the device.
+    장치에서 보고하는 애플리케이션 펌웨어 버전입니다.
 **zwv:**
-    This is the version of the Z-Wave protocol stack being used by the device.
+    장치에서 사용 중인 Z-Wave프로토콜 스택의 버전입니다.
 **lib:**
-    This indicates the type of Z-Wave protocol library the device is based on. '01' is a static controller, '02' is a
-    remote controller, '07' is a bridge controller, and other values are normal non-controller devices.
+    장치의 기반이 되는 Z-Wave프로토콜 라이브러리의 유형을 나타냅니다. '01'은 정적 컨트롤러이고,'02'는 원격 컨트롤러이며,'07'은 브리지 컨트롤러이며, 다른 값은 일반적인 비 컨트롤러 장치입니다.
 **cc:**
-    The list of Z-Wave command classes supported by the device (without security encapsulation). See the
-    `Z-Wave Command Reference <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__ for the command classes
-    represented by each hex code.
+    장치에서 지원하는 Z-Wave명령 클래스 목록입니다(보안 캡슐화 제외). 각 16진수 코드로 표시된 명령 클래스에 대해서는  `Z-Wave명령 참조 <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__  를 참조하십시오.
 **ccOut:**
-    The list of Z-Wave command classes that the device can control. This refers to commands sent to other devices versus
-    reports generated by the device.
+    장치가 제어할 수 있는 Z-Wave명령 클래스 목록. 이는 다른 장치로 전송된 명령과 장치가 생성한 보고서를 나타냅니다.
 **sec:**
-    These command classes are supported by the device only via Z-Wave Security encapsulation.
+    이러한 명령 클래스는 Z-Wave보안 캡슐화를 통해서만 장치에서 지원됩니다.
 **secOut:**
-    These command classes are *controlled* by the device only via Z-Wave Security encapsulation.
-**role:**
-    This indicates the Z-Wave Plus Role Type. [1]_
+    이러한 명령 클래스는 Z-Wave보안 캡슐화를 통해서만 디바이스에 의해*제어* 됩니다.
+**역할:**
+    Z-WavePlus역할 유형을 나타냅니다. [1]_
 **ff:**
-    This stands for "form factor" and corresponds to the Z-Wave+ Installer Icon type (An offset of 0x8000 is added for
-    implementation reasons). [1]_
+    이는 "폼 팩터"를 나타내며 Z-Wave+Installer아이콘 유형에 해당합니다(구현 이유로 0x8000오프셋이 추가됨). [1]_
 **ui:**
-    This corresponds to the Z-Wave+ User Icon type.
+    이는 Z-Wave+User아이콘 유형에 해당합니다.
 
 .. [1] See `this document <http://zwavepublic.com/files/sds13740-1-z-wave-plus-device-and-command-class-types-and-defines-specificationpdf>`_ for the values of identifiers defined by the Z-Wave standard.
 
