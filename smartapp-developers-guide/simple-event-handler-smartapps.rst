@@ -168,4 +168,4 @@ See also
  - `Sunset and Sunrise <sunset-and-sunrise.html>`__
  - :ref:`event_ref` API Documentation
  - :ref:`location_ref` API Documentation
- - `Interacting with Devices <devices.html>`__
+ - `Interacting with Devices <devices.rst>`__

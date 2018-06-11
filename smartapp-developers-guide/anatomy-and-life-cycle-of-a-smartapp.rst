@@ -117,7 +117,7 @@ SmartApps execute when any of the following types of Events occur:
 5. **Scheduled event** - Using a method like runIn(), you call
    a method within your SmartApp at a particular time.
 6. **Web services call** Using our `web services
-   API <../../smartapp-web-services-developers-guide/overview.rst>`__, you
+   API <../smartapp-web-services-developers-guide/overview.rst>`__, you
    create an endpoint accessible over the web that calls a method within
    your SmartApp.
 
@@ -142,7 +142,7 @@ Device inputs can also prompt for more than one device. So to ask for the select
 
     input "switch1", "capability.switch", multiple: true
 
-You can find more information about SmartApp preferences `here <preferences-and-settings.html>`__.
+You can find more information about SmartApp preferences `here <preferences-and-settings.rst>`__.
 
 ----
 
