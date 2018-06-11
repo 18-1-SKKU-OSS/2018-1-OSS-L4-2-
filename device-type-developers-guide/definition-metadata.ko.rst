@@ -293,23 +293,23 @@ New Z-Wave fingerprint format
     fingerprint profileId: "0104", inClusters: "0000, 0003, 0004, 0005, 0006, 0008, 0702, 0B05", outClusters: "000A, 0019", manufacturer: "Jasco Products", model: "45852", deviceJoinName: "GE Zigbee Plug-In Dimmer"
     fingerprint profileId: "0104", inClusters: "0000, 0003, 0004, 0005, 0006, 0008, 0702, 0B05", outClusters: "000A, 0019", manufacturer: "Jasco Products", model: "45857", deviceJoinName: "GE Zigbee In-Wall Dimmer"
 
-If an added device supports the inClusters in the first fingerprint but doesn't match all the extra info in any of the
-next three, it will join with the name from the handler's definition metadata, in this case "ZigBee Dimmer Power."
+    추가된 장치가 첫번째 지문에서 클러스터를 지원하지만 모든 추가 정보와 일치하지 않는 경우
+    다음 3단계로, 그것은 핸들러의 정의 메타 데이터의 이름과 결합할 것이다, 이 경우에 "ZigBee Dimmer Power."
 
-Device pairing process
+장치 페어링 과정
 ++++++++++++++++++++++
 
-The order of the ``inClusters`` and ``outClusters`` lists is not important to the pairing process.
-It is a best practice, however, to list the clusters in ascending order.
+ ``inClusters`` 그리고 ``outClusters`` 목록의 순서는 쌍 구성 과정에서 중요하지 않습니다.
+그러나 클러스터를 오름차순으로 나열하는 것이 좋습니다.
 
-The device can have more clusters than the fingerprint specifies, and it will still pair.
-If one of the clusters specified in the fingerprint is incorrect, the device will *not* pair.
+장치에는 지문이 지정하는 것보다 많은 클러스터가 있을 수 있으며, 여전히 클러스터는 쌍으로 구성됩니다.
+지문에 지정된 클러스터 중 하나가 잘못된 경우 디바이스는 페어링되지 *않을* 겁니다.
 
-Overly general fingerprints
+지나치게 일반적인 지문
 +++++++++++++++++++++++++++
 
-If you wish to publish or share a Device Handler, you must make sure that the fingerprints do not capture other devices
-that aren't covered by your handler.
+장치 핸들러를 게시하거나 공유하려면 지문이 다른 장치를 캡처하지 않는지 확인해야 합니다.
+해당 사항은 귀하의 담당자가 다루지 않습니다.
 
-If you copied a working fingerprint from a default or template handler, it would be ambiguous which type should match if
-yours was published. The easiest way to remedy this is to include manufacturer and model info in all fingerprints.
+기본 또는 템플릿 처리기에서 작업 지문을 복사한 경우
+당신의 것이 출판되었습니다. 이 문제를 해결하는 가장 쉬운 방법은 제조 업체 및 모델 정보를 모든 지문에 포함시키는 것입니다.
