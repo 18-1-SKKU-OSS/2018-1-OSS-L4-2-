@@ -107,7 +107,7 @@ SmartApp이 항상 실행되고 있는 것은 아닙니다. 외부 이벤트가 
 
     input "switch1", "capability.switch", multiple: true
 
-`여기 <preferences-and-settings.html>`__ 에서 SmartApp 기본설정에 관한 더 많은 정보를 얻으실 수 있습니다.
+`여기 <preferences-and-settings.ko.rst>`__ 에서 SmartApp 기본설정에 관한 더 많은 정보를 얻으실 수 있습니다.
 
 ----
 
