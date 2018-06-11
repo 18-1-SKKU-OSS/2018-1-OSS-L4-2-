@@ -1,4 +1,4 @@
-분석과 이벤트들 
+분석과 이벤트들
 ================
 
 ``parse`` 메소드는 Device Handler의 핵심 메소드 입니다.
@@ -9,12 +9,13 @@
 --------
 
 디바이스에서 나오는 모든 메세지들은 ``parse()`` 메소드로 전달됩니다.
-It is responsible for turning those messages into something the SmartThings platform can understand.
 
-Because the ``parse()`` method is responsible for handling raw device messages, their implementations vary greatly across different device types.
-This document will not discuss all these different scenarios (see the `Z-Wave Device Handler Guide <building-z-wave-device-handlers.html>`__ or `ZigBee Device Handler guide <building-zigbee-device-handlers.html>`__ for protocol-specific information).
+이러한 메시지를 스마트 싱스 플랫폼이 이해할 수 있는 것으로 전환하는 것은 책임이 있다.
 
-Consider an example of a simplified ``parse()`` method (modified from the CentraLite Switch):
+``parse()`` 메소드는 원시 기기 메시지 처리를 담당하기 때문에 구현 방식은 기기 유형에 따라 크게 다르다.
+이 문서에서는 이러한 다양한 시나리오에 대해 설명하지는 않습니다 (`Z-Wave Device Handler Guide <building-z-wave-device-handlers.html>`__ or `ZigBee Device Handler guide <building-zigbee-device-handlers.html>`__ 를 참고하세요).
+
+단순화된 ``parse()`` 메소드의 예를 들어 보겠습니다(CentraLiteSwitch에서 수정).
 
 .. code-block:: groovy
 
@@ -36,18 +37,18 @@ Consider an example of a simplified ``parse()`` method (modified from the Centra
         return result
     }
 
-Our ``parse()`` method inspects the passed-in description, and creates an Event with name "switch" and a value of "on" or "off".
-It then returns the created Event, where the SmartThings platform will handle firing the Event and notifying any SmartApps subscribed to that Event.
+우리의 ``parse()`` 메소드는 통과된 설명을 검사하고, 이름"스위치"와 "on"또는"off"값을 가진 이벤트를 생성한다.
+그런 다음 생성된 이벤트를 반환합니다. 여기서 SmartThings플랫폼은 이벤트 시작을 처리하고 해당 이벤트에 가입된 SmartApps에게 알립니다.
 
 ----
 
-Parse, Events, and Attributes
+구문 분석, 이벤트 및 속성
 -----------------------------
 
-Recall that the "switch" capability specifies an attribute of "switch", with possible values "on" and "off".
-*The* ``parse()`` *method is responsible for creating events for the attributes of that device's capabilities.*
+"스위치"기능은 가능한 값이 "on"및"off"인 "스위치"속성을 지정합니다.
+*그* **"구문 분석()"*방법은 해당 장치의 기능 속성에 대한 이벤트를 생성하는 데 책임이 있습니다.*
 
-That is a critical point to understand about Device Handlers - it is what allows SmartApps to respond to Event subscriptions!
+이는 장치 핸드 북에 대해 이해하는 중요한 요점입니다. 즉, SmartApps가 이벤트 구독에 응답할 수 있도록 해 줍니다!
 
 .. note::
 
