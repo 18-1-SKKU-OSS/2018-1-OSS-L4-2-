@@ -142,7 +142,7 @@ Device inputs can also prompt for more than one device. So to ask for the select
 
     input "switch1", "capability.switch", multiple: true
 
-You can find more information about SmartApp preferences `here <preferences-and-settings.html>`__.
+You can find more information about SmartApp preferences `here <preferences-and-settings.rst>`__.
 
 ----
 
