@@ -255,35 +255,36 @@ New Z-Wave fingerprint format
 'UI'매개 변수. 지문의 순위가 동일한 경우 자체 게시 장치 핸드 북이 기본 값보다 우선합니다.
 생산용 제품
 
-Legacy Z-Wave fingerprint format
+기존 Z-Wave지문 형식
 +++++++++++++++++++++++++++++++
 
-Legacy fingerprints include the device class – or ``type`` value (see above) – in the ``deviceId`` parameter and the
-command classes it supports in the ``inClusters`` parameter. So the fingerprint:
+기존 지문에는 다음과 같은 장치 클래스(또는 ``type`` 값(위 참조)가 포함됩니다.
+``deviceId`` 매개 변수 및
+명령 클래스는 ``inClusters`` 매개 변수에서 지원합니다. 그래서 fingerprint는 :
 
 .. code-block:: groovy
 
-    fingerprint deviceId:"0x1104", inClusters:"0x26, 0x2B, 0x2C, 0x27, 0x73, 0x70, 0x86, 0x72", outClusters: "0x20"
+  지문 장치 ID:"0x1104", 클러스터 내에서 "0x26,0x2B, 0x2C, 0x27,0x73,0x86,0x72", 0x20"
 
-would be formatted in the new style as:
+새로운 형식으로 다음과 같이 포맷됩니다.
 
 .. code-block:: groovy
 
-    fingerprint type: "1104", cc: "26,2B,2C,27,73,70,86,72", ccOut: "20"
+  지문 유형:"1104", 참조:"26,2B, 2C, 27,73,70,86,72"
 
 .. _device_handler_fingerprinting_best_practices:
 
-Fingerprinting best practices
+핑거 프린트 모범 사례
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add multiple fingerprints
+여러개의 지문 추가
 +++++++++++++++++++++++++
 
-A Device Handler can have multiple fingerprints in order to work with multiple versions of a device.
-Each fingerprint is independent. If any of them is the highest ranking match, the device will use your device type.
+장치 핸들러는 장치의 여러 버전에서 작업하기 위해 여러개의 지문을 가질 수 있습니다.
+각 지문은 독립적입니다. 가장 높은 순위 일치 항목이 있으면 장치 유형이 사용됩니다.
 
-You can distinguish between the different devices that use the handler by adding the 'deviceJoinName' parameter.
-For example:
+'deviceAcinName'매개 변수를 추가하여 처리기를 사용하는 여러 디바이스를 구분할 수 있습니다.
+예:
 
 .. code-block:: groovy
 
