@@ -51,28 +51,40 @@ SmartApp의 목적은 동작이 감지되면 스위치를 켜고 동작이 중지되면 스위치를 끄는 것
 .. _ide_requirements:
 
 Prerequisites
+선결 요건
 -------------
 
 Before completing this tutorial, you should have read the :ref:`get-started-overview`, and registered for an account as discussed in the :ref:`quick-start` page.
+이 튜토리얼을 완료하기 전에, : ref :`get-started-overview`를 읽고, : ref :`quick-start` 페이지에서 논의 된 것처럼 계정에 등록해야합니다.
 It is recommended that you become at least familiar with the basic Groovy concepts discussed in the :ref:`groovy-basics` and :ref:`groovy-for-smartthings` tutorials.
+최소한 : ref :`groovy-basics` 및 : ref :`groovy-for-smartthings` 튜토리얼에서 논의 된 기본적인 Groovy 개념에 익숙해지는 것이 좋습니다.
 
 Start by logging into IDE at at https://graph.api.smartthings.com.
 Next, navigate to *My Locations* page to see the Locations you created.
+https://graph.api.smartthings.com에서 IDE에 로그인하여 시작하십시오.
+그런 다음 * 내 위치 * 페이지로 이동하여 내가 만든 위치를 확인하십시오.
 
 .. image:: ../img/getting-started/first-smartapp/my-locations.png
    :width: 70%
 
 Normally you will see just one Location where you installed your Hub.
 Click on the Location name appearing in the far left column (i.e., the *Name* column). You may need to log in again with your SmartThings userid and password.
+일반적으로 허브를 설치 한 위치는 하나만 표시됩니다.
+맨 왼쪽 열 (* 이름 * 열)에 나타나는 위치 이름을 클릭하십시오. SmartThings 사용자 ID와 암호로 다시 로그인해야 할 수도 있습니다.
 
 .. warning::
 
     Note that even though the IDE is located at https://graph.api.smartthings.com, it may not always be the correct URL for your SmartApp deployment.
+??IDE가 https://graph.api.smartthings.com에 있더라도 SmartApp 배포에 올바른 URL이 아닐 수도 있습니다.
     By explicitly selecting the Location name you will ensure that your SmartApp will be published properly.
+명시 적으로 위치 이름을 선택하면 SmartApp가 제대로 게시 될 것입니다.
 
 The SmartApp will utilize a motion sensor and a smart switch.
 Even if you don't have these devices or don't have a Hub, you can still complete the majority of this tutorial.
 We will call out any special steps required if you don't have the hardware.
+SmartApp는 모션 센서와 스마트 스위치를 활용합니다.
+이러한 장치가 없거나 Hub가없는 경우에도이 자습서의 대부분을 완료 할 수 있습니다.
+하드웨어가없는 경우 특별한 단계가 필요합니다.
 
 ----
 
