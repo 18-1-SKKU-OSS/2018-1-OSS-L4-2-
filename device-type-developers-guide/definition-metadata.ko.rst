@@ -212,51 +212,48 @@ Z-Wave raw description
 New Z-Wave fingerprint format
 +++++++++++++++++++++++++++++
 
-If you're writing a Device Handler for a specific device, you can base the fingerprint on the manufacturer info.
-For example, the fingerprint to match the raw description example above would be:
+특정 장치에 대한 장치 핸들러를 작성하는 경우 제조 업체 정보를 기반으로 지문을 작성할 수 있습니다.
+예를 들어 위의 원시 설명 예제와 일치하는 지문은 다음과 같습니다.
 
 .. code-block:: groovy
 
     fingerprint mfr: "0086", prod: "0102", model: "0064"
 
-No other parameters are required. Note that you need to add quotes and commas to the more concise raw description format
-to make it valid Groovy code.
+다른 매개 변수는 필요하지 않습니다. 인용 부호와 쉼표를 더 간결한 원시 설명 형식에 추가하여 유효한 Groov코드로 만들어야 합니다.
 
-Sometimes related products are grouped under the same 'prod' ID. In that case you can use a fingerprint without the
-'model' parameter.
+때로는 관련 제품이 동일한 'prod' ID로 그룹화되기도 합니다. 이 경우'mode'매개 변수 없이 지문을 사용할 수 있습니다.
 
-If you are writing a general Device Handler that supports all devices of a certain type, you can still base the
-fingerprint on command class support.
+특정 유형의 모든 장치를 지원하는 일반 장치 핸들러를 작성하는 경우에도 명령 클래스 지원을 기반으로 fingerprint를 사용할 수 있습니다.
 
 .. code-block:: groovy
 
     fingerprint type: "10", cc: "25,32"
 
-That fingerprint would match all devices of the Binary Switch generic device class – i.e. their 'type' starts with
-"10" – that support the Binary Switch (0x25) and Meter (0x32) command classes.
+이 지문은 BinarySwitch일반 장치 클래스의 모든 장치와 일치합니다. 즉,'유형'이
+"10"-BinarySwitch(0x25)및 Meter(0x32)명령 클래스를 지원합니다.
 
-The supported parameters are:
+지원되는 매개 변수는 다음과 같습니다.
 
-**type:**
-    Matches if it's equal to or a prefix of the device's 'type' value in the raw description. Aliased as 'deviceId'.
-**mfr, prod, model:**
-    Matches if 'mfr' matches the raw description and 'prod' and 'model' match as prefixes (if present).
-**cc, ccOut:**
-    Takes a list of command class codes as a string: comma-separated, uppercase hexadecimal. Matches if all listed
-    command class codes are reported as supported or controlled respectively in the device's raw description.
-**sec, secOut:**
-    The same as the previous parameter, but only matches against command classes the device supports/controls only via
-    Z-Wave Security encapsulation.
-**ff/ui:**
-    Either of these parameters can be used to match against the corresponding fields of the raw description. It is only
-    possible to use one of the following in a single fingerprint: 'type', 'deviceId', 'ff', ui'.
-**deviceJoinName:**
-    Not used for matching. If the fingerprint matches, the device will appear to the user with this name.
+**유형:**
+    초기 정보에서 장치의 '유형'값 접두사 또는 같은지 여부를 일치시킵니다. 별칭이 'deviceId'로 지정되었습니다.
+**mfr, 주입, 모형:**
+    '.r'가 초기 설명과 일치하면 일치하고 접두사( 있는 경우)로 'spot'및'Model'이 일치하면 일치합니다.
+**참조인, cc:**
+    명령 클래스 코드 목록을 쉼표로 구분된 대문자 16진수 문자열로 표시합니다. 모두 나열된 경우 일치
+    명령 클래스 코드는 장치의 초기 설명에서 각각 지원되거나 제어되는 것으로 보고됩니다.
+**초, SecOut:**
+    이전 매개 변수와 동일하지만 디바이스 지원 via 제어는
+    Z-Wave보안 캡슐화.
+**ff /i:**
+    이러한 매개 변수 중 하나를 사용하여 원시 설명의 해당 필드와 일치시킬 수 있습니다. 그것은 단지
+    하나의 지문에 'type','deviceId','는 ', 음'중 하나를 사용할 수 있습니다.
+**장치 이름:**
+    일치시키는 데 사용되지 않습니다. 지문이 일치하는 경우 이 이름을 가진 사용자에게 장치가 나타납니다.
 
-When multiple device fingerprints match an added Z-Wave device, they are ranked first by number of 'mfr', 'prod', and
-'model' parameters, then by the number of command classes listed, and finally by the length of the 'type', 'ff', or
-'ui' parameter. When fingerprints have the same rank, self-published Device Handlers take precedence over the default
-production ones.
+여러개의 장치 지문이 추가된 Z-Wave장치와 일치할 경우, 해당 지문은 'Z-war','stroke'및
+'모델'매개 변수 다음에 나열된 명령 클래스 수를 기준으로 마지막으로 'type','는 '또는
+'UI'매개 변수. 지문의 순위가 동일한 경우 자체 게시 장치 핸드 북이 기본 값보다 우선합니다.
+생산용 제품
 
 Legacy Z-Wave fingerprint format
 +++++++++++++++++++++++++++++++
