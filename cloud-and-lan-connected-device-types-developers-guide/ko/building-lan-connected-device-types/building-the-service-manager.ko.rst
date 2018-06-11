@@ -165,11 +165,11 @@ HubAction 에는 더 많은 작업에는 **callback** 이 있습니다. 즉, HTT
 
     .. note:: HubResponse is a class supplied by the SmartThings platform. Here are some pieces of data that are included:
 
-        * **description** - The raw message received by the device connectivity layer
-        * **hubId** - The UUID of the SmartThings Hub that received the response
-        * **status** - HTTP status code of the response
-        * **headers** - Map of the HTTP headers of the response
-        * **body** - String of the HTTP response body
-        * **error** - Any error encountered during any automatic parsing of the body as either JSON or XML
-        * **json** - If the HTTP response has a Content-Type header of application/json, the body is automatically parsed as JSON and stored here
-        * **xml** - If the HTTP response has a Content-Type header of text/xml, the body is automatically parsed as XML and stored here
+        * **description** - 디바이스 연결 계층에서 수신한 원시 메시지
+        * **hubId** - 응답을 받은 SmartThings Hub의 UUID
+        * **status** - 응답의 HTTP상태 코드
+        * **headers** - 응답의 HTTP헤더 맵
+        * **body** - HTTP응답 본문의 문자열
+        * **error** - 본문을 자동으로 구문 분석하는 동안 JSON또는 XML로 발생한 오류
+        * **json** - HTTP응답에 application/json의 Content-Type헤더가 있는 경우 본문은 자동으로 JSON으로 구문 분석되고 여기에 저장됩니다.
+        * **xml** - HTTP응답에 텍스트/xml의 내용 유형 헤더가 있는 경우 본문이 자동으로 XML로 구문 분석되고 여기에 저장됩니다.
