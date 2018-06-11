@@ -158,20 +158,20 @@ ZigBee 유틸리티
 지그비 장치 양식 사용
 ----------------------------
 
-To integrate a new ZigBee switch or bulb with SmartThings, you can use the *From ZigBee Device Form*.
+새로운 지크의 스위치 또는 전구를 SmartThings와 통합하기 위해 *From ZigBee Device Form* 을 사용할 수 있습니다.
 
 .. image:: ../img/device-types/zigbee-form.png
 
-What it does
+뭘 할까요?
 ^^^^^^^^^^^^
 
-By entering the ZigBee information for the device in the form, the appropriate existing Device Handler will be updated with the device's fingerprint.
+양식에 장치에 대한 지그/빅 정보를 입력하면 기존 장치 처리기가 장치의 지문으로 업데이트됩니다.
 
-Use it if
+다음 경우에 사용하세요
 ^^^^^^^^^
 
-- You are the device manufacturer, or otherwise have access to the required ZigBee device information requested on the form.
-- The device is best described as one of the following:
+-사용자는 기기 제조 업체이거나, 그렇지 않은 경우 양식에 요청된 ZigBee 장치 정보에 액세스 할 수 있습니다.
+-장치는 다음 중 하나로 설명하는 것이 가장 좋습니다.
 
     - ZigBee Switch
     - ZigBee Switch with Power
@@ -179,10 +179,10 @@ Use it if
     - ZigBee Dimmer/Bulb with Power
     - ZigBee Color Temperature Bulb
 
-How to use
+어떻게 쓸까요
 ^^^^^^^^^^
 
-Simply fill out the required fields in the form with the information for the device, and click *Create.*
+필요한 필드에 장치에 대한 정보를 입력하고 *Create.* 을 클릭하면 됩니다.
 
-You will then see the updated Device Handler code in the IDE editor.
-You can then test that your device pairs with SmartThings and functions as expected, and then make an update as a Publication Request.
+그러면 IDE편집기에서 업데이트된 장치 처리기 코드가 표시됩니다.
+그런 다음 장치가 SmartThings및 기능과 일치하는지 테스트한 다음 게시 요청으로 업데이트할 수 있습니다.
