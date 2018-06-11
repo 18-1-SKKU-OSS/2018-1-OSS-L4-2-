@@ -63,43 +63,43 @@
 **attribute(String attributeName, String attributeType, List possibleValues = null)**
 
 *attributeName*
-    Name of the attribute.
+    특성의 이름.
 
 *attributeType*
-    Type of the attribute. Available types are "string", "number", and "enum".
+    특성의 타입. 가능한 타입으로는 "string", "number", 그리고 "enum"가 있습니다.
 
 *possibleValues*
-    Optional. The possible values for this attribute. Only valid with the "enum" attributeType.
+    선택사항. 그 특성의 가능한 값들. 오직 "enum"과 쓸수 있다.
 
 .. code-block:: groovy
 
-    // String attribute with name "someName"
+    // 이름이 "someName"인 스트링 특성
     attribute "someName", "string"
 
-    // enum attribute with possible values "light" and "dark"
+    // "light" 그리고 "dark" 값이 가능한 enum 특성
     attribute "someOtherName", "enum", ["light", "dark"]
 
 
 ----
 
-Commands
+명령어들
 --------
 
-To define a custom command for your Device Handler, call the ``command()`` method in the closure passed to the ``definition()`` method:
+장치 핸들러에 대한 사용자 정의 명령을 정의하려면 종료 시 ``command()`` 메소드를 ``definition()`` 메소드로 호출하십시오.
 
 **command(String commandName, List parameterTypes = [])**
 
 *commandName*
-    The name of the command. You must also define a method in your Device Handler with the same name.
+    명령의 이름. Device Handler 내의 메소드도 반드시 같은 이름으로 해야합니다.
 *parameterTypes*
-    Optional. An ordered list of the parameter types for the command method, if needed.
+    선택사항. 명령 메소드를 위한 파라미터 타입 리스트이며, 필요할 때만 쓰세요.
 
 .. code-block:: groovy
 
-    // command name "myCommand" with no parameters
+    // 인자없는 "myCommand" 명령
     command "myCommand"
 
-    // command name myCommandWithParams that takes a string and a number parameter
+    // 스트링과 숫자를 인자로 받는 myCommandWithParams 명령
     command "myCommandWithParams", ["string", "number"]
 
     ...
