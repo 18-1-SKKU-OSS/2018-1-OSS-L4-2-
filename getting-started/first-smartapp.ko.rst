@@ -113,35 +113,52 @@ IDE에서 *My SmartApps* 페이지로 이동하세요.
 ----
 
 Editor
+편집기
 ------
 
 Once you've created your SmartApp, you'll be taken to the editor and Simulator.
 Before we look at the code, it's worth becoming familiar with some of the basic features.
+SmartApp를 만들면 편집기와 시뮬레이터로 이동합니다.
+코드를 살펴보기 전에 기본 기능에 익숙해 질 필요가 있습니다.
 
 Above the code window, there are five buttons:
+코드 창 위에는 다섯 개의 버튼이 있습니다.
 
 .. image:: ../img/getting-started/first-smartapp/editor-buttons.png
 
 Save
     This button saves your SmartApp in the SmartThings cloud.
+저장
+????이 단추는 SmartThings 클라우드에 SmartApp를 저장합니다.
 
 Publish
     This allows you to publish your SmartApp for yourself, so you may install it in your SmartThings mobile app, as well as to submit it to the SmartThings team for publication into the SmartThings catalog.
+게시
+????이를 통해 SmartApp를 직접 게시 할 수 있으므로 SmartThings 모바일 앱에 SmartApp를 설치하고 SmartThings 팀에 제출하여 SmartThings 카탈로그에 게시 할 수 있습니다.
 
 IDE Settings
     Here you can make changes to personalize the editor to your liking.
     You can choose from a variety of themes to control the look and feel, specify your preferred keymapping, and set the font size.
+IDE 설정
+????여기서 원하는대로 편집기를 개인 설정할 수 있습니다.
+????모양과 느낌을 제어하고, 선호하는 키맵을 지정하고, 글꼴 크기를 설정하기 위해 다양한 테마 중에서 선택할 수 있습니다.
 
 App Settings
     This takes you back to the form that you created this SmartApp from, where you can view the values entered when you created the SmartApp, as well as edit certain properties about the SmartApp.
+앱 설정
+????이렇게하면이 SmartApp를 만든 양식으로 돌아 가게됩니다.이 양식에서 SmartApp를 만들 때 입력 한 값을보고 SmartApp에 ??대한 특정 속성을 편집 할 수 있습니다.
 
 Simulator
     This button toggles the display of the online Simulator. We'll discuss the Simulator in further detail next.
+모의 실험 장치
+????이 버튼은 온라인 시뮬레이터의 표시를 토글합니다. 시뮬레이터에 대해서는 다음에 더 자세히 설명하겠습니다.
 
 .. tip::
 
     On the upper-right side of the IDE, in the *Simulator* menu, you'll see a drop-down titled *Browse SmartApp Templates*.
     If you click this, you'll see a variety of SmartApps that you can browse to learn from, or use as the starting point of a new SmartApp.
+??  IDE 오른쪽 상단의 * Simulator * 메뉴에 * Browse SmartApp Templates *라는 드롭 다운이 표시됩니다.
+????이 버튼을 클릭하면 새로운 SmartApp의 출발점에서 배우거나 탐색 할 수있는 다양한 SmartApp가 표시됩니다.
 
 ----
 
