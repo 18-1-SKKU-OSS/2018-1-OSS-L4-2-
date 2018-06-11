@@ -79,8 +79,9 @@ Event 구독은 다음과 같습니다:
 
     lan discovery urn:schemas-upnp-org:device:ZonePlayer:1
 
-This is converted by our device connectivity layer into an M-SEARCH multicast request that is sent to the LAN via the Hub, and
-should look something like the following:
+
+이것은 우리의 장치 접속 계층에 의해 허브를 통해 LAN으로 전송되는 M-SEARCH멀티 캐스트 요청으로 전환된다.
+다음과 같은 모양이어야 합니다:
 
 .. code-block:: bash
 
@@ -92,6 +93,9 @@ should look something like the following:
 
 After the end device receives the multicast M-SEARCH, it is supposed to issue a unicast **search response**, delayed by a random number of seconds between 0 and MX (4 in this case).
 The search response sent from the device back to the Hub should look something like this:
+엔드 디바이스는 멀티 캐스트 M-SEARCH를 수신한 후 유니캐스트**검색 응답**을(이 경우 4)0과 MX사이의 임의 시간(초)으로 지연된다.
+기기에서 허브로 다시 전송된 검색 응답은 다음과 같아야 합니다:
+
 
 .. code-block:: bash
 
