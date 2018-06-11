@@ -102,7 +102,7 @@ IDE에서 *My SmartApps* 페이지로 이동하세요.
 
 범주
 　　SmartApp는 기능에 따라 분류됩니다.
-　　이것은 SmartThings 모바일 어플리케이션에서 사용됩니다.
+　　이것은 SmartThings 모바일 애플리케이션에서 사용됩니다.
 　　SmartApp는 마켓플레이스 용이나 혼자 쓸 용도로 출판될 수 있습니다.
 　　혼자 쓸 용도로 SmartApp을 게시할 때(지금 저희가 할 것과 같이) 모든 SmartApp이 *My Apps* 범주에 나타납니다.
 
