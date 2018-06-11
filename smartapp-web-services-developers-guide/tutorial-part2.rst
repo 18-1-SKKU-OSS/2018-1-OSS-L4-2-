@@ -103,7 +103,7 @@ In your favorite text editor*, create a new file called ``server.rb`` and paste 
         'Not Implemented!'
     end
 
-    # hanlde requests to /oauth/callback URL. We
+    # handle requests to /oauth/callback URL. We
     # will tell SmartThings to call this URL with our
     # authorization code once we've authenticated.
     get '/oauth/callback' do
@@ -266,7 +266,7 @@ Replace the ``/getswitch`` route with the following:
 
       token = session[:access_token]
 
-      # make a request to the SmartThins endpoint URI, using the token,
+      # make a request to the SmartThings endpoint URI, using the token,
       # to get our endpoints
       url = URI.parse(endpoints_uri)
       req = Net::HTTP::Get.new(url.request_uri)
